@@ -26,3 +26,32 @@ if (sectionRoot && sectionLabel && contentRoot) {
   backWrap.append(backLink);
   contentRoot.prepend(backWrap);
 }
+
+const mapBoard = document.querySelector("[data-map-board]");
+
+if (mapBoard) {
+  const mapCursor = document.createElement("span");
+  mapCursor.className = "map-cursor";
+  mapCursor.setAttribute("aria-hidden", "true");
+  mapBoard.append(mapCursor);
+
+  const moveCursor = (event) => {
+    const rect = mapBoard.getBoundingClientRect();
+    const x = event.clientX - rect.left;
+    const y = event.clientY - rect.top;
+
+    mapCursor.style.transform = `translate(${x}px, ${y}px) translate(-50%, -50%)`;
+  };
+
+  mapBoard.addEventListener("mouseenter", (event) => {
+    mapBoard.dataset.mapCursorActive = "true";
+    moveCursor(event);
+  });
+
+  mapBoard.addEventListener("mousemove", moveCursor);
+
+  mapBoard.addEventListener("mouseleave", () => {
+    delete mapBoard.dataset.mapCursorActive;
+    mapCursor.style.transform = "translate(-999px, -999px)";
+  });
+}

@@ -1,0 +1,120 @@
+.map-section {
+  display: grid;
+  gap: 1.25rem;
+}
+
+.map-board {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(143, 93, 55, 0.14);
+  border-radius: 22px;
+  background: rgba(255, 251, 245, 0.8);
+}
+
+.map-board[data-map-cursor-active="true"] {
+  cursor: none;
+}
+
+.map-board img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.map-hotspot {
+  position: absolute;
+  display: block;
+  border: 0;
+  padding: 0;
+  background: transparent;
+  cursor: pointer;
+}
+
+.map-board[data-map-cursor-active="true"] .map-hotspot {
+  cursor: none;
+}
+
+.map-hotspot::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 10px;
+  background: rgba(200, 58, 72, 0.14);
+  box-shadow: inset 0 0 26px rgba(200, 58, 72, 0.08);
+  transition:
+    background 160ms ease,
+    transform 160ms ease,
+    box-shadow 160ms ease;
+}
+
+.map-hotspot:hover::before,
+.map-hotspot:focus-visible::before {
+  background: rgba(200, 58, 72, 0.2);
+  transform: scale(1.03);
+  box-shadow:
+    inset 0 0 32px rgba(200, 58, 72, 0.12),
+    0 0 18px rgba(255, 245, 236, 0.16);
+}
+
+.map-hotspot:focus-visible {
+  outline: none;
+}
+
+.map-hotspot--fixed::before {
+  background: rgb(194, 41, 58);
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 248, 243, 0.16),
+    0 0 18px rgba(194, 41, 58, 0.14);
+}
+
+.map-hotspot--fixed:hover::before,
+.map-hotspot--fixed:focus-visible::before {
+  background: rgb(194, 41, 58);
+}
+
+.map-hotspot__label {
+  position: absolute;
+  left: 50%;
+  bottom: calc(100% + 10px);
+  transform: translateX(-50%);
+  padding: 0.45rem 0.7rem;
+  border-radius: 999px;
+  background: rgba(255, 250, 243, 0.96);
+  border: 1px solid rgba(143, 93, 55, 0.14);
+  color: var(--text);
+  font-size: 0.84rem;
+  font-weight: 600;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  box-shadow: 0 12px 24px rgba(99, 68, 44, 0.08);
+  transition: opacity 160ms ease, transform 160ms ease;
+}
+
+.map-hotspot:hover .map-hotspot__label,
+.map-hotspot:focus-visible .map-hotspot__label {
+  opacity: 1;
+  transform: translateX(-50%) translateY(-2px);
+}
+
+.map-cursor {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4.2%;
+  height: 5.15%;
+  border: 1px solid rgba(255, 251, 246, 0.96);
+  background: transparent;
+  box-shadow:
+    inset 0 0 0 4px rgba(194, 41, 58, 0.98),
+    inset 0 0 0 8px rgba(255, 251, 246, 0.96),
+    inset 0 0 0 12px rgba(194, 41, 58, 0.98);
+  pointer-events: none;
+  opacity: 0;
+  transform: translate(-999px, -999px);
+  z-index: 5;
+}
+
+.map-board[data-map-cursor-active="true"] .map-cursor {
+  opacity: 1;
+}
