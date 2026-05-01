@@ -1,5 +1,5 @@
 fun project for Pokemon rom hack "Pokemon Light Platinum DS"
-- essentially a site for the docs i have collected, for the purpose of serving as a guide
+- essentially a site for the docs i have collected, for the purpose of serving as a guide[WIP]
 
 <img width="1410" height="863" alt="image" src="https://github.com/user-attachments/assets/516c57b3-895b-4e8d-a181-e27738b4f514" />
 
