@@ -176,12 +176,36 @@ li {
 
 .hero {
   display: grid;
-  grid-template-columns: minmax(0, 1.45fr) minmax(280px, 0.85fr);
+  grid-template-columns: minmax(0, 1.2fr) minmax(300px, 0.8fr);
   gap: 1.25rem;
   padding: 2rem;
   background:
     linear-gradient(135deg, rgba(255, 248, 239, 0.95), rgba(244, 233, 219, 0.9)),
     var(--panel-strong);
+}
+
+.hero__banner {
+  grid-column: 1 / -1;
+  border-radius: 22px;
+  overflow: hidden;
+  height: clamp(180px, 30vw, 320px);
+  min-height: 0;
+  max-height: 320px;
+  border: 1px solid rgba(143, 93, 55, 0.16);
+  background: rgba(255, 250, 243, 0.82);
+}
+
+.hero__banner img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  min-width: 0;
+  min-height: 0;
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: cover;
+  object-position: center 28%;
+  filter: saturate(0.92) contrast(1.02);
 }
 
 .hero h2 {
@@ -396,6 +420,11 @@ li + li {
   .hero {
     padding: 1.2rem;
     border-radius: 22px;
+  }
+
+  .hero__banner {
+    height: 180px;
+    max-height: 180px;
   }
 
   .sidebar h1 {
