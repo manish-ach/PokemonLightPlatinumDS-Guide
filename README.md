@@ -1,3 +1,5 @@
+Check it at - https://manish-ach.github.io/PokemonLightPlatinumDS-Guide/
+
 fun project for Pokemon rom hack "Pokemon Light Platinum DS"
 - essentially a site for the docs i have collected, for the purpose of serving as a guide[WIP]
 
