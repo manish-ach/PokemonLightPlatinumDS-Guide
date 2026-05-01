@@ -1,0 +1,243 @@
+.eyebrow {
+  margin: 0;
+  color: var(--accent);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.sidebar h1,
+.content h2,
+.content h3 {
+  font-family: "Cormorant Garamond", serif;
+}
+
+.sidebar h1 {
+  margin: -0.4rem 0 0;
+  font-size: clamp(2.3rem, 5vw, 3.3rem);
+  line-height: 0.92;
+  font-weight: 600;
+}
+
+.version,
+.sidebar__intro,
+.section-copy,
+.hero__summary,
+li {
+  color: var(--muted);
+}
+
+.version {
+  margin: -1rem 0 0;
+  font-size: 0.92rem;
+}
+
+.sidebar__intro,
+.hero__summary,
+.section-copy,
+li {
+  line-height: 1.65;
+}
+
+.sidebar__nav {
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+}
+
+.sidebar__nav a {
+  position: relative;
+  color: var(--text);
+  text-decoration: none;
+  width: fit-content;
+  font-size: 0.98rem;
+  transition: color 180ms ease, transform 180ms ease;
+}
+
+.sidebar__nav a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -0.18rem;
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(90deg, var(--accent), transparent);
+  transform: scaleX(0.35);
+  transform-origin: left;
+  opacity: 0.6;
+  transition: transform 180ms ease, opacity 180ms ease;
+}
+
+.sidebar__nav a:hover,
+.sidebar__nav a.is-active {
+  color: var(--accent);
+  transform: translateX(4px);
+}
+
+.sidebar__nav a:hover::after,
+.sidebar__nav a.is-active::after {
+  transform: scaleX(1);
+  opacity: 1;
+}
+
+.panel {
+  position: relative;
+  margin-bottom: 1.5rem;
+  padding: 1.6rem;
+  border: 1px solid var(--border);
+  border-radius: 28px;
+  background: var(--panel);
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(10px);
+  overflow: hidden;
+}
+
+.panel::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto;
+  height: 1px;
+  background: linear-gradient(90deg, rgba(143, 93, 55, 0.4), transparent 65%);
+}
+
+.hero h2 {
+  margin: 0.25rem 0 0.9rem;
+  font-size: clamp(2.2rem, 4vw, 4.4rem);
+  line-height: 0.95;
+  font-weight: 600;
+  max-width: 10ch;
+}
+
+.hero__summary {
+  margin: 0;
+  max-width: 62ch;
+  font-size: 1rem;
+}
+
+.stat-card,
+.starter-card,
+.location article,
+.guide-card {
+  padding: 1rem 1.05rem;
+  border: 1px solid rgba(143, 93, 55, 0.12);
+  border-radius: 20px;
+  background: rgba(255, 252, 247, 0.72);
+}
+
+.page-intro h2 {
+  margin: 0.3rem 0 0.4rem;
+  font-size: clamp(2.1rem, 3vw, 3.2rem);
+  line-height: 0.95;
+  font-weight: 600;
+  font-family: "Cormorant Garamond", serif;
+}
+
+.stat-card span,
+.guide-card span {
+  display: block;
+  color: var(--accent);
+  font-size: 0.8rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.stat-card span {
+  margin-bottom: 0.4rem;
+}
+
+.stat-card strong,
+.guide-card strong {
+  font-family: "Cormorant Garamond", serif;
+  font-weight: 600;
+}
+
+.stat-card strong {
+  font-size: 1.5rem;
+}
+
+.section-heading {
+  margin-bottom: 1.25rem;
+}
+
+.section-heading h2 {
+  margin: 0.3rem 0 0.4rem;
+  font-size: clamp(2rem, 3vw, 3rem);
+  line-height: 0.95;
+  font-weight: 600;
+}
+
+.section-copy {
+  margin: 0;
+  max-width: 65ch;
+}
+
+.starter-card h3,
+.location h3 {
+  margin: 0 0 0.75rem;
+  font-size: 1.65rem;
+  font-weight: 600;
+}
+
+.guide-card {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  transition:
+    transform 180ms ease,
+    border-color 180ms ease,
+    background 180ms ease,
+    box-shadow 180ms ease;
+}
+
+.guide-card:hover {
+  transform: translateY(-3px);
+  border-color: rgba(143, 93, 55, 0.28);
+  background: rgba(255, 251, 245, 0.94);
+  box-shadow: 0 18px 34px rgba(99, 68, 44, 0.09);
+}
+
+.guide-card span {
+  margin-bottom: 0.35rem;
+}
+
+.guide-card strong {
+  display: block;
+  margin-bottom: 0.45rem;
+  font-size: 1.75rem;
+}
+
+.guide-card p {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.65;
+}
+
+.page-links {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
+
+.page-links a,
+.section-back__link {
+  color: var(--accent);
+  text-decoration: none;
+  font-weight: 600;
+  transition: transform 180ms ease, opacity 180ms ease;
+}
+
+.page-links a:hover,
+.section-back__link:hover {
+  opacity: 0.82;
+  transform: translateX(2px);
+}
+
+.section-back {
+  margin-bottom: 1rem;
+}
+
+.panel--placeholder {
+  background: rgba(255, 251, 246, 0.6);
+}
