@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mt. Ice Storm | Pokemon Light Platinum DS</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Manrope:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../assets/styles/main.css" />
+  </head>
+  <body data-page="locations" data-section-root="index.html" data-section-label="Locations">
+    <div class="page-shell">
+      <aside class="sidebar">
+        <div class="sidebar__inner">
+          <p class="eyebrow">Zhery Region</p>
+          <h1>Pokemon Light Platinum DS</h1>
+          <p class="version">Version 0.2.1</p>
+          <p class="sidebar__intro">Mountain area page created from the current pictured item archive.</p>
+          <nav class="sidebar__nav" aria-label="Guide Sections">
+            <a href="../index.html" data-page-link="overview">Overview</a>
+            <a href="../guides/pokemons.html" data-page-link="pokemons">Pokemons</a>
+            <a href="../routes/index.html" data-page-link="routes">Routes</a>
+            <a href="index.html" data-page-link="locations">Locations</a>
+            <a href="../map/index.html" data-page-link="map">Map</a>
+            <a href="../items/index.html" data-page-link="items">Items</a>
+            <a href="../others/index.html" data-page-link="others">Others</a>
+          </nav>
+        </div>
+      </aside>
+
+      <main class="content">
+        <section class="panel page-intro">
+          <p class="eyebrow">Area</p>
+          <h2>Mt. Ice Storm</h2>
+          <p class="section-copy">
+            This area page exists to anchor the current pictured item records available
+            for Mt. Ice Storm in version 0.2.1.
+          </p>
+        </section>
+
+        <section class="panel panel--placeholder">
+          <div class="section-heading">
+            <p class="eyebrow">Current Record</p>
+            <h2>Placeholder Area Data</h2>
+          </div>
+          <div class="location-grid">
+            <article>
+              <h3>Not Yet Recorded</h3>
+              <ul>
+                <li>Wild encounters</li>
+                <li>Floor-by-floor notes</li>
+                <li>Trainer battles</li>
+                <li>Traversal requirements</li>
+              </ul>
+            </article>
+          </div>
+        </section>
+
+        <section class="panel">
+          <div class="section-heading">
+            <p class="eyebrow">Area Items</p>
+            <h2>Item Table</h2>
+            <p class="section-copy">
+              Individual item records currently documented for Mt. Ice Storm.
+            </p>
+          </div>
+          <label class="item-search" for="mt-ice-storm-item-search">
+            <span>Search location items</span>
+            <input
+              id="mt-ice-storm-item-search"
+              type="search"
+              placeholder="Search Rare Candy, Shiny Stone, Water Stone"
+              data-filter-input
+              data-filter-target="mt-ice-storm-item-table"
+              data-filter-empty="mt-ice-storm-item-empty"
+              data-filter-summary="mt-ice-storm-item-summary"
+            />
+          </label>
+          <p class="filter-summary" id="mt-ice-storm-item-summary">
+            3 item records are currently documented for Mt. Ice Storm.
+          </p>
+        </section>
+
+        <section class="panel">
+          <div class="table-wrap">
+            <table class="item-table" id="mt-ice-storm-item-table">
+              <thead>
+                <tr>
+                  <th>S.N.</th>
+                  <th>Image</th>
+                  <th>Name</th>
+                  <th>Item Page</th>
+                  <th>Location</th>
+                  <th>Details</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr data-filter-item>
+                  <td>1</td>
+                  <td class="item-table__image">
+                    <img src="../assets/pictures/ItemLocations/RareCandiesMtIceStorm.jpg" alt="Rare Candy in Mt. Ice Storm" />
+                  </td>
+                  <td>Rare Candy</td>
+                  <td><a href="../items/index.html#rare-candy">Open Item Record</a></td>
+                  <td>Mt. Ice Storm</td>
+                  <td>Pictured Rare Candy location currently archived for this area.</td>
+                </tr>
+                <tr data-filter-item>
+                  <td>2</td>
+                  <td class="item-table__image">
+                    <img src="../assets/pictures/ItemLocations/ShinyStoneMtIceStorm.jpg" alt="Shiny Stone in Mt. Ice Storm" />
+                  </td>
+                  <td>Shiny Stone</td>
+                  <td><a href="../items/index.html#shiny-stone-mt-ice-storm">Open Item Record</a></td>
+                  <td>Mt. Ice Storm</td>
+                  <td>Pictured Shiny Stone location currently archived for this area.</td>
+                </tr>
+                <tr data-filter-item>
+                  <td>3</td>
+                  <td class="item-table__image">
+                    <img src="../assets/pictures/ItemLocations/WaterStoneMtIceStorm.jpg" alt="Water Stone in Mt. Ice Storm" />
+                  </td>
+                  <td>Water Stone</td>
+                  <td><a href="../items/index.html#water-stone-mt-ice-storm">Open Item Record</a></td>
+                  <td>Mt. Ice Storm</td>
+                  <td>Pictured Water Stone location currently archived for this area.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="search-empty" id="mt-ice-storm-item-empty" hidden>No matching Mt. Ice Storm items found.</p>
+        </section>
+
+        <nav class="page-links panel" aria-label="Page Navigation">
+          <a href="index.html">Back: Locations</a>
+          <a href="../items/index.html">Return to Items</a>
+        </nav>
+      </main>
+    </div>
+
+    <script src="../assets/script.js"></script>
+  </body>
+</html>

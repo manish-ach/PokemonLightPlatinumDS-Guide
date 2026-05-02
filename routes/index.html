@@ -43,18 +43,50 @@
         </section>
 
         <section class="panel">
-          <div class="guide-grid">
-            <a class="guide-card" href="route-401.html">
+          <div class="section-heading">
+            <p class="eyebrow">Route Search</p>
+            <h2>Search Routes</h2>
+            <p class="section-copy">
+              Filter route pages by route number, notes, or field details.
+            </p>
+          </div>
+
+          <label class="item-search" for="routes-section-search">
+            <span>Search routes</span>
+            <input
+              id="routes-section-search"
+              type="search"
+              placeholder="Search Route 401, berries, encounters..."
+              data-filter-input
+              data-filter-target="routes-section-grid"
+              data-filter-empty="routes-section-empty"
+              data-filter-summary="routes-section-summary"
+            />
+          </label>
+          <p class="filter-summary" id="routes-section-summary">
+            Browse all currently recorded route pages.
+          </p>
+        </section>
+
+        <section class="panel">
+          <div class="guide-grid" id="routes-section-grid">
+            <a class="guide-card" href="route-401.html" data-filter-item>
               <span>Route 02</span>
               <strong>Route 401</strong>
               <p>Berry spots and early wild encounter notes.</p>
             </a>
-            <a class="guide-card" href="route-402.html">
+            <a class="guide-card" href="route-402.html" data-filter-item>
               <span>Route 04</span>
               <strong>Route 402</strong>
               <p>Current route entry reserved for confirmed field data.</p>
             </a>
+            <a class="guide-card" href="route-409.html" data-filter-item>
+              <span>Route 11</span>
+              <strong>Route 409</strong>
+              <p>Item page created from pictured location records, with placeholder route data.</p>
+            </a>
           </div>
+          <p class="search-empty" id="routes-section-empty" hidden>No matching route pages found.</p>
         </section>
       </main>
     </div>

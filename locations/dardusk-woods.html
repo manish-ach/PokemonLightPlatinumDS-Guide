@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dardusk Woods | Pokemon Light Platinum DS</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Manrope:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../assets/styles/main.css" />
+  </head>
+  <body data-page="locations" data-section-root="index.html" data-section-label="Locations">
+    <div class="page-shell">
+      <aside class="sidebar">
+        <div class="sidebar__inner">
+          <p class="eyebrow">Zhery Region</p>
+          <h1>Pokemon Light Platinum DS</h1>
+          <p class="version">Version 0.2.1</p>
+          <p class="sidebar__intro">Forest area page created from the current item archive and starter record.</p>
+          <nav class="sidebar__nav" aria-label="Guide Sections">
+            <a href="../index.html" data-page-link="overview">Overview</a>
+            <a href="../guides/pokemons.html" data-page-link="pokemons">Pokemons</a>
+            <a href="../routes/index.html" data-page-link="routes">Routes</a>
+            <a href="index.html" data-page-link="locations">Locations</a>
+            <a href="../map/index.html" data-page-link="map">Map</a>
+            <a href="../items/index.html" data-page-link="items">Items</a>
+            <a href="../others/index.html" data-page-link="others">Others</a>
+          </nav>
+        </div>
+      </aside>
+
+      <main class="content">
+        <section class="panel page-intro">
+          <p class="eyebrow">Area</p>
+          <h2>Dardusk Woods</h2>
+          <p class="section-copy">
+            This area page anchors the currently documented Moon Stone image record and
+            the known Bulbasaur starter location.
+          </p>
+        </section>
+
+        <section class="panel panel--placeholder">
+          <div class="section-heading">
+            <p class="eyebrow">Current Record</p>
+            <h2>Placeholder Area Data</h2>
+          </div>
+          <div class="location-grid">
+            <article>
+              <h3>Not Yet Recorded</h3>
+              <ul>
+                <li>Wild encounters</li>
+                <li>Trainer battles</li>
+                <li>Area navigation</li>
+                <li>Hidden item notes</li>
+              </ul>
+            </article>
+          </div>
+        </section>
+
+        <section class="panel">
+          <div class="section-heading">
+            <p class="eyebrow">Area Items</p>
+            <h2>Item Table</h2>
+            <p class="section-copy">
+              Individual item records currently documented for Dardusk Woods.
+            </p>
+          </div>
+          <label class="item-search" for="dardusk-item-search">
+            <span>Search location items</span>
+            <input
+              id="dardusk-item-search"
+              type="search"
+              placeholder="Search Moon Stone"
+              data-filter-input
+              data-filter-target="dardusk-item-table"
+              data-filter-empty="dardusk-item-empty"
+              data-filter-summary="dardusk-item-summary"
+            />
+          </label>
+          <p class="filter-summary" id="dardusk-item-summary">
+            1 item record is currently documented for Dardusk Woods.
+          </p>
+        </section>
+
+        <section class="panel">
+          <div class="table-wrap">
+            <table class="item-table" id="dardusk-item-table">
+              <thead>
+                <tr>
+                  <th>S.N.</th>
+                  <th>Image</th>
+                  <th>Name</th>
+                  <th>Item Page</th>
+                  <th>Location</th>
+                  <th>Details</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr data-filter-item>
+                  <td>1</td>
+                  <td class="item-table__image">
+                    <img src="../assets/pictures/ItemLocations/MoonStoneDardusk.jpg" alt="Moon Stone in Dardusk Woods" />
+                  </td>
+                  <td>Moon Stone</td>
+                  <td><a href="../items/index.html#moon-stone-dardusk">Open Item Record</a></td>
+                  <td>Dardusk Woods</td>
+                  <td>Pictured Moon Stone location currently archived for this area.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="search-empty" id="dardusk-item-empty" hidden>No matching Dardusk Woods items found.</p>
+        </section>
+
+        <nav class="page-links panel" aria-label="Page Navigation">
+          <a href="index.html">Back: Locations</a>
+          <a href="mt-ice-storm.html">Next: Mt. Ice Storm</a>
+        </nav>
+      </main>
+    </div>
+
+    <script src="../assets/script.js"></script>
+  </body>
+</html>

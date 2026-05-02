@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Search | Pokemon Light Platinum DS</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Manrope:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../assets/styles/main.css" />
+  </head>
+  <body data-page="overview" data-section-root="../index.html" data-section-label="Overview">
+    <div class="page-shell">
+      <aside class="sidebar">
+        <div class="sidebar__inner">
+          <p class="eyebrow">Zhery Region</p>
+          <h1>Pokemon Light Platinum DS</h1>
+          <p class="version">Version 0.2.1</p>
+          <p class="sidebar__intro">Structured global search across guides, routes, locations, items, and starter pages.</p>
+          <nav class="sidebar__nav" aria-label="Guide Sections">
+            <a href="../index.html" data-page-link="overview">Overview</a>
+            <a href="../guides/pokemons.html" data-page-link="pokemons">Pokemons</a>
+            <a href="../routes/index.html" data-page-link="routes">Routes</a>
+            <a href="../locations/index.html" data-page-link="locations">Locations</a>
+            <a href="../map/index.html" data-page-link="map">Map</a>
+            <a href="../items/index.html" data-page-link="items">Items</a>
+            <a href="../others/index.html" data-page-link="others">Others</a>
+          </nav>
+        </div>
+      </aside>
+
+      <main class="content">
+        <section class="panel page-intro">
+          <p class="eyebrow">Global Search</p>
+          <h2>Search the Guide</h2>
+          <p class="section-copy">
+            Search items, locations, routes, Pokémon entries, and section pages from one place.
+          </p>
+        </section>
+
+        <section class="panel search-panel">
+          <form class="global-search global-search--page" action="index.html" method="get">
+            <label class="global-search__label" for="global-search-page">Search the full guide</label>
+            <input
+              id="global-search-page"
+              class="global-search__input"
+              type="search"
+              name="q"
+              placeholder="Search Bulbasaur, Yellow Town, Quick Claw, Route 401..."
+              autocomplete="off"
+              data-search-query
+            />
+          </form>
+          <p class="search-summary" data-search-summary>Type a query to explore the current guide index.</p>
+        </section>
+
+        <section class="panel search-results-panel" data-search-results></section>
+      </main>
+    </div>
+
+    <script src="../assets/search-index.js"></script>
+    <script src="../assets/script.js"></script>
+  </body>
+</html>

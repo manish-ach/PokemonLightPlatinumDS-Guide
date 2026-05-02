@@ -43,18 +43,60 @@
         </section>
 
         <section class="panel">
-          <div class="guide-grid">
-            <a class="guide-card" href="yellow-town.html">
+          <div class="section-heading">
+            <p class="eyebrow">Location Search</p>
+            <h2>Search Locations</h2>
+            <p class="section-copy">
+              Filter town and city pages by name, local services, or pickup notes.
+            </p>
+          </div>
+
+          <label class="item-search" for="locations-section-search">
+            <span>Search locations</span>
+            <input
+              id="locations-section-search"
+              type="search"
+              placeholder="Search Yellow Town, Central City, berries..."
+              data-filter-input
+              data-filter-target="locations-section-grid"
+              data-filter-empty="locations-section-empty"
+              data-filter-summary="locations-section-summary"
+            />
+          </label>
+          <p class="filter-summary" id="locations-section-summary">
+            Browse all currently recorded town and city pages.
+          </p>
+        </section>
+
+        <section class="panel">
+          <div class="guide-grid" id="locations-section-grid">
+            <a class="guide-card" href="yellow-town.html" data-filter-item>
               <span>Location 01</span>
               <strong>Yellow Town</strong>
               <p>Professor Jasmine’s Lab, early pickups, and lake encounters.</p>
             </a>
-            <a class="guide-card" href="central-city.html">
+            <a class="guide-card" href="central-city.html" data-filter-item>
               <span>Location 03</span>
               <strong>Central City</strong>
               <p>Casino rewards, Global Terminal, rooftops, and city services.</p>
             </a>
+            <a class="guide-card" href="lake-area.html" data-filter-item>
+              <span>Area</span>
+              <strong>Lake Area</strong>
+              <p>Pictured item page created from the current lake-area archive reference.</p>
+            </a>
+            <a class="guide-card" href="dardusk-woods.html" data-filter-item>
+              <span>Area</span>
+              <strong>Dardusk Woods</strong>
+              <p>Forest area page created from the Moon Stone archive record.</p>
+            </a>
+            <a class="guide-card" href="mt-ice-storm.html" data-filter-item>
+              <span>Area</span>
+              <strong>Mt. Ice Storm</strong>
+              <p>Mountain area page created from the current pictured item archive.</p>
+            </a>
           </div>
+          <p class="search-empty" id="locations-section-empty" hidden>No matching location pages found.</p>
         </section>
       </main>
     </div>

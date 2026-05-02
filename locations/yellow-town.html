@@ -44,18 +44,18 @@
 
         <section class="panel location">
           <div class="location-grid">
-            <article>
+            <article id="yellow-town-key-pickups">
               <h3>Key Pickups</h3>
               <ul>
                 <li>Gen 1 starters at Professor Jasmine’s Lab</li>
-                <li>Running Boots from your mother</li>
+                <li><a href="../items/index.html#running-boots">Running Boots</a> from your mother</li>
                 <li>Elekid on the first floor of Professor Jasmine’s Lab</li>
-                <li>Quick Claw from the man in the house below the lab</li>
-                <li>Bicycle from your mother after getting the mail, after Seaport City</li>
+                <li><a href="../items/index.html#quick-claw">Quick Claw</a> from the man in the house below the lab</li>
+                <li><a href="../items/index.html#bicycle">Bicycle</a> from your mother after getting the mail, after Seaport City</li>
               </ul>
             </article>
 
-            <article>
+            <article id="yellow-town-lake-encounters">
               <h3>Lake Encounters</h3>
               <ul>
                 <li><strong>Surfing:</strong> Marill, Azumarill</li>
@@ -63,6 +63,75 @@
               </ul>
             </article>
           </div>
+        </section>
+
+        <section class="panel">
+          <div class="section-heading">
+            <p class="eyebrow">Location Items</p>
+            <h2>Item Table</h2>
+            <p class="section-copy">
+              Individual item records currently documented for Yellow Town.
+            </p>
+          </div>
+          <label class="item-search" for="yellow-town-item-search">
+            <span>Search location items</span>
+            <input
+              id="yellow-town-item-search"
+              type="search"
+              placeholder="Search Running Boots, Quick Claw, Bicycle..."
+              data-filter-input
+              data-filter-target="yellow-town-item-table"
+              data-filter-empty="yellow-town-item-empty"
+              data-filter-summary="yellow-town-item-summary"
+            />
+          </label>
+          <p class="filter-summary" id="yellow-town-item-summary">
+            3 item records are currently documented for Yellow Town.
+          </p>
+        </section>
+
+        <section class="panel">
+          <div class="table-wrap">
+            <table class="item-table" id="yellow-town-item-table">
+              <thead>
+                <tr>
+                  <th>S.N.</th>
+                  <th>Image</th>
+                  <th>Name</th>
+                  <th>Item Page</th>
+                  <th>Source</th>
+                  <th>Details</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr data-filter-item>
+                  <td>1</td>
+                  <td class="item-table__image item-table__image--empty">—</td>
+                  <td>Running Boots</td>
+                  <td><a href="../items/index.html#running-boots">Open Item Record</a></td>
+                  <td>Mother</td>
+                  <td>Movement item received from your mother during the opening progression.</td>
+                </tr>
+                <tr data-filter-item>
+                  <td>2</td>
+                  <td class="item-table__image item-table__image--empty">—</td>
+                  <td>Quick Claw</td>
+                  <td><a href="../items/index.html#quick-claw">Open Item Record</a></td>
+                  <td>House below Professor Jasmine’s Lab</td>
+                  <td>Given by the man in the house below the lab.</td>
+                </tr>
+                <tr data-filter-item>
+                  <td>3</td>
+                  <td class="item-table__image item-table__image--empty">—</td>
+                  <td>Bicycle</td>
+                  <td><a href="../items/index.html#bicycle">Open Item Record</a></td>
+                  <td>Mother</td>
+                  <td>Received after getting the mail and progressing past Seaport City.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="search-empty" id="yellow-town-item-empty" hidden>No matching Yellow Town items found.</p>
         </section>
 
         <nav class="page-links panel" aria-label="Page Navigation">

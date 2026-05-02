@@ -43,18 +43,104 @@
         </section>
 
         <section class="panel">
-          <div class="guide-grid">
-            <a class="guide-card subguide-card" href="starters/index.html">
+          <div class="section-heading">
+            <p class="eyebrow">Section Search</p>
+            <h2>Search Pokemon Sections</h2>
+            <p class="section-copy">
+              Filter the Pokémon section pages by title or description.
+            </p>
+          </div>
+
+          <label class="item-search" for="pokemons-section-search">
+            <span>Search sections</span>
+            <input
+              id="pokemons-section-search"
+              type="search"
+              placeholder="Search starters or future Pokémon directories"
+              data-filter-input
+              data-filter-target="pokemons-section-grid"
+              data-filter-empty="pokemons-section-empty"
+              data-filter-summary="pokemons-section-summary"
+            />
+          </label>
+          <p class="filter-summary" id="pokemons-section-summary">
+            Browse all current Pokémon section pages.
+          </p>
+        </section>
+
+        <section class="panel">
+          <div class="guide-grid" id="pokemons-section-grid">
+            <a class="guide-card subguide-card" href="starters/index.html" data-filter-item>
               <small>Starter Pages</small>
               <strong>Starters</strong>
               <p>Individual pages for the Gen 1 to Gen 5 starter roster with local art and documented locations.</p>
             </a>
-            <a class="guide-card subguide-card" href="all-pokemon/index.html">
+            <a class="guide-card subguide-card" href="all-pokemon/index.html" data-filter-item>
               <small>Pokemon Directory</small>
               <strong>All Pokemon</strong>
               <p>Reserved for general Pokemon availability, encounter listings, and future directory pages.</p>
             </a>
           </div>
+          <p class="search-empty" id="pokemons-section-empty" hidden>No matching Pokémon sections found.</p>
+        </section>
+
+        <section class="panel">
+          <div class="section-heading">
+            <p class="eyebrow">Pokemon Search</p>
+            <h2>Starter Directory</h2>
+            <p class="section-copy">
+              Search individual starter pages by Pokémon name, generation, or documented location.
+            </p>
+          </div>
+          <label class="item-search" for="pokemon-directory-search">
+            <span>Search starters</span>
+            <input
+              id="pokemon-directory-search"
+              type="search"
+              placeholder="Search Bulbasaur, Gen 3, Route 412..."
+              data-filter-input
+              data-filter-target="pokemon-directory-table"
+              data-filter-empty="pokemon-directory-empty"
+              data-filter-summary="pokemon-directory-summary"
+            />
+          </label>
+          <p class="filter-summary" id="pokemon-directory-summary">
+            15 starter pages are currently indexed here.
+          </p>
+        </section>
+
+        <section class="panel">
+          <div class="table-wrap">
+            <table class="item-table" id="pokemon-directory-table">
+              <thead>
+                <tr>
+                  <th>S.N.</th>
+                  <th>Pokemon</th>
+                  <th>Generation</th>
+                  <th>Location</th>
+                  <th>Page</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr data-filter-item><td>1</td><td>Bulbasaur</td><td>Gen 1</td><td>Dardusk Woods</td><td><a href="starters/bulbasaur.html">Open Page</a></td></tr>
+                <tr data-filter-item><td>2</td><td>Charmander</td><td>Gen 1</td><td>Route 412</td><td><a href="starters/charmander.html">Open Page</a></td></tr>
+                <tr data-filter-item><td>3</td><td>Squirtle</td><td>Gen 1</td><td>Professor Jasmine’s Lab</td><td><a href="starters/squirtle.html">Open Page</a></td></tr>
+                <tr data-filter-item><td>4</td><td>Chikorita</td><td>Gen 2</td><td>Route 405</td><td><a href="starters/chikorita.html">Open Page</a></td></tr>
+                <tr data-filter-item><td>5</td><td>Cyndaquil</td><td>Gen 2</td><td>Mt. Shuem</td><td><a href="starters/cyndaquil.html">Open Page</a></td></tr>
+                <tr data-filter-item><td>6</td><td>Totodile</td><td>Gen 2</td><td>Yellow Town</td><td><a href="starters/totodile.html">Open Page</a></td></tr>
+                <tr data-filter-item><td>7</td><td>Treecko</td><td>Gen 3</td><td>Route 403</td><td><a href="starters/treecko.html">Open Page</a></td></tr>
+                <tr data-filter-item><td>8</td><td>Torchic</td><td>Gen 3</td><td>Esmerald City</td><td><a href="starters/torchic.html">Open Page</a></td></tr>
+                <tr data-filter-item><td>9</td><td>Mudkip</td><td>Gen 3</td><td>Route 412</td><td><a href="starters/mudkip.html">Open Page</a></td></tr>
+                <tr data-filter-item><td>10</td><td>Turtwig</td><td>Gen 4</td><td>Groment City</td><td><a href="starters/turtwig.html">Open Page</a></td></tr>
+                <tr data-filter-item><td>11</td><td>Chimchar</td><td>Gen 4</td><td>Groment City</td><td><a href="starters/chimchar.html">Open Page</a></td></tr>
+                <tr data-filter-item><td>12</td><td>Piplup</td><td>Gen 4</td><td>Groment City</td><td><a href="starters/piplup.html">Open Page</a></td></tr>
+                <tr data-filter-item><td>13</td><td>Oshawott</td><td>Gen 5</td><td>Route 410</td><td><a href="starters/oshawott.html">Open Page</a></td></tr>
+                <tr data-filter-item><td>14</td><td>Tepig</td><td>Gen 5</td><td>Route 408</td><td><a href="starters/tepig.html">Open Page</a></td></tr>
+                <tr data-filter-item><td>15</td><td>Snivy</td><td>Gen 5</td><td>—</td><td><a href="starters/snivy.html">Open Page</a></td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="search-empty" id="pokemon-directory-empty" hidden>No matching starter pages found.</p>
         </section>
       </main>
     </div>
