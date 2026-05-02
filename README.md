@@ -10,3 +10,6 @@ fun project for Pokemon rom hack "Pokemon Light Platinum DS"
 
 <br/>
 <img width="1411" height="845" alt="image" src="https://github.com/user-attachments/assets/0bf2ff8b-5341-4417-bbfd-0ae6b88cc334" />
+
+<br/>
+<img width="1410" height="872" alt="image" src="https://github.com/user-attachments/assets/7191f52a-bb39-4fd6-b583-c117f5d092f5" />
