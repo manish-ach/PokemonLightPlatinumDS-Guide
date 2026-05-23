@@ -97,10 +97,9 @@
 
 .sp-order-banner {
   display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 0.55rem 0.9rem;
-  padding: 0.7rem 1rem;
+  flex-direction: column;
+  gap: 0.55rem;
+  padding: 0.75rem 1rem;
   margin-bottom: 0.9rem;
   border-radius: 16px;
   border: 1px solid rgba(241, 198, 104, 0.45);
@@ -109,6 +108,41 @@
     rgba(241, 198, 104, 0.16),
     rgba(143, 93, 55, 0.08)
   );
+}
+
+.sp-order-banner__row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.55rem 0.9rem;
+}
+
+.sp-order-banner__after {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  padding-top: 0.55rem;
+  border-top: 1px dashed rgba(143, 93, 55, 0.32);
+  color: var(--text);
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+.sp-order-banner__after strong { color: var(--accent); }
+
+.sp-order-banner__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.6rem;
+  height: 1.6rem;
+  border-radius: 999px;
+  background: var(--accent);
+  color: #fff8ec;
+  font-weight: 700;
+  font-size: 0.95rem;
+  flex-shrink: 0;
+  box-shadow: 0 4px 10px rgba(143, 93, 55, 0.32);
 }
 
 .sp-order-banner__label {
