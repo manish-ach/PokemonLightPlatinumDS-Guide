@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sun Palace Gear Puzzle | Pokemon Light Platinum DS</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Manrope:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../assets/styles/main.css" />
+  </head>
+  <body data-page="sun-palace">
+    <div class="page-shell">
+      <aside class="sidebar">
+        <div class="sidebar__inner">
+          <p class="eyebrow">Zhery Region</p>
+          <h1>Pokemon Light Platinum DS</h1>
+          <p class="version">Version 0.2.1</p>
+          <p class="sidebar__intro">
+            Place six gears, pick a target line and the blocked lever, then let
+            the mechanism solve itself.
+          </p>
+          <nav class="sidebar__nav" aria-label="Guide Sections">
+            <a href="../index.html" data-page-link="overview">Overview</a>
+            <a href="../guides/pokemons.html" data-page-link="pokemons">Pokemons</a>
+            <a href="../routes/index.html" data-page-link="routes">Routes</a>
+            <a href="../locations/index.html" data-page-link="locations">Locations</a>
+            <a href="../map/index.html" data-page-link="map">Map</a>
+            <a href="../items/index.html" data-page-link="items">Items</a>
+            <a href="index.html" data-page-link="sun-palace">Sun Palace Gear Puzzle</a>
+            <a href="../others/index.html" data-page-link="others">Others</a>
+          </nav>
+        </div>
+      </aside>
+
+      <main class="content">
+        <section class="panel sun-palace-intro">
+          <p class="eyebrow">Sun Palace Mechanism</p>
+          <h2>Gear Puzzle</h2>
+          <p class="section-copy">
+            Click any intersection on the board to drop a gear, or drag a gear
+            from one intersection to another. Pick the target line you want to
+            align on and which lever the ladder blocks — the secret tunnel
+            keeps line 1 rotate and line 2 outside usable. Press <em>Solve</em>
+            to read the lever sequence that places four gears on the target.
+          </p>
+        </section>
+
+        <section class="panel sp-stage-panel">
+          <div class="sp-config">
+            <div class="sp-config__group">
+              <p class="eyebrow">Target Line</p>
+              <div class="sp-target-picker" data-sp-target-picker role="radiogroup" aria-label="Target line"></div>
+            </div>
+            <div class="sp-config__group">
+              <p class="eyebrow">Blocked Lever</p>
+              <select class="sp-select" data-sp-blocked-select aria-label="Blocked lever"></select>
+              <p class="sp-config__hint" data-sp-blocked-hint></p>
+            </div>
+            <div class="sp-config__group sp-config__group--stat">
+              <p class="eyebrow">Gears Placed</p>
+              <strong class="sp-stat" data-sp-gear-count>0 / 6</strong>
+            </div>
+            <div class="sp-config__group sp-config__group--stat">
+              <p class="eyebrow">Moves</p>
+              <strong class="sp-stat" data-sp-moves>0</strong>
+            </div>
+          </div>
+
+          <div class="sp-status" data-sp-status>Click an intersection to place a gear. You can place up to six.</div>
+
+          <div class="sp-board-wrap">
+            <div class="sp-board" data-sp-board>
+              <svg
+                class="sp-svg"
+                viewBox="-340 -340 680 680"
+                preserveAspectRatio="xMidYMid meet"
+                role="img"
+                aria-label="Sun Palace gear board"
+              >
+                <defs>
+                  <radialGradient id="sp-pillar-grad" cx="50%" cy="40%" r="70%">
+                    <stop offset="0%" stop-color="#5a4836" />
+                    <stop offset="55%" stop-color="#332417" />
+                    <stop offset="100%" stop-color="#1e140c" />
+                  </radialGradient>
+                  <radialGradient id="sp-gear-grad" cx="40%" cy="35%" r="70%">
+                    <stop offset="0%" stop-color="#a9c5e6" />
+                    <stop offset="55%" stop-color="#4878ad" />
+                    <stop offset="100%" stop-color="#2a4c75" />
+                  </radialGradient>
+                </defs>
+
+                <circle r="310" class="sp-floor" />
+                <circle r="290" class="sp-floor-inner" />
+
+                <g class="sp-tunnel" data-sp-tunnel>
+                  <path d="" fill="none" class="sp-tunnel__path" data-sp-tunnel-path />
+                </g>
+
+                <g data-sp-radials></g>
+                <g data-sp-tracks></g>
+
+                <line data-sp-target-line class="sp-target-line" x1="0" y1="0" x2="0" y2="0" />
+
+                <g class="sp-ladder" data-sp-ladder>
+                  <rect x="-18" y="-260" width="36" height="220" class="sp-ladder__body" />
+                  <g class="sp-ladder__rungs" data-sp-rungs></g>
+                  <rect x="-22" y="-44" width="44" height="14" class="sp-ladder__base" />
+                </g>
+
+                <g class="sp-pillar" data-sp-pillar>
+                  <circle r="56" class="sp-pillar__shadow" />
+                  <circle r="50" class="sp-pillar__body" />
+                  <circle r="50" class="sp-pillar__rim" />
+                  <g class="sp-pillar__inner">
+                    <circle r="34" class="sp-pillar__core" />
+                    <g class="sp-pillar__teeth" data-sp-pillar-teeth></g>
+                    <circle r="10" class="sp-pillar__bolt" />
+                  </g>
+                </g>
+
+                <g data-sp-intersections></g>
+                <g data-sp-gears></g>
+                <g data-sp-switches></g>
+
+                <g class="sp-main-switch" data-sp-mainswitch tabindex="0" role="button" aria-label="Main switch">
+                  <circle r="30" class="sp-main-switch__ring" />
+                  <circle r="22" class="sp-main-switch__core" />
+                  <text y="6" text-anchor="middle" class="sp-main-switch__label">MAIN</text>
+                </g>
+              </svg>
+            </div>
+
+            <div class="sp-side">
+              <div class="sp-solver" data-sp-solver>
+                <p class="eyebrow">Lever Sequence</p>
+                <div class="sp-solver__body" data-sp-solver-body>
+                  Place at least four gears and press Solve. The mechanism will
+                  print the levers to press in order.
+                </div>
+                <div class="sp-solver__actions">
+                  <button class="sp-btn sp-btn--primary" type="button" data-sp-solve>Solve</button>
+                  <button class="sp-btn" type="button" data-sp-play disabled>Auto-play</button>
+                  <button class="sp-btn sp-btn--ghost" type="button" data-sp-hint disabled>Next hint</button>
+                </div>
+              </div>
+
+              <div class="sp-legend">
+                <p class="eyebrow">Track Colours</p>
+                <ul>
+                  <li><span class="sp-dot sp-dot--red"></span>Red — rotates clockwise</li>
+                  <li><span class="sp-dot sp-dot--green"></span>Green — rotates anticlockwise</li>
+                </ul>
+              </div>
+
+              <div class="sp-legend sp-legend--tunnel">
+                <p class="eyebrow">Secret Tunnel</p>
+                <p>
+                  Line 1 rotate and Line 2 move-outside are linked underground.
+                  Either one stays usable even if the ladder picks it as the
+                  blocked lever.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="sp-controls">
+            <div class="sp-controls__left">
+              <button class="sp-btn" type="button" data-sp-undo>Undo</button>
+              <button class="sp-btn" type="button" data-sp-clear>Clear Gears</button>
+              <button class="sp-btn sp-btn--ghost" type="button" data-sp-reset>Reset Puzzle</button>
+            </div>
+            <div class="sp-controls__right">
+              <button class="sp-btn sp-btn--primary" type="button" data-sp-mainswitch-btn disabled>
+                Throw Main Switch
+              </button>
+            </div>
+          </div>
+
+          <div class="sp-rules">
+            <details>
+              <summary>How to play</summary>
+              <ol>
+                <li>Click an empty intersection to drop a gear, or click an existing gear to remove it. Drag a gear to slide it to a new intersection.</li>
+                <li>Pick a target line from the pill row and pick which lever the ladder blocks.</li>
+                <li>Press a lever button at the rim or press Solve to let the solver compute the lever order.</li>
+                <li>Rotate moves red-track gears clockwise and green-track gears anticlockwise. Outside / Inside step every gear on that line by one track.</li>
+                <li>The puzzle is solved when the target line holds four gears, one on each track.</li>
+              </ol>
+            </details>
+          </div>
+        </section>
+
+        <section class="panel sp-dev" data-sp-dev hidden>
+          <div class="section-heading">
+            <p class="eyebrow">Developer Panel</p>
+            <h2>Debug</h2>
+            <p class="section-copy">Hidden tools. Toggle with the <code>D</code> key.</p>
+          </div>
+          <div class="sp-dev__grid">
+            <div>
+              <p class="eyebrow">Encoded State</p>
+              <code class="sp-dev__state" data-sp-dev-state>—</code>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <script src="../assets/script.js"></script>
+    <script src="../assets/sun-palace.js"></script>
+  </body>
+</html>
