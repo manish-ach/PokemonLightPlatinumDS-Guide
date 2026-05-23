@@ -2,9 +2,9 @@ Check it at - https://manish-ach.github.io/PokemonLightPlatinumDS-Guide/
 
 mail me if you have collected plenty of data yourself, thats missing
 
-<added sun palace gear solver>
+[[added sun palace gear solver]]
 
-  <img width="1415" height="864" alt="image" src="https://github.com/user-attachments/assets/1d4f5192-93e4-42b8-bd71-7f0ab7c88bc1" />
+<img width="1415" height="864" alt="image" src="https://github.com/user-attachments/assets/1d4f5192-93e4-42b8-bd71-7f0ab7c88bc1" />
 
 
 fun project for Pokemon rom hack "Pokemon Light Platinum DS"
