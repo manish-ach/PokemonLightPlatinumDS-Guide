@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="GS Ball">
+  <defs>
+    <radialGradient id="gs-gold" cx="40%" cy="35%" r="65%">
+      <stop offset="0%" stop-color="#f7da6e" />
+      <stop offset="60%" stop-color="#e3b738" />
+      <stop offset="100%" stop-color="#a78122" />
+    </radialGradient>
+    <radialGradient id="gs-silver" cx="40%" cy="65%" r="65%">
+      <stop offset="0%" stop-color="#fbfbfc" />
+      <stop offset="65%" stop-color="#dadce0" />
+      <stop offset="100%" stop-color="#9ea1a6" />
+    </radialGradient>
+  </defs>
+
+  <!-- gold top half -->
+  <path d="M 32 2 A 30 30 0 0 1 62 32 L 2 32 A 30 30 0 0 1 32 2 Z" fill="url(#gs-gold)" />
+  <!-- silver bottom half -->
+  <path d="M 32 62 A 30 30 0 0 1 2 32 L 62 32 A 30 30 0 0 1 32 62 Z" fill="url(#gs-silver)" />
+
+  <!-- black middle band -->
+  <rect x="0" y="29" width="64" height="6" fill="#1a1a1a" />
+
+  <!-- outer rim -->
+  <circle cx="32" cy="32" r="30" fill="none" stroke="#1a1a1a" stroke-width="2.5" />
+
+  <!-- centre button -->
+  <circle cx="32" cy="32" r="9" fill="#1a1a1a" />
+  <circle cx="32" cy="32" r="6" fill="#f4f4f6" />
+  <circle cx="32" cy="32" r="2" fill="#1a1a1a" />
+</svg>
