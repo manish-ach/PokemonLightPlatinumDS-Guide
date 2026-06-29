@@ -63,597 +63,198 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="../assets/styles/main.css" />
-
-    <!-- Structured data: breadcrumb, HowTo, FAQ -->
-    <script type="application/ld+json">
-      {
-        "@context": "https://schema.org",
-        "@graph": [
-          {
-            "@type": "BreadcrumbList",
-            "itemListElement": [
-              {
-                "@type": "ListItem",
-                "position": 1,
-                "name": "Pokemon Light Platinum DS Guide",
-                "item": "https://manish-ach.github.io/PokemonLightPlatinumDS-Guide/"
-              },
-              {
-                "@type": "ListItem",
-                "position": 2,
-                "name": "Sun Palace Gear Puzzle",
-                "item": "https://manish-ach.github.io/PokemonLightPlatinumDS-Guide/sun-palace/"
-              }
-            ]
-          },
-          {
-            "@type": "HowTo",
-            "name": "How to solve the Sun Palace gear puzzle in Pokemon Light Platinum DS",
-            "description": "Align four gears on the chosen radial line of the central pillar mechanism inside the Sun Palace ruins on Route 412, then throw the main switch to advance the pillar and raise the ladder.",
-            "totalTime": "PT5M",
-            "tool": [
-              { "@type": "HowToTool", "name": "Rotate lever (line 1)" },
-              { "@type": "HowToTool", "name": "Move Outside lever (line 2)" },
-              { "@type": "HowToTool", "name": "Move Inside levers (lines 3 and 4)" },
-              { "@type": "HowToTool", "name": "Move Outside lever (line 5)" }
-            ],
-            "step": [
-              {
-                "@type": "HowToStep",
-                "name": "Place six gears on the board",
-                "text": "Click any intersection of a radial line and a circular track to drop a gear. You can place up to six. Click an existing gear to remove it, or drag it to a new intersection."
-              },
-              {
-                "@type": "HowToStep",
-                "name": "Choose the target line",
-                "text": "Use the target line pills to choose which of the five radial lines must end up holding four aligned gears, one on each track."
-              },
-              {
-                "@type": "HowToStep",
-                "name": "Set the blocked lever",
-                "text": "Pick which lever the ladder blocks. The secret tunnel keeps the line 1 Rotate lever and the line 2 Move Outside lever usable even when blocked."
-              },
-              {
-                "@type": "HowToStep",
-                "name": "Press Solve and follow the sequence",
-                "text": "The solver prints the exact order of levers to press. Press each lever, or use Auto-play to watch the mechanism solve itself."
-              },
-              {
-                "@type": "HowToStep",
-                "name": "Throw the main switch on the gear chamber floor",
-                "text": "Once four gears are aligned on the target line, the main switch in the centre of the pillar becomes active. Press it to lock in the alignment."
-              },
-              {
-                "@type": "HowToStep",
-                "name": "Climb up and press the upper floor switch",
-                "text": "In-game, the floor switch only arms the mechanism. Climb to the floor above the gear chamber and press the second switch up there to actually rotate the central pillar and shift the ladder to its new position. Repeat the process until the ladder settles between lines 5 and 4 and rises to the upper platform exit."
-              }
-            ]
-          },
-          {
-            "@type": "FAQPage",
-            "mainEntity": [
-              {
-                "@type": "Question",
-                "name": "What order do I align the lines in the Sun Palace?",
-                "acceptedAnswer": {
-                  "@type": "Answer",
-                  "text": "The puzzle requires four alignments in a fixed order: line 3 first, then line 2, then line 1, and finally line 5. After the fourth alignment the ladder settles between lines 5 and 4 and rises to the upper platform exit."
-                }
-              },
-              {
-                "@type": "Question",
-                "name": "Where is the Sun Palace in Pokemon Light Platinum DS?",
-                "acceptedAnswer": {
-                  "@type": "Answer",
-                  "text": "The Sun Palace is an ancient ruin on Route 412 — a vast desert gorge hidden by perpetual sandstorms. The ruins surrounding the gorge contain the gear chamber with the central pillar mechanism this solver covers."
-                }
-              },
-              {
-                "@type": "Question",
-                "name": "Why can I still press the line 1 Rotate lever when the ladder blocks it?",
-                "acceptedAnswer": {
-                  "@type": "Answer",
-                  "text": "The line 1 Rotate lever and the line 2 Move Outside lever are linked by a secret tunnel beneath the floor. The ladder cannot block them, so they always stay usable."
-                }
-              },
-              {
-                "@type": "Question",
-                "name": "How many gears do I need on the target line to solve the puzzle?",
-                "acceptedAnswer": {
-                  "@type": "Answer",
-                  "text": "Exactly four gears, one on each of the four circular tracks. The remaining gears can sit anywhere else on the board."
-                }
-              },
-              {
-                "@type": "Question",
-                "name": "Why do gears on different tracks rotate in opposite directions?",
-                "acceptedAnswer": {
-                  "@type": "Answer",
-                  "text": "Track colour controls rotation. Red tracks rotate clockwise when the Rotate lever is pressed; green tracks rotate anticlockwise. A single Rotate press moves every gear on the board by one radial position in the direction set by its track colour."
-                }
-              },
-              {
-                "@type": "Question",
-                "name": "The main switch will not press — what is wrong?",
-                "acceptedAnswer": {
-                  "@type": "Answer",
-                  "text": "The main switch only activates after four gears are aligned on the highlighted target line, with one gear on each track. Until then the switch is dimmed and the pillar will not advance."
-                }
-              },
-              {
-                "@type": "Question",
-                "name": "I pressed the main switch but the pillar did not rotate. What now?",
-                "acceptedAnswer": {
-                  "@type": "Answer",
-                  "text": "The floor switch only arms the mechanism. To actually rotate the central pillar in the Sun Palace, climb the stairs to the floor above the gear chamber and press the second switch up there. That switch rotates the pillar and shifts the ladder. You will repeat this — align the gears, throw the floor switch, climb up and press the upper switch — for each of the four alignments needed to reach the upper platform. The required order is line 3, then line 2, then line 1, and finally line 5."
-                }
-              },
-              {
-                "@type": "Question",
-                "name": "What does the Move Outside lever do?",
-                "acceptedAnswer": {
-                  "@type": "Answer",
-                  "text": "Move Outside steps every gear on that radial line outward by one track. A gear already on the outermost track stays put, and a gear cannot move into an intersection that is already occupied."
-                }
-              }
-            ]
-          }
-        ]
-      }
-    </script>
   </head>
-  <body data-page="sun-palace">
-    <div class="page-shell">
-      <aside class="sidebar">
-        <div class="sidebar__inner">
-          <p class="eyebrow">Zhery Region</p>
-          <h1>Pokemon Light Platinum DS</h1>
-          <p class="version">Version 0.2.1</p>
-          <p class="sidebar__intro">
-            Place six gears, pick a target line and the blocked lever, then let
-            the mechanism solve itself.
-          </p>
-          <nav class="sidebar__nav" aria-label="Guide Sections">
-            <a href="../index.html" data-page-link="overview">Overview</a>
-            <a href="../guides/pokemons.html" data-page-link="pokemons">Pokemons</a>
-            <a href="../routes/index.html" data-page-link="routes">Routes</a>
-            <a href="../locations/index.html" data-page-link="locations">Locations</a>
-            <a href="../map/index.html" data-page-link="map">Map</a>
-            <a href="../items/index.html" data-page-link="items">Items</a>
-            <a href="index.html" data-page-link="sun-palace">Sun Palace Gear Puzzle</a>
-            <a href="../others/index.html" data-page-link="others">Others</a>
-          </nav>
-        </div>
-      </aside>
+  <body data-page="sun-palace" class="sp-page">
+    <header class="sp-topbar">
+      <a class="sp-topbar__back" href="../index.html">
+        <span aria-hidden="true">←</span>
+        <span>Guide</span>
+      </a>
+      <div class="sp-topbar__heading">
+        <p class="sp-topbar__kicker">Pokemon Light Platinum DS · Route 412</p>
+        <h1>Sun Palace Gear Puzzle</h1>
+      </div>
+      <nav class="sp-topbar__links" aria-label="Guide sections">
+        <a href="../routes/index.html">Routes</a>
+        <a href="../locations/index.html">Locations</a>
+        <a href="../map/index.html">Map</a>
+      </nav>
+    </header>
 
-      <main class="content">
-        <section class="panel sun-palace-intro">
-          <p class="eyebrow">Sun Palace Mechanism</p>
-          <h2>Sun Palace Gear Puzzle Solver &amp; Walkthrough</h2>
-          <p class="section-copy">
-            Interactive solver for the Sun Palace gear puzzle in
-            <strong>Pokemon Light Platinum DS</strong>. Click any intersection
-            of a radial line and a circular track to drop a gear, or drag a
-            gear from one intersection to another. Pick the target line you
-            want to align on, choose which lever the ladder blocks — the
-            secret tunnel keeps line 1 Rotate and line 2 Move Outside usable —
-            and press <em>Solve</em> to read the exact lever sequence that
-            places four gears on the target line and advances the central
-            pillar.
-          </p>
-        </section>
+    <main class="sp-app">
+      <div class="sp-order-banner" role="note" aria-label="Required alignment order">
+        <span class="sp-order-banner__label">Solve order</span>
+        <span class="sp-order-banner__chain">
+          <span class="sp-order-banner__step">L3</span>
+          <span class="sp-order-banner__arrow" aria-hidden="true">→</span>
+          <span class="sp-order-banner__step">L2</span>
+          <span class="sp-order-banner__arrow" aria-hidden="true">→</span>
+          <span class="sp-order-banner__step">L1</span>
+          <span class="sp-order-banner__arrow" aria-hidden="true">→</span>
+          <span class="sp-order-banner__step sp-order-banner__step--final">L5</span>
+        </span>
+        <span class="sp-order-banner__note">
+          Align the lines in this order. After each one, climb to the floor
+          above and throw the wall switch to turn the pillar.
+        </span>
+      </div>
 
-        <section class="panel sp-stage-panel">
-          <div class="sp-order-banner" role="note" aria-label="Required alignment order">
-            <div class="sp-order-banner__row">
-              <span class="sp-order-banner__label">Required Order</span>
-              <span class="sp-order-banner__chain">
-                <span class="sp-order-banner__step">L3</span>
-                <span class="sp-order-banner__arrow" aria-hidden="true">→</span>
-                <span class="sp-order-banner__step">L2</span>
-                <span class="sp-order-banner__arrow" aria-hidden="true">→</span>
-                <span class="sp-order-banner__step">L1</span>
-                <span class="sp-order-banner__arrow" aria-hidden="true">→</span>
-                <span class="sp-order-banner__step sp-order-banner__step--final">L5</span>
-              </span>
-              <span class="sp-order-banner__note">Align lines in this order to complete the Sun Palace.</span>
-            </div>
-            <div class="sp-order-banner__after">
-              <span class="sp-order-banner__icon" aria-hidden="true">↑</span>
-              <span>
-                <strong>After each alignment</strong> — climb up to the floor
-                above the gear chamber and press the switch on the back wall.
-                That switch is what rotates the central pillar and shifts the
-                ladder. Repeat for every line in the order above.
-              </span>
-            </div>
+      <div class="sp-layout">
+        <section class="sp-stage" aria-label="Gear board">
+          <p class="sp-status" data-sp-status>Click a slot to drop a gear. You can place up to six.</p>
+
+          <div class="sp-toolbar">
+            <button class="sp-btn" type="button" data-sp-undo>Undo</button>
+            <button class="sp-btn" type="button" data-sp-clear>Clear</button>
+            <button class="sp-btn sp-btn--ghost" type="button" data-sp-reset>Reset</button>
           </div>
 
-          <div class="sp-config">
-            <div class="sp-config__group">
+          <div class="sp-board" data-sp-board>
+            <svg
+              class="sp-svg"
+              viewBox="-340 -340 680 680"
+              preserveAspectRatio="xMidYMid meet"
+              role="img"
+              aria-label="Sun Palace gear board"
+            >
+              <defs>
+                <radialGradient id="sp-floor-grad" cx="50%" cy="42%" r="68%">
+                  <stop offset="0%" stop-color="#3c2c1d" />
+                  <stop offset="62%" stop-color="#2a1d12" />
+                  <stop offset="100%" stop-color="#160e08" />
+                </radialGradient>
+                <radialGradient id="sp-pillar-grad" cx="50%" cy="38%" r="72%">
+                  <stop offset="0%" stop-color="#6a563f" />
+                  <stop offset="55%" stop-color="#3a2a1c" />
+                  <stop offset="100%" stop-color="#1e140c" />
+                </radialGradient>
+                <radialGradient id="sp-gear-grad" cx="38%" cy="32%" r="72%">
+                  <stop offset="0%" stop-color="#bcd6f2" />
+                  <stop offset="52%" stop-color="#5285bd" />
+                  <stop offset="100%" stop-color="#27466e" />
+                </radialGradient>
+              </defs>
+
+              <!-- chamber floor -->
+              <circle r="318" class="sp-floor" />
+              <circle r="284" class="sp-floor-inner" />
+
+              <!-- structural layers (built by script) -->
+              <g data-sp-tracks></g>
+              <g data-sp-track-labels></g>
+              <g data-sp-radials></g>
+
+              <!-- highlighted target spoke -->
+              <line data-sp-target-line class="sp-target-line" x1="0" y1="0" x2="0" y2="0" />
+
+              <!-- gear placement slots -->
+              <g data-sp-intersections></g>
+
+              <!-- secret underground link between the L1 / L2 levers -->
+              <g class="sp-tunnel" data-sp-tunnel>
+                <path d="" fill="none" class="sp-tunnel__path" data-sp-tunnel-path />
+              </g>
+
+              <!-- central pillar mechanism -->
+              <g class="sp-pillar" data-sp-pillar>
+                <circle r="58" class="sp-pillar__shadow" />
+                <circle r="52" class="sp-pillar__body" />
+                <circle r="52" class="sp-pillar__rim" />
+                <g class="sp-pillar__inner">
+                  <circle r="36" class="sp-pillar__core" />
+                  <g class="sp-pillar__teeth" data-sp-pillar-teeth></g>
+                  <circle r="11" class="sp-pillar__bolt" />
+                </g>
+              </g>
+
+              <!-- gears + rim levers -->
+              <g data-sp-gears></g>
+              <g data-sp-switches></g>
+
+              <!-- ladder leaning against the blocked lever -->
+              <g class="sp-ladder" data-sp-ladder aria-hidden="true">
+                <rect class="sp-ladder__rail" x="-16" y="-276" width="6" height="70" rx="3" />
+                <rect class="sp-ladder__rail" x="10" y="-276" width="6" height="70" rx="3" />
+                <g class="sp-ladder__rungs" data-sp-rungs></g>
+              </g>
+
+              <!-- central main switch -->
+              <g class="sp-main-switch" data-sp-mainswitch tabindex="0" role="button" aria-label="Main switch">
+                <circle r="30" class="sp-main-switch__ring" />
+                <circle r="22" class="sp-main-switch__core" />
+                <text y="6" text-anchor="middle" class="sp-main-switch__label">MAIN</text>
+              </g>
+            </svg>
+          </div>
+
+          <div class="sp-controls">
+            <button class="sp-btn sp-btn--primary" type="button" data-sp-mainswitch-btn disabled>
+              Throw Main Switch
+            </button>
+          </div>
+        </section>
+
+        <aside class="sp-panel">
+          <div class="sp-panel-card sp-config">
+            <div class="sp-field">
               <p class="eyebrow">Target Line</p>
               <div class="sp-target-picker" data-sp-target-picker role="radiogroup" aria-label="Target line"></div>
             </div>
-            <div class="sp-config__group">
+            <div class="sp-field">
               <p class="eyebrow">Blocked Lever</p>
               <select class="sp-select" data-sp-blocked-select aria-label="Blocked lever"></select>
               <p class="sp-config__hint" data-sp-blocked-hint></p>
             </div>
-            <div class="sp-config__group sp-config__group--stat">
-              <p class="eyebrow">Gears Placed</p>
-              <strong class="sp-stat" data-sp-gear-count>0 / 6</strong>
-            </div>
-            <div class="sp-config__group sp-config__group--stat">
-              <p class="eyebrow">Moves</p>
-              <strong class="sp-stat" data-sp-moves>0</strong>
-            </div>
-          </div>
-
-          <div class="sp-status" data-sp-status>Click an intersection to place a gear. You can place up to six.</div>
-
-          <div class="sp-board-wrap">
-            <div class="sp-board" data-sp-board>
-              <svg
-                class="sp-svg"
-                viewBox="-340 -340 680 680"
-                preserveAspectRatio="xMidYMid meet"
-                role="img"
-                aria-label="Sun Palace gear board"
-              >
-                <defs>
-                  <radialGradient id="sp-pillar-grad" cx="50%" cy="40%" r="70%">
-                    <stop offset="0%" stop-color="#5a4836" />
-                    <stop offset="55%" stop-color="#332417" />
-                    <stop offset="100%" stop-color="#1e140c" />
-                  </radialGradient>
-                  <radialGradient id="sp-gear-grad" cx="40%" cy="35%" r="70%">
-                    <stop offset="0%" stop-color="#a9c5e6" />
-                    <stop offset="55%" stop-color="#4878ad" />
-                    <stop offset="100%" stop-color="#2a4c75" />
-                  </radialGradient>
-                </defs>
-
-                <circle r="310" class="sp-floor" />
-                <circle r="290" class="sp-floor-inner" />
-
-                <g class="sp-tunnel" data-sp-tunnel>
-                  <path d="" fill="none" class="sp-tunnel__path" data-sp-tunnel-path />
-                </g>
-
-                <g data-sp-radials></g>
-                <g data-sp-tracks></g>
-
-                <line data-sp-target-line class="sp-target-line" x1="0" y1="0" x2="0" y2="0" />
-
-                <g class="sp-ladder" data-sp-ladder>
-                  <rect x="-18" y="-260" width="36" height="220" class="sp-ladder__body" />
-                  <g class="sp-ladder__rungs" data-sp-rungs></g>
-                  <rect x="-22" y="-44" width="44" height="14" class="sp-ladder__base" />
-                </g>
-
-                <g class="sp-pillar" data-sp-pillar>
-                  <circle r="56" class="sp-pillar__shadow" />
-                  <circle r="50" class="sp-pillar__body" />
-                  <circle r="50" class="sp-pillar__rim" />
-                  <g class="sp-pillar__inner">
-                    <circle r="34" class="sp-pillar__core" />
-                    <g class="sp-pillar__teeth" data-sp-pillar-teeth></g>
-                    <circle r="10" class="sp-pillar__bolt" />
-                  </g>
-                </g>
-
-                <g data-sp-intersections></g>
-                <g data-sp-gears></g>
-                <g data-sp-switches></g>
-
-                <g class="sp-main-switch" data-sp-mainswitch tabindex="0" role="button" aria-label="Main switch">
-                  <circle r="30" class="sp-main-switch__ring" />
-                  <circle r="22" class="sp-main-switch__core" />
-                  <text y="6" text-anchor="middle" class="sp-main-switch__label">MAIN</text>
-                </g>
-              </svg>
-            </div>
-
-            <div class="sp-side">
-              <div class="sp-solver" data-sp-solver>
-                <p class="eyebrow">Lever Sequence</p>
-                <div class="sp-solver__body" data-sp-solver-body>
-                  Place at least four gears and press Solve. The mechanism will
-                  print the levers to press in order.
-                </div>
-                <div class="sp-solver__actions">
-                  <button class="sp-btn sp-btn--primary" type="button" data-sp-solve>Solve</button>
-                  <button class="sp-btn" type="button" data-sp-play disabled>Auto-play</button>
-                  <button class="sp-btn sp-btn--ghost" type="button" data-sp-hint disabled>Next hint</button>
-                </div>
+            <div class="sp-config__stats">
+              <div class="sp-stat-chip">
+                <span class="sp-stat-chip__key">Gears</span>
+                <strong class="sp-stat-chip__val" data-sp-gear-count>0 / 6</strong>
               </div>
-
-              <div class="sp-legend">
-                <p class="eyebrow">Track Colours</p>
-                <ul>
-                  <li><span class="sp-dot sp-dot--red"></span>Red — rotates clockwise</li>
-                  <li><span class="sp-dot sp-dot--green"></span>Green — rotates anticlockwise</li>
-                </ul>
-              </div>
-
-              <div class="sp-legend sp-legend--tunnel">
-                <p class="eyebrow">Secret Tunnel</p>
-                <p>
-                  Line 1 rotate and Line 2 move-outside are linked underground.
-                  Either one stays usable even if the ladder picks it as the
-                  blocked lever.
-                </p>
+              <div class="sp-stat-chip">
+                <span class="sp-stat-chip__key">Moves</span>
+                <strong class="sp-stat-chip__val" data-sp-moves>0</strong>
               </div>
             </div>
           </div>
 
-          <div class="sp-controls">
-            <div class="sp-controls__left">
-              <button class="sp-btn" type="button" data-sp-undo>Undo</button>
-              <button class="sp-btn" type="button" data-sp-clear>Clear Gears</button>
-              <button class="sp-btn sp-btn--ghost" type="button" data-sp-reset>Reset Puzzle</button>
+          <div class="sp-panel-card sp-solver" data-sp-solver>
+            <div class="sp-solver__head">
+              <p class="eyebrow">Lever Sequence</p>
             </div>
-            <div class="sp-controls__right">
-              <button class="sp-btn sp-btn--primary" type="button" data-sp-mainswitch-btn disabled>
-                Throw Main Switch
-              </button>
+            <div class="sp-solver__actions">
+              <button class="sp-btn sp-btn--primary" type="button" data-sp-solve>Solve</button>
+              <button class="sp-btn" type="button" data-sp-play disabled>Auto-play</button>
+              <button class="sp-btn sp-btn--ghost" type="button" data-sp-hint disabled>Hint</button>
             </div>
-          </div>
-
-          <div class="sp-rules">
-            <details>
-              <summary>How to play</summary>
-              <ol>
-                <li>Click an empty intersection to drop a gear, or click an existing gear to remove it. Drag a gear to slide it to a new intersection.</li>
-                <li>Pick a target line from the pill row and pick which lever the ladder blocks.</li>
-                <li>Press a lever button at the rim or press Solve to let the solver compute the lever order.</li>
-                <li>Rotate moves red-track gears clockwise and green-track gears anticlockwise. Outside / Inside step every gear on that line by one track.</li>
-                <li>The puzzle is solved when the target line holds four gears, one on each track.</li>
-              </ol>
-            </details>
-          </div>
-        </section>
-
-        <section class="panel sp-guide" aria-labelledby="sp-about-heading">
-          <div class="section-heading">
-            <p class="eyebrow">About the puzzle</p>
-            <h2 id="sp-about-heading">What is the Sun Palace gear puzzle?</h2>
-            <p class="section-copy">
-              The Sun Palace is an ancient ruin on <strong>Route 412</strong>,
-              a vast desert gorge in Pokemon Light Platinum DS hidden by
-              perpetual sandstorms. The ruins surrounding the gorge are said
-              to hide a thousand-year secret, and the gear chamber inside the
-              palace is the lock on the way upward.
-            </p>
-            <p class="section-copy">
-              The chamber holds a pillar-and-gear mechanism: a central stone
-              pillar surrounded by four concentric tracks and five radial
-              lines. Small blue gears sit at the intersections of those
-              lines and tracks, and a wooden ladder leans against one of the
-              radial lines, blocking the lever beside it.
-            </p>
-            <p class="section-copy">
-              Your goal is to manoeuvre four gears onto a single highlighted
-              target line — one gear on each of the four tracks — then throw
-              the main switch on the pillar. Doing so rotates the pillar and
-              shifts the ladder. After four such alignments the ladder
-              settles between lines 5 and 4 and rises to the upper platform
-              exit.
-            </p>
-            <p class="section-copy sp-order">
-              <strong>Order matters.</strong> The Sun Palace requires the
-              alignments in a fixed sequence:
-              <span class="sp-order__chain">L3 → L2 → L1 → L5</span>. Solve
-              line 3 first, then line 2, then line 1, and finish on line 5 —
-              the ladder settles between lines 5 and 4 and the route upward
-              opens.
-            </p>
-          </div>
-        </section>
-
-        <section class="panel sp-guide" aria-labelledby="sp-rules-heading">
-          <div class="section-heading">
-            <p class="eyebrow">Mechanics</p>
-            <h2 id="sp-rules-heading">How the levers move the gears</h2>
-          </div>
-          <ul class="sp-guide__list">
-            <li>
-              <strong>Rotate (line 1).</strong> Pressing the Rotate lever steps
-              every gear on the board by one radial position. Gears on the two
-              red tracks move clockwise around the pillar; gears on the two
-              green tracks move anticlockwise.
-            </li>
-            <li>
-              <strong>Move Outside (lines 2 and 5).</strong> Every gear on the
-              selected radial line moves outward by one track. A gear already
-              on the outermost track stays where it is, and no two gears can
-              occupy the same intersection.
-            </li>
-            <li>
-              <strong>Move Inside (lines 3 and 4).</strong> Every gear on the
-              selected radial line moves inward by one track. A gear already on
-              the innermost track stays where it is.
-            </li>
-            <li>
-              <strong>Secret tunnel.</strong> The line 1 Rotate lever and the
-              line 2 Move Outside lever are linked under the floor. Even when
-              the ladder is set to block one of them, both remain usable.
-            </li>
-            <li>
-              <strong>Main switch (two-stage).</strong> The floor switch in
-              the centre of the pillar becomes active only when the chosen
-              target line holds four gears — one on each track. Pressing it
-              <em>arms</em> the mechanism. To actually rotate the pillar and
-              shift the ladder, the player must climb to the floor above and
-              press a second switch up there.
-            </li>
-          </ul>
-        </section>
-
-        <section class="panel sp-guide" aria-labelledby="sp-walkthrough-heading">
-          <div class="section-heading">
-            <p class="eyebrow">Walkthrough</p>
-            <h2 id="sp-walkthrough-heading">Step-by-step: using the solver</h2>
-          </div>
-          <ol class="sp-guide__steps">
-            <li>
-              <strong>Place six gears.</strong> Click an empty intersection on
-              the board above to drop a gear. Click an existing gear to remove
-              it, or drag a gear to slide it to a different intersection. You
-              can place up to six gears.
-            </li>
-            <li>
-              <strong>Pick the target line.</strong> Tap one of the L1–L5
-              pills. The highlighted radial line is the one that must hold
-              four aligned gears at the end.
-            </li>
-            <li>
-              <strong>Set the blocked lever.</strong> Use the “Blocked Lever”
-              dropdown to choose which lever the ladder is leaning against.
-              The line 1 Rotate and line 2 Move Outside levers stay usable
-              thanks to the secret tunnel.
-            </li>
-            <li>
-              <strong>Press Solve.</strong> The mechanism searches every legal
-              lever sequence using breadth-first search and prints the
-              shortest order of presses that gets four gears onto the target
-              line.
-            </li>
-            <li>
-              <strong>Auto-play or press each lever.</strong> Use the
-              Auto-play button to watch the solution animate, or press the
-              levers manually one at a time. The current step highlights as
-              you go.
-            </li>
-            <li>
-              <strong>Throw the main switch on the gear chamber floor.</strong>
-              Once four gears are aligned the central main switch lights up.
-              Press it to lock in the alignment.
-            </li>
-            <li>
-              <strong>Climb to the upper floor and press the pillar switch.</strong>
-              In-game, the floor switch only arms the mechanism — it does not
-              rotate the pillar by itself. Head up to the floor above the
-              gear chamber and press the second switch up there. That one
-              actually rotates the central pillar and shifts the ladder to
-              its new position. Repeat until the ladder settles between
-              lines 5 and 4 and rises to the upper platform exit.
-            </li>
-          </ol>
-        </section>
-
-        <section class="panel sp-guide" aria-labelledby="sp-faq-heading">
-          <div class="section-heading">
-            <p class="eyebrow">FAQ</p>
-            <h2 id="sp-faq-heading">Common questions</h2>
-          </div>
-          <div class="sp-faq">
-            <details open>
-              <summary>What order do I align the lines in the Sun Palace?</summary>
-              <p>
-                The puzzle requires four alignments in a fixed order:
-                <strong>line 3 → line 2 → line 1 → line 5</strong>. Solve
-                line 3 first, then line 2, then line 1, and finish on line 5.
-                After the fourth alignment the ladder settles between lines
-                5 and 4 and rises to the upper platform exit.
-              </p>
-            </details>
-            <details>
-              <summary>Where is the Sun Palace in Pokemon Light Platinum DS?</summary>
-              <p>
-                It is an ancient ruin on <strong>Route 412</strong>, a vast
-                desert gorge hidden by perpetual sandstorms. The gear chamber
-                with the central pillar mechanism sits inside the ruins
-                surrounding the gorge.
-              </p>
-            </details>
-            <details>
-              <summary>Why can I still press the line 1 Rotate lever when the ladder blocks it?</summary>
-              <p>
-                The line 1 Rotate lever and the line 2 Move Outside lever are
-                connected by a secret tunnel beneath the floor. The ladder can
-                never block them — that is by design, otherwise some
-                configurations would be unsolvable.
-              </p>
-            </details>
-            <details>
-              <summary>How many gears do I need on the target line?</summary>
-              <p>
-                Exactly four — one on each of the four tracks of the target
-                line. With six gears total, the remaining two sit elsewhere on
-                the board.
-              </p>
-            </details>
-            <details>
-              <summary>Why do gears on different tracks rotate in opposite directions?</summary>
-              <p>
-                Track colour controls rotation. Red tracks (tracks 1 and 3)
-                rotate clockwise when the Rotate lever is pressed. Green
-                tracks (tracks 2 and 4) rotate anticlockwise. A single Rotate
-                press moves every gear by one radial position in the direction
-                set by its track.
-              </p>
-            </details>
-            <details>
-              <summary>The main switch will not press — what is wrong?</summary>
-              <p>
-                The main switch only activates when the highlighted target
-                line holds four gears, one on each track. Until then it stays
-                dimmed and the pillar will not advance. Check the gear count
-                on the target line first.
-              </p>
-            </details>
-            <details>
-              <summary>I pressed the main switch but the pillar did not rotate. What now?</summary>
-              <p>
-                The floor switch only <em>arms</em> the mechanism — it does
-                not rotate the pillar by itself. Climb the stairs to the
-                floor above the gear chamber and press the second switch up
-                there. That upper switch actually rotates the central pillar
-                and shifts the ladder to its new position. You will repeat
-                this loop — align gears, throw the floor switch, climb up
-                and press the upper switch — for each of the four
-                alignments needed to reach the upper platform exit. The
-                required order is L3 → L2 → L1 → L5.
-              </p>
-            </details>
-            <details>
-              <summary>What does the orange arc on the floor in the puzzle reference image mean?</summary>
-              <p>
-                It indicates the direction of the rotational arrows on the
-                inner red track in the original puzzle artwork. In the solver
-                above, rotation direction is reflected by the brief spin
-                animation on each gear when the Rotate lever fires.
-              </p>
-            </details>
-            <details>
-              <summary>Can two gears sit on the same intersection?</summary>
-              <p>
-                No. Every move that would place two gears on the same
-                intersection is rejected automatically. When the levers cannot
-                move a gear (edge of the board, or another gear in the way)
-                that gear stays where it is.
-              </p>
-            </details>
-          </div>
-        </section>
-
-        <section class="panel sp-dev" data-sp-dev hidden>
-          <div class="section-heading">
-            <p class="eyebrow">Developer Panel</p>
-            <h2>Debug</h2>
-            <p class="section-copy">Hidden tools. Toggle with the <code>D</code> key.</p>
-          </div>
-          <div class="sp-dev__grid">
-            <div>
-              <p class="eyebrow">Encoded State</p>
-              <code class="sp-dev__state" data-sp-dev-state>—</code>
+            <div class="sp-solver__body" data-sp-solver-body>
+              Place at least four gears and press <strong>Solve</strong> to get
+              the exact lever order.
             </div>
           </div>
-        </section>
-      </main>
-    </div>
+
+          <div class="sp-panel-card sp-legend sp-legend--key">
+            <p class="eyebrow">Reading the board</p>
+            <ul>
+              <li><span class="sp-key sp-key--red"></span>Red track: gears step clockwise</li>
+              <li><span class="sp-key sp-key--green"></span>Green track: gears step anticlockwise</li>
+              <li><span class="sp-key sp-key--target"></span>Gold line: your target (needs 4 gears)</li>
+              <li><span class="sp-key sp-key--ladder"></span>Ladder: leans on the blocked lever</li>
+              <li><span class="sp-key sp-key--link">⚯</span>Linked levers stay usable via the tunnel</li>
+            </ul>
+          </div>
+
+          <details class="sp-help">
+            <summary>How to play</summary>
+            <ol>
+              <li>Click a slot to drop a gear (up to six). Click it again to remove, or drag it to move.</li>
+              <li>Pick your <strong>target line</strong> and which lever the <strong>ladder blocks</strong>.</li>
+              <li>Press <strong>Solve</strong>, then Auto-play or press the levers in the listed order.</li>
+              <li>With four gears on the target line, <strong>Throw the Main Switch</strong>.</li>
+            </ol>
+          </details>
+        </aside>
+      </div>
+    </main>
 
     <script src="../assets/script.js"></script>
     <script src="../assets/sun-palace.js"></script>

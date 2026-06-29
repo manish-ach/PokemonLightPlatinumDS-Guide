@@ -199,6 +199,7 @@
   const layers = {
     radials: svgEl.querySelector('[data-sp-radials]'),
     tracks: svgEl.querySelector('[data-sp-tracks]'),
+    trackLabels: svgEl.querySelector('[data-sp-track-labels]'),
     intersections: svgEl.querySelector('[data-sp-intersections]'),
     gears: svgEl.querySelector('[data-sp-gears]'),
     switches: svgEl.querySelector('[data-sp-switches]'),
@@ -271,22 +272,27 @@
   // Static decor (radials, tracks, pillar teeth, ladder rungs, tunnel path)
   // ---------------------------------------------------------------------------
   function drawStaticDecor() {
+    // Radial spokes: drawn from just outside the pillar to the track rim so
+    // they read as guide rails rather than lines crossing the centre.
     clearChildren(layers.radials);
+    const radialStart = 62;
     for (const line of LINES) {
       const a = angleRad(line);
+      const start = { x: radialStart * Math.sin(a), y: -radialStart * Math.cos(a) };
       const end = { x: RADIAL_END * Math.sin(a), y: -RADIAL_END * Math.cos(a) };
       layers.radials.appendChild(
         svg('line', {
           class: 'sp-radial',
           'data-line': line,
-          x1: 0,
-          y1: 0,
+          x1: start.x.toFixed(2),
+          y1: start.y.toFixed(2),
           x2: end.x.toFixed(2),
           y2: end.y.toFixed(2),
         }),
       );
     }
 
+    // Concentric tracks, coloured by rotation direction.
     clearChildren(layers.tracks);
     for (let t = 1; t <= 4; t++) {
       layers.tracks.appendChild(
@@ -300,15 +306,33 @@
       );
     }
 
+    // Track numbers, tucked into the empty wedge at the top of the disc so they
+    // never collide with a spoke. Teaches "one gear on each of the four tracks".
+    if (layers.trackLabels) {
+      clearChildren(layers.trackLabels);
+      for (let t = 1; t <= 4; t++) {
+        const r = TRACK_RADII[t - 1];
+        const badge = svg('g', {
+          class: `sp-track-label sp-track-label--${TRACK_COLOR[t]}`,
+          transform: `translate(0 ${(-r).toFixed(2)})`,
+        });
+        badge.appendChild(svg('circle', { class: 'sp-track-label__dot', r: 11 }));
+        const txt = svg('text', { class: 'sp-track-label__num', y: 0.5 });
+        txt.textContent = String(t);
+        badge.appendChild(txt);
+        layers.trackLabels.appendChild(badge);
+      }
+    }
+
     clearChildren(layers.pillarTeeth);
     for (let i = 0; i < 12; i++) {
       const a = (i / 12) * Math.PI * 2;
-      const x1 = 40 * Math.cos(a);
-      const y1 = 40 * Math.sin(a);
-      const x2 = 46 * Math.cos(a + 0.08);
-      const y2 = 46 * Math.sin(a + 0.08);
-      const x3 = 46 * Math.cos(a - 0.08);
-      const y3 = 46 * Math.sin(a - 0.08);
+      const x1 = 42 * Math.cos(a);
+      const y1 = 42 * Math.sin(a);
+      const x2 = 49 * Math.cos(a + 0.08);
+      const y2 = 49 * Math.sin(a + 0.08);
+      const x3 = 49 * Math.cos(a - 0.08);
+      const y3 = 49 * Math.sin(a - 0.08);
       layers.pillarTeeth.appendChild(
         svg('path', {
           d: `M ${x1.toFixed(2)} ${y1.toFixed(2)} L ${x2.toFixed(2)} ${y2.toFixed(2)} L ${x3.toFixed(2)} ${y3.toFixed(2)} Z`,
@@ -316,11 +340,12 @@
       );
     }
 
+    // Ladder rungs (the rig sits near the rim, pointing up before rotation).
     clearChildren(layers.rungs);
-    for (let i = 0; i < 7; i++) {
-      const y = -250 + i * 30;
+    for (let i = 0; i < 4; i++) {
+      const y = -268 + i * 19;
       layers.rungs.appendChild(
-        svg('rect', { x: -18, y, width: 36, height: 6 }),
+        svg('rect', { class: 'sp-ladder__rung', x: -14, y, width: 28, height: 5, rx: 2 }),
       );
     }
 
@@ -328,14 +353,18 @@
   }
 
   function updateTunnelPath() {
-    // Draw an arc that hugs the pillar from line 1's switch toward line 2's
-    // switch, so the visual implies a buried connection between them.
-    const r = SWITCH_RADIUS - 30;
-    const p1 = pointAt(1, null, r);
-    const p2 = pointAt(2, null, r);
+    // A short channel hugging the rim that links only the L1 and L2 levers,
+    // implying the buried passage between them. It bows gently outward so it
+    // never crosses the gear field.
+    const p1 = pointAt(1, null, SWITCH_RADIUS);
+    const p2 = pointAt(2, null, SWITCH_RADIUS);
+    const mx = (p1.x + p2.x) / 2;
+    const my = (p1.y + p2.y) / 2;
+    const mr = Math.hypot(mx, my) || 1;
+    const bow = (SWITCH_RADIUS + 34) / mr; // push control point outward
     layers.tunnelPath.setAttribute(
       'd',
-      `M ${p1.x.toFixed(2)} ${p1.y.toFixed(2)} Q 0 ${(p1.y + p2.y) / 2 + 80} ${p2.x.toFixed(2)} ${p2.y.toFixed(2)}`,
+      `M ${p1.x.toFixed(2)} ${p1.y.toFixed(2)} Q ${(mx * bow).toFixed(2)} ${(my * bow).toFixed(2)} ${p2.x.toFixed(2)} ${p2.y.toFixed(2)}`,
     );
   }
 
@@ -403,34 +432,51 @@
           isProtected(line, type);
         const stateAttr = isBlocked ? 'blocked' : isProt ? 'protected' : 'normal';
 
+        const protectedLever = isProtected(line, type);
         const g = svg('g', {
           class: 'sp-switch',
           'data-line': line,
           'data-type': type,
           'data-state': stateAttr,
+          'data-linked': protectedLever ? 'true' : 'false',
+          'data-target': line === state.targetLine ? 'true' : 'false',
           transform: `translate(${cx.toFixed(2)} ${cy.toFixed(2)})`,
         });
         g.appendChild(
           svg('rect', {
             class: 'sp-switch__plate',
-            x: -28,
-            y: -22,
-            width: 56,
-            height: 44,
-            rx: 10,
-            ry: 10,
+            x: -30,
+            y: -23,
+            width: 60,
+            height: 46,
+            rx: 11,
+            ry: 11,
           }),
         );
-        const glyph = svg('text', { class: 'sp-switch__glyph', y: -2 });
+        const glyph = svg('text', { class: 'sp-switch__glyph', y: -3 });
         glyph.textContent = SWITCH_GLYPH[type];
         g.appendChild(glyph);
         const label = svg('text', { class: 'sp-switch__label', y: 14 });
         label.textContent = `L${line} ${SWITCH_LABEL[type]}`;
         g.appendChild(label);
 
-        if (!isBlocked) {
-          g.addEventListener('click', () => handleSwitchClick(line, type));
+        // Corner badge: a lock when the ladder blocks this lever, a link when
+        // the secret tunnel keeps it usable.
+        if (isBlocked || protectedLever) {
+          const badge = svg('g', {
+            class: 'sp-switch__badge',
+            transform: 'translate(22 -22)',
+          });
+          badge.appendChild(svg('circle', { class: 'sp-switch__badge-dot', r: 9 }));
+          const bg = svg('text', { class: 'sp-switch__badge-glyph', y: 0.5 });
+          bg.textContent = isBlocked ? '✖' : '⚯';
+          badge.appendChild(bg);
+          g.appendChild(badge);
         }
+
+        // Clicking a lever selects its line as the target (the blocked-lever
+        // dropdown still controls which lever the ladder blocks).
+        g.addEventListener('click', () => setTargetLine(line));
         layers.switches.appendChild(g);
       });
     }
@@ -658,16 +704,33 @@
 
   function renderLadder() {
     if (!state.blocked) {
-      layers.ladder.setAttribute('transform', `rotate(-90) scale(0)`);
+      layers.ladder.setAttribute('data-visible', 'false');
       return;
     }
+    // The rig is modelled near the rim pointing up; rotating by the spoke angle
+    // leans it against that line's lever without crossing the gear field.
     const angle = LINE_ANGLES_DEG[state.blocked.line];
+    layers.ladder.setAttribute('data-visible', 'true');
+    layers.ladder.setAttribute(
+      'data-protected',
+      isProtected(state.blocked.line, state.blocked.type) ? 'true' : 'false',
+    );
     layers.ladder.setAttribute('transform', `rotate(${angle})`);
   }
 
   // ---------------------------------------------------------------------------
   // Target & blocked-lever pickers
   // ---------------------------------------------------------------------------
+  // Shared target-line selection, used by both the pill row and the on-board
+  // rim levers (clicking a lever picks its line as the target).
+  function setTargetLine(line) {
+    if (state.isAnimating || state.targetLine === line) return;
+    state.targetLine = line;
+    drawTargetPicker();
+    afterBoardChange();
+    setStatus(`Target set to line ${line}.`);
+  }
+
   function drawTargetPicker() {
     clearChildren(hud.targetPicker);
     LINES.forEach((line) => {
@@ -677,16 +740,7 @@
       btn.textContent = `L${line}`;
       btn.setAttribute('role', 'radio');
       btn.setAttribute('aria-checked', String(line === state.targetLine));
-      btn.addEventListener('click', () => {
-        if (state.isAnimating) return;
-        state.targetLine = line;
-        drawTargetPicker();
-        drawIntersections();
-        renderTargetLine();
-        renderMainSwitch();
-        afterBoardChange();
-        setStatus(`Target set to line ${line}.`);
-      });
+      btn.addEventListener('click', () => setTargetLine(line));
       hud.targetPicker.appendChild(btn);
     });
   }
@@ -770,23 +824,6 @@
     afterBoardChange();
   }
 
-  function handleSwitchClick(line, type) {
-    if (state.isAnimating || state.isComplete) return;
-    if (
-      state.blocked &&
-      state.blocked.line === line &&
-      state.blocked.type === type &&
-      !isProtected(line, type)
-    ) {
-      setStatus(`L${line} ${SWITCH_LABEL[type]} is blocked by the ladder.`, 'warn');
-      return;
-    }
-    if (state.gears.length === 0) {
-      setStatus('Place at least one gear on the board first.', 'warn');
-      return;
-    }
-    pushAction({ line, type }, true);
-  }
 
   function pushAction(action, fromUser) {
     const prevGears = cloneGears(state.gears);
