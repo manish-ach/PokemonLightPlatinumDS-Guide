@@ -1,4 +1,0 @@
-User-agent: *
-Allow: /
-
-Sitemap: https://manish-ach.github.io/PokemonLightPlatinumDS-Guide/sitemap.xml

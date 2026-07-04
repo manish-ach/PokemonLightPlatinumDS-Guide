@@ -1,0 +1,10 @@
+node_modules
+.svelte-kit
+build
+.git
+.env
+data/data.db
+data/data.db-*
+uploads
+**/.DS_Store
+npm-debug.log

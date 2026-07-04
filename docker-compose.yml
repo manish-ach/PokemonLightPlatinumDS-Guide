@@ -1,0 +1,21 @@
+services:
+  wiki:
+    build: .
+    image: zhery-field-guide
+    ports:
+      - "${PORT:-8080}:3000"
+    environment:
+      NODE_ENV: production
+      # Admin account is created on first boot from these — change them.
+      ADMIN_EMAIL: ${ADMIN_EMAIL:-admin@lpds.local}
+      ADMIN_PASSWORD: ${ADMIN_PASSWORD:-changeme}
+      JWT_SECRET: ${JWT_SECRET:-change-me-to-a-long-random-secret}
+      # DB + uploads live on the named volume so they survive restarts.
+      DATABASE_PATH: /data/data.db
+      UPLOAD_DIR: /data/uploads
+    volumes:
+      - wiki-data:/data
+    restart: unless-stopped
+
+volumes:
+  wiki-data:
