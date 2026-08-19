@@ -1,0 +1,255 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>How to patch · Light Platinum DS</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Eczar:wght@600;700&family=Alegreya+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles/tokens.css?v=1787168126">
+<link rel="stylesheet" href="styles/app.css?v=1787168126">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<p class="demo-note"><strong>Development in progress.</strong></p>
+
+<header class="masthead">
+  <div class="masthead__in">
+    <a class="brand" href="index.html">
+      <span class="brand__mark"><svg class="ring ring--brand " viewBox="0 0 440 440" aria-hidden="true">
+      <circle class="seg is-done" cx="220" cy="220" r="200" stroke-width="34"
+      stroke-dasharray="69.78 1186.86"
+      stroke-dashoffset="0.00" style="--i:0"/>
+      <circle class="seg is-done" cx="220" cy="220" r="200" stroke-width="34"
+      stroke-dasharray="69.78 1186.86"
+      stroke-dashoffset="-83.78" style="--i:1"/>
+      <circle class="seg is-done" cx="220" cy="220" r="200" stroke-width="34"
+      stroke-dasharray="69.78 1186.86"
+      stroke-dashoffset="-167.55" style="--i:2"/>
+      <circle class="seg is-done" cx="220" cy="220" r="200" stroke-width="34"
+      stroke-dasharray="69.78 1186.86"
+      stroke-dashoffset="-251.33" style="--i:3"/>
+      <circle class="seg is-done" cx="220" cy="220" r="200" stroke-width="34"
+      stroke-dasharray="69.78 1186.86"
+      stroke-dashoffset="-335.10" style="--i:4"/>
+      <circle class="seg is-done" cx="220" cy="220" r="200" stroke-width="34"
+      stroke-dasharray="69.78 1186.86"
+      stroke-dashoffset="-418.88" style="--i:5"/>
+      <circle class="seg is-here" cx="220" cy="220" r="200" stroke-width="34"
+      stroke-dasharray="69.78 1186.86"
+      stroke-dashoffset="-502.65" style="--i:6"/>
+      <circle class="seg " cx="220" cy="220" r="200" stroke-width="34"
+      stroke-dasharray="69.78 1186.86"
+      stroke-dashoffset="-586.43" style="--i:7"/>
+      <circle class="seg " cx="220" cy="220" r="200" stroke-width="34"
+      stroke-dasharray="69.78 1186.86"
+      stroke-dashoffset="-670.21" style="--i:8"/>
+      <circle class="seg " cx="220" cy="220" r="200" stroke-width="34"
+      stroke-dasharray="69.78 1186.86"
+      stroke-dashoffset="-753.98" style="--i:9"/>
+      <circle class="seg " cx="220" cy="220" r="200" stroke-width="34"
+      stroke-dasharray="69.78 1186.86"
+      stroke-dashoffset="-837.76" style="--i:10"/>
+      <circle class="seg " cx="220" cy="220" r="200" stroke-width="34"
+      stroke-dasharray="69.78 1186.86"
+      stroke-dashoffset="-921.53" style="--i:11"/>
+      <circle class="seg " cx="220" cy="220" r="200" stroke-width="34"
+      stroke-dasharray="69.78 1186.86"
+      stroke-dashoffset="-1005.31" style="--i:12"/>
+      <circle class="seg " cx="220" cy="220" r="200" stroke-width="34"
+      stroke-dasharray="69.78 1186.86"
+      stroke-dashoffset="-1089.09" style="--i:13"/>
+      <circle class="seg " cx="220" cy="220" r="200" stroke-width="34"
+      stroke-dasharray="69.78 1186.86"
+      stroke-dashoffset="-1172.86" style="--i:14"/>
+      <circle class="hub" cx="220" cy="220" r="170" stroke-width="1"/>
+    </svg></span>
+      Light Platinum <em>DS</em>
+    </a>
+    <nav class="nav">
+      <a href="chapter.html">Walkthrough</a>
+      <a href="dex.html">Dex</a>
+      <a href="items.html">Items</a>
+      <a href="medals.html">Medals</a>
+      <a href="sunpalace.html">Sun Palace</a>
+      <a href="gifts.html">Mystery Gift</a>
+      <a href="patch.html" aria-current="page">How to patch</a>
+    </nav>
+    <div class="tools">
+      <button class="iconbtn" type="button" data-theme-toggle aria-label="Switch theme"><span data-theme-label>Dark</span></button>
+    </div>
+  </div>
+</header>
+<main id="main" class="shell">
+  <header class="opener">
+    <div class="opener__ring"><svg class="ring  " viewBox="0 0 440 440" aria-hidden="true">
+      <circle class="seg is-done" cx="220" cy="220" r="200" stroke-width="26"
+      stroke-dasharray="199.44 1057.20"
+      stroke-dashoffset="0.00" style="--i:0"/>
+      <circle class="seg is-done" cx="220" cy="220" r="200" stroke-width="26"
+      stroke-dasharray="199.44 1057.20"
+      stroke-dashoffset="-209.44" style="--i:1"/>
+      <circle class="seg is-done" cx="220" cy="220" r="200" stroke-width="26"
+      stroke-dasharray="199.44 1057.20"
+      stroke-dashoffset="-418.88" style="--i:2"/>
+      <circle class="seg is-here" cx="220" cy="220" r="200" stroke-width="26"
+      stroke-dasharray="199.44 1057.20"
+      stroke-dashoffset="-628.32" style="--i:3"/>
+      <circle class="seg " cx="220" cy="220" r="200" stroke-width="26"
+      stroke-dasharray="199.44 1057.20"
+      stroke-dashoffset="-837.76" style="--i:4"/>
+      <circle class="seg " cx="220" cy="220" r="200" stroke-width="26"
+      stroke-dasharray="199.44 1057.20"
+      stroke-dashoffset="-1047.20" style="--i:5"/>
+      <circle class="hub" cx="220" cy="220" r="170" stroke-width="1"/>
+    </svg></div>
+    <div>
+      <h1>How to patch the game</h1>
+      <div class="opener__meta">
+        <span>Beginner edition</span><span>·</span>
+        <span>Assumes you already know what emulator to run</span><span>·</span>
+        <span>About ten minutes</span>
+      </div>
+    </div>
+    <div class="opener__rule"></div>
+  </header>
+
+  <div class="chapter">
+    <div class="column">
+      <div class="call call--missable">
+        <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M9 2 17 16H1L9 2Z"/><path d="M9 7v4"/><path d="M9 13.5v.5"/></svg>
+        <div><b>About the ROM</b>
+          <p>You need a <b>Pokémon HeartGold (US)</b> ROM, and you have to source that yourself.
+            Sharing ROMs is illegal — don't ask anyone here for one. Only the <em>patch</em> is
+            distributed, which is why patching is a step you do rather than a download you take.</p>
+          <p>There is <b>no pre-patched ROM</b> anywhere. Anyone offering one is either faking it
+            or handing you a bad build — trading, the online GTS and Mystery Gift only work on a
+            ROM you patched yourself.</p></div>
+      </div>
+
+      <h2 id="need">What you need first</h2>
+      <ul class="needs">
+        <li><b>An emulator.</b> <span class="needs__rec">Recommended: melonDS</span></li>
+        <li><b>The patch</b>, from the official site —
+          <a href="https://pokehacking.com/fangames/light-platinum/">pokehacking.com/fangames/light-platinum</a></li>
+        <li><b>A Pokémon HeartGold (US) ROM</b> — yours to find, see above</li>
+        <li><b>A patcher.</b> On Windows the downloaded zip already contains one
+          (<code>DeltaPatcherLite.exe</code>). On anything else use
+          <a href="https://kotcrab.github.io/xdelta-wasm/">kotcrab.github.io/xdelta-wasm</a> —
+          open source, and it runs locally in your browser through WebAssembly, so your ROM is
+          never uploaded anywhere.</li>
+      </ul>
+
+      <div class="call call--legendary">
+        <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="9" cy="9" r="6.5"/><circle cx="9" cy="9" r="2.5"/></svg>
+        <div><b>Check your base ROM before you start</b>
+          <p>The patch expects exactly <code>4780 - Pokemon HeartGold (U)(Xenophobia).nds</code>,
+            <b>CRC32 FFD28F00</b>. A different dump is the single most common reason patching
+            fails or produces a broken game.</p></div>
+      </div>
+
+      <h2 id="steps">The steps</h2>
+      <ol class="steps">
+        <li><b>Get the patch</b> from the official pokehacking page listed above. Nowhere else.
+          <figure class="pshot">
+            <picture>
+              <source type="image/webp" sizes="(max-width: 700px) 92vw, min(620px, 46vw)"
+                srcset="pictures/opt/Patch__1-640.webp 640w, pictures/opt/Patch__1-1280.webp 1280w">
+              <img src="pictures/Patch/1.png" width="2604" height="1518" alt="The download page at pokehacking.com" loading="lazy" decoding="async">
+            </picture>
+            <figcaption>The download page at pokehacking.com</figcaption>
+          </figure></li>
+        <li><b>Unzip it.</b> 7-Zip, WinRAR or your system's built-in unzip all work — opening the
+          <code>.zip</code> in your file manager generally makes a folder of the same name beside
+          it. Inside you'll find:
+          <figure class="pshot">
+            <picture>
+              <source type="image/webp" sizes="(max-width: 700px) 92vw, min(620px, 46vw)"
+                srcset="pictures/opt/Patch__2-640.webp 640w, pictures/opt/Patch__2-1280.webp 1280w">
+              <img src="pictures/Patch/2.png" width="1202" height="382" alt="Inside the unzipped folder — LPDS.xdelta is the patch" loading="lazy" decoding="async">
+            </picture>
+            <figcaption>Inside the unzipped folder — LPDS.xdelta is the patch</figcaption>
+          </figure>
+        </li>
+        <li><b>On Windows:</b> open <code>HowToPatch.pdf</code> and follow it. In Delta Patcher
+          Lite, set <em>Original file</em> to your HeartGold <code>.nds</code>, set
+          <em>XDelta patch</em> to <code>LPDS.xdelta</code>, then click <b>Apply patch</b>.
+          <figure class="pshot">
+            <picture>
+              <source type="image/webp" sizes="(max-width: 700px) 92vw, min(620px, 46vw)"
+                srcset="pictures/opt/Patch__3-640.webp 640w, pictures/opt/Patch__3-1280.webp 1280w">
+              <img src="pictures/Patch/3.png" width="866" height="1290" alt="HowToPatch.pdf, included in the zip — the Windows route" loading="lazy" decoding="async">
+            </picture>
+            <figcaption>HowToPatch.pdf, included in the zip — the Windows route</figcaption>
+          </figure></li>
+        <li><b>On anything else:</b> open
+          <a href="https://kotcrab.github.io/xdelta-wasm/">the xdelta-wasm patcher</a>.
+          <figure class="pshot">
+            <picture>
+              <source type="image/webp" sizes="(max-width: 700px) 92vw, min(620px, 46vw)"
+                srcset="pictures/opt/Patch__4-640.webp 640w, pictures/opt/Patch__4-1280.webp 1280w">
+              <img src="pictures/Patch/4.png" width="1006" height="996" alt="The xdelta-wasm patcher, before you choose anything" loading="lazy" decoding="async">
+            </picture>
+            <figcaption>The xdelta-wasm patcher, before you choose anything</figcaption>
+          </figure></li>
+        <li><b>Set the two files.</b> <em>Source file</em> is your HeartGold ROM;
+          <em>Patch file</em> is <code>LPDS.xdelta</code>. Hit <b>Apply Patch</b> and it produces
+          the patched ROM as a download.
+          <figure class="pshot">
+            <picture>
+              <source type="image/webp" sizes="(max-width: 700px) 92vw, min(620px, 46vw)"
+                srcset="pictures/opt/Patch__5-640.webp 640w, pictures/opt/Patch__5-1280.webp 1280w">
+              <img src="pictures/Patch/5.png" width="790" height="868" alt="Source file and patch file both set, ready to apply" loading="lazy" decoding="async">
+            </picture>
+            <figcaption>Source file and patch file both set, ready to apply</figcaption>
+          </figure></li>
+        <li><b>Rename it.</b> The output is named after your input —
+          <code>Pokemon - HeartGold Version (USA)-patched.nds</code>, around 268 MB. Rename it to
+          something like <code>Pokemon_Light_Platinum_DS.nds</code> so you can tell them apart.
+          <figure class="pshot">
+            <picture>
+              <source type="image/webp" sizes="(max-width: 700px) 92vw, min(620px, 46vw)"
+                srcset="pictures/opt/Patch__6-640.webp 640w, pictures/opt/Patch__6-1280.webp 1280w">
+              <img src="pictures/Patch/6.png" width="984" height="58" alt="The patched ROM — your input name plus “-patched”" loading="lazy" decoding="async">
+            </picture>
+            <figcaption>The patched ROM — your input name plus “-patched”</figcaption>
+          </figure></li>
+      </ol>
+
+      <p class="patchdone">Load that file in melonDS and you're playing.</p>
+    </div>
+
+    <aside class="rail" aria-label="Release details">
+      <p class="rail__label">The release</p>
+      <div class="mount">
+        <div class="mount__head">Pokémon Light Platinum DS</div>
+        <dl>
+          <div class="stat"><dt>Author</dt><dd>Mikelan98</dd></div>
+          <div class="stat"><dt>Version</dt><dd>0.2.1</dd></div>
+          <div class="stat"><dt>Status</dt><dd>Demo 2</dd></div>
+          <div class="stat"><dt>Updated</dt><dd>25 Apr 2026</dd></div>
+          <div class="stat"><dt>Patch size</dt><dd>64.36 MB</dd></div>
+          <div class="stat"><dt>Language</dt><dd>EN · ES</dd></div>
+        </dl>
+      </div>
+      <div class="mount">
+        <div class="mount__head">Credits</div>
+        <dl>
+          <div class="stat"><dt>Music</dt><dd>AdAstra / LD3005</dd></div>
+          <div class="stat"><dt>Based on</dt><dd>Light Platinum (GBA)</dd></div>
+          <div class="stat"><dt>Original by</dt><dd>WesleyFG</dd></div>
+        </dl>
+      </div>
+      <a class="nextup" href="chapter.html"><em>Patched already?</em><strong>Start the walkthrough</strong></a>
+    </aside>
+  </div>
+</main>
+
+<footer class="foot shell">
+  <p>A fan guide to <strong>Pokémon Light Platinum DS</strong>. Not affiliated with Nintendo, Game Freak or The Pokémon Company.<br>
+     Screenshots are the author's own captures. Species sprites via <a href="https://github.com/PokeAPI/sprites">PokeAPI</a>.</p>
+  <p><a href="#">Setup &amp; patching</a></p>
+</footer>
+<script src="app.js?v=1787168126"></script>
+</body></html>

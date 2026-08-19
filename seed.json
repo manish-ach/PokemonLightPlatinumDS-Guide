@@ -1,0 +1,2740 @@
+{
+  "categories": [
+    {
+      "slug": "pokemon",
+      "title": "Pokémon",
+      "icon": "◓",
+      "blurb": "Where to find, catch, and trade for every Pokémon.",
+      "sort_order": 0
+    },
+    {
+      "slug": "items",
+      "title": "Items",
+      "icon": "🎒",
+      "blurb": "Every pickup, shop, TM, HM, berry, and key item in the region.",
+      "sort_order": 1
+    },
+    {
+      "slug": "world",
+      "title": "World",
+      "icon": "🗺",
+      "blurb": "Towns, cities, routes, and the places that connect them.",
+      "sort_order": 2
+    },
+    {
+      "slug": "reference",
+      "title": "Reference",
+      "icon": "★",
+      "blurb": "Medals and extra reference material.",
+      "sort_order": 3
+    }
+  ],
+  "sections": [
+    {
+      "category": "pokemon",
+      "slug": "acquisition",
+      "title": "Pokémon Acquisition",
+      "description": "Starters, gifts, trades, and special encounters and exactly where to get them.",
+      "layout": "table",
+      "sort_order": 0,
+      "fields": [
+        {
+          "key": "name",
+          "label": "Pokémon"
+        },
+        {
+          "key": "method",
+          "label": "How to get"
+        },
+        {
+          "key": "location",
+          "label": "Location"
+        }
+      ]
+    },
+    {
+      "category": "items",
+      "slug": "items",
+      "title": "Items",
+      "description": "Held items, evolution stones, and field items (excludes anything found by Dowsing).",
+      "layout": "table",
+      "sort_order": 0,
+      "fields": [
+        {
+          "key": "name",
+          "label": "Item"
+        },
+        {
+          "key": "location",
+          "label": "Location"
+        }
+      ]
+    },
+    {
+      "category": "items",
+      "slug": "medicine",
+      "title": "Medicine",
+      "description": "Potions, revives, ethers, vitamins, and status healers (excludes Dowsing finds).",
+      "layout": "table",
+      "sort_order": 1,
+      "fields": [
+        {
+          "key": "name",
+          "label": "Medicine"
+        },
+        {
+          "key": "location",
+          "label": "Location"
+        }
+      ]
+    },
+    {
+      "category": "items",
+      "slug": "poke-balls",
+      "title": "Poké Balls",
+      "description": "Every Poké Ball pickup around the region (excludes Dowsing finds).",
+      "layout": "table",
+      "sort_order": 2,
+      "fields": [
+        {
+          "key": "name",
+          "label": "Ball"
+        },
+        {
+          "key": "location",
+          "label": "Location"
+        }
+      ]
+    },
+    {
+      "category": "items",
+      "slug": "tms",
+      "title": "TMs",
+      "description": "Technical Machines and where to buy or find them.",
+      "layout": "table",
+      "sort_order": 3,
+      "fields": [
+        {
+          "key": "name",
+          "label": "Move"
+        },
+        {
+          "key": "tm",
+          "label": "TM"
+        },
+        {
+          "key": "location",
+          "label": "Location"
+        }
+      ]
+    },
+    {
+      "category": "items",
+      "slug": "hms",
+      "title": "HMs",
+      "description": "Hidden Machines and the field moves they teach.",
+      "layout": "table",
+      "sort_order": 4,
+      "fields": [
+        {
+          "key": "name",
+          "label": "Move"
+        },
+        {
+          "key": "hm",
+          "label": "HM"
+        },
+        {
+          "key": "location",
+          "label": "Location"
+        }
+      ]
+    },
+    {
+      "category": "items",
+      "slug": "berries",
+      "title": "Berries",
+      "description": "Berry trees and farms by location.",
+      "layout": "table",
+      "sort_order": 5,
+      "fields": [
+        {
+          "key": "name",
+          "label": "Location"
+        },
+        {
+          "key": "berries",
+          "label": "Berries"
+        }
+      ]
+    },
+    {
+      "category": "items",
+      "slug": "battle-items",
+      "title": "Battle Items",
+      "description": "In-battle boosters like X Attack and Guard Spec (excludes Dowsing finds).",
+      "layout": "table",
+      "sort_order": 6,
+      "fields": [
+        {
+          "key": "name",
+          "label": "Item"
+        },
+        {
+          "key": "location",
+          "label": "Location"
+        }
+      ]
+    },
+    {
+      "category": "items",
+      "slug": "key-items",
+      "title": "Key Items",
+      "description": "Story and utility key items.",
+      "layout": "table",
+      "sort_order": 7,
+      "fields": [
+        {
+          "key": "name",
+          "label": "Item"
+        },
+        {
+          "key": "location",
+          "label": "Location"
+        }
+      ]
+    },
+    {
+      "category": "world",
+      "slug": "locations",
+      "title": "Locations",
+      "description": "Towns, cities, and notable areas of the Zhery region.",
+      "layout": "cards",
+      "sort_order": 0,
+      "fields": [
+        {
+          "key": "name",
+          "label": "Place"
+        },
+        {
+          "key": "kind",
+          "label": "Type"
+        },
+        {
+          "key": "notes",
+          "label": "Notes"
+        }
+      ]
+    },
+    {
+      "category": "world",
+      "slug": "routes",
+      "title": "Routes",
+      "description": "Connecting routes with their notable pickups and encounters.",
+      "layout": "table",
+      "sort_order": 1,
+      "fields": [
+        {
+          "key": "name",
+          "label": "Route"
+        },
+        {
+          "key": "notes",
+          "label": "Notes"
+        }
+      ]
+    },
+    {
+      "category": "reference",
+      "slug": "medals",
+      "title": "Medals",
+      "description": "Achievement medals and how to earn or buy each one.",
+      "layout": "table",
+      "sort_order": 0,
+      "fields": [
+        {
+          "key": "name",
+          "label": "Medal"
+        },
+        {
+          "key": "source",
+          "label": "How to get"
+        }
+      ]
+    }
+  ],
+  "entries": [
+    {
+      "category": "pokemon",
+      "section": "acquisition",
+      "name": "Kanto Starters",
+      "data": {
+        "method": "Prof. Jasmine's Lab",
+        "location": "Yellow Town"
+      }
+    },
+    {
+      "category": "pokemon",
+      "section": "acquisition",
+      "name": "Elekid",
+      "data": {
+        "method": "1st floor of Prof. Jasmine's Lab after the Parcel Trial",
+        "location": "Yellow Town"
+      }
+    },
+    {
+      "category": "pokemon",
+      "section": "acquisition",
+      "name": "Growlithe",
+      "data": {
+        "method": "Scientist in front of the Safari Zone",
+        "location": "Central City"
+      }
+    },
+    {
+      "category": "pokemon",
+      "section": "acquisition",
+      "name": "Pansear",
+      "data": {
+        "method": "Prize Exchange Center — 5000 coins",
+        "location": "Central City"
+      }
+    },
+    {
+      "category": "pokemon",
+      "section": "acquisition",
+      "name": "Pansage",
+      "data": {
+        "method": "Prize Exchange Center — 5000 coins",
+        "location": "Central City"
+      }
+    },
+    {
+      "category": "pokemon",
+      "section": "acquisition",
+      "name": "Panpour",
+      "data": {
+        "method": "Prize Exchange Center — 5000 coins",
+        "location": "Central City"
+      }
+    },
+    {
+      "category": "pokemon",
+      "section": "acquisition",
+      "name": "Scyther",
+      "data": {
+        "method": "Trade for Nincada, Bug Catcher's House",
+        "location": "Inhore City"
+      }
+    },
+    {
+      "category": "pokemon",
+      "section": "acquisition",
+      "name": "Togepi Egg",
+      "data": {
+        "method": "Ace Trainer (F); show her a Shiny Pokémon",
+        "location": "Inhore University"
+      }
+    },
+    {
+      "category": "pokemon",
+      "section": "acquisition",
+      "name": "Farfetch'd",
+      "data": {
+        "method": "Trade for Deerling, man at Inhore University top floor",
+        "location": "Inhore University"
+      }
+    },
+    {
+      "category": "pokemon",
+      "section": "acquisition",
+      "name": "Hoenn Starters",
+      "data": {
+        "method": "Prof. Birch, top floor of Inhore University",
+        "location": "Inhore University"
+      }
+    },
+    {
+      "category": "pokemon",
+      "section": "acquisition",
+      "name": "Karrablast",
+      "data": {
+        "method": "Trade for Shelmet, girl on 3rd floor of the Apartment",
+        "location": "Esmerald City"
+      }
+    },
+    {
+      "category": "pokemon",
+      "section": "acquisition",
+      "name": "Drifloon",
+      "data": {
+        "method": "Ace Trainer (M) in front of the Gym",
+        "location": "Darkdusk City"
+      }
+    },
+    {
+      "category": "pokemon",
+      "section": "acquisition",
+      "name": "Solosis",
+      "data": {
+        "method": "Trade for Gothita, Ace Trainer's House (F)",
+        "location": "Darkdusk City"
+      }
+    },
+    {
+      "category": "pokemon",
+      "section": "acquisition",
+      "name": "Drilbur",
+      "data": {
+        "method": "Trade for Torkoal, Scientist (Foreigner)",
+        "location": "Mt. Shuem"
+      }
+    },
+    {
+      "category": "pokemon",
+      "section": "acquisition",
+      "name": "Sinnoh Starters",
+      "data": {
+        "method": "Prof. Rowan's House",
+        "location": "Gromet City"
+      }
+    },
+    {
+      "category": "pokemon",
+      "section": "acquisition",
+      "name": "Machoke",
+      "data": {
+        "method": "Trade for Onix, Hiker's House",
+        "location": "Gromet City"
+      }
+    },
+    {
+      "category": "items",
+      "section": "items",
+      "name": "Quick Claw",
+      "data": {
+        "location": "School Boy's House / Yellow Town"
+      },
+      "image": "/pictures/items/quick-claw.png",
+      "location_image": "/pictures/ItemLocations/QuickClawYellowTown.jpeg"
+    },
+    {
+      "category": "items",
+      "section": "items",
+      "name": "Silk Scarf",
+      "data": {
+        "location": "Prize Exchange Center — 1000 coins / Central City"
+      },
+      "image": "/pictures/items/silk-scarf.png"
+    },
+    {
+      "category": "items",
+      "section": "items",
+      "name": "Wide Lens",
+      "data": {
+        "location": "Prize Exchange Center — 1000 coins / Central City"
+      },
+      "image": "/pictures/items/wide-lens.png",
+      "location_image": "/pictures/ItemLocations/WideLensRoute407PossibleItemfromtrashcleanergirl.jpeg"
+    },
+    {
+      "category": "items",
+      "section": "items",
+      "name": "Zoom Lens",
+      "data": {
+        "location": "Prize Exchange Center — 1000 coins / Central City"
+      },
+      "image": "/pictures/items/zoom-lens.png"
+    },
+    {
+      "category": "items",
+      "section": "items",
+      "name": "Metronome",
+      "data": {
+        "location": "Prize Exchange Center — 1000 coins / Central City"
+      },
+      "image": "/pictures/items/metronome.png"
+    },
+    {
+      "category": "items",
+      "section": "items",
+      "name": "Repel",
+      "data": {
+        "location": "Route 402"
+      },
+      "image": "/pictures/items/repel.png"
+    },
+    {
+      "category": "items",
+      "section": "items",
+      "name": "Silver Powder",
+      "data": {
+        "location": "Bug Catcher / Route 402"
+      },
+      "image": "/pictures/items/silver-powder.png"
+    },
+    {
+      "category": "items",
+      "section": "items",
+      "name": "Max Repel",
+      "data": {
+        "location": "Hiker's House / Inhore City"
+      },
+      "image": "/pictures/items/max-repel.png"
+    },
+    {
+      "category": "items",
+      "section": "items",
+      "name": "Repel",
+      "data": {
+        "location": "Mass Spring Cave / Route 404"
+      },
+      "image": "/pictures/items/repel.png"
+    },
+    {
+      "category": "items",
+      "section": "items",
+      "name": "Stardust",
+      "data": {
+        "location": "Route 404"
+      },
+      "image": "/pictures/items/stardust.png"
+    },
+    {
+      "category": "items",
+      "section": "items",
+      "name": "Exp. Share",
+      "data": {
+        "location": "Prof. Juniper / Pantem Town"
+      },
+      "image": "/pictures/items/exp-share.png"
+    },
+    {
+      "category": "items",
+      "section": "items",
+      "name": "Lucky Egg",
+      "data": {
+        "location": "Bug Catcher / Route 406"
+      },
+      "image": "/pictures/items/lucky-egg.png"
+    },
+    {
+      "category": "items",
+      "section": "items",
+      "name": "Leaf Stone",
+      "data": {
+        "location": "Route 406"
+      },
+      "image": "/pictures/items/leaf-stone.png"
+    },
+    {
+      "category": "items",
+      "section": "items",
+      "name": "Charcoal",
+      "data": {
+        "location": "Hiker in Apartment / Esmerald City"
+      },
+      "image": "/pictures/items/charcoal.png"
+    },
+    {
+      "category": "items",
+      "section": "items",
+      "name": "Nugget",
+      "data": {
+        "location": "Foongus Swamp"
+      },
+      "image": "/pictures/items/nugget.png"
+    },
+    {
+      "category": "items",
+      "section": "items",
+      "name": "Leftovers",
+      "data": {
+        "location": "Little Girl / Route 407"
+      },
+      "image": "/pictures/items/leftovers.png"
+    },
+    {
+      "category": "items",
+      "section": "items",
+      "name": "Deep Sea Scale",
+      "data": {
+        "location": "Route 408 (Surf)"
+      },
+      "image": "/pictures/items/deep-sea-scale.png"
+    },
+    {
+      "category": "items",
+      "section": "items",
+      "name": "Soothe Bell",
+      "data": {
+        "location": "Bug Catcher / Seanport City"
+      },
+      "image": "/pictures/items/soothe-bell.png"
+    },
+    {
+      "category": "items",
+      "section": "items",
+      "name": "Red Shard",
+      "data": {
+        "location": "Sailor in Port / Seanport City"
+      },
+      "image": "/pictures/items/red-shard.png"
+    },
+    {
+      "category": "items",
+      "section": "items",
+      "name": "Dragon Scale",
+      "data": {
+        "location": "Seanport City (Surf)"
+      },
+      "image": "/pictures/items/dragon-scale.png"
+    },
+    {
+      "category": "items",
+      "section": "items",
+      "name": "Icy Rock",
+      "data": {
+        "location": "Panotem Islands"
+      },
+      "image": "/pictures/items/icy-rock.png"
+    },
+    {
+      "category": "items",
+      "section": "items",
+      "name": "Hard Stone",
+      "data": {
+        "location": "Panotem Islands"
+      },
+      "image": "/pictures/items/hard-stone.png"
+    },
+    {
+      "category": "items",
+      "section": "items",
+      "name": "Deep Sea Tooth",
+      "data": {
+        "location": "Panotem Islands (Surf)"
+      },
+      "image": "/pictures/items/deep-sea-tooth.png",
+      "location_image": "/pictures/ItemLocations/DeepSeaToothPanotemIslands.jpeg"
+    },
+    {
+      "category": "items",
+      "section": "items",
+      "name": "Super Repel",
+      "data": {
+        "location": "Nevada Forest / Panotem Islands"
+      },
+      "image": "/pictures/items/super-repel.png"
+    },
+    {
+      "category": "items",
+      "section": "items",
+      "name": "Max Repel",
+      "data": {
+        "location": "Mt. Ice Storm"
+      },
+      "image": "/pictures/items/max-repel.png"
+    },
+    {
+      "category": "items",
+      "section": "items",
+      "name": "Stardust",
+      "data": {
+        "location": "Mt. Ice Storm"
+      },
+      "image": "/pictures/items/stardust.png"
+    },
+    {
+      "category": "items",
+      "section": "items",
+      "name": "Shiny Stone",
+      "data": {
+        "location": "Mt. Ice Storm"
+      },
+      "image": "/pictures/items/shiny-stone.png",
+      "location_image": "/pictures/ItemLocations/ShinyStoneMtIceStorm.jpg"
+    },
+    {
+      "category": "items",
+      "section": "items",
+      "name": "Fire Stone",
+      "data": {
+        "location": "Mt. Ice Storm (Waterfall Route)"
+      },
+      "image": "/pictures/items/fire-stone.png"
+    },
+    {
+      "category": "items",
+      "section": "items",
+      "name": "Moon Stone",
+      "data": {
+        "location": "Old Man on a bench / Darkdusk City"
+      },
+      "image": "/pictures/items/moon-stone.png",
+      "location_image": "/pictures/ItemLocations/MoonStoneDardusk.jpg"
+    },
+    {
+      "category": "items",
+      "section": "items",
+      "name": "Wave Incense",
+      "data": {
+        "location": "Spirit Medium at Shadow Tower / Darkdusk City"
+      },
+      "image": "/pictures/items/wave-incense.png"
+    },
+    {
+      "category": "items",
+      "section": "items",
+      "name": "Razor Fang",
+      "data": {
+        "location": "Darkdusk City via Darkdusk Cave (Strength)"
+      },
+      "image": "/pictures/items/razor-fang.png",
+      "location_image": "/pictures/ItemLocations/RazorFangDarduskCaveOutside.jpeg"
+    },
+    {
+      "category": "items",
+      "section": "items",
+      "name": "Toxic Orb",
+      "data": {
+        "location": "Ace Trainer (F) / Darkdusk Woods"
+      },
+      "image": "/pictures/items/toxic-orb.png"
+    },
+    {
+      "category": "items",
+      "section": "items",
+      "name": "Fire Stone",
+      "data": {
+        "location": "Darkdusk Woods"
+      },
+      "image": "/pictures/items/fire-stone.png"
+    },
+    {
+      "category": "items",
+      "section": "items",
+      "name": "Escape Rope",
+      "data": {
+        "location": "Darkdusk Woods"
+      },
+      "image": "/pictures/items/escape-rope.png"
+    },
+    {
+      "category": "items",
+      "section": "items",
+      "name": "Super Repel",
+      "data": {
+        "location": "Route 411"
+      },
+      "image": "/pictures/items/super-repel.png"
+    },
+    {
+      "category": "items",
+      "section": "items",
+      "name": "Escape Rope",
+      "data": {
+        "location": "Hiker / Mt. Shuem"
+      },
+      "image": "/pictures/items/escape-rope.png"
+    },
+    {
+      "category": "items",
+      "section": "items",
+      "name": "Max Repel",
+      "data": {
+        "location": "Mt. Shuem"
+      },
+      "image": "/pictures/items/max-repel.png"
+    },
+    {
+      "category": "items",
+      "section": "items",
+      "name": "Thick Club",
+      "data": {
+        "location": "Route 412"
+      },
+      "image": "/pictures/items/thick-club.png",
+      "location_image": "/pictures/ItemLocations/ThickClubRoute412.jpeg"
+    },
+    {
+      "category": "items",
+      "section": "items",
+      "name": "King's Rock",
+      "data": {
+        "location": "Sun Ruins"
+      },
+      "image": "/pictures/items/kings-rock.png"
+    },
+    {
+      "category": "items",
+      "section": "items",
+      "name": "Super Repel",
+      "data": {
+        "location": "Gromet City"
+      },
+      "image": "/pictures/items/super-repel.png"
+    },
+    {
+      "category": "items",
+      "section": "items",
+      "name": "Water Stone",
+      "data": {
+        "location": "Gromet Mine — Minecart (01111)"
+      },
+      "image": "/pictures/items/water-stone.png",
+      "location_image": "/pictures/ItemLocations/waterstoneMines.jpeg"
+    },
+    {
+      "category": "items",
+      "section": "items",
+      "name": "Big Pearl",
+      "data": {
+        "location": "Gromet Mine — Minecart (01111)"
+      },
+      "image": "/pictures/items/big-pearl.png",
+      "location_image": "/pictures/ItemLocations/BigPearlMine.jpeg"
+    },
+    {
+      "category": "items",
+      "section": "items",
+      "name": "Red Shard",
+      "data": {
+        "location": "Gromet Mine — Minecart (01111)"
+      },
+      "image": "/pictures/items/red-shard.png"
+    },
+    {
+      "category": "items",
+      "section": "items",
+      "name": "Electirizer",
+      "data": {
+        "location": "Gromet Mine — Minecart (11000)"
+      },
+      "image": "/pictures/items/electirizer.png",
+      "location_image": "/pictures/ItemLocations/ElectrizerMines.jpeg"
+    },
+    {
+      "category": "items",
+      "section": "items",
+      "name": "Repel",
+      "data": {
+        "location": "Gromet Mine — Minecart, Hold B (11100)"
+      },
+      "image": "/pictures/items/repel.png"
+    },
+    {
+      "category": "items",
+      "section": "medicine",
+      "name": "Potion",
+      "data": {
+        "location": "Route 401"
+      },
+      "image": "/pictures/items/potion.png"
+    },
+    {
+      "category": "items",
+      "section": "medicine",
+      "name": "Antidote",
+      "data": {
+        "location": "Route 401"
+      },
+      "image": "/pictures/items/antidote.png"
+    },
+    {
+      "category": "items",
+      "section": "medicine",
+      "name": "Potion",
+      "data": {
+        "location": "Marfeney Lake"
+      },
+      "image": "/pictures/items/potion.png"
+    },
+    {
+      "category": "items",
+      "section": "medicine",
+      "name": "Ether",
+      "data": {
+        "location": "Inhore Woods"
+      },
+      "image": "/pictures/items/ether.png"
+    },
+    {
+      "category": "items",
+      "section": "medicine",
+      "name": "Potion",
+      "data": {
+        "location": "Inhore Woods"
+      },
+      "image": "/pictures/items/potion.png"
+    },
+    {
+      "category": "items",
+      "section": "medicine",
+      "name": "Super Potion",
+      "data": {
+        "location": "Route 404"
+      },
+      "image": "/pictures/items/super-potion.png"
+    },
+    {
+      "category": "items",
+      "section": "medicine",
+      "name": "Revive",
+      "data": {
+        "location": "Route 405"
+      },
+      "image": "/pictures/items/revive.png"
+    },
+    {
+      "category": "items",
+      "section": "medicine",
+      "name": "Antidote",
+      "data": {
+        "location": "Route 406"
+      },
+      "image": "/pictures/items/antidote.png"
+    },
+    {
+      "category": "items",
+      "section": "medicine",
+      "name": "Super Potion",
+      "data": {
+        "location": "Route 406"
+      },
+      "image": "/pictures/items/super-potion.png"
+    },
+    {
+      "category": "items",
+      "section": "medicine",
+      "name": "Antidote",
+      "data": {
+        "location": "Foongus Swamp"
+      },
+      "image": "/pictures/items/antidote.png"
+    },
+    {
+      "category": "items",
+      "section": "medicine",
+      "name": "Potion",
+      "data": {
+        "location": "Foongus Swamp"
+      },
+      "image": "/pictures/items/potion.png"
+    },
+    {
+      "category": "items",
+      "section": "medicine",
+      "name": "Full Heal",
+      "data": {
+        "location": "Foongus Swamp"
+      },
+      "image": "/pictures/items/full-heal.png"
+    },
+    {
+      "category": "items",
+      "section": "medicine",
+      "name": "Revive",
+      "data": {
+        "location": "Foongus Swamp"
+      },
+      "image": "/pictures/items/revive.png"
+    },
+    {
+      "category": "items",
+      "section": "medicine",
+      "name": "Big Root",
+      "data": {
+        "location": "Route 407"
+      },
+      "image": "/pictures/items/big-root.png"
+    },
+    {
+      "category": "items",
+      "section": "medicine",
+      "name": "Carbos",
+      "data": {
+        "location": "Route 407"
+      },
+      "image": "/pictures/items/carbos.png"
+    },
+    {
+      "category": "items",
+      "section": "medicine",
+      "name": "Super Potion",
+      "data": {
+        "location": "Route 407"
+      },
+      "image": "/pictures/items/super-potion.png"
+    },
+    {
+      "category": "items",
+      "section": "medicine",
+      "name": "Elixir",
+      "data": {
+        "location": "Route 407"
+      },
+      "image": "/pictures/items/elixir.png"
+    },
+    {
+      "category": "items",
+      "section": "medicine",
+      "name": "Revive",
+      "data": {
+        "location": "Route 408"
+      },
+      "image": "/pictures/items/revive.png"
+    },
+    {
+      "category": "items",
+      "section": "medicine",
+      "name": "Ether",
+      "data": {
+        "location": "Panotem Islands"
+      },
+      "image": "/pictures/items/ether.png"
+    },
+    {
+      "category": "items",
+      "section": "medicine",
+      "name": "Revive",
+      "data": {
+        "location": "Nevada Forest / Panotem Islands"
+      },
+      "image": "/pictures/items/revive.png"
+    },
+    {
+      "category": "items",
+      "section": "medicine",
+      "name": "HP Up",
+      "data": {
+        "location": "Route 409"
+      },
+      "image": "/pictures/items/hp-up.png"
+    },
+    {
+      "category": "items",
+      "section": "medicine",
+      "name": "Full Heal",
+      "data": {
+        "location": "Route 409"
+      },
+      "image": "/pictures/items/full-heal.png"
+    },
+    {
+      "category": "items",
+      "section": "medicine",
+      "name": "Super Potion",
+      "data": {
+        "location": "Route 410"
+      },
+      "image": "/pictures/items/super-potion.png"
+    },
+    {
+      "category": "items",
+      "section": "medicine",
+      "name": "Ether",
+      "data": {
+        "location": "Route 410"
+      },
+      "image": "/pictures/items/ether.png"
+    },
+    {
+      "category": "items",
+      "section": "medicine",
+      "name": "Max Revive",
+      "data": {
+        "location": "Mt. Ice Storm"
+      },
+      "image": "/pictures/items/max-revive.png"
+    },
+    {
+      "category": "items",
+      "section": "medicine",
+      "name": "Super Potion",
+      "data": {
+        "location": "Mt. Ice Storm"
+      },
+      "image": "/pictures/items/super-potion.png"
+    },
+    {
+      "category": "items",
+      "section": "medicine",
+      "name": "Protein",
+      "data": {
+        "location": "Mt. Ice Storm"
+      },
+      "image": "/pictures/items/protein.png"
+    },
+    {
+      "category": "items",
+      "section": "medicine",
+      "name": "Full Heal",
+      "data": {
+        "location": "Mt. Ice Storm"
+      },
+      "image": "/pictures/items/full-heal.png"
+    },
+    {
+      "category": "items",
+      "section": "medicine",
+      "name": "Awakening",
+      "data": {
+        "location": "Route 410"
+      },
+      "image": "/pictures/items/awakening.png"
+    },
+    {
+      "category": "items",
+      "section": "medicine",
+      "name": "Awakening",
+      "data": {
+        "location": "Route 410"
+      },
+      "image": "/pictures/items/awakening.png"
+    },
+    {
+      "category": "items",
+      "section": "medicine",
+      "name": "Revive",
+      "data": {
+        "location": "Darkdusk Bane"
+      },
+      "image": "/pictures/items/revive.png"
+    },
+    {
+      "category": "items",
+      "section": "medicine",
+      "name": "Max Ether",
+      "data": {
+        "location": "Darkdusk Woods"
+      },
+      "image": "/pictures/items/max-ether.png"
+    },
+    {
+      "category": "items",
+      "section": "medicine",
+      "name": "Super Potion",
+      "data": {
+        "location": "Darkdusk Woods"
+      },
+      "image": "/pictures/items/super-potion.png"
+    },
+    {
+      "category": "items",
+      "section": "medicine",
+      "name": "Antidote",
+      "data": {
+        "location": "Darkdusk Woods"
+      },
+      "image": "/pictures/items/antidote.png"
+    },
+    {
+      "category": "items",
+      "section": "medicine",
+      "name": "Ether",
+      "data": {
+        "location": "Mt. Shuem"
+      },
+      "image": "/pictures/items/ether.png"
+    },
+    {
+      "category": "items",
+      "section": "medicine",
+      "name": "Calcium",
+      "data": {
+        "location": "Mt. Shuem"
+      },
+      "image": "/pictures/items/calcium.png"
+    },
+    {
+      "category": "items",
+      "section": "medicine",
+      "name": "Revive",
+      "data": {
+        "location": "Mt. Shuem"
+      },
+      "image": "/pictures/items/revive.png"
+    },
+    {
+      "category": "items",
+      "section": "medicine",
+      "name": "Hyper Potion",
+      "data": {
+        "location": "Mt. Shuem"
+      },
+      "image": "/pictures/items/hyper-potion.png"
+    },
+    {
+      "category": "items",
+      "section": "medicine",
+      "name": "Paralyze Heal",
+      "data": {
+        "location": "Gromet City"
+      },
+      "image": "/pictures/items/paralyze-heal.png"
+    },
+    {
+      "category": "items",
+      "section": "medicine",
+      "name": "Ether",
+      "data": {
+        "location": "Pantem Cave"
+      },
+      "image": "/pictures/items/ether.png"
+    },
+    {
+      "category": "items",
+      "section": "medicine",
+      "name": "Max Revive",
+      "data": {
+        "location": "Pantem Cave"
+      },
+      "image": "/pictures/items/max-revive.png"
+    },
+    {
+      "category": "items",
+      "section": "medicine",
+      "name": "Max Revive",
+      "data": {
+        "location": "Gromet Mine"
+      },
+      "image": "/pictures/items/max-revive.png"
+    },
+    {
+      "category": "items",
+      "section": "medicine",
+      "name": "Max Potion",
+      "data": {
+        "location": "Gromet Mine — Minecart (11100)"
+      },
+      "image": "/pictures/items/max-potion.png"
+    },
+    {
+      "category": "items",
+      "section": "medicine",
+      "name": "Max Revive",
+      "data": {
+        "location": "Gromet Mine — Minecart (11100)"
+      },
+      "image": "/pictures/items/max-revive.png"
+    },
+    {
+      "category": "items",
+      "section": "medicine",
+      "name": "Hyper Potion",
+      "data": {
+        "location": "Gromet Mine — Minecart (11100)"
+      },
+      "image": "/pictures/items/hyper-potion.png"
+    },
+    {
+      "category": "items",
+      "section": "medicine",
+      "name": "Full Heal",
+      "data": {
+        "location": "Gromet Mine — Minecart, Hold B (11100)"
+      },
+      "image": "/pictures/items/full-heal.png"
+    },
+    {
+      "category": "items",
+      "section": "medicine",
+      "name": "Super Potion",
+      "data": {
+        "location": "Gromet Mine — Minecart, Hold B (11100)"
+      },
+      "image": "/pictures/items/super-potion.png"
+    },
+    {
+      "category": "items",
+      "section": "medicine",
+      "name": "Zinc",
+      "data": {
+        "location": "Gromet Mine — Minecart, Hold B (11100)"
+      },
+      "image": "/pictures/items/zinc.png"
+    },
+    {
+      "category": "items",
+      "section": "poke-balls",
+      "name": "Heal Ball",
+      "data": {
+        "location": "Pokémon Corp / Central City"
+      },
+      "image": "/pictures/items/heal-ball.png"
+    },
+    {
+      "category": "items",
+      "section": "poke-balls",
+      "name": "Ultra Ball",
+      "data": {
+        "location": "Old Man at bench (after Pokédex) / Central City"
+      },
+      "image": "/pictures/items/ultra-ball.png"
+    },
+    {
+      "category": "items",
+      "section": "poke-balls",
+      "name": "Nest Ball",
+      "data": {
+        "location": "Route 402"
+      },
+      "image": "/pictures/items/nest-ball.png"
+    },
+    {
+      "category": "items",
+      "section": "poke-balls",
+      "name": "Great Ball",
+      "data": {
+        "location": "Route 402"
+      },
+      "image": "/pictures/items/great-ball.png"
+    },
+    {
+      "category": "items",
+      "section": "poke-balls",
+      "name": "Poké Ball",
+      "data": {
+        "location": "Inhore Woods"
+      },
+      "image": "/pictures/items/poke-ball.png"
+    },
+    {
+      "category": "items",
+      "section": "poke-balls",
+      "name": "Great Ball",
+      "data": {
+        "location": "Route 405"
+      },
+      "image": "/pictures/items/great-ball.png"
+    },
+    {
+      "category": "items",
+      "section": "poke-balls",
+      "name": "Dusk Ball",
+      "data": {
+        "location": "Foongus Swamp"
+      },
+      "image": "/pictures/items/dusk-ball.png"
+    },
+    {
+      "category": "items",
+      "section": "poke-balls",
+      "name": "Ultra Ball",
+      "data": {
+        "location": "Foongus Swamp"
+      },
+      "image": "/pictures/items/ultra-ball.png"
+    },
+    {
+      "category": "items",
+      "section": "poke-balls",
+      "name": "Great Ball",
+      "data": {
+        "location": "Foongus Swamp"
+      },
+      "image": "/pictures/items/great-ball.png"
+    },
+    {
+      "category": "items",
+      "section": "poke-balls",
+      "name": "Net Ball",
+      "data": {
+        "location": "Route 407"
+      },
+      "image": "/pictures/items/net-ball.png"
+    },
+    {
+      "category": "items",
+      "section": "poke-balls",
+      "name": "Timer Ball",
+      "data": {
+        "location": "Route 408"
+      },
+      "image": "/pictures/items/timer-ball.png"
+    },
+    {
+      "category": "items",
+      "section": "poke-balls",
+      "name": "Ultra Ball",
+      "data": {
+        "location": "Panotem Islands"
+      },
+      "image": "/pictures/items/ultra-ball.png"
+    },
+    {
+      "category": "items",
+      "section": "poke-balls",
+      "name": "Poké Ball",
+      "data": {
+        "location": "Route 409"
+      },
+      "image": "/pictures/items/poke-ball.png"
+    },
+    {
+      "category": "items",
+      "section": "poke-balls",
+      "name": "Ultra Ball",
+      "data": {
+        "location": "Route 409"
+      },
+      "image": "/pictures/items/ultra-ball.png"
+    },
+    {
+      "category": "items",
+      "section": "poke-balls",
+      "name": "Great Ball",
+      "data": {
+        "location": "Mt. Ice Storm"
+      },
+      "image": "/pictures/items/great-ball.png"
+    },
+    {
+      "category": "items",
+      "section": "poke-balls",
+      "name": "Ultra Ball",
+      "data": {
+        "location": "Mt. Ice Storm"
+      },
+      "image": "/pictures/items/ultra-ball.png"
+    },
+    {
+      "category": "items",
+      "section": "poke-balls",
+      "name": "Dusk Ball",
+      "data": {
+        "location": "Darkdusk Woods"
+      },
+      "image": "/pictures/items/dusk-ball.png"
+    },
+    {
+      "category": "items",
+      "section": "poke-balls",
+      "name": "Nest Ball",
+      "data": {
+        "location": "Route 411"
+      },
+      "image": "/pictures/items/nest-ball.png"
+    },
+    {
+      "category": "items",
+      "section": "poke-balls",
+      "name": "Dive Ball",
+      "data": {
+        "location": "Seanport City (Surf)"
+      },
+      "image": "/pictures/items/dive-ball.png"
+    },
+    {
+      "category": "items",
+      "section": "poke-balls",
+      "name": "Great Ball",
+      "data": {
+        "location": "Mt. Shuem"
+      },
+      "image": "/pictures/items/great-ball.png"
+    },
+    {
+      "category": "items",
+      "section": "poke-balls",
+      "name": "Ultra Ball",
+      "data": {
+        "location": "Mt. Shuem"
+      },
+      "image": "/pictures/items/ultra-ball.png"
+    },
+    {
+      "category": "items",
+      "section": "poke-balls",
+      "name": "Repeat Ball",
+      "data": {
+        "location": "Route 412"
+      },
+      "image": "/pictures/items/repeat-ball.png"
+    },
+    {
+      "category": "items",
+      "section": "poke-balls",
+      "name": "Love Ball",
+      "data": {
+        "location": "Ace Trainer / Gromet City"
+      },
+      "image": "/pictures/items/love-ball.png"
+    },
+    {
+      "category": "items",
+      "section": "tms",
+      "name": "Bulk Up",
+      "data": {
+        "tm": "TM08",
+        "location": "Karate Man / Central City"
+      },
+      "image": "/pictures/items/tm-normal.png"
+    },
+    {
+      "category": "items",
+      "section": "tms",
+      "name": "Light Screen",
+      "data": {
+        "tm": "TM16",
+        "location": "Prize Exchange Center — ¥6000 / Central City"
+      },
+      "image": "/pictures/items/tm-normal.png"
+    },
+    {
+      "category": "items",
+      "section": "tms",
+      "name": "Reflect",
+      "data": {
+        "tm": "TM27",
+        "location": "Prize Exchange Center — ¥8000 / Central City"
+      },
+      "image": "/pictures/items/tm-normal.png"
+    },
+    {
+      "category": "items",
+      "section": "tms",
+      "name": "Double Team",
+      "data": {
+        "tm": "TM32",
+        "location": "Prize Exchange Center — ¥4000 / Central City"
+      },
+      "image": "/pictures/items/tm-normal.png"
+    },
+    {
+      "category": "items",
+      "section": "tms",
+      "name": "Endure",
+      "data": {
+        "tm": "TM58",
+        "location": "Prize Exchange Center — ¥2000 / Central City"
+      },
+      "image": "/pictures/items/tm-normal.png"
+    },
+    {
+      "category": "items",
+      "section": "tms",
+      "name": "Bullet Seed",
+      "data": {
+        "tm": "TM09",
+        "location": "Old Lady's House / Inhore City"
+      },
+      "image": "/pictures/items/tm-normal.png"
+    },
+    {
+      "category": "items",
+      "section": "tms",
+      "name": "Rock Polish",
+      "data": {
+        "tm": "TM69",
+        "location": "Scientist at Inhore University / Inhore City"
+      },
+      "image": "/pictures/items/tm-normal.png"
+    },
+    {
+      "category": "items",
+      "section": "tms",
+      "name": "Natural Gift",
+      "data": {
+        "tm": "TM83",
+        "location": "Route 404"
+      },
+      "image": "/pictures/items/tm-normal.png"
+    },
+    {
+      "category": "items",
+      "section": "tms",
+      "name": "Attract",
+      "data": {
+        "tm": "TM45",
+        "location": "Old Man at Ranch / Route 405"
+      },
+      "image": "/pictures/items/tm-normal.png"
+    },
+    {
+      "category": "items",
+      "section": "tms",
+      "name": "Embargo",
+      "data": {
+        "tm": "TM63",
+        "location": "Route 406"
+      },
+      "image": "/pictures/items/tm-normal.png"
+    },
+    {
+      "category": "items",
+      "section": "tms",
+      "name": "Rain Dance",
+      "data": {
+        "tm": "TM18",
+        "location": "Foongus Swamp"
+      },
+      "image": "/pictures/items/tm-normal.png"
+    },
+    {
+      "category": "items",
+      "section": "tms",
+      "name": "Aerial Ace",
+      "data": {
+        "tm": "TM40",
+        "location": "Boy in Shorts House / Bramboach Town"
+      },
+      "image": "/pictures/items/tm-normal.png"
+    },
+    {
+      "category": "items",
+      "section": "tms",
+      "name": "Facade",
+      "data": {
+        "tm": "TM42",
+        "location": "Painter / National Park"
+      },
+      "image": "/pictures/items/tm-normal.png",
+      "location_image": "/pictures/Tm/TM42FacadeNationalPark.jpg"
+    },
+    {
+      "category": "items",
+      "section": "tms",
+      "name": "Hail",
+      "data": {
+        "tm": "TM07",
+        "location": "Mt. Ice Storm"
+      },
+      "image": "/pictures/items/tm-normal.png",
+      "location_image": "/pictures/Tm/TM07HailIcestormMt.jpg"
+    },
+    {
+      "category": "items",
+      "section": "tms",
+      "name": "Grass Knot",
+      "data": {
+        "tm": "TM86",
+        "location": "Route 410 via Mt. Ice Storm"
+      },
+      "image": "/pictures/items/tm-normal.png",
+      "location_image": "/pictures/Tm/TM86GrassKnotRoute410.jpg"
+    },
+    {
+      "category": "items",
+      "section": "tms",
+      "name": "X-Scissor",
+      "data": {
+        "tm": "TM81",
+        "location": "Gentleman with Heracross / Darkdusk Bridge"
+      },
+      "image": "/pictures/items/tm-normal.png"
+    },
+    {
+      "category": "items",
+      "section": "tms",
+      "name": "Shadow Claw",
+      "data": {
+        "tm": "TM65",
+        "location": "Darkdusk Woods near the Poison Lake"
+      },
+      "image": "/pictures/items/tm-normal.png",
+      "location_image": "/pictures/Tm/TM65ShadowClawDarduskForest.jpg"
+    },
+    {
+      "category": "items",
+      "section": "tms",
+      "name": "Flamethrower",
+      "data": {
+        "tm": "TM35",
+        "location": "Mt. Shuem"
+      },
+      "image": "/pictures/items/tm-normal.png",
+      "location_image": "/pictures/Tm/TM35FlameThrowerMtShuem.jpeg"
+    },
+    {
+      "category": "items",
+      "section": "tms",
+      "name": "Rock Tomb",
+      "data": {
+        "tm": "TM39",
+        "location": "Hiker near cave exit / Mt. Shuem"
+      },
+      "image": "/pictures/items/tm-normal.png",
+      "location_image": "/pictures/Tm/TM39RockTombMtShuem.jpeg"
+    },
+    {
+      "category": "items",
+      "section": "tms",
+      "name": "Sandstorm",
+      "data": {
+        "tm": "TM37",
+        "location": "Route 412"
+      },
+      "image": "/pictures/items/tm-normal.png",
+      "location_image": "/pictures/Tm/TM37SandstormRoute412.jpeg"
+    },
+    {
+      "category": "items",
+      "section": "tms",
+      "name": "Roar",
+      "data": {
+        "tm": "TM05",
+        "location": "Ace Trainer (F) / Route 412"
+      },
+      "image": "/pictures/items/tm-normal.png",
+      "location_image": "/pictures/Tm/TM05RoarRoute412.jpeg"
+    },
+    {
+      "category": "items",
+      "section": "tms",
+      "name": "Flash",
+      "data": {
+        "tm": "TM70",
+        "location": "Karate Guy's House / Gromet City"
+      },
+      "image": "/pictures/items/tm-normal.png",
+      "location_image": "/pictures/Tm/TM70FlashGromentCIty.jpeg"
+    },
+    {
+      "category": "items",
+      "section": "tms",
+      "name": "Rock Slide",
+      "data": {
+        "tm": "TM80",
+        "location": "Pantem Cave"
+      },
+      "image": "/pictures/items/tm-normal.png",
+      "location_image": "/pictures/Tm/TM80RockSlidePantemCave.jpeg"
+    },
+    {
+      "category": "items",
+      "section": "tms",
+      "name": "Secret Power",
+      "data": {
+        "tm": "TM43",
+        "location": "Sun Ruins"
+      },
+      "image": "/pictures/items/tm-normal.png",
+      "location_image": "/pictures/Tm/TM43SecretPowerSunPalace.jpeg"
+    },
+    {
+      "category": "items",
+      "section": "hms",
+      "name": "Rock Smash",
+      "data": {
+        "hm": "HM06",
+        "location": "Prof. Juniper at Inhore University / Inhore City"
+      },
+      "image": "/pictures/items/tm-normal.png"
+    },
+    {
+      "category": "items",
+      "section": "hms",
+      "name": "Cut",
+      "data": {
+        "hm": "HM01",
+        "location": "Girl on Apartment 3rd floor / Esmerald City (catch her Shroomish in Foongus Swamp)"
+      },
+      "image": "/pictures/items/tm-normal.png"
+    },
+    {
+      "category": "items",
+      "section": "hms",
+      "name": "Surf",
+      "data": {
+        "hm": "HM03",
+        "location": "Kenta (Gold) / Darkdusk Woods"
+      },
+      "image": "/pictures/items/tm-normal.png"
+    },
+    {
+      "category": "items",
+      "section": "hms",
+      "name": "Fly",
+      "data": {
+        "hm": "HM02",
+        "location": "Gromet City Gym Leader at the Museum after defeating him / Gromet City"
+      },
+      "image": "/pictures/items/tm-normal.png"
+    },
+    {
+      "category": "items",
+      "section": "hms",
+      "name": "Strength",
+      "data": {
+        "hm": "HM04",
+        "location": "Prof. Juniper / Kenta / Champion depending on your end-game choice — Your House, Yellow Town"
+      },
+      "image": "/pictures/items/tm-normal.png"
+    },
+    {
+      "category": "items",
+      "section": "berries",
+      "name": "Route 401 — Berry Tree",
+      "data": {
+        "berries": "Chesto ×2, Oran"
+      }
+    },
+    {
+      "category": "items",
+      "section": "berries",
+      "name": "Central Town — Apartment Rooftop",
+      "data": {
+        "berries": "Chesto, Oran, Razz"
+      }
+    },
+    {
+      "category": "items",
+      "section": "berries",
+      "name": "Route 402 — Berry Tree",
+      "data": {
+        "berries": "Chesto, Oran, Pecha, Pomeg"
+      }
+    },
+    {
+      "category": "items",
+      "section": "berries",
+      "name": "Inhore Woods — Berry Tree",
+      "data": {
+        "berries": "Rawst, Belue, Wepear"
+      }
+    },
+    {
+      "category": "items",
+      "section": "berries",
+      "name": "Mass Spring Cave / Route 404 — Berry Tree",
+      "data": {
+        "berries": "Grepa, Haban, Belue"
+      }
+    },
+    {
+      "category": "items",
+      "section": "berries",
+      "name": "Route 405 — Lady's House",
+      "data": {
+        "berries": "Wiki"
+      }
+    },
+    {
+      "category": "items",
+      "section": "berries",
+      "name": "Route 405 — Berry Farm",
+      "data": {
+        "berries": "Cornn, Persim, Leppa"
+      }
+    },
+    {
+      "category": "items",
+      "section": "berries",
+      "name": "Route 406 — Berry Tree",
+      "data": {
+        "berries": "Qualot, Hondew, Wiki"
+      }
+    },
+    {
+      "category": "items",
+      "section": "berries",
+      "name": "Route 407 — Berry Tree",
+      "data": {
+        "berries": "Nomel, Kelpsy, Spelon, Custap"
+      }
+    },
+    {
+      "category": "items",
+      "section": "berries",
+      "name": "Route 408 — Berry Tree",
+      "data": {
+        "berries": "Occa, Apicot, Watmel, Rabuta"
+      }
+    },
+    {
+      "category": "items",
+      "section": "berries",
+      "name": "Panotem Islands — Berry Tree",
+      "data": {
+        "berries": "Aspear, Nanab"
+      }
+    },
+    {
+      "category": "items",
+      "section": "berries",
+      "name": "Route 409 — Berry Tree",
+      "data": {
+        "berries": "Passho, Bluk, Coba"
+      }
+    },
+    {
+      "category": "items",
+      "section": "berries",
+      "name": "Route 409 — Berry Tree (2)",
+      "data": {
+        "berries": "Tomato, Pinap ×2, Aguav"
+      }
+    },
+    {
+      "category": "items",
+      "section": "berries",
+      "name": "Route 410 — Berry Tree",
+      "data": {
+        "berries": "Babiri, Chople, Lapapa"
+      }
+    },
+    {
+      "category": "items",
+      "section": "berries",
+      "name": "Darkdusk Woods — near Poison Lake",
+      "data": {
+        "berries": "Sitrus, Micle, Kebia, Magost"
+      }
+    },
+    {
+      "category": "items",
+      "section": "berries",
+      "name": "Route 411 — Berry Tree",
+      "data": {
+        "berries": "Durin, Salac, Pecha, Kasib"
+      }
+    },
+    {
+      "category": "items",
+      "section": "berries",
+      "name": "Enemy Town — Berry Tree",
+      "data": {
+        "berries": "Kee ×2"
+      }
+    },
+    {
+      "category": "items",
+      "section": "berries",
+      "name": "Route 412 — Berry Tree",
+      "data": {
+        "berries": "Sitrus, Ganlon"
+      }
+    },
+    {
+      "category": "items",
+      "section": "battle-items",
+      "name": "X Attack",
+      "data": {
+        "location": "Route 405"
+      },
+      "image": "/pictures/items/x-attack.png"
+    },
+    {
+      "category": "items",
+      "section": "battle-items",
+      "name": "X Speed",
+      "data": {
+        "location": "Foongus Swamp"
+      },
+      "image": "/pictures/items/x-speed.png"
+    },
+    {
+      "category": "items",
+      "section": "battle-items",
+      "name": "X Defend",
+      "data": {
+        "location": "Route 409"
+      },
+      "image": "/pictures/items/x-defense.png"
+    },
+    {
+      "category": "items",
+      "section": "battle-items",
+      "name": "Poké Doll",
+      "data": {
+        "location": "Mt. Ice Storm via Waterfall Route"
+      },
+      "image": "/pictures/items/poke-doll.png"
+    },
+    {
+      "category": "items",
+      "section": "battle-items",
+      "name": "X Accuracy",
+      "data": {
+        "location": "Mt. Shuem"
+      },
+      "image": "/pictures/items/x-accuracy.png"
+    },
+    {
+      "category": "items",
+      "section": "battle-items",
+      "name": "Guard Spec.",
+      "data": {
+        "location": "Route 412"
+      },
+      "image": "/pictures/items/guard-spec.png"
+    },
+    {
+      "category": "items",
+      "section": "key-items",
+      "name": "Running Shoes",
+      "data": {
+        "location": "Mom / Yellow Town"
+      }
+    },
+    {
+      "category": "items",
+      "section": "key-items",
+      "name": "Bicycle",
+      "data": {
+        "location": "Mom / Yellow Town (after Pokédex)"
+      },
+      "image": "/pictures/items/bicycle.png"
+    },
+    {
+      "category": "items",
+      "section": "key-items",
+      "name": "Griseous Stone",
+      "data": {
+        "location": "Main story event / Central City"
+      }
+    },
+    {
+      "category": "items",
+      "section": "key-items",
+      "name": "Level A Pass",
+      "data": {
+        "location": "Prof. Oak at the TV Station / Central City"
+      }
+    },
+    {
+      "category": "items",
+      "section": "key-items",
+      "name": "Coin Case",
+      "data": {
+        "location": "Clown's Home / Central City"
+      },
+      "image": "/pictures/items/coin-case.png"
+    },
+    {
+      "category": "items",
+      "section": "key-items",
+      "name": "Dex Radar",
+      "data": {
+        "location": "Prof. Birch on getting the 1st Badge / Inhore City"
+      }
+    },
+    {
+      "category": "items",
+      "section": "key-items",
+      "name": "Old Rod",
+      "data": {
+        "location": "Fisherman's House / Panotem Islands"
+      },
+      "image": "/pictures/items/old-rod.png"
+    },
+    {
+      "category": "items",
+      "section": "key-items",
+      "name": "Good Rod",
+      "data": {
+        "location": "Fishing Guru's House / Route 408 (Surf)"
+      },
+      "image": "/pictures/items/good-rod.png"
+    },
+    {
+      "category": "items",
+      "section": "key-items",
+      "name": "Dungeon Key",
+      "data": {
+        "location": "One of Ash's pots in Shadow Tower / Darkdusk City"
+      },
+      "location_image": "/pictures/SpecialItem/DungeonKeyDarduskTower.jpeg"
+    },
+    {
+      "category": "items",
+      "section": "key-items",
+      "name": "Mining Kit",
+      "data": {
+        "location": "Museum Manager / Gromet City (post-game)"
+      }
+    },
+    {
+      "category": "items",
+      "section": "key-items",
+      "name": "Lustrous Stone",
+      "data": {
+        "location": "Gromet Mine — Minecart (01111)"
+      },
+      "location_image": "/pictures/SpecialItem/LustrousStoneMines.jpeg"
+    },
+    {
+      "category": "world",
+      "section": "locations",
+      "name": "Yellow Town",
+      "data": {
+        "kind": "Starting Town",
+        "notes": "Prof. Jasmine's Lab, Running Shoes, Bicycle, Quick Claw."
+      }
+    },
+    {
+      "category": "world",
+      "section": "locations",
+      "name": "Central City",
+      "data": {
+        "kind": "City",
+        "notes": "Prize Exchange Center, Safari Zone, casino, and the Pokémon Corp."
+      }
+    },
+    {
+      "category": "world",
+      "section": "locations",
+      "name": "Inhore City",
+      "data": {
+        "kind": "City",
+        "notes": "Inhore University with Prof. Birch and Prof. Juniper; Hoenn starters."
+      }
+    },
+    {
+      "category": "world",
+      "section": "locations",
+      "name": "Esmerald City",
+      "data": {
+        "kind": "City",
+        "notes": "Apartment trades (Karrablast), Charcoal, and HM01 Cut."
+      }
+    },
+    {
+      "category": "world",
+      "section": "locations",
+      "name": "Darkdusk City",
+      "data": {
+        "kind": "City",
+        "notes": "Shadow Tower, Darkdusk Cave, and several evolution stones."
+      }
+    },
+    {
+      "category": "world",
+      "section": "locations",
+      "name": "Seanport City",
+      "data": {
+        "kind": "City",
+        "notes": "Special Mart for medals; Dive Ball and Dragon Scale by Surf."
+      }
+    },
+    {
+      "category": "world",
+      "section": "locations",
+      "name": "Gromet City",
+      "data": {
+        "kind": "City",
+        "notes": "Prof. Rowan's House (Sinnoh starters), Museum, and Gromet Mine."
+      }
+    },
+    {
+      "category": "world",
+      "section": "locations",
+      "name": "Pantem Town",
+      "data": {
+        "kind": "Town",
+        "notes": "Prof. Juniper hands over the Exp. Share."
+      }
+    },
+    {
+      "category": "world",
+      "section": "locations",
+      "name": "Bramboach Town",
+      "data": {
+        "kind": "Town",
+        "notes": "TM40 Aerial Ace in the Boy-in-Shorts house."
+      }
+    },
+    {
+      "category": "world",
+      "section": "locations",
+      "name": "Panotem Islands",
+      "data": {
+        "kind": "Area",
+        "notes": "Icy Rock, Hard Stone, and Deep Sea Tooth by Surf."
+      }
+    },
+    {
+      "category": "world",
+      "section": "locations",
+      "name": "Mt. Ice Storm",
+      "data": {
+        "kind": "Dungeon",
+        "notes": "Shiny Stone, Fire Stone, Dowsing medal, and a Waterfall route."
+      }
+    },
+    {
+      "category": "world",
+      "section": "locations",
+      "name": "Mt. Shuem",
+      "data": {
+        "kind": "Dungeon",
+        "notes": "Flamethrower, Drilbur trade, and vitamins."
+      }
+    },
+    {
+      "category": "world",
+      "section": "locations",
+      "name": "Foongus Swamp",
+      "data": {
+        "kind": "Area",
+        "notes": "Shroomish for HM01, plus Nugget and several balls."
+      }
+    },
+    {
+      "category": "world",
+      "section": "locations",
+      "name": "Sun Ruins",
+      "data": {
+        "kind": "Dungeon",
+        "notes": "King's Rock, TM43 Secret Power, and the Sun Palace gear puzzle."
+      }
+    },
+    {
+      "category": "world",
+      "section": "locations",
+      "name": "Gromet Mine",
+      "data": {
+        "kind": "Dungeon",
+        "notes": "Minecart combination puzzle guarding stones and rare items."
+      }
+    },
+    {
+      "category": "world",
+      "section": "routes",
+      "name": "Route 401",
+      "data": {
+        "notes": "Potion, Antidote, and a Chesto/Oran berry tree."
+      }
+    },
+    {
+      "category": "world",
+      "section": "routes",
+      "name": "Route 402",
+      "data": {
+        "notes": "Repel, Silver Powder, Nest Ball, Great Ball, and a berry tree."
+      }
+    },
+    {
+      "category": "world",
+      "section": "routes",
+      "name": "Route 403",
+      "data": {
+        "notes": "Antidote medal behind Cut."
+      }
+    },
+    {
+      "category": "world",
+      "section": "routes",
+      "name": "Route 404",
+      "data": {
+        "notes": "Stardust, Super Potion, TM83, Exp For All medal, Mass Spring Cave."
+      }
+    },
+    {
+      "category": "world",
+      "section": "routes",
+      "name": "Route 405",
+      "data": {
+        "notes": "Great Ball, Revive, X Attack, TM45 Attract, Happy Heart medal, Berry Farm."
+      }
+    },
+    {
+      "category": "world",
+      "section": "routes",
+      "name": "Route 406",
+      "data": {
+        "notes": "Leaf Stone, Lucky Egg, TM63 Embargo, and a berry tree."
+      }
+    },
+    {
+      "category": "world",
+      "section": "routes",
+      "name": "Route 407",
+      "data": {
+        "notes": "Leftovers, Net Ball, Big Root, Carbos, Elixir, and berries."
+      }
+    },
+    {
+      "category": "world",
+      "section": "routes",
+      "name": "Route 408",
+      "data": {
+        "notes": "Timer Ball, Deep Sea Scale (Surf), Good Rod, and Stealth medal."
+      }
+    },
+    {
+      "category": "world",
+      "section": "routes",
+      "name": "Route 409",
+      "data": {
+        "notes": "HP Up, X Defend, Rare Candy (Surf), balls, and two berry trees."
+      }
+    },
+    {
+      "category": "world",
+      "section": "routes",
+      "name": "Route 410",
+      "data": {
+        "notes": "Super Potion, Ether, Awakening ×2, TM86 Grass Knot via Mt. Ice Storm."
+      }
+    },
+    {
+      "category": "world",
+      "section": "routes",
+      "name": "Route 411",
+      "data": {
+        "notes": "Super Repel, Nest Ball, and a berry tree."
+      }
+    },
+    {
+      "category": "world",
+      "section": "routes",
+      "name": "Route 412",
+      "data": {
+        "notes": "Thick Club, Repeat Ball, Guard Spec., TM37 Sandstorm, TM05 Roar."
+      }
+    },
+    {
+      "category": "reference",
+      "section": "medals",
+      "name": "Money",
+      "data": {
+        "source": "Prize Exchange Center — 30000 coins / Central City"
+      }
+    },
+    {
+      "category": "reference",
+      "section": "medals",
+      "name": "Experience",
+      "data": {
+        "source": "Prize Exchange Center — 30000 coins / Central City"
+      }
+    },
+    {
+      "category": "reference",
+      "section": "medals",
+      "name": "Effort",
+      "data": {
+        "source": "Prize Exchange Center — 30000 coins / Central City"
+      }
+    },
+    {
+      "category": "reference",
+      "section": "medals",
+      "name": "Friendship",
+      "data": {
+        "source": "Prize Exchange Center — 30000 coins / Central City"
+      }
+    },
+    {
+      "category": "reference",
+      "section": "medals",
+      "name": "Infestation",
+      "data": {
+        "source": "Prof. Oak after completing the Pokédex"
+      }
+    },
+    {
+      "category": "reference",
+      "section": "medals",
+      "name": "Fog Lamp",
+      "data": {
+        "source": "Marfeney Lake (Rock Smash)"
+      },
+      "image": "",
+      "location_image": "/pictures/Medals/FogLampMarphenyLake.jpg"
+    },
+    {
+      "category": "reference",
+      "section": "medals",
+      "name": "Antidote",
+      "data": {
+        "source": "Route 403 (Cut)"
+      },
+      "location_image": "/pictures/Medals/AntidoteMedalRoute403.jpeg",
+      "image": ""
+    },
+    {
+      "category": "reference",
+      "section": "medals",
+      "name": "Experienced",
+      "data": {
+        "source": "Prof. Juniper at Inhore University / Inhore City"
+      }
+    },
+    {
+      "category": "reference",
+      "section": "medals",
+      "name": "Normativity",
+      "data": {
+        "source": "Ace Trainer (F); show a Shiny Pokémon at Inhore University"
+      }
+    },
+    {
+      "category": "reference",
+      "section": "medals",
+      "name": "Exp For All",
+      "data": {
+        "source": "Mass Spring Cave / Route 404"
+      },
+      "location_image": "/pictures/Medals/ExpForAllMossSpring.jpeg",
+      "image": ""
+    },
+    {
+      "category": "reference",
+      "section": "medals",
+      "name": "Happy Heart",
+      "data": {
+        "source": "Berry Farm / Route 405"
+      }
+    },
+    {
+      "category": "reference",
+      "section": "medals",
+      "name": "Imprisonment",
+      "data": {
+        "source": "Boy at Rest Area / Route 406–407, Esmerald City passage"
+      }
+    },
+    {
+      "category": "reference",
+      "section": "medals",
+      "name": "Second Chance",
+      "data": {
+        "source": "Foongus Swamp"
+      }
+    },
+    {
+      "category": "reference",
+      "section": "medals",
+      "name": "Stealth",
+      "data": {
+        "source": "Route 408"
+      }
+    },
+    {
+      "category": "reference",
+      "section": "medals",
+      "name": "Farmer",
+      "data": {
+        "source": "Special Mart — ¥15000 / Seanport City"
+      }
+    },
+    {
+      "category": "reference",
+      "section": "medals",
+      "name": "Baby Sitter",
+      "data": {
+        "source": "Special Mart — ¥15000 / Seanport City"
+      }
+    },
+    {
+      "category": "reference",
+      "section": "medals",
+      "name": "Berrylogist",
+      "data": {
+        "source": "Special Mart — ¥15000 / Seanport City"
+      }
+    },
+    {
+      "category": "reference",
+      "section": "medals",
+      "name": "Incubator",
+      "data": {
+        "source": "Special Mart — ¥15000 / Seanport City"
+      }
+    },
+    {
+      "category": "reference",
+      "section": "medals",
+      "name": "Miner",
+      "data": {
+        "source": "Special Mart — ¥15000 / Seanport City"
+      }
+    },
+    {
+      "category": "reference",
+      "section": "medals",
+      "name": "Super Learning",
+      "data": {
+        "source": "Special Mart — ¥20000 / Seanport City"
+      }
+    },
+    {
+      "category": "reference",
+      "section": "medals",
+      "name": "Item Holder",
+      "data": {
+        "source": "Special Mart — ¥20000 / Seanport City"
+      }
+    },
+    {
+      "category": "reference",
+      "section": "medals",
+      "name": "Simplification",
+      "data": {
+        "source": "Special Mart — ¥50000 / Seanport City"
+      }
+    },
+    {
+      "category": "reference",
+      "section": "medals",
+      "name": "Complication",
+      "data": {
+        "source": "Special Mart — ¥50000 / Seanport City"
+      }
+    },
+    {
+      "category": "reference",
+      "section": "medals",
+      "name": "Treasure Hunter",
+      "data": {
+        "source": "Special Mart — ¥60000 / Seanport City"
+      }
+    },
+    {
+      "category": "reference",
+      "section": "medals",
+      "name": "Super Lure",
+      "data": {
+        "source": "Seanport City (Surf)"
+      }
+    },
+    {
+      "category": "reference",
+      "section": "medals",
+      "name": "Catch 'Em All",
+      "data": {
+        "source": "Scientist at the National Park & Route 410 passage"
+      },
+      "image": "",
+      "location_image": "/pictures/Medals/CatchEmAllNationalPark.jpg"
+    },
+    {
+      "category": "reference",
+      "section": "medals",
+      "name": "Dowsing",
+      "data": {
+        "source": "Mt. Ice Storm"
+      },
+      "location_image": "/pictures/Medals/DowsingMedalMtIceStorm.jpeg",
+      "image": ""
+    },
+    {
+      "category": "reference",
+      "section": "medals",
+      "name": "Phenomenal",
+      "data": {
+        "source": "Enemy Town"
+      },
+      "image": "",
+      "location_image": "/pictures/Medals/PhenomenaEnermyTown.jpeg"
+    },
+    {
+      "category": "reference",
+      "section": "medals",
+      "name": "Clairvoyance",
+      "data": {
+        "source": "Sun Ruins"
+      }
+    },
+    {
+      "category": "reference",
+      "section": "medals",
+      "name": "Fountain of Youth",
+      "data": {
+        "source": "Gromet Mine — Minecart, Hold B (11100)"
+      },
+      "location_image": "/pictures/Medals/FountainOfYouthMedalMine.jpeg",
+      "image": ""
+    },
+    {
+      "category": "reference",
+      "section": "medals",
+      "name": "Rock Breaker Feet",
+      "data": {
+        "source": "—"
+      }
+    },
+    {
+      "category": "items",
+      "section": "items",
+      "name": "Bright Powder",
+      "data": {
+        "location": "Route 412"
+      },
+      "image": "/pictures/items/bright-powder.png",
+      "location_image": "/pictures/ItemLocations/BrightPowderROute412.jpeg"
+    },
+    {
+      "category": "items",
+      "section": "items",
+      "name": "Everstone",
+      "data": {
+        "location": "Route 412"
+      },
+      "image": "/pictures/items/everstone.png",
+      "location_image": "/pictures/ItemLocations/EveStoneRoute412.jpeg"
+    },
+    {
+      "category": "items",
+      "section": "items",
+      "name": "Heart Scale",
+      "data": {
+        "location": "Gromet Mine"
+      },
+      "image": "/pictures/items/heart-scale.png",
+      "location_image": "/pictures/ItemLocations/HearScaleMines.jpeg"
+    },
+    {
+      "category": "items",
+      "section": "items",
+      "name": "Lax Incense",
+      "data": {
+        "location": "Darkdusk Tower (random incense daily)"
+      },
+      "image": "/pictures/items/lax-incense.png",
+      "location_image": "/pictures/ItemLocations/LaxIncenseDarduskTower.jpeg"
+    },
+    {
+      "category": "items",
+      "section": "items",
+      "name": "Life Orb",
+      "data": {
+        "location": "Gromet Mine"
+      },
+      "image": "/pictures/items/life-orb.png",
+      "location_image": "/pictures/ItemLocations/LifeOrbMines.jpeg"
+    },
+    {
+      "category": "items",
+      "section": "items",
+      "name": "Magmarizer",
+      "data": {
+        "location": "Mt. Shuem"
+      },
+      "image": "/pictures/items/magmarizer.png",
+      "location_image": "/pictures/ItemLocations/MagmarizerMt.Shuem.jpeg"
+    },
+    {
+      "category": "items",
+      "section": "items",
+      "name": "Sail / Jaw Fossil",
+      "data": {
+        "location": "Route 412"
+      },
+      "image": "",
+      "location_image": "/pictures/ItemLocations/SailOrJawFossilRoute412.jpeg"
+    },
+    {
+      "category": "items",
+      "section": "poke-balls",
+      "name": "Master Ball",
+      "data": {
+        "location": "Gromet Museum (post-game)"
+      },
+      "image": "/pictures/items/master-ball.png",
+      "location_image": "/pictures/ItemLocations/MasterBallGromentMuseum.jpeg"
+    },
+    {
+      "category": "items",
+      "section": "key-items",
+      "name": "Gracidea",
+      "data": {
+        "location": "Esmerald Botanical Garden"
+      },
+      "image": "/pictures/items/gracidea.png",
+      "location_image": "/pictures/SpecialItem/GracediaEsmeraldBotanicalGarden.jpeg"
+    },
+    {
+      "category": "items",
+      "section": "tms",
+      "name": "Earthquake",
+      "data": {
+        "tm": "TM26",
+        "location": "Gromet Gym"
+      },
+      "image": "/pictures/items/tm-normal.png",
+      "location_image": "/pictures/Tm/TM26EarthquakeGromentGym.jpeg"
+    },
+    {
+      "category": "items",
+      "section": "tms",
+      "name": "Shadow Ball",
+      "data": {
+        "tm": "TM30",
+        "location": "Darkdusk Gym"
+      },
+      "image": "/pictures/items/tm-normal.png",
+      "location_image": "/pictures/Tm/TM30ShadowBallDarduskGym.jpeg"
+    },
+    {
+      "category": "items",
+      "section": "tms",
+      "name": "Gyro Ball",
+      "data": {
+        "tm": "TM74",
+        "location": "Gromet Mine"
+      },
+      "image": "/pictures/items/tm-normal.png",
+      "location_image": "/pictures/Tm/TM74GyroBallMine.jpeg"
+    },
+    {
+      "category": "pokemon",
+      "section": "acquisition",
+      "name": "Volcarona (Egg)",
+      "data": {
+        "method": "Egg reward",
+        "location": "Sun Palace"
+      },
+      "image": "",
+      "location_image": "/pictures/Pokemons/VolcaronaEggSunPalace.jpeg"
+    },
+    {
+      "category": "pokemon",
+      "section": "acquisition",
+      "name": "Jirachi",
+      "data": {
+        "method": "Mystery Gift event",
+        "location": "Event Island"
+      },
+      "image": "",
+      "location_image": "/pictures/SpecialLocations/JirachiEventIslandMysteryGift.jpeg"
+    },
+    {
+      "category": "pokemon",
+      "section": "acquisition",
+      "name": "Feebas",
+      "data": {
+        "method": "Fishing",
+        "location": "Mt. Ice Storm"
+      },
+      "image": "",
+      "location_image": "/pictures/SpecialLocations/FeebasMtIceStorm.jpg"
+    },
+    {
+      "category": "items",
+      "section": "medicine",
+      "name": "Rare Candy",
+      "data": {
+        "location": "Marfeney Lake (Surf), Route 409 (Surf), Gromet Mine, Mt. Ice Storm, Route 403 (Cut)",
+        "spots": [
+          {
+            "at": "Marfeney Lake (Surf)",
+            "img": "/pictures/ItemLocations/RareCandiesLake.jpg"
+          },
+          {
+            "at": "Route 409 (Surf)",
+            "img": "/pictures/ItemLocations/RareCandiesRoute409.jpg"
+          },
+          {
+            "at": "Gromet Mine",
+            "img": "/pictures/ItemLocations/RareCandiesMine.jpeg"
+          },
+          {
+            "at": "Mt. Ice Storm",
+            "img": "/pictures/ItemLocations/RareCandiesMtIceStorm.jpg"
+          },
+          {
+            "at": "Route 403 (Cut)",
+            "img": "/pictures/ItemLocations/RareCandiesRoute403.jpeg"
+          }
+        ]
+      },
+      "image": "/pictures/items/rare-candy.png",
+      "location_image": ""
+    }
+  ]
+}
