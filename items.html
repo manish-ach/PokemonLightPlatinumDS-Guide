@@ -7,8 +7,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Eczar:wght@600;700&family=Alegreya+Sans:wght@400;500;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles/tokens.css?v=1787168126">
-<link rel="stylesheet" href="styles/app.css?v=1787168126">
+<link rel="stylesheet" href="styles/tokens.css?v=1787333004">
+<link rel="stylesheet" href="styles/app.css?v=1787333004">
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
@@ -108,11 +108,11 @@
       <circle class="hub" cx="220" cy="220" r="170" stroke-width="1"/>
     </svg></div>
     <div>
-      <h1>143 things worth picking up</h1>
+      <h1>145 things worth picking up</h1>
       <div class="opener__meta">
-        <span><strong style="color:var(--jade)">118</strong> with PokeAPI sprite and effect</span><span>·</span>
+        <span><strong style="color:var(--jade)">120</strong> with PokeAPI sprite and effect</span><span>·</span>
         <span><strong>18</strong> berry trees</span><span>·</span>
-        <span><strong style="color:var(--jade)">38</strong> with an in-game capture</span><span>·</span>
+        <span><strong style="color:var(--jade)">41</strong> with an in-game capture</span><span>·</span>
         <span><strong style="color:var(--ember)">7</strong> hack-exclusive</span>
       </div>
     </div>
@@ -120,7 +120,7 @@
 
   <div class="bagsearch">
     <span class="field"><input type="search" id="itemsearch" placeholder="Search every pocket…" aria-label="Search items"></span>
-    <p class="dexcount" role="status">Showing <output>143</output> of 143</p>
+    <p class="dexcount" role="status">Showing <output>145</output> of 145</p>
   </div>
 
   <div class="bag">
@@ -131,7 +131,7 @@
         <span class="pocket__glyph"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"
      stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 8V6.5A3 3 0 0 1 12 6.5V8M4 8h12l-1 9H5L4 8Z"/></svg></span>
         <span class="pocket__label">Items</span>
-        <span class="pocket__count">43</span>
+        <span class="pocket__count">45</span>
       </a>
       <a class="pocket" role="tab" href="#pocket-medicine"
         id="tab-medicine" aria-controls="pocket-medicine" aria-selected="false"
@@ -187,7 +187,7 @@
       <p id="tiledesc" class="vh">Opens the full entry.</p>
       <section class="pocketpanel" id="pocket-items"
         role="tabpanel" aria-labelledby="tab-items" style="--ph:350;--pc:0.115">
-        <h2>Items <span>43</span></h2>
+        <h2>Items <span>45</span></h2>
         <ul class="bagrid">
           <li class="bagtile" data-idx="0"
               data-name="quick claw held: holder has a 3/16 (18.75%) chance to move first. school boy's house / yellow town">
@@ -425,7 +425,9 @@
           <li class="bagtile" data-idx="31"
               data-name="king's rock held: damaging moves gain a 10% chance to make their target flinch. traded on a poliwhirl: holder evolves into politoed. traded on a slowpoke: holder evolves into slowking. sun ruins">
             <a class="bagtile__hit" href="#item-31">
-              <span class="bagtile__slot"><img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/kings-rock.png" alt="" width="48" height="48" loading="lazy"></span>
+              <span class="bagtile__slot"><img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/kings-rock.png" alt="" width="48" height="48" loading="lazy"><span class="bagtile__cam" title="Has an in-game capture">
+                  <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M2 5.5h3l1-1.5h4l1 1.5h3v7H2v-7Z"/><circle cx="8" cy="9" r="2.2"/></svg>
+                  <span class="vh">Has an in-game capture</span></span></span>
               <span class="bagtile__name">King's Rock</span>
             </a>
           </li>
@@ -526,6 +528,24 @@
                   <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M2 5.5h3l1-1.5h4l1 1.5h3v7H2v-7Z"/><circle cx="8" cy="9" r="2.2"/></svg>
                   <span class="vh">Has an in-game capture</span></span></span>
               <span class="bagtile__name">Jaw Fossil</span>
+            </a>
+          </li>
+          <li class="bagtile" data-idx="143"
+              data-name="sun stone evolves a cottonee into whimsicott, a gloom into bellossom, a petilil into lilligant, or a sunkern into sunflora. sun palace — first floor">
+            <a class="bagtile__hit" href="#item-143">
+              <span class="bagtile__slot"><img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/sun-stone.png" alt="" width="48" height="48" loading="lazy"><span class="bagtile__cam" title="Has an in-game capture">
+                  <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M2 5.5h3l1-1.5h4l1 1.5h3v7H2v-7Z"/><circle cx="8" cy="9" r="2.2"/></svg>
+                  <span class="vh">Has an in-game capture</span></span></span>
+              <span class="bagtile__name">Sun Stone</span>
+            </a>
+          </li>
+          <li class="bagtile" data-idx="144"
+              data-name="ice stone evolves an alola sandshrew into alola sandslash or an alola vulpix into alola ninetales. mt. ice storm — the feebas fishing room">
+            <a class="bagtile__hit" href="#item-144">
+              <span class="bagtile__slot"><img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/ice-stone.png" alt="" width="48" height="48" loading="lazy"><span class="bagtile__cam" title="Has an in-game capture">
+                  <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M2 5.5h3l1-1.5h4l1 1.5h3v7H2v-7Z"/><circle cx="8" cy="9" r="2.2"/></svg>
+                  <span class="vh">Has an in-game capture</span></span></span>
+              <span class="bagtile__name">Ice Stone</span>
             </a>
           </li>
         </ul>
@@ -1715,6 +1735,17 @@
         <p class="detail__effect">Held: Damaging moves gain a 10% chance to make their target flinch. Traded on a Poliwhirl: Holder evolves into Politoed. Traded on a Slowpoke: Holder evolves into Slowking.</p>
         <p class="detail__flavor">An item to be held by a Pokémon. When the holder successfully inflicts damage, the target may also flinch.</p>
         <p class="detail__label">Where</p><ul class="detail__locs"><li>Sun Ruins</li></ul>
+        <p class="detail__label">Seen in game</p>
+        <div class="detail__shots">
+      <figure class="shot">
+        <picture>
+          <source type="image/webp" sizes="(max-width: 700px) 92vw, min(640px, 46vw)"
+            srcset="pictures/opt/ItemLocations__KingsRockSunPalace1F-640.webp 640w, pictures/opt/ItemLocations__KingsRockSunPalace1F-1280.webp 1280w">
+          <img src="pictures/ItemLocations/KingsRockSunPalace1F.png" width="826" height="640"
+            alt="King's Rock — in-game screenshot taken at Sun Palace — first floor" loading="lazy" decoding="async">
+        </picture>
+        <figcaption><b>King's Rock</b><span>Sun Palace — first floor</span></figcaption>
+      </figure></div>
         <p class="detailsource__back"><a href="#pocket-items">Back to Items</a></p>
       </article>
       <article class="detailsource mount detail" id="item-32">
@@ -3310,6 +3341,48 @@
       </figure></div>
         <p class="detailsource__back"><a href="#pocket-items">Back to Items</a></p>
       </article>
+      <article class="detailsource mount detail" id="item-143">
+        
+        <div class="detail__sprite"><img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/sun-stone.png" alt="" width="48" height="48" loading="lazy"></div>
+        <div class="detail__head"><h3>Sun Stone</h3>
+          <p>evolution</p></div>
+        <p class="detail__effect">Evolves a Cottonee into Whimsicott, a Gloom into Bellossom, a Petilil into Lilligant, or a Sunkern into Sunflora.</p>
+        <p class="detail__flavor">A peculiar stone that can make certain species of Pokémon evolve. It burns as red as the evening sun.</p>
+        <p class="detail__label">Where</p><ul class="detail__locs"><li>Sun Palace — first floor</li></ul>
+        <p class="detail__label">Seen in game</p>
+        <div class="detail__shots">
+      <figure class="shot">
+        <picture>
+          <source type="image/webp" sizes="(max-width: 700px) 92vw, min(640px, 46vw)"
+            srcset="pictures/opt/ItemLocations__SunStoneSunPalace1F-640.webp 640w, pictures/opt/ItemLocations__SunStoneSunPalace1F-1280.webp 1280w">
+          <img src="pictures/ItemLocations/SunStoneSunPalace1F.png" width="714" height="616"
+            alt="Sun Stone — in-game screenshot taken at Sun Palace — first floor" loading="lazy" decoding="async">
+        </picture>
+        <figcaption><b>Sun Stone</b><span>Sun Palace — first floor</span></figcaption>
+      </figure></div>
+        <p class="detailsource__back"><a href="#pocket-items">Back to Items</a></p>
+      </article>
+      <article class="detailsource mount detail" id="item-144">
+        
+        <div class="detail__sprite"><img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/ice-stone.png" alt="" width="48" height="48" loading="lazy"></div>
+        <div class="detail__head"><h3>Ice Stone</h3>
+          <p>evolution</p></div>
+        <p class="detail__effect">Evolves an Alola Sandshrew into Alola Sandslash or an Alola Vulpix into Alola Ninetales.</p>
+        <p class="detail__flavor">A peculiar stone that can make certain species of Pokémon evolve. It has an unmistakable snowflake pattern.</p>
+        <p class="detail__label">Where</p><ul class="detail__locs"><li>Mt. Ice Storm — the Feebas fishing room</li></ul>
+        <p class="detail__label">Seen in game</p>
+        <div class="detail__shots">
+      <figure class="shot">
+        <picture>
+          <source type="image/webp" sizes="(max-width: 700px) 92vw, min(640px, 46vw)"
+            srcset="pictures/opt/SpecialLocations__FeebasMtIceStorm-640.webp 640w, pictures/opt/SpecialLocations__FeebasMtIceStorm-1280.webp 1280w">
+          <img src="pictures/SpecialLocations/FeebasMtIceStorm.jpg" width="1072" height="813"
+            alt="Ice Stone — in-game screenshot taken at Mt. Ice Storm — the Feebas fishing room" loading="lazy" decoding="async">
+        </picture>
+        <figcaption><b>Ice Stone</b><span>Mt. Ice Storm — the Feebas fishing room</span></figcaption>
+      </figure></div>
+        <p class="detailsource__back"><a href="#pocket-items">Back to Items</a></p>
+      </article>
     </div>
   </div>
 
@@ -3377,5 +3450,5 @@
      Screenshots are the author's own captures. Species sprites via <a href="https://github.com/PokeAPI/sprites">PokeAPI</a>.</p>
   <p><a href="#">Setup &amp; patching</a></p>
 </footer>
-<script src="app.js?v=1787168126"></script>
+<script src="app.js?v=1787333004"></script>
 </body></html>

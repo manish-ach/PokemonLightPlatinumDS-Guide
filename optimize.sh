@@ -4,7 +4,10 @@ set -e
 SRC=pictures; OUT=pictures/opt
 mkdir -p "$OUT"
 count=0
-find "$SRC" -type f \( -iname '*.jpg' -o -iname '*.jpeg' \) ! -path "$OUT/*" | while read -r f; do
+# PNGs too: a <picture> does not fall back to its <img> once a <source> is
+# chosen, so a missing .webp derivative renders as a broken image, not the PNG.
+find "$SRC" -type f \( -iname '*.jpg' -o -iname '*.jpeg' -o -iname '*.png' \) \
+  ! -path "$OUT/*" ! -path "$SRC/items/*" ! -path "$SRC/MedalIcons/*" | while read -r f; do
   rel="${f#$SRC/}"; base="${rel%.*}"; safe="${base//\//__}"
   mkdir -p "$OUT"
   for w in 640 1280; do

@@ -30,6 +30,11 @@ for (const e of SEED.entries.filter(x => x.section === 'acquisition')) {
    the like. Derived, not asserted: it is exactly the acquisition species that
    are absent from the 587. */
 const NONDEX = JSON.parse(readFileSync(join(OUT, 'nondex.json'), 'utf8'));
+/* Alolan forms share their base species' Zhery dex number, so they are a
+   variant view of an existing entry — not extra entries. */
+const ALOLAN = JSON.parse(readFileSync(join(OUT, 'alolan.json'), 'utf8'));
+const ALOLAN_BY_BASE = new Map(ALOLAN.map(a => [a.base, a]));
+for (const a of ALOLAN) ACQ.set(a.name, { method: a.method, location: a.location });
 for (const g of NONDEX) if (g.method) ACQ.set(g.name, { method: g.method, location: g.location });
 const GIFTED = NONDEX.filter(g => g.gift);
 /* A gift species that IS in the regional dex — the card is an extra way to get
@@ -123,6 +128,9 @@ const ITEM_SHOTS = {
                      ['ItemLocations/waterstoneMines.jpeg', 'Gromet Mine']],
   'Wide Lens':      [['ItemLocations/WideLensRoute407PossibleItemfromtrashcleanergirl.jpeg', 'Route 407 — trash-cleaner girl']],
   'Dungeon Key':    [['SpecialItem/DungeonKeyDarduskTower.jpeg', 'Darkdusk Tower']],
+  "King's Rock":    [['ItemLocations/KingsRockSunPalace1F.png', 'Sun Palace — first floor']],
+  'Sun Stone':      [['ItemLocations/SunStoneSunPalace1F.png', 'Sun Palace — first floor']],
+  'Ice Stone':      [['SpecialLocations/FeebasMtIceStorm.jpg', 'Mt. Ice Storm — the Feebas fishing room']],
   'Gracidea':       [['SpecialItem/GracediaEsmeraldBotanicalGarden.jpeg', 'Esmerald City — Botanical Garden']],
   'Lustrous Stone': [['SpecialItem/LustrousStoneMines.jpeg', 'Gromet Mine']],
 };
@@ -143,6 +151,10 @@ const TM_SHOTS = {
   TM86: ['Tm/TM86GrassKnotRoute410.jpg', 'Route 410'],
 };
 /* a capture taken at each place — the caption always names what it actually shows */
+/* Notes that belong to a place but are not in the seed. */
+const PLACE_EXTRA = {
+  'Panotem Islands': 'The only place the Alolan forms appear.',
+};
 const PLACE_SHOTS = {
   'Yellow Town':     ['ItemLocations/QuickClawYellowTown.jpeg', 'Quick Claw pickup'],
   'Esmerald City':   ['SpecialItem/GracediaEsmeraldBotanicalGarden.jpeg', 'Gracidea — Botanical Garden'],
@@ -150,10 +162,11 @@ const PLACE_SHOTS = {
   'Seanport City':   ['SpecialLocations/SeanPortGymLeaderPanotem.jpg', 'Gym Leader'],
   'Gromet City':     ['ItemLocations/MasterBallGromentMuseum.jpeg', 'Master Ball — Museum'],
   'Panotem Islands': ['ItemLocations/DeepSeaToothPanotemIslands.jpeg', 'Deep Sea Tooth by Surf'],
-  'Mt. Ice Storm':   ['SpecialLocations/FeebasMtIceStorm.jpg', 'Feebas water'],
+  'Mt. Ice Storm':   ['SpecialLocations/FeebasMtIceStorm.jpg', 'the Feebas room — also where the Ice Stone sits'],
   'Mt. Shuem':       ['ItemLocations/MagmarizerMt.Shuem.jpeg', 'Magmarizer'],
   'Sun Ruins':       ['Pokemons/VolcaronaEggSunPalace.jpeg', 'Volcarona egg — Sun Palace'],
   'Gromet Mine':     ['SpecialItem/LustrousStoneMines.jpeg', 'Lustrous Stone'],
+  'Foongus Swamp':   ['SpecialLocations/CutQuestShroomishFoongusSwamp.png', 'the Shroomish needed for HM01 Cut'],
 };
 const shotsFor = i => i.kind === 'machine'
   ? (TM_SHOTS[i.tm] ? [TM_SHOTS[i.tm]] : [])
@@ -271,7 +284,9 @@ ${masthead('home')}
               : '<i aria-hidden="true"></i>'}</span>
             <span class="spine__title">${esc(l.name)}</span>
             <span class="spine__region">${esc(l.data.kind || '')}</span>
-            <span class="spine__note">${esc(l.data.notes || '')}${sh ? ` <em>· pictured: ${esc(sh[1])}</em>` : ''}</span>
+            <span class="spine__note">${esc(l.data.notes || '')}${
+              PLACE_EXTRA[l.name] ? ` <b>${esc(PLACE_EXTRA[l.name])}</b>` : ''}${
+              sh ? ` <em>· pictured: ${esc(sh[1])}</em>` : ''}</span>
           </a>
         </li>`;
         }).join('\n        ')}
@@ -479,7 +494,30 @@ const MEDAL_SHOTS = {
   'Fog Lamp':          ['Medals/FogLampMarphenyLake.jpg', 'Marfeney Lake — Rock Smash'],
   'Fountain of Youth': ['Medals/FountainOfYouthMedalMine.jpeg', 'Gromet Mine — minecart'],
   'Phenomenal':        ['Medals/PhenomenaEnermyTown.jpeg', 'Enemy Town'],
+  'Clairvoyant':       ['Medals/ClairvoyantSunPalaceTopFloor.png', 'Sun Palace — top floor, far end'],
+  'Rockbreaker Feet':  ['Medals/RockbreakerFeetMine.png', 'Gromet Mine'],
+  'Second Chance':     ['Medals/SecondChanceFoongusSwamp.png', 'Foongus Swamp'],
+  'Super Lure':        ['Medals/SuperLureSeanport.png', 'Seanport City'],
 };
+/* Vendor captures, per medal. Kept apart from MEDAL_SHOTS: one shows the
+   medal being found in the world, the other shows the counter it is sold at,
+   and conflating the two would overstate how much is actually documented. */
+const PRIZE = ['Shops/PrizeExchangeCentral.png', 'Prize Exchange Center, Central City'];
+const MART1 = ['Shops/SpecialMartSeanport-1.png', 'Special Mart, Seanport City — first page'];
+const MART2 = ['Shops/SpecialMartSeanport-2.png', 'Special Mart, Seanport City — second page'];
+const MEDAL_BUY_SHOTS = {
+  'Money+': PRIZE, 'Experience +': PRIZE, 'Effort+': PRIZE, 'Friendship+': PRIZE,
+  'Farmer': MART1, 'Berrylogist': MART1, 'Incubator': MART1,
+  'Baby Sitter': MART1, 'Super Learner': MART1, 'Item Holder': MART1,
+  'Miner': MART2, 'Treasure Hunter': MART2, 'Simplification': MART2, 'Complication': MART2,
+};
+
+/* Where the bought medals are actually sold. */
+const MEDAL_SHOPS = [
+  ['Shops/PrizeExchangeCentral.png', 'Prize Exchange Center, Central City — paid in Coins'],
+  ['Shops/SpecialMartSeanport-1.png', 'Special Mart, Seanport City — first page'],
+  ['Shops/SpecialMartSeanport-2.png', 'Special Mart, Seanport City — second page'],
+];
 /* Match icons on a normalised key (lowercase, alphanumerics only) so casing
    and punctuation cannot break the join — "Fountain of Youth" vs
    "FountainOfYouth.png" did exactly that. Two files carry typos in the source
@@ -503,6 +541,7 @@ const NO_ICON = MEDALDATA.filter(m => !iconFile(m.name));
 
 const medalDetail = (m) => {
   const sh = MEDAL_SHOTS[m.name];
+  const buy = MEDAL_BUY_SHOTS[m.name];
   return `
         <div class="detail__sprite medal__sprite">${medalIcon(m)}</div>
         <div class="detail__head"><h3>${esc(m.name)}</h3>
@@ -512,7 +551,9 @@ const medalDetail = (m) => {
         <ul class="detail__locs"><li>${m.source && m.source.trim() !== '—'
           ? esc(m.source) : '<span class="undoc">Not yet documented</span>'}</li></ul>
         ${sh ? `<p class="detail__label">Seen in game</p>
-        <div class="detail__shots">${shot(sh[0], m.name + ' Medal', sh[1])}</div>` : ''}`;
+        <div class="detail__shots">${shot(sh[0], m.name + ' Medal', sh[1])}</div>` : ''}
+        ${buy ? `<p class="detail__label">At the counter</p>
+        <div class="detail__shots">${shot(buy[0], m.name + ' — on sale', buy[1])}</div>` : ''}`;
 };
 
 /* A real table: number, icon, name, effect, energy. Every cell left-aligned.
@@ -526,8 +567,8 @@ const medalRow = (m, idx) => `
               <td class="mcol-nm"><a href="#medal-${idx}">${esc(m.name)}</a></td>
               <td class="mcol-ds">${esc(m.desc)}</td>
               <td class="mcol-en">${m.cost === 0 ? '<em>free</em>' : m.cost}</td>
-              <td class="mcol-go">${MEDAL_SHOTS[m.name]
-                ? `<span class="bagtile__cam" title="Has an in-game capture">
+              <td class="mcol-go">${MEDAL_SHOTS[m.name] || MEDAL_BUY_SHOTS[m.name]
+                ? `<span class="bagtile__cam" title="${MEDAL_SHOTS[m.name] ? 'Has an in-game capture' : 'Shown at the counter'}">
                     <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M2 5.5h3l1-1.5h4l1 1.5h3v7H2v-7Z"/><circle cx="8" cy="9" r="2.2"/></svg>
                     <span class="vh">Has an in-game capture</span></span>` : ''}
                 <span class="medalrow__go" aria-hidden="true">
@@ -544,7 +585,8 @@ ${masthead('medals')}
     <div>
       <h1>${MEDALDATA.length} medals</h1>
       <div class="opener__meta">
-        <span><strong style="color:var(--jade)">${MEDAL_SHOTTED}</strong> with an in-game capture</span>${
+        <span><strong style="color:var(--jade)">${MEDAL_SHOTTED}</strong> found in the world</span><span>·</span>
+        <span><strong style="color:var(--jade)">${Object.keys(MEDAL_BUY_SHOTS).length}</strong> shown at the counter</span>${
         NO_ICON.length ? `<span>·</span>
         <span style="color:var(--ember)"><strong>${NO_ICON.length}</strong> without an icon</span>` : ''}
       </div>
@@ -578,6 +620,15 @@ ${masthead('medals')}
       </article>`).join('\n      ')}
     </div>
   </div>
+
+  <section class="vendors">
+    <h2>Where the bought ones are sold</h2>
+    <p>Four are Coins at the Prize Exchange Center in Central City. Ten more are cash at the
+      Special Mart in Seanport City, across two pages.</p>
+    <div class="shots">
+      ${MEDAL_SHOPS.map(([f, cap]) => shot(f, 'Medal vendor', cap)).join('')}
+    </div>
+  </section>
 
   <dialog class="modal" id="itemmodal">
     <div class="modal__bar">
@@ -640,14 +691,23 @@ ${masthead('medals')}
 ${foot}`;
 
 /* ---------- 4. dex -------------------------------------------- */
-const tiles = ALLSPECIES.map((sp) => `
-    <a class="tile${ACQ.has(sp.name) ? ' has-data' : ''}" data-scope="${sp.reg ? 'dex' : 'nondex'}" href="${spPage(sp)}">
+const tiles = ALLSPECIES.map((sp) => {
+    const al = ALOLAN_BY_BASE.get(sp.name);
+    const data = al ? ` data-alolan="1" data-al-name="${esc(al.name)}" data-al-nat="${al.nat}"` +
+      ` data-al-href="sp-al-${al.nat}.html"` +
+      ` data-al-plates="${esc(al.types.map(t => plate(t, true)).join(''))}"` : '';
+    return `
+    <a class="tile${ACQ.has(sp.name) ? ' has-data' : ''}${al ? ' has-alolan' : ''}"
+       data-scope="${sp.reg ? 'dex' : 'nondex'}" href="${spPage(sp)}"${data}
+       data-q="${esc((sp.name + ' ' + (al ? al.name + ' alolan' : '')).toLowerCase())}">
       <span class="tile__slot"><img src="${SPRITE(sp.nat, sp.shiny)}" alt="${sp.name}${sp.shiny ? ' (shiny)' : ''} front sprite" loading="lazy" width="68" height="68"></span>${
-        sp.shiny ? '<span class="tile__shiny" title="Distributed shiny">★</span>' : ''}
+        sp.shiny ? '<span class="tile__shiny" title="Distributed shiny">★</span>' : ''}${
+        al ? '<span class="tile__form" title="Has an Alolan form">A</span>' : ''}
       <span class="tile__no">${sp.reg ? String(sp.reg).padStart(3, '0') : '—'} <i>· nat ${sp.nat}</i></span>
       <span class="tile__name">${sp.name}</span>
       <span class="plates">${sp.types.map(t => plate(t, true)).join('')}</span>
-    </a>`).join('');
+    </a>`;
+  }).join('');
 
 const dex = `${head('Dex')}
 ${masthead('dex')}
@@ -677,6 +737,12 @@ ${masthead('dex')}
       </span>
     </div>
     <div class="dexbar__row">
+      <span class="dexbar__legend">Forms</span>
+      <span class="platefilters">
+        <button class="plate p-normal scopefilter" type="button" data-alolan-toggle aria-pressed="false">Alolan forms <b>${ALOLAN.length}</b></button>
+      </span>
+    </div>
+    <div class="dexbar__row">
       <span class="dexbar__legend">Type</span>
       <span class="platefilters">
         ${TYPES.map(t => `<button class="plate p-${t}" type="button" aria-pressed="false">${cap(t)}</button>`).join('\n        ')}
@@ -685,8 +751,9 @@ ${masthead('dex')}
   </div>
 
   <p class="dexnote">The <b>${NONDEX.length}</b> species outside the regional dex are the
-    <a href="gifts.html">Mystery Gift</a> Pokémon and everything they evolve into — they cannot
-    be caught in Zhery.</p>
+    <a href="gifts.html">Mystery Gift</a> Pokémon and everything they evolve into.
+    <b>Alolan forms share their normal counterpart's dex number</b>, so they are a view of an
+    existing entry rather than extra ones — ${ALOLAN.length} of them, all from Panotem Islands.</p>
   <p class="dexcount" role="status">Showing <output>${ALLSPECIES.length}</output> of ${ALLSPECIES.length} species</p>
   <div class="dexgrid">${tiles}</div>
   <p class="dexempty" hidden>Nothing matches those filters. <button type="button" class="linkbtn" data-dex-clear>Clear them</button>.</p>
@@ -990,6 +1057,11 @@ ${masthead('dex')}
     <div>
       <h1>${esc(sp.name)}</h1>
       <div class="plates" style="margin-top:var(--s3)">${sp.types.map(t => plate(t)).join('')}</div>
+      ${sp.alolan
+        ? `<p class="formflag">Alolan form — shares Zhery #${String(sp.reg).padStart(3, '0')} with ${esc(sp.base)} · <a href="sp-${sp.reg}.html">see the normal form</a></p>`
+        : (ALOLAN_BY_BASE.get(sp.name)
+            ? `<p class="formflag">This entry has an <a href="sp-al-${ALOLAN_BY_BASE.get(sp.name).nat}.html">Alolan form</a> — same dex number, found on Panotem Islands</p>`
+            : '')}
       <div class="opener__meta" style="margin-top:var(--s3)">
         <span>${sp.reg ? 'Zhery Dex ' + String(sp.reg).padStart(3, '0')
                        : '<b style="color:var(--ember)">Not in the regional dex</b>'}</span><span>·</span>
@@ -1058,6 +1130,10 @@ ${masthead('dex')}
 </main>
 ${foot}`;
 };
+
+const alolanPages = Object.fromEntries(ALOLAN.map(a => [`sp-al-${a.nat}`, speciesPage({
+  ...a, reg: a.reg, shiny: false, alolan: true,
+})]));
 
 const speciesPages = Object.fromEntries(
   ALLSPECIES.map(sp => [spPage(sp).replace(/\.html$/, ''), speciesPage(sp)]));
@@ -1268,6 +1344,10 @@ ${masthead('sun')}
         ${shot('Tm/TM43SecretPowerSunPalace.jpeg', 'TM43 Secret Power', 'Sun Palace')}
         ${shot('Pokemons/VolcaronaEggSunPalace.jpeg', 'Volcarona Egg', 'Sun Palace')}
       </div>
+      <div class="shots">
+        ${shot('ItemLocations/KingsRockSunPalace1F.png', "King's Rock", 'Sun Palace — first floor')}
+        ${shot('ItemLocations/SunStoneSunPalace1F.png', 'Sun Stone', 'Sun Palace — first floor')}
+      </div>
     </div>
 
     <aside class="rail" aria-label="Board summary">
@@ -1461,10 +1541,10 @@ ${masthead('patch')}
         <div class="mount__head">Pokémon Light Platinum DS</div>
         <dl>
           <div class="stat"><dt>Author</dt><dd>Mikelan98</dd></div>
-          <div class="stat"><dt>Version</dt><dd>0.2.1</dd></div>
+          <div class="stat"><dt>Version</dt><dd>0.2.2</dd></div>
           <div class="stat"><dt>Status</dt><dd>Demo 2</dd></div>
-          <div class="stat"><dt>Updated</dt><dd>25 Apr 2026</dd></div>
-          <div class="stat"><dt>Patch size</dt><dd>64.36 MB</dd></div>
+          <div class="stat"><dt>Updated</dt><dd>19 Jun 2026</dd></div>
+          <div class="stat"><dt>Patch size</dt><dd>65.76 MB</dd></div>
           <div class="stat"><dt>Language</dt><dd>EN · ES</dd></div>
         </dl>
       </div>
@@ -1522,7 +1602,7 @@ ${masthead('gifts')}
       <div class="opener__meta">
         <span><strong>${CARDS.length}</strong> Wonder Cards</span><span>·</span>
         <span><strong>${GIFTED.length}</strong> species given</span><span>·</span>
-        <span><strong>${NONDEX.length}</strong> outside the regional dex once evolved</span>
+        <span><strong>${NONDEX.filter(n => !n.alolan).length}</strong> outside the regional dex once evolved</span>
       </div>
     </div>
     <div class="opener__rule"></div>
@@ -1553,8 +1633,8 @@ ${masthead('gifts')}
       <p>The gift is the first stage. Everything downstream is also absent from the regional
         dex, so the only way to a Klinklang or a Greninja is to evolve the gift.</p>
       <ul class="evolines">
-        ${[...new Set(NONDEX.map(n => n.line))].map(line => {
-          const members = NONDEX.filter(n => n.line === line).sort((a, b) => a.stage - b.stage);
+        ${[...new Set(NONDEX.filter(n => !n.alolan).map(n => n.line))].map(line => {
+          const members = NONDEX.filter(n => n.line === line && !n.alolan).sort((a, b) => a.stage - b.stage);
           if (members.length < 2) return '';
           return `<li class="evoline">
           ${members.map((m, i) => `${i ? `<span class="evoline__arrow" aria-hidden="true">→</span>
@@ -1583,7 +1663,7 @@ ${masthead('gifts')}
 </main>
 ${foot}`;
 
-for (const [name, html] of Object.entries({ index, chapter, sunpalace, patch, gifts, medals, items, dex, ...speciesPages })) {
+for (const [name, html] of Object.entries({ index, chapter, sunpalace, patch, gifts, medals, items, dex, ...speciesPages, ...alolanPages })) {
   writeFileSync(join(OUT, `${name}.html`), html);
   if (!name.startsWith('sp-')) console.log('wrote', `${name}.html`, (html.length / 1024).toFixed(1), 'kB');
 }

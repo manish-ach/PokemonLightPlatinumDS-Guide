@@ -1675,3 +1675,33 @@ code {
 .pshot figcaption {
   padding: var(--s2) var(--s3); font-size: var(--size-caption); color: var(--ink-quiet);
 }
+
+/* medal vendors */
+.vendors { margin-top: var(--s16); }
+.vendors h2 {
+  font-family: var(--font-display); font-weight: 700;
+  font-size: var(--size-route); letter-spacing: -0.01em;
+  padding-bottom: var(--s3); border-bottom: 1px solid var(--platinum);
+}
+.vendors > p { max-width: 68ch; color: var(--ink-soft); font-size: 1rem; margin-top: var(--s4); }
+.formflag {
+  margin-top: var(--s3); font-size: var(--size-caption); font-weight: 700;
+  color: var(--gold-ink); background: var(--gold-wash);
+  border: 1px solid color-mix(in oklab, var(--gold) 45%, transparent);
+  border-radius: var(--r-control); padding: 2px 9px 3px; display: inline-block;
+}
+.spine__note b { color: var(--gold-ink); font-weight: 700; }
+
+/* Alolan variants: a view of an existing dex entry, not extra entries */
+/* marks a dex entry that has a regional variant; the badge hangs off it */
+.tile.has-alolan .tile__slot { border-style: solid; }
+.tile__form {
+  position: absolute; top: -4px; left: -4px;
+  font-size: 0.6875rem; font-weight: 700; line-height: 1;
+  color: var(--on-gold); background: oklch(var(--sp-blue-l, 0.52) 0.13 250);
+  border-radius: 999px; padding: 3px 5px 4px;
+}
+.tile.is-alolan .tile__slot { border-color: oklch(var(--sp-blue-l, 0.52) 0.13 250); }
+.tile.is-dimmed { opacity: 0.32; }
+.tile.is-dimmed .tile__name, .tile.is-dimmed .tile__no { color: var(--ink-quiet); }
+.formflag a { color: inherit; }

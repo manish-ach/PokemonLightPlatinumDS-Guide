@@ -74,7 +74,7 @@
   const empty = document.querySelector('.dexempty');
   const types = new Set(), scopes = new Set();
 
-  const hay = t => (t.dataset.q ||= t.textContent.replace(/\s+/g, ' ').toLowerCase());
+  const hay = t => ((t.dataset.q || '') + ' ' + t.textContent).replace(/\s+/g, ' ').toLowerCase();
 
   const apply = () => {
     const q = (search?.value || '').trim().toLowerCase();
@@ -110,6 +110,41 @@
     scopeBtns.forEach(o => o.setAttribute('aria-pressed', String(scopes.has(o.dataset.scope))));
     apply();
   }));
+
+  /* Alolan forms share a dex number with their normal counterpart, so the
+     toggle swaps the tile in place rather than adding entries. Search matches
+     either name at all times (data-q holds both). */
+  const alBtn = bar.querySelector('[data-alolan-toggle]');
+  let alolanView = false;
+  const swap = () => {
+    tiles.forEach(t => {
+      if (!t.dataset.alolan) { t.classList.toggle('is-dimmed', alolanView); return; }
+      const nameEl = t.querySelector('.tile__name');
+      const img = t.querySelector('.tile__slot img');
+      const plates = t.querySelector('.plates');
+      if (alolanView) {
+        t.dataset.normName ||= nameEl.textContent;
+        t.dataset.normSrc  ||= img.getAttribute('src');
+        t.dataset.normPlates ||= plates.innerHTML;
+        t.dataset.normHref ||= t.getAttribute('href');
+        nameEl.textContent = t.dataset.alName;
+        img.setAttribute('src', img.getAttribute('src').replace(/\/\d+\.png$/, '/' + t.dataset.alNat + '.png'));
+        plates.innerHTML = t.dataset.alPlates;
+        t.setAttribute('href', t.dataset.alHref);
+      } else if (t.dataset.normName) {
+        nameEl.textContent = t.dataset.normName;
+        img.setAttribute('src', t.dataset.normSrc);
+        plates.innerHTML = t.dataset.normPlates;
+        t.setAttribute('href', t.dataset.normHref);
+      }
+      t.classList.toggle('is-alolan', alolanView);
+    });
+  };
+  alBtn?.addEventListener('click', () => {
+    alolanView = !alolanView;
+    alBtn.setAttribute('aria-pressed', String(alolanView));
+    swap(); apply();
+  });
 
   search?.addEventListener('input', apply);
   document.querySelector('[data-dex-clear]')?.addEventListener('click', () => {
