@@ -322,6 +322,92 @@
   search?.addEventListener('input', applySearch);
 
   if (supported && tabs.length) show('items');
+
+  /* Deep links straight to an entry — items.html#item-12 from the trade page,
+     or the wild-items table further down this page — would land on a detail
+     block that JS just hid. Open the same entry in the dialog instead, with
+     its pocket selected behind it. */
+  const openById = (id) => {
+    if (!supported) return false;
+    const src = document.getElementById(id);
+    if (!src?.classList.contains('detailsource')) return false;
+    const link = bag.querySelector('.bagtile a[href="#' + id + '"]');
+    if (!link) return false;
+    const panel = link.closest('.pocketpanel');
+    if (panel && tabs.length) show(panel.id.slice(7));
+    openItem(link, src);
+    return true;
+  };
+  const openFromHash = () => {
+    const id = location.hash.slice(1);
+    if (id.startsWith('item-')) openById(id);
+  };
+  window.addEventListener('hashchange', openFromHash);
+  openFromHash();
+
+  /* Same-page links outside the bag (the wild-items table) don't always fire
+     hashchange — clicking the same entry twice, for one — so intercept them. */
+  document.querySelectorAll('a[href^="#item-"]').forEach(a => {
+    if (bag.contains(a)) return;
+    a.addEventListener('click', e => {
+      if (openById(a.getAttribute('href').slice(1))) e.preventDefault();
+    });
+  });
+})();
+
+/* --- trade routes: online vs self ------------------------------
+   Two alternatives, not two steps, so only one is on screen at a time. Same
+   contract as the Bag pockets: both sections ship rendered and each tab is a
+   real anchor to one of them, so without JS the page still reads whole. A
+   deep link into either section opens the panel that holds it. */
+(() => {
+  const wrap = document.querySelector('.routes');
+  if (!wrap) return;
+  const tabs = [...wrap.querySelectorAll('.route')];
+  const panels = tabs.map(t => document.getElementById(t.getAttribute('aria-controls')));
+  if (!tabs.length || panels.some(p => !p)) return;
+
+  const show = (i, focus) => {
+    tabs.forEach((t, n) => {
+      t.setAttribute('aria-selected', String(n === i));
+      t.tabIndex = n === i ? 0 : -1;
+    });
+    panels.forEach((p, n) => { p.hidden = n !== i; });
+    if (focus) tabs[i].focus();
+  };
+
+  tabs.forEach((t, i) => {
+    t.addEventListener('click', e => { e.preventDefault(); show(i); });
+    t.addEventListener('keydown', e => {
+      const map = { ArrowRight: 1, ArrowLeft: -1, Home: -99, End: 99 };
+      if (!(e.key in map)) return;
+      e.preventDefault();
+      const n = map[e.key] === -99 ? 0 : map[e.key] === 99 ? tabs.length - 1
+              : (i + map[e.key] + tabs.length) % tabs.length;
+      show(n, true);
+    });
+  });
+
+  /* #route-self, or any id inside a panel (#self, #gts) */
+  const fromHash = () => {
+    const id = location.hash.slice(1);
+    if (!id) return -1;
+    const target = document.getElementById(id);
+    return target ? panels.findIndex(p => p === target || p.contains(target)) : -1;
+  };
+  /* The browser cannot scroll to a target that is still hidden, so unhide the
+     panel first and then take the jump ourselves. */
+  const openHash = () => {
+    const at = fromHash();
+    if (at < 0) return;
+    show(at);
+    document.getElementById(location.hash.slice(1))?.scrollIntoView();
+  };
+  window.addEventListener('hashchange', openHash);
+
+  const start = fromHash();
+  show(start >= 0 ? start : 0);
+  if (start >= 0) document.getElementById(location.hash.slice(1))?.scrollIntoView();
 })();
 
 /* --- Sun Palace gear solver ------------------------------------

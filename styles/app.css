@@ -1025,6 +1025,11 @@ button.plate { cursor: pointer; }
   content: ""; position: absolute; left: 0; top: calc(var(--s4) + 0.5em);
   width: 2px; height: 1.1em; background: var(--gold);
 }
+/* where the description came from, and any editorial caveat on it */
+.detail__note {
+  margin-top: var(--s3); font-size: var(--size-caption); color: var(--ink-quiet);
+  line-height: 1.5;
+}
 /* section markers: a short gold tick riding the hairline */
 .detail__label {
   position: relative;
@@ -1705,3 +1710,64 @@ code {
 .tile.is-dimmed { opacity: 0.32; }
 .tile.is-dimmed .tile__name, .tile.is-dimmed .tile__no { color: var(--ink-quiet); }
 .formflag a { color: inherit; }
+
+/* ============================================================
+   Trade evolution — the two routes
+   Alternatives, not steps, so they read as a choice of two doors
+   rather than a numbered sequence. Selection is the gold rule under
+   the pair, the same signal the pocket tabs use.
+   ============================================================ */
+.routes {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  gap: var(--s2); margin-top: var(--s8) !important;
+  border-bottom: 1px solid var(--platinum);
+}
+.route {
+  display: flex; align-items: center; gap: var(--s3);
+  padding: var(--s3) var(--s4);
+  text-decoration: none; color: var(--ink);
+  background: var(--mount);
+  border: 1px solid var(--platinum);
+  border-bottom: 2px solid transparent;
+  border-radius: var(--r-mount) var(--r-mount) 0 0;
+  margin-bottom: -1px;
+  transition: background var(--t-hover) var(--ease-out-quart),
+              border-color var(--t-hover) var(--ease-out-quart);
+}
+.route__glyph {
+  flex: none; width: 34px; height: 34px; display: grid; place-items: center;
+  color: var(--ink-quiet); background: var(--mount-deep);
+  border: 1px solid var(--platinum);
+  clip-path: polygon(5px 0, 100% 0, 100% calc(100% - 5px), calc(100% - 5px) 100%, 0 100%, 0 5px);
+  transition: background var(--t-hover) var(--ease-out-quart),
+              border-color var(--t-hover) var(--ease-out-quart),
+              color var(--t-hover) var(--ease-out-quart);
+}
+.route__glyph svg { width: 19px; height: 19px; }
+.route__text { display: grid; gap: 1px; min-width: 0; }
+.route__text b { font-weight: 700; font-size: 1rem; line-height: 1.2; }
+.route__text span { font-size: var(--size-caption); color: var(--ink-quiet); }
+
+.route:hover { background: var(--light); }
+.route:hover .route__glyph { color: var(--gold-ink); }
+.route[aria-selected="true"] {
+  background: var(--light); border-bottom-color: var(--gold);
+}
+.route[aria-selected="true"] .route__glyph {
+  color: var(--gold-ink); border-color: var(--gold);
+  background: color-mix(in oklab, var(--gold) 20%, var(--mount));
+}
+
+.routes__body { padding-bottom: var(--s8); }
+.routepanel > * + * { margin-top: var(--s4); }
+.routepanel > h2:first-child { margin-top: var(--s6); }
+/* with JS off both panels stack, so the second one needs its own air */
+.routepanel + .routepanel > h2:first-child { margin-top: var(--s16); }
+
+/* --- rarity chips (wild-held info inside item entries) --------- */
+.rar { font-size: var(--size-caption); font-weight: 700; font-style: normal; white-space: nowrap; }
+.rar::before { content: ''; display: inline-block; width: 0.5em; height: 0.5em;
+  border-radius: 50%; margin-right: 0.35em; background: currentColor; }
+.rar--common   { color: var(--gold-ink); }
+.rar--uncommon { color: var(--jade); }
+.rar--rare     { color: var(--ember); }

@@ -33,6 +33,7 @@ const NONDEX = JSON.parse(readFileSync(join(OUT, 'nondex.json'), 'utf8'));
 /* Alolan forms share their base species' Zhery dex number, so they are a
    variant view of an existing entry — not extra entries. */
 const ALOLAN = JSON.parse(readFileSync(join(OUT, 'alolan.json'), 'utf8'));
+const TRADES = JSON.parse(readFileSync(join(OUT, 'trades.json'), 'utf8'));
 const ALOLAN_BY_BASE = new Map(ALOLAN.map(a => [a.base, a]));
 for (const a of ALOLAN) ACQ.set(a.name, { method: a.method, location: a.location });
 for (const g of NONDEX) if (g.method) ACQ.set(g.name, { method: g.method, location: g.location });
@@ -41,10 +42,75 @@ const GIFTED = NONDEX.filter(g => g.gift);
    it, not a separate entry. */
 ACQ.set('Dragonite', { method: 'Mystery Gift — "The Champions\u2019 Dragonite"',
   location: 'Commemorates Spain\u2019s 2026 FIFA World Cup win' });
+/* Not a trade evolution in this hack \u2014 Feebas evolves by Wonder Meal instead. */
+ACQ.set('Milotic', { method: 'Evolve Feebas \u2014 feed it a Wonder Meal at a Pok\u00e9mon Center twice, then level it up',
+  location: 'Any Pok\u00e9mon Center' });
 const ALLSPECIES = [...SPECIES, ...NONDEX];
 const spPage = (sp) => sp.reg ? `sp-${sp.reg}.html` : `sp-nd-${sp.nat}.html`;
 const FULLDEX = JSON.parse(readFileSync(join(OUT, 'dex.json'), 'utf8'));
-const ITEMS = JSON.parse(readFileSync(join(OUT, 'items.json'), 'utf8'));
+let ITEMS = JSON.parse(readFileSync(join(OUT, 'items.json'), 'utf8'));
+/* Items wild Pokémon hold, straight from the tracker. Folded into each
+   item's own entry — never a separate list. */
+const WILD = JSON.parse(readFileSync(join(OUT, 'wilditems.json'), 'utf8'));
+
+/* ---- Berries: one bag entry per berry, like the in-game bag ----
+   The seed records berries per TREE; the bag shows them per BERRY, the way
+   the game's own Berry pocket does. Each berry entry lists the trees that
+   grow it; the tree pseudo-entries then leave the grid. */
+const BERRY_ORDER = ['Cheri','Chesto','Pecha','Rawst','Aspear','Leppa','Oran','Persim','Lum','Sitrus',
+  'Figy','Wiki','Mago','Aguav','Iapapa','Razz','Bluk','Nanab','Wepear','Pinap','Pomeg','Kelpsy',
+  'Qualot','Hondew','Grepa','Tamato','Cornn','Magost','Rabuta','Nomel','Spelon','Pamtre','Watmel',
+  'Durin','Belue','Occa','Passho','Wacan','Rindo','Yache','Chople','Kebia','Shuca','Coba','Payapa',
+  'Tanga','Charti','Kasib','Haban','Colbur','Babiri','Chilan','Liechi','Ganlon','Salac','Petaya',
+  'Apicot','Lansat','Starf','Enigma','Micle','Custap','Jaboca','Rowap','Kee','Maranga'];
+/* Held effects for the berries that only appear on trees (the tracker
+   berries carry theirs in items.json already). */
+const BERRY_FX = {
+  Pecha:  'Held or used: cures poison.',
+  Sitrus: 'Held: restores 1/4 of max HP when the holder falls below half HP.',
+  Wiki:   'Held: restores 1/3 of max HP at low HP; confuses holders that dislike the dry flavor.',
+  Aguav:  'Held: restores 1/3 of max HP at low HP; confuses holders that dislike the bitter flavor.',
+  Iapapa: 'Held: restores 1/3 of max HP at low HP; confuses holders that dislike the sour flavor.',
+  Pomeg:  'Used: lowers HP EVs and raises friendship.',
+  Kelpsy: 'Used: lowers Attack EVs and raises friendship.',
+  Qualot: 'Used: lowers Defense EVs and raises friendship.',
+  Hondew: 'Used: lowers Sp. Atk EVs and raises friendship.',
+  Grepa:  'Used: lowers Sp. Def EVs and raises friendship.',
+  Tamato: 'Used: lowers Speed EVs and raises friendship.',
+  Occa:   'Held: halves the damage of one super-effective Fire-type move.',
+  Passho: 'Held: halves the damage of one super-effective Water-type move.',
+  Coba:   'Held: halves the damage of one super-effective Flying-type move.',
+  Chople: 'Held: halves the damage of one super-effective Fighting-type move.',
+  Kebia:  'Held: halves the damage of one super-effective Poison-type move.',
+  Ganlon: 'Held: sharply raises Defense at low HP.',
+  Salac:  'Held: sharply raises Speed at low HP.',
+  Apicot: 'Held: sharply raises Sp. Def at low HP.',
+  Micle:  'Held: boosts the accuracy of the holder’s next move at low HP.',
+  Custap: 'Held: at low HP, the holder moves first in its priority bracket. Works once.',
+  Kee:    'Held: raises Defense when the holder is hit by a physical move.',
+};
+/* Ingredient berries genuinely have no battle effect — that is not the same
+   as the effect being undocumented. */
+for (const b of ['Razz','Bluk','Nanab','Wepear','Pinap','Cornn','Magost','Rabuta','Nomel',
+  'Spelon','Watmel','Durin','Belue'])
+  BERRY_FX[b] = 'No battle effect — an ingredient berry.';
+const TREE_SRC = ITEMS.filter(i => i.kind === 'tree');
+{
+  const byName = new Map(ITEMS.filter(i => i.section === 'berries' && i.kind === 'item')
+    .map(i => [i.name, i]));
+  for (const t of TREE_SRC) for (const b of t.berryList) {
+    const name = `${b.label} Berry`;
+    let e = byName.get(name);
+    if (!e) {
+      e = { section: 'berries', name, locations: [], localIcon: null, tm: null, berries: null,
+        kind: 'item', matched: !!(b.sprite && BERRY_FX[b.label]), slug: null, sprite: b.sprite,
+        category: 'berries', cost: null, effect: BERRY_FX[b.label] || null, flavor: null };
+      byName.set(name, e); ITEMS.push(e);
+    }
+    e.locations.push(`${t.name}${b.qty ? ` (×${b.qty})` : ''}`);
+  }
+}
+ITEMS = ITEMS.filter(i => i.kind !== 'tree');
 const DEXN = FULLDEX.length;
 const ANCHORS = [1, 100, 200, 300, 400, 500, DEXN];
 const HAS_DATA = new Set([41, 66, 447, 200, 54, 129]);
@@ -92,6 +158,23 @@ const shot = (src, title, place) => {
             alt="${esc(title)} — in-game screenshot taken at ${esc(place)}" loading="lazy" decoding="async">
         </picture>
         <figcaption><b>${esc(title)}</b><span>${esc(place)}</span></figcaption>
+      </figure>`;
+};
+
+/* A capture that is not from the game — a browser window, say. Same
+   derivatives, but the caption carries the whole label and the alt text does
+   not claim the shot was taken in game. */
+const webshot = (src, caption) => {
+  const [w, h] = DIMS[src] || [4, 3];
+  return `
+      <figure class="pshot">
+        <picture>
+          <source type="image/webp" sizes="(max-width: 700px) 92vw, min(620px, 46vw)"
+            srcset="${opt(src)}-640.webp 640w, ${opt(src)}-1280.webp 1280w">
+          <img src="pictures/${src}" width="${w}" height="${h}"
+            alt="${esc(caption)}" loading="lazy" decoding="async">
+        </picture>
+        <figcaption>${esc(caption)}</figcaption>
       </figure>`;
 };
 
@@ -214,6 +297,7 @@ const masthead = (cur) => `
       <a href="medals.html"${cur === 'medals' ? ' aria-current="page"' : ''}>Medals</a>
       <a href="sunpalace.html"${cur === 'sun' ? ' aria-current="page"' : ''}>Sun Palace</a>
       <a href="gifts.html"${cur === 'gifts' ? ' aria-current="page"' : ''}>Mystery Gift</a>
+      <a href="trade.html"${cur === 'trade' ? ' aria-current="page"' : ''}>Trade evolution</a>
       <a href="patch.html"${cur === 'patch' ? ' aria-current="page"' : ''}>How to patch</a>
     </nav>
     <div class="tools">
@@ -838,22 +922,30 @@ const machineKey = (m) => {
   const n = parseInt(tag.replace(/\D/g, ''), 10) || 0;
   return (tag.startsWith('HM') ? 1000 : 0) + n;
 };
+/* The Berry pocket follows the games' own berry numbering, the way the
+   in-game bag sorts it. */
+const berryKey = (b) => {
+  const n = BERRY_ORDER.indexOf(b.name.replace(/ Berry$/, ''));
+  return n < 0 ? 999 : n;
+};
 const inPocket = (id) => {
   const list = ITEMS.filter(i => pocketOf(i) === id);
-  return id === 'machines' ? list.slice().sort((a, b) => machineKey(a) - machineKey(b)) : list;
+  if (id === 'machines') return list.slice().sort((a, b) => machineKey(a) - machineKey(b));
+  if (id === 'berries')  return list.slice().sort((a, b) => berryKey(a) - berryKey(b));
+  return list;
 };
 const MATCHED = ITEMS.filter(i => i.matched).length;
 const HACKEX  = ITEMS.filter(i => i.hackExclusive).length;
-const TREES   = ITEMS.filter(i => i.kind === 'tree');
+const BERRIES = ITEMS.filter(i => pocketOf(i) === 'berries');
 
 const glyph = p =>
   `<svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"
      stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="${p.glyph}"/></svg>`;
 
-const itemIcon = (i, size = 32) => i.sprite
-  ? `<img src="${i.sprite}" alt="" width="${size}" height="${size}" loading="lazy">`
-  : i.localIcon
-    ? `<img src="pictures/items/${i.localIcon}" alt="" width="30" height="30" loading="lazy">`
+const itemIcon = (i, size = 32) => i.localIcon && !i.sprite
+  ? `<img src="pictures/items/${i.localIcon}" alt="" width="${size}" height="${size}" loading="lazy">`
+  : i.sprite
+    ? `<img src="${i.sprite}" alt="" width="${size}" height="${size}" loading="lazy">`
     : `<i aria-hidden="true"></i>`;
 
 const tileSprite = (i) => {
@@ -861,8 +953,10 @@ const tileSprite = (i) => {
     const b = i.berryList.find(b => b.sprite);
     return b ? `<img src="${b.sprite}" alt="" width="48" height="48" loading="lazy">` : '<i aria-hidden="true"></i>';
   }
+  /* hack-exclusive items have no PokeAPI sprite but do have a local icon */
+  if (!i.sprite && i.localIcon)
+    return `<img src="pictures/items/${i.localIcon}" alt="" width="48" height="48" loading="lazy">`;
   return i.sprite ? `<img src="${i.sprite}" alt="" width="48" height="48" loading="lazy">`
-    : i.localIcon ? `<img src="pictures/items/${i.localIcon}" alt="" width="30" height="30" loading="lazy">`
     : '<i aria-hidden="true"></i>';
 };
 
@@ -871,7 +965,7 @@ const tileSprite = (i) => {
    JS then intercepts it and opens the same content in a dialog. */
 const bagTile = (i, idx) => `
           <li class="bagtile${i.hackExclusive ? ' is-exclusive' : ''}" data-idx="${idx}"
-              data-name="${esc(((i.tm || '') + ' ' + i.name + ' ' + (i.effect || '') + ' ' + i.locations.join(' ')).trim().toLowerCase())}">
+              data-name="${esc(((i.tm || '') + ' ' + i.name + ' ' + (i.effect || i.gameText || '') + ' ' + i.locations.join(' ')).trim().toLowerCase())}">
             <a class="bagtile__hit" href="#item-${idx}">
               <span class="bagtile__slot">${tileSprite(i)}${i.locations.length > 1
                 ? `<span class="bagtile__spots">×${i.locations.length}</span>` : ''}${
@@ -883,6 +977,31 @@ const bagTile = (i, idx) => `
                 : esc(i.name)}</span>
             </a>
           </li>`;
+
+/* An item named anywhere else in the guide links straight to its Bag entry.
+   Matching is apostrophe- and spacing-insensitive ("Kings Rock" resolves to
+   "King's Rock"); an item with no entry stays plain text. */
+const itemKey = s => String(s).toLowerCase().replace(/[^a-z0-9]/g, '');
+const ITEM_AT = new Map();
+ITEMS.forEach((i, idx) => { if (!ITEM_AT.has(itemKey(i.name))) ITEM_AT.set(itemKey(i.name), idx); });
+const itemLink = (name, { page = '' } = {}) => ITEM_AT.has(itemKey(name))
+  ? `<a href="${page}#item-${ITEM_AT.get(itemKey(name))}">${esc(name)}</a>`
+  : esc(name);
+const WILD_OF = name => WILD.filter(w => itemKey(w.item) === itemKey(name));
+
+/* Wild holders, folded into the item's own entry — the bag stays the only
+   list, the way the game presents it. */
+const wildBlock = (i) => {
+  const w = WILD_OF(i.name);
+  if (!w.length) return '';
+  return `
+        <p class="detail__label">Held by wild Pokémon</p>
+        <ul class="detail__locs">${w.map(x => `<li>${x.mons.map(m => esc(m.name)).join(', ')}${
+          x.where ? ` — ${esc(x.where)}` : ''}${
+          x.rarity ? ` <em class="rar rar--${x.rarity.toLowerCase()}">${esc(x.rarity)}</em>` : ''}</li>`).join('')}</ul>
+        <p class="detail__note">Steal it with Thief or Covet, or swap for it with Trick or
+          Switcheroo. The Frisk ability shows what a wild Pokémon is holding.</p>`;
+};
 
 const detailFor = (i) => {
   if (!i) return '';
@@ -908,15 +1027,24 @@ const detailFor = (i) => {
         </dl>
         <p class="detail__effect">${esc(i.effect || 'No effect recorded.')}</p>
         <p class="detail__label">Where</p>${locs}${gallery}`;
+  /* A hack-exclusive item has no PokeAPI entry, so its only real description is
+     the one the bag prints in game. Where that has been read off the screen it
+     takes the effect slot outright — the provenance moves to the note below it,
+     rather than standing in for a description the way it used to. */
   return `
         <div class="detail__sprite">${itemIcon(i, 48)}</div>
         <div class="detail__head"><h3>${esc(i.name)}</h3>
           <p>${i.category ? esc(i.category) : i.hackExclusive ? 'hack-exclusive' : ''}</p></div>
-        <p class="detail__effect">${i.hackExclusive
-          ? 'No PokeAPI entry for this item.' + (i.note ? ' ' + esc(i.note) : '')
-          : esc(i.effect || 'No effect recorded.')}</p>
+        <p class="detail__effect">${i.gameText
+          ? esc(i.gameText)
+          : i.hackExclusive
+            ? 'No PokeAPI entry for this item.' + (i.note ? ' ' + esc(i.note) : '')
+            : esc(i.effect || 'No effect recorded.')}</p>
+        ${i.gameText ? `<p class="detail__note">The game’s own description.${
+          i.note ? ' ' + esc(i.note) : ''}</p>` : ''}
         ${i.flavor && !i.hackExclusive ? `<p class="detail__flavor">${esc(i.flavor)}</p>` : ''}
-        <p class="detail__label">Where</p>${locs}${gallery}`;
+        ${i.locations.length || !WILD_OF(i.name).length
+          ? `<p class="detail__label">Where</p>${locs}` : ''}${wildBlock(i)}${gallery}`;
 };
 
 const items = `${head('Bag')}
@@ -928,9 +1056,10 @@ ${masthead('items')}
       <h1>${ITEMS.length} things worth picking up</h1>
       <div class="opener__meta">
         <span><strong style="color:var(--jade)">${MATCHED}</strong> with PokeAPI sprite and effect</span><span>·</span>
-        <span><strong>${TREES.length}</strong> berry trees</span><span>·</span>
+        <span><strong>${BERRIES.length}</strong> berries from ${TREE_SRC.length} trees</span><span>·</span>
         <span><strong style="color:var(--jade)">${SHOTTED}</strong> with an in-game capture</span><span>·</span>
-        <span><strong style="color:var(--ember)">${HACKEX}</strong> hack-exclusive</span>
+        <span><strong style="color:var(--ember)">${HACKEX}</strong> hack-exclusive</span><span>·</span>
+        <span><strong>${WILD.length}</strong> held by wild Pokémon</span>
       </div>
     </div>
   </header>
@@ -1663,7 +1792,160 @@ ${masthead('gifts')}
 </main>
 ${foot}`;
 
-for (const [name, html] of Object.entries({ index, chapter, sunpalace, patch, gifts, medals, items, dex, ...speciesPages, ...alolanPages })) {
+
+/* ---------- 10. trade evolution -------------------------------
+   Trade evolutions are normally a dead end in a single-player ROM hack. This
+   build reopens both halves: an in-game self-trade room, and a real online GTS.
+   The two are alternatives rather than steps, so they sit behind a toggle
+   instead of being numbered 1 and 2 — you only ever need one of them. */
+const TRADE_ITEMS = TRADES.filter(t => t.item).length;
+const TRADE_ROUTES = [
+  { id: 'online', label: 'Online trade', sub: 'Central City GTS',
+    glyph: 'M10 2.5a7.5 7.5 0 1 0 0 15 7.5 7.5 0 0 0 0-15Zm0 0c-2.2 2-3.3 4.5-3.3 7.5S7.8 15.5 10 17.5m0-15c2.2 2 3.3 4.5 3.3 7.5S12.2 15.5 10 17.5M3 7.5h14M3 12.5h14' },
+  { id: 'self', label: 'Self trade', sub: 'Dardusk Cave',
+    glyph: 'M4 7.5h9.5m0 0L11 5m2.5 2.5L11 10M16 12.5H6.5m0 0L9 10m-2.5 2.5L9 15' },
+];
+const routeTab = (r, i) => `
+        <a class="route" role="tab" href="#route-${r.id}" id="rtab-${r.id}"
+           aria-controls="route-${r.id}" aria-selected="${i === 0}">
+          <span class="route__glyph"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor"
+            stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="${r.glyph}"/></svg></span>
+          <span class="route__text"><b>${r.label}</b><span>${r.sub}</span></span>
+        </a>`;
+const tradeMon = (name, nat) => nat
+  ? `<a class="giftmon" href="sp-${(TRADES.find(t => t.from === name)?.fromReg) || ''}.html">
+      <img src="${SPRITE(nat)}" alt="" width="52" height="52" loading="lazy"><span>${esc(name)}</span></a>`
+  : `<span class="giftmon"><i aria-hidden="true"></i><span>${esc(name)}</span></span>`;
+
+const trade = `${head('Trade evolution')}
+${masthead('trade')}
+<main id="main" class="shell">
+  <header class="opener">
+    <div class="opener__ring">${ring({ n: 2, done: [0], here: 1, w: 30, gap: 12 })}</div>
+    <div>
+      <h1>Trade evolution</h1>
+      <div class="opener__meta">
+        <span><strong>${TRADES.length}</strong> evolutions need a trade</span><span>·</span>
+        <span><strong>${TRADE_ITEMS}</strong> need a held item as well</span><span>·</span>
+        <span><strong>2</strong> ways to do it</span>
+      </div>
+    </div>
+    <div class="opener__rule"></div>
+  </header>
+
+  <div class="chapter">
+    <div class="column">
+      <p>In most single-player ROM hacks a trade evolution is a dead end. This one reopens both
+        halves of it — one online, one offline — so nothing on the list below is unobtainable.
+        Pick whichever you can actually run; either one evolves the same Pokémon.</p>
+
+      <div class="routes" role="tablist" aria-label="Two ways to trade">
+        ${TRADE_ROUTES.map(routeTab).join('')}
+      </div>
+
+      <div class="routes__body">
+        <section class="routepanel" id="route-online" role="tabpanel" aria-labelledby="rtab-online">
+          <h2 id="gts">Trade with other players — the GTS</h2>
+          <p>The <b>GTS building in Central City</b> connects to a live Global Trade Station.
+            Deposit a Pokémon, name what you want back, and other players can fill it — real
+            trades with real people, so both sides evolve.</p>
+          ${shot('SpecialLocations/GtsBuildingCentralCity.png', 'The GTS building', 'Central City — the doors face the plaza')}
+          <p>You can see what is currently up for offer in a browser before you go, at
+            <a href="https://www.pokehacking.com/online/gts/">pokehacking.com/online/gts</a>.
+            Every listing names the species, its trainer, when it was deposited and what that
+            player wants back, so you can tell whether the trade you need is already waiting.</p>
+          ${webshot('SpecialLocations/GtsWebsite.png', 'The same deposits, in a browser — pokehacking.com/online/gts')}
+          <div class="call call--legendary">
+            <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="9" cy="9" r="6.5"/><circle cx="9" cy="9" r="2.5"/></svg>
+            <div><b>Needs a properly patched ROM</b>
+              <p>Online trading only works on a ROM you patched yourself — see
+                <a href="patch.html">how to patch</a>. It is also how the Kalos starters are meant
+                to be completed: one is given at random, the other two come from the GTS.</p></div>
+          </div>
+        </section>
+
+        <!-- Both panels ship visible: without JS the toggle is two anchors that
+             each land on a real section. JS hides the one that is not selected. -->
+        <section class="routepanel" id="route-self" role="tabpanel" aria-labelledby="rtab-self">
+          <h2 id="self">Trade with yourself — Dardusk Cave</h2>
+          <p>The bottom floor of Dardusk Cave holds a room that trades a Pokémon with itself, which
+            is enough to trigger a trade evolution — no second player, no patched ROM. You need the
+            <b>${itemLink('Dungeon Key', { page: 'items.html' })}</b> to get through the door.</p>
+          ${shot('SpecialLocations/DungeonGateDarduskCave.png', 'The way down', 'Dardusk Cave — the channel to the locked door')}
+          ${shot('SpecialLocations/SelfTradeDungeon.jpeg', 'The self-trade room', 'Dardusk Cave — bottom floor, needs the Dungeon Key')}
+
+          <p>It behaves like an ordinary trade, with the room standing in for the other player:</p>
+          <ol class="steps">
+            <li><b>The first time you interact, it takes a Pokémon from your party.</b> Nothing
+              comes back — that one is now the Pokémon the room is holding.</li>
+            <li><b>Interact again and offer a second Pokémon.</b> The first one comes back to you,
+              traded, and anything that evolves on trade evolves now.</li>
+            <li><b>Repeat as often as you like.</b> Each visit hands over what you offer and
+              returns whatever was being held.</li>
+          </ol>
+          <div class="call call--missable">
+            <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M9 2 17 16H1L9 2Z"/><path d="M9 7v4"/><path d="M9 13.5v.5"/></svg>
+            <div><b>Something always stays behind</b>
+              <p>The room's own warning: <em>“…another Pokémon will have to pay the price.”</em>
+                That price is the one being held — there is always exactly one of yours on the
+                other side, until the next trade brings it home.</p>
+              <p>So bring something you are happy to leave there, and finish on a Pokémon you
+                do not mind parting with.</p></div>
+          </div>
+        </section>
+      </div>
+
+      <h2 id="list">What needs a trade</h2>
+      <p>Every evolution in the regional dex that a trade gates. ${TRADE_ITEMS} of them also need
+        the right held item — those are the ones people usually get stuck on.</p>
+      <div class="table-wrap">
+        <table class="data">
+          <thead><tr><th scope="col">From</th><th scope="col">Becomes</th><th scope="col">Held item</th></tr></thead>
+          <tbody>
+            ${TRADES.map(t => `<tr>
+              <th scope="row">${t.fromReg ? `<a href="sp-${t.fromReg}.html">${esc(t.from)}</a>` : esc(t.from)}</th>
+              <td>${esc(t.to)}</td>
+              <td>${t.item ? `<b>${itemLink(t.item, { page: 'items.html' })}</b>` : '<span class="undoc">plain trade</span>'}</td>
+            </tr>`).join('\n            ')}
+          </tbody>
+        </table>
+      </div>
+
+      <div class="call call--legendary">
+        <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="9" cy="9" r="6.5"/><circle cx="9" cy="9" r="2.5"/></svg>
+        <div><b>Looking for Milotic?</b>
+          <p>Feebas does not evolve by trade in this hack, so it is not on the list. Feed it a
+            <b>Wonder Meal</b> at a Pokémon Center <b>twice</b>, then level it up, and it evolves
+            into Milotic.</p></div>
+      </div>
+    </div>
+
+    <aside class="rail" aria-label="Summary">
+      <p class="rail__label">At a glance</p>
+      <div class="mount">
+        <div class="mount__head">Two routes</div>
+        <dl>
+          <div class="stat"><dt>Online</dt><dd>Central City GTS</dd></div>
+          <div class="stat"><dt>Needs</dt><dd>Patched ROM</dd></div>
+          <div class="stat"><dt>Offline</dt><dd>Dardusk Cave</dd></div>
+          <div class="stat"><dt>Needs</dt><dd>${itemLink('Dungeon Key', { page: 'items.html' })}</dd></div>
+        </dl>
+      </div>
+      <div class="mount">
+        <div class="mount__head">The list</div>
+        <dl>
+          <div class="stat"><dt>Trade evolutions</dt><dd>${TRADES.length}</dd></div>
+          <div class="stat"><dt>With a held item</dt><dd>${TRADE_ITEMS}</dd></div>
+          <div class="stat"><dt>Plain trade</dt><dd>${TRADES.length - TRADE_ITEMS}</dd></div>
+        </dl>
+      </div>
+      <a class="nextup" href="dex.html"><em>Look them up in</em><strong>The Dex</strong></a>
+    </aside>
+  </div>
+</main>
+${foot}`;
+
+for (const [name, html] of Object.entries({ index, chapter, sunpalace, patch, trade, gifts, medals, items, dex, ...speciesPages, ...alolanPages })) {
   writeFileSync(join(OUT, `${name}.html`), html);
   if (!name.startsWith('sp-')) console.log('wrote', `${name}.html`, (html.length / 1024).toFixed(1), 'kB');
 }
