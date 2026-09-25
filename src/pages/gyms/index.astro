@@ -1,0 +1,23 @@
+---
+import Base from '../../layouts/Base.astro';
+import PageHead from '../../components/PageHead.astro';
+import Plate from '../../components/Plate.astro';
+import { GYMS, href, slug, SPRITE } from '../../lib/data.js';
+---
+<Base title="Gyms" current="gyms" description="The five Gym Leaders of Zhery, their badges and their teams.">
+  <PageHead title="Gyms" note="Five Gyms, in level order." />
+  <ol class="grid grid--wide gyms">
+    {GYMS.map((g) => (
+      <li>
+        <a class="card" href={href(`gyms/${slug(g.city)}/`)}>
+          <span class="card__title"><span class="num">{g.order}</span>{g.city}</span>
+          <span class="card__meta"><b>{g.badge}</b> · Leader {g.leader} · lv {g.levels}</span>
+          <span class="plates">{g.types.map((t) => <Plate type={t} />)}</span>
+          <span class="strip">{g.team.map((m) => <img src={SPRITE(m.nat)} alt={m.name} width="32" height="32" loading="lazy" decoding="async" />)}</span>
+          <span class="card__foot">{g.effect}</span>
+        </a>
+      </li>
+    ))}
+  </ol>
+  <style>.gyms { list-style: none; } .gyms .num { color: var(--accent-ink); font-weight: 600; }</style>
+</Base>

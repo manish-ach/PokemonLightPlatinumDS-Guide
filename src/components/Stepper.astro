@@ -1,0 +1,28 @@
+---
+/* Previous / next buttons for anything with an order, plus arrow keys. */
+interface Side { href: string; name: string; num?: string; img?: string; }
+interface Props { prev: Side; next: Side; label: string; }
+const { prev, next, label } = Astro.props;
+---
+<nav class="stepper" aria-label={label}>
+  <a class="stepper__btn" href={prev.href} data-step-prev rel="prev" aria-label={`Previous, ${prev.name}`}>
+    <span aria-hidden="true">‹</span>{prev.img && <img src={prev.img} alt="" width="28" height="28" loading="lazy" decoding="async" />}{prev.num && <b class="num">{prev.num}</b>}<i>{prev.name}</i>
+  </a>
+  <a class="stepper__btn" href={next.href} data-step-next rel="next" aria-label={`Next, ${next.name}`}>
+    <i>{next.name}</i>{next.num && <b class="num">{next.num}</b>}{next.img && <img src={next.img} alt="" width="28" height="28" loading="lazy" decoding="async" />}<span aria-hidden="true">›</span>
+  </a>
+</nav>
+<script>
+  /* left and right arrows follow the buttons, unless you are typing */
+  const init = () => {
+    if (document.body.dataset.stepperWired) return;
+    document.body.dataset.stepperWired = '1';
+    document.addEventListener('keydown', (e) => {
+      if (e.altKey || e.ctrlKey || e.metaKey || /^(INPUT|TEXTAREA|SELECT)$/.test(document.activeElement?.tagName || '')) return;
+      const go = e.key === 'ArrowLeft' ? '[data-step-prev]' : e.key === 'ArrowRight' ? '[data-step-next]' : null;
+      const a = go && document.querySelector(go);
+      if (a) { e.preventDefault(); a.click(); }
+    });
+  };
+  init();
+</script>

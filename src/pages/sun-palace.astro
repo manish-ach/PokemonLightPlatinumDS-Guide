@@ -1,0 +1,204 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHead from '../components/PageHead.astro';
+import Shot from '../components/Shot.astro';
+import { href } from '../lib/data.js';
+import '../styles/sunpalace.css';
+
+/* Constants match src/scripts/sunpalace.js exactly, so the drawing cannot
+   drift from the mechanics the solver uses. The room is drawn the way you
+   walk into it: entry at the bottom, so every line angle is the solver's
+   angle plus 180. Rotation direction survives that, so red is still
+   clockwise and blue still anticlockwise. */
+const SP = {
+  LINE_ANGLES: { 1: 0, 2: 288, 3: 216, 4: 144, 5: 72 },
+  TRACK_RADII: [80, 130, 180, 230],
+  TRACK_COLOR: { 1: 'cw', 2: 'ccw', 3: 'cw', 4: 'ccw' },
+  SWITCH_RADIUS: 290,
+  RADIAL_END: 270,
+  SWITCHES: { 1: 'rotate', 2: 'outside', 3: 'inside', 4: 'inside', 5: 'outside' },
+  PROTECTED: [['1', 'rotate'], ['2', 'outside']],
+};
+const SPNAME = { rotate: 'Rotate', outside: 'Outside', inside: 'Inside' };
+const spPt = (deg, r) => { const a = deg * Math.PI / 180; return [(r * Math.sin(a)).toFixed(1), (-r * Math.cos(a)).toFixed(1)]; };
+const spArc = (r, a0, a1) => { const [x0, y0] = spPt(a0, r), [x1, y1] = spPt(a1, r); return `M${x0},${y0} A${r},${r} 0 0 0 ${x1},${y1}`; };
+const spProtected = (line, type) => SP.PROTECTED.some(([l, t]) => +l === line && t === type);
+const spIcon = (type, deg) => {
+  if (type === 'rotate') return `<g class="sp__icon"><path d="M-11,2 A11,11 0 1 1 -2,11" /><path class="sp__iconfill" d="M-15,-1 L-7,-1 L-11,7 Z"/></g>`;
+  const out = type === 'outside';
+  return `<g class="sp__icon" transform="rotate(${deg})"><line x1="0" y1="${out ? 11 : -11}" x2="0" y2="${out ? -6 : 6}"/><path class="sp__iconfill" d="M-6,${out ? -5 : 5} L6,${out ? -5 : 5} L0,${out ? -14 : 14} Z"/><line x1="-8" y1="${out ? 13 : -13}" x2="8" y2="${out ? 13 : -13}"/></g>`;
+};
+const BEVEL = (w, h, c = 7) => `M${-w / 2 + c},${-h / 2} L${w / 2},${-h / 2} L${w / 2},${h / 2 - c} L${w / 2 - c},${h / 2} L${-w / 2},${h / 2} L${-w / 2},${-h / 2 + c} Z`;
+/* a small arrowhead riding a track, pointing the way gears step on it */
+const spDir = (r, deg, cw) => { const [x, y] = spPt(deg, r); return `<path class="sp__dir" d="M-7,-5 L7,0 L-7,5 Z" transform="translate(${x} ${y}) rotate(${cw ? deg : deg + 180})"/>`; };
+const RAYS = Array.from({ length: 36 }, (_, i) => i * 10);
+
+const boardSvg = `
+<svg class="sp" viewBox="-360 -352 720 692" role="img" aria-labelledby="spttl spdesc">
+  <title id="spttl">Sun Palace gear board</title>
+  <desc id="spdesc">A circular hall seen from above, entry at the bottom. Four concentric tracks are crossed by five radial lines numbered L1 to L5. Tracks one and three step clockwise; tracks two and four step anticlockwise. Each line carries one lever: L1 rotates every gear, L2 and L5 push gears outward, L3 and L4 pull them inward. The goal is to stack four gears on a single line, one on each track. A secret passage links the L1 and L2 levers so they keep working even when the ladder blocks them.</desc>
+  <defs>
+    <radialGradient id="spfloor" cx="50%" cy="50%" r="50%"><stop offset="0" class="sp__floor0"/><stop offset="0.72" class="sp__floor1"/><stop offset="1" class="sp__floor2"/></radialGradient>
+    <radialGradient id="spsun" cx="50%" cy="42%" r="60%"><stop offset="0" class="sp__sun0"/><stop offset="1" class="sp__sun1"/></radialGradient>
+    <filter id="splift" x="-40%" y="-40%" width="180%" height="180%"><feDropShadow dx="0" dy="2" stdDeviation="3" flood-opacity="0.18"/></filter>
+    <filter id="spsink" x="-30%" y="-30%" width="160%" height="160%"><feDropShadow dx="0" dy="1" stdDeviation="1.2" flood-opacity="0.22"/></filter>
+  </defs>
+
+  <circle class="sp__field" r="304" fill="url(#spfloor)"/>
+  <g class="sp__rays">${RAYS.map((d) => { const [x0, y0] = spPt(d, 276), [x1, y1] = spPt(d, d % 30 === 0 ? 296 : 288); return `<line x1="${x0}" y1="${y0}" x2="${x1}" y2="${y1}"/>`; }).join('')}</g>
+  <circle class="sp__rim" r="270"/>
+  <circle class="sp__rim sp__rim--inner" r="258"/>
+
+  ${SP.TRACK_RADII.map((r, i) => `<circle class="sp__groove" r="${r}"/><circle class="sp__track sp__track--${SP.TRACK_COLOR[i + 1]}" r="${r}"/>`).join('')}
+  ${SP.TRACK_RADII.map((r, i) => { const cw = SP.TRACK_COLOR[i + 1] === 'cw'; return spDir(r, 108, cw) + spDir(r, 252, cw); }).join('')}
+  ${SP.TRACK_RADII.map((r, i) => { const [x, y] = spPt(36, r); return `<g class="sp__trackno" transform="translate(${x} ${y})"><circle r="9"/><text y="4">${i + 1}</text></g>`; }).join('')}
+  ${Object.entries(SP.LINE_ANGLES).map(([, deg]) => { const [x, y] = spPt(+deg, SP.RADIAL_END); return `<line class="sp__radial" x1="0" y1="0" x2="${x}" y2="${y}"/>`; }).join('')}
+
+  <g class="sp__pillar" filter="url(#splift)">
+    <circle class="sp__pillarbody" r="58" fill="url(#spsun)"/>
+    <circle class="sp__pillarring" r="46"/>
+    <g class="sp__sunrays">${[0, 45, 90, 135, 180, 225, 270, 315].map((d) => { const [x0, y0] = spPt(d, 30), [x1, y1] = spPt(d, 40); return `<line x1="${x0}" y1="${y0}" x2="${x1}" y2="${y1}"/>`; }).join('')}</g>
+    <circle class="sp__suncore" r="20"/>
+    <text class="sp__pillarlbl" y="4">pillar</text>
+  </g>
+  <g class="sp__entry" transform="translate(0 66)">
+    <path class="sp__door" d="M-18,-8 L-18,8 L18,8 L18,-8 A18,18 0 0 0 -18,-8 Z"/>
+    <path class="sp__steps" d="M-24,12 H24 M-28,18 H28" />
+  </g>
+  <text class="sp__entrylbl" x="0" y="104">ENTRY</text>
+
+  <path class="sp__tunnel" d="${spArc(SP.SWITCH_RADIUS + 46, SP.LINE_ANGLES[1], SP.LINE_ANGLES[2])}"/>
+  <text class="sp__tunnellbl" x="${spPt(324, SP.SWITCH_RADIUS + 74)[0]}" y="${spPt(324, SP.SWITCH_RADIUS + 74)[1]}">secret passage</text>
+
+  <g class="sp__slots">
+    ${Object.entries(SP.LINE_ANGLES).flatMap(([line, deg]) => SP.TRACK_RADII.map((r, i) => {
+      const [x, y] = spPt(+deg, r);
+      return `<g class="sp__slot" data-line="${line}" data-track="${i + 1}" role="button" tabindex="0" transform="translate(${x} ${y})" aria-label="Line ${line}, track ${i + 1}, empty">
+        <circle class="sp__socket" r="19" filter="url(#spsink)"/><circle class="sp__socketin" r="12"/>
+        <g class="sp__gear sp__gear--${SP.TRACK_COLOR[i + 1]}" filter="url(#splift)">
+          ${[0, 30, 60, 90, 120, 150].map((a) => `<rect x="-19" y="-3.8" width="38" height="7.6" rx="2" transform="rotate(${a})"/>`).join('')}
+          <circle class="sp__gearbody" r="13.5"/><circle class="sp__gearring" r="8"/><circle class="sp__gearhub" r="3.4"/>
+        </g></g>`;
+    })).join('')}
+  </g>
+
+  <g class="sp__levers">
+    ${Object.entries(SP.LINE_ANGLES).map(([line, deg]) => {
+      const type = SP.SWITCHES[line]; const [x, y] = spPt(+deg, SP.SWITCH_RADIUS); const prot = spProtected(+line, type);
+      return `<g class="sp__lever sp__lever--${type}${prot ? ' is-protected' : ''}" data-line="${line}" data-type="${type}" role="button" tabindex="0" transform="translate(${x} ${y})" aria-label="Lever L${line} ${SPNAME[type]}">
+        <path class="sp__plate" d="${BEVEL(116, 78)}" filter="url(#splift)"/>
+        <path class="sp__plateedge" d="${BEVEL(104, 66, 5)}"/>
+        <circle class="sp__iconchip" cy="-13" r="17"/>
+        <g transform="translate(0 -13)">${spIcon(type, +deg)}</g>
+        <text class="sp__leverlbl" y="26"><tspan class="sp__leverno">L${line}</tspan> ${SPNAME[type].toUpperCase()}</text>
+        ${prot ? `<g class="sp__badge" transform="translate(44 -29)"><circle r="12"/><text y="5">∞</text></g>` : ''}
+        <g class="sp__lock" transform="translate(-44 -29)"><circle r="12"/><path d="M-4,-4 L4,4 M4,-4 L-4,4"/></g>
+      </g>`;
+    }).join('')}
+  </g>
+</svg>`;
+const ORDER = ['L3', 'L2', 'L1', 'L5'];
+---
+<Base title="Sun Palace" current="sun" description="The Sun Palace gear puzzle in Pokémon Light Platinum DS, with a solver that prints the lever order from your board.">
+  <PageHead title="Sun Palace" note="Copy your board, pick the line, press Solve." back={{ href: href('places/sun-palace/'), label: 'Sun Palace' }}>
+    <button type="button" class="btn btn--quiet btn--sm" data-sp-help aria-haspopup="dialog">How it works</button>
+  </PageHead>
+
+  <div class="sporder" role="note" aria-label="Required alignment order">
+    <span class="sporder__label">Solve order</span>
+    <span class="sporder__chain">
+      {ORDER.map((l, i) => (<>{i > 0 && <span class="sporder__arrow" aria-hidden="true">→</span>}<span class={`sporder__step${i === 3 ? ' is-final' : ''}`} data-order-step={l.slice(1)}>{l}</span></>))}
+    </span>
+    <button type="button" class="btn btn--quiet btn--sm sporder__reset" data-sp-restart>Reset progress</button>
+    <span class="sporder__note">After each alignment, climb a floor and press the main switch at the back to turn the pillar.</span>
+  </div>
+
+  <div class="spboard" data-sp>
+    <div class="spboard__figure" set:html={boardSvg} />
+    <div class="spboard__panel">
+      <p class="sp__status" data-sp-status role="status">Place four or more gears on the board, then pick the line you want them stacked on.</p>
+      <div class="spctl"><span class="spctl__label">Gears placed</span><span class="spctl__val"><output data-sp-count>0</output> / 6</span></div>
+      <label class="spctl"><span class="spctl__label">Stack them on</span>
+        <select data-sp-target>{[1, 2, 3, 4, 5].map((l) => <option value={l} selected={l === 3}>Line L{l}</option>)}</select>
+      </label>
+      <label class="spctl"><span class="spctl__label">Ladder blocks</span>
+        <select data-sp-block>
+          <option value="">Nothing</option>
+          {Object.entries(SP.SWITCHES).map(([l, t]) => <option value={l}>L{l} {SPNAME[t]}{spProtected(+l, t) ? ' (passage)' : ''}</option>)}
+        </select>
+      </label>
+      <div class="spctl spctl--acts">
+        <button type="button" class="btn btn--primary" data-sp-solve>Solve</button>
+        <button type="button" class="btn btn--quiet" data-sp-undo>Undo</button>
+        <button type="button" class="btn btn--quiet" data-sp-reset>Clear</button>
+        <button type="button" class="btn btn--quiet" data-sp-preset>Example</button>
+      </div>
+      <div class="spsol" data-sp-solution hidden>
+        <p class="spsol__head">Solution — <output data-sp-len>0</output> moves <button type="button" class="btn btn--quiet btn--sm" data-sp-play>Play</button></p>
+        <ol class="spsol__list" data-sp-steps></ol>
+      </div>
+      <p class="spctl__hint">Click a slot to place or lift a gear. Click a lever to pull it. A gear's colour says which way <b>Rotate</b> sends it.</p>
+      <div class="spreward" data-sp-reward hidden>
+        <b>The pillar has risen.</b>
+        <p>The floor below is open. Waiting down there: <b>TM43 Secret Power</b>, a <b>King's Rock</b>, a <b>Sun Stone</b> and the <b>Volcarona Egg</b>.</p>
+        <button type="button" class="btn btn--quiet btn--sm" data-sp-restart>Start over</button>
+      </div>
+    </div>
+  </div>
+
+  <section class="sec">
+    <h2>Seen in game</h2>
+    <div class="shots">
+      <Shot src="sun_palace_mainswitch.png" title="The main switch" place="platform behind the balustrade" />
+      <Shot src="sun_palace_goalstate.png" title="Goal state" place="ladder in place, the way open below" />
+      <Shot src="Tm/TM43SecretPowerSunPalace.jpeg" title="TM43 Secret Power" place="Sun Palace" />
+      <Shot src="Pokemons/VolcaronaEggSunPalace.jpeg" title="Volcarona Egg" place="Sun Palace" />
+      <Shot src="ItemLocations/KingsRockSunPalace1F.png" title="King's Rock" place="first floor" />
+      <Shot src="ItemLocations/SunStoneSunPalace1F.png" title="Sun Stone" place="first floor" />
+    </div>
+  </section>
+
+  <dialog class="dialog" id="sphelp" aria-labelledby="sphelp-t">
+    <div class="dialog__bar"><p>How this works</p><button type="button" class="iconbtn" data-sp-helpclose aria-label="Close"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M3 3l10 10M13 3L3 13"/></svg></button></div>
+    <div class="dialog__body">
+      <h2 id="sphelp-t">Four alignments, in order: L3 → L2 → L1 → L5</h2>
+      <ol class="help">
+        <li><b>Copy the board from your game.</b> Click the slots so the gears sit where they sit on screen — same lines, same tracks. The tool starts from your position; it does not invent one.</li>
+        <li><b>Pick the line you need.</b> L3 the first time. If the ladder is blocking a lever, set that too.</li>
+        <li><b>Press Solve.</b> It prints the lever order that stacks four gears on that line, one per track. <b>Play</b> steps through it on the board.</li>
+        <li><b>Pull those levers in game, climb up, throw the wall switch.</b> Come back, copy the new board, solve the next line.</li>
+      </ol>
+      <p class="dialog__label">The three levers</p>
+      <ul>
+        <li><b>L1 Rotate</b> steps every gear one line at once. Red tracks go clockwise, blue tracks anticlockwise, so one pull sends gears two ways.</li>
+        <li><b>L2 and L5 Outside</b> push that line's gears out one track. Track 4 is the rim.</li>
+        <li><b>L3 and L4 Inside</b> pull that line's gears in one track. Track 1 is the floor.</li>
+      </ul>
+      <p class="dialog__label">The ladder</p>
+      <ul>
+        <li>Wherever the ladder parks, it blocks that line's lever.</li>
+        <li><b>L1 Rotate and L2 Outside are the exceptions</b> — a secret passage keeps them working. If you must park somewhere awkward, park there.</li>
+      </ul>
+      <p class="dialog__label">Reading the board</p>
+      <ul class="key">
+        <li><span class="k k--cw"></span>Red tracks (1 and 3) — gears step clockwise</li>
+        <li><span class="k k--ccw"></span>Blue tracks (2 and 4) — gears step anticlockwise</li>
+        <li><span class="k k--inf"></span>Gold border and ∞ — lever protected by the passage</li>
+        <li><span class="k k--entry"></span>Entry door on the pillar; the hidden door is below it</li>
+      </ul>
+    </div>
+  </dialog>
+
+  <style>
+    .sec { margin-top: var(--sp-8); }
+    .sec h2 { margin-bottom: var(--sp-3); }
+    .help { padding-left: 1.3em; font-size: var(--text-sm); display: grid; gap: var(--sp-2); }
+    .key { list-style: none; padding: 0; display: grid; gap: var(--sp-1); }
+    .key li { display: flex; align-items: center; gap: var(--sp-2); }
+    .k { width: 14px; height: 14px; border-radius: 50%; flex: none; border: 2px solid var(--line-strong); }
+    .k--cw { border-color: oklch(0.6 0.17 30); } .k--ccw { border-color: oklch(0.55 0.15 252); }
+    .k--inf { border-color: var(--accent-ink); border-radius: 3px; }
+    .k--entry { background: var(--ink-3); border-color: var(--ink-3); border-radius: 3px; }
+  </style>
+  <script>import '../scripts/sunpalace.js';</script>
+</Base>

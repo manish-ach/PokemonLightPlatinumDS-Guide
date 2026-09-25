@@ -1,0 +1,292 @@
+[
+ {
+  "name": "Yellow Town",
+  "kind": "Town",
+  "built": true
+ },
+ {
+  "name": "Pantem Town",
+  "kind": "Town",
+  "built": true
+ },
+ {
+  "name": "Bramboach Town",
+  "kind": "Town",
+  "built": true
+ },
+ {
+  "name": "Enermy Town",
+  "kind": "Town",
+  "built": true
+ },
+ {
+  "name": "Alpine Town",
+  "kind": "Town",
+  "built": true
+ },
+ {
+  "name": "Central City",
+  "kind": "City",
+  "built": true
+ },
+ {
+  "name": "Inhore City",
+  "kind": "City",
+  "built": true
+ },
+ {
+  "name": "Esmerald City",
+  "kind": "City",
+  "built": true
+ },
+ {
+  "name": "Seanport City",
+  "kind": "City",
+  "built": true
+ },
+ {
+  "name": "Dardusk City",
+  "kind": "City",
+  "built": true
+ },
+ {
+  "name": "Groment City",
+  "kind": "City",
+  "built": true
+ },
+ {
+  "name": "Serenity City",
+  "kind": "City",
+  "built": false
+ },
+ {
+  "name": "Snowce City",
+  "kind": "City",
+  "built": false
+ },
+ {
+  "name": "Drakebreath City",
+  "kind": "City",
+  "built": false
+ },
+ {
+  "name": "Route 401",
+  "kind": "Route",
+  "built": true
+ },
+ {
+  "name": "Route 402",
+  "kind": "Route",
+  "built": true
+ },
+ {
+  "name": "Route 403",
+  "kind": "Route",
+  "built": true
+ },
+ {
+  "name": "Route 404",
+  "kind": "Route",
+  "built": true
+ },
+ {
+  "name": "Route 405",
+  "kind": "Route",
+  "built": true
+ },
+ {
+  "name": "Route 406",
+  "kind": "Route",
+  "built": true
+ },
+ {
+  "name": "Route 407",
+  "kind": "Route",
+  "built": true
+ },
+ {
+  "name": "Route 408",
+  "kind": "Route",
+  "built": true
+ },
+ {
+  "name": "Route 409",
+  "kind": "Route",
+  "built": true
+ },
+ {
+  "name": "Route 410",
+  "kind": "Route",
+  "built": true
+ },
+ {
+  "name": "Route 411",
+  "kind": "Route",
+  "built": true
+ },
+ {
+  "name": "Route 412",
+  "kind": "Route",
+  "built": true
+ },
+ {
+  "name": "Route 413",
+  "kind": "Route",
+  "built": false
+ },
+ {
+  "name": "Route 414",
+  "kind": "Route",
+  "built": false
+ },
+ {
+  "name": "Route 415",
+  "kind": "Route",
+  "built": false
+ },
+ {
+  "name": "Route 416",
+  "kind": "Route",
+  "built": false
+ },
+ {
+  "name": "Route 417",
+  "kind": "Route",
+  "built": false
+ },
+ {
+  "name": "Route 418",
+  "kind": "Route",
+  "built": false
+ },
+ {
+  "name": "Route 419",
+  "kind": "Route",
+  "built": false
+ },
+ {
+  "name": "Inhore Woods",
+  "kind": "Area",
+  "built": true
+ },
+ {
+  "name": "Foongus Swamp",
+  "kind": "Area",
+  "built": true
+ },
+ {
+  "name": "Dardusk Woods",
+  "kind": "Area",
+  "built": true
+ },
+ {
+  "name": "Marfeny Lake",
+  "kind": "Area",
+  "built": true
+ },
+ {
+  "name": "Celestial Island",
+  "kind": "Area",
+  "built": true
+ },
+ {
+  "name": "Panotem Islands",
+  "kind": "Area",
+  "built": true
+ },
+ {
+  "name": "Turquoise Islands",
+  "kind": "Area",
+  "built": true
+ },
+ {
+  "name": "Misty Falls",
+  "kind": "Area",
+  "built": true
+ },
+ {
+  "name": "National Park",
+  "kind": "Area",
+  "built": true
+ },
+ {
+  "name": "Spirits Well",
+  "kind": "Dungeon",
+  "built": true
+ },
+ {
+  "name": "Mt. Icestorm",
+  "kind": "Dungeon",
+  "built": true
+ },
+ {
+  "name": "Shadow Tower",
+  "kind": "Dungeon",
+  "built": true
+ },
+ {
+  "name": "Dardusk's Bane",
+  "kind": "Dungeon",
+  "built": true
+ },
+ {
+  "name": "Dardusk's Bridge",
+  "kind": "Area",
+  "built": true
+ },
+ {
+  "name": "Pantem Cave",
+  "kind": "Dungeon",
+  "built": true
+ },
+ {
+  "name": "Mt. Shuem",
+  "kind": "Dungeon",
+  "built": true
+ },
+ {
+  "name": "Sun Palace",
+  "kind": "Dungeon",
+  "built": true
+ },
+ {
+  "name": "Steam's Lair",
+  "kind": "Dungeon",
+  "built": true
+ },
+ {
+  "name": "Groment Mines",
+  "kind": "Dungeon",
+  "built": true
+ },
+ {
+  "name": "TV Station",
+  "kind": "Area",
+  "built": true
+ },
+ {
+  "name": "Game Corner",
+  "kind": "Area",
+  "built": true
+ },
+ {
+  "name": "Botanic Garden",
+  "kind": "Area",
+  "built": true
+ },
+ {
+  "name": "Lighthouse",
+  "kind": "Area",
+  "built": true
+ },
+ {
+  "name": "Abandoned Town",
+  "kind": "Town",
+  "built": true
+ },
+ {
+  "name": "Desire Island",
+  "kind": "Area",
+  "built": true
+ }
+]

@@ -1,0 +1,17 @@
+[
+ { "name": "Dragon Scale",  "cost": 1000, "slug": "dragon-scale" },
+ { "name": "Metal Coat",    "cost": 1000, "slug": "metal-coat" },
+ { "name": "King's Rock",   "cost": 1000, "slug": "kings-rock" },
+ { "name": "Protector",     "cost": 1000, "slug": "protector" },
+ { "name": "Electirizer",   "cost": 1000, "slug": "electirizer" },
+ { "name": "Magmarizer",    "cost": 1000, "slug": "magmarizer" },
+ { "name": "Up-Grade",      "cost": 1000, "slug": "up-grade" },
+ { "name": "Dubious Disc",  "cost": 1000, "slug": "dubious-disc" },
+ { "name": "Reaper Cloth",  "cost": 1000, "slug": "reaper-cloth" },
+ { "name": "DeepSeaTooth",  "cost": 1000, "slug": "deep-sea-tooth" },
+ { "name": "DeepSeaScale",  "cost": 1000, "slug": "deep-sea-scale" },
+ { "name": "Razor Claw",    "cost": 1000, "slug": "razor-claw" },
+ { "name": "Razor Fang",    "cost": 1000, "slug": "razor-fang" },
+ { "name": "Rare Candy",    "cost": 500,  "slug": "rare-candy", "qty": 10 },
+ { "name": "Master Ball",   "cost": 500,  "slug": "master-ball" }
+]

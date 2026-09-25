@@ -1,0 +1,96 @@
+[
+ {
+  "name": "Fossil revival",
+  "kind": "sidequest",
+  "where": "Prof. Jasmine's Lab, Yellow Town",
+  "desc": "Hand a fossil to the scientists working with Professor Jasmine and they send it to a laboratory on Cinnabar Island for revival. They call you back once the Pokémon is ready.",
+  "source": "text bank 215"
+ },
+ {
+  "name": "Show a Poké Ball Pokémon",
+  "kind": "sidequest",
+  "where": "Inhore University, Inhore City",
+  "desc": "A student is writing up class notes. Show her a Pokémon that looks like a Poké Ball (Voltorb line) and she rewards you.",
+  "source": "text bank 214"
+ },
+ {
+  "name": "Shiny hunt",
+  "kind": "sidequest",
+  "where": "Inhore University, Inhore City",
+  "desc": "A long-serving Trainer has never seen a Pokémon with unusual colouring and asks you to come back if you find one.",
+  "source": "text bank 212"
+ },
+ {
+  "name": "Show a Fairy-type",
+  "kind": "sidequest",
+  "where": "Dardusk Woods",
+  "desc": "A traveller unnerved by the forest wishes she had a Fairy-type; showing her one you are walking with prompts a reward.",
+  "source": "text bank 296"
+ },
+ {
+  "name": "The Moon Stone guide",
+  "kind": "sidequest",
+  "where": "Dardusk City",
+  "desc": "Dardusk is permanently dark, so residents tell day from night by the Moon Stones, which glow only at night. A townsperson gives you one to use as a guide.",
+  "source": "text bank 241"
+ },
+ {
+  "name": "Lustroustone in the Mines",
+  "kind": "sidequest",
+  "where": "Groment Mines",
+  "desc": "Finding a Lustroustone in the Mines impresses the Museum staff. The Director has you take the stone disk for safekeeping, because Team Steam will work out that what they stole was a replica and come back for the real one.",
+  "source": "text bank 257"
+ },
+ {
+  "name": "Complete the collection",
+  "kind": "sidequest",
+  "where": "Dardusk City",
+  "desc": "A collector rewards you once you have found them all.",
+  "source": "text bank 341"
+ },
+ {
+  "name": "The Villa",
+  "kind": "sidequest",
+  "where": "Mt. Shuem area",
+  "desc": "An owner moving to Kanto hands over his Villa, furniture and all.",
+  "source": "text bank 364"
+ },
+ {
+  "name": "Coin Case and free Coins",
+  "kind": "sidequest",
+  "where": "Central City",
+  "desc": "A vendor gives you a leather Coin Case, and a lucky player at the Game Corner hands over some of his winnings.",
+  "source": "text bank 193"
+ },
+ {
+  "name": "Show your Pokédex",
+  "kind": "sidequest",
+  "where": "Zhery (various)",
+  "desc": "An old Trainer is delighted to see a Pokédex again and gives you something.",
+  "source": "text bank 328"
+ },
+ {
+  "name": "Mt. Origin expedition",
+  "kind": "thread",
+  "who": "Prof. Jasmine",
+  "where": "Your house, Yellow Town",
+  "desc": "She is organising the expedition to Mt. Origin and wants you along once it is ready.",
+  "source": "text bank 351"
+ },
+ {
+  "name": "The search for the Plates",
+  "kind": "thread",
+  "who": "Kaohri",
+  "where": "Your house, Yellow Town",
+  "desc": "Agreed in Dardusk City. The map found in Central City may hold the locations of many of the Plates.",
+  "source": "text bank 351"
+ },
+ {
+  "name": "Find Team Steam's base",
+  "kind": "thread",
+  "who": "Kenta",
+  "where": "Your house, Yellow Town",
+  "desc": "He has not forgotten the mission the two of you discussed: hit Team Steam where it hurts by finding their base.",
+  "source": "text bank 351"
+ }
+]

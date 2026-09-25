@@ -1,0 +1,133 @@
+---
+import Base from '../../layouts/Base.astro';
+import PageHead from '../../components/PageHead.astro';
+import Plate from '../../components/Plate.astro';
+import { ALLSPECIES, ALOLAN_BY_BASE, spPath, SPRITE, TYPES, cap, ACQ } from '../../lib/data.js';
+/* The one page allowed to be long: a grid of every entry, filtered in place. */
+---
+<Base title="Dex" current="dex" description="Every Pokémon in the Zhery regional dex, plus the off-dex gifts and the Alolan forms.">
+  <PageHead title="Dex">
+    <label class="field">
+      <svg width="16" height="16" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="9" cy="9" r="6"/><path d="m14 14 4 4"/></svg>
+      <input type="search" id="dexsearch" placeholder="Name or number…" aria-label="Search the dex" />
+    </label>
+    <p class="count"><output id="dexcount">{ALLSPECIES.length}</output> of {ALLSPECIES.length}</p>
+  </PageHead>
+
+  <div class="dexbar" role="group" aria-label="Filters">
+    <div class="chips">
+      {TYPES.map((t) => <button type="button" class={`chip plate p-${t}`} data-type={t} aria-pressed="false">{cap(t)}</button>)}
+    </div>
+    <div class="chips">
+      <button type="button" class="chip" data-scope="dex" aria-pressed="false">In the dex</button>
+      <button type="button" class="chip" data-scope="nondex" aria-pressed="false">Not in the dex</button>
+      <button type="button" class="chip" data-alolan aria-pressed="false">Alolan forms</button>
+      <button type="button" class="btn btn--quiet btn--sm" data-clear>Clear</button>
+    </div>
+  </div>
+
+  <div class="grid grid--tight dexgrid" id="dexgrid">
+    {ALLSPECIES.map((sp) => {
+      const al = ALOLAN_BY_BASE.get(sp.name);
+      const data = al ? { 'data-alolan': '1', 'data-al-name': al.name, 'data-al-nat': String(al.nat),
+        'data-al-href': spPath({ ...al, alolan: true }), 'data-al-types': al.types.join(' ') } : {};
+      return (
+        <a class="card tile" href={spPath(sp)} data-scope={sp.reg ? 'dex' : 'nondex'} data-types={sp.types.join(' ')}
+           data-q={`${sp.name} ${sp.reg || ''} ${sp.nat} ${al ? al.name + ' alolan' : ''}`.toLowerCase()} {...data}>
+          <img class="tile__img" src={SPRITE(sp.nat, sp.shiny)} alt="" width="64" height="64" loading="lazy" decoding="async" />
+          <span class="tile__no num">{sp.reg ? String(sp.reg).padStart(3, '0') : '—'}</span>
+          <span class="tile__name">{sp.name}</span>
+          <span class="plates tile__plates">{sp.types.map((t) => <Plate type={t} />)}</span>
+          {sp.shiny && <span class="tile__flag" title="Distributed shiny">★</span>}
+          {al && <span class="tile__flag tile__flag--al" title="Has an Alolan form">A</span>}
+        </a>
+      );
+    })}
+  </div>
+  <p class="empty" id="dexempty" hidden>Nothing matches. <button type="button" class="btn btn--quiet btn--sm" data-clear>Clear the filters</button></p>
+
+  <style>
+    .dexbar { display: grid; gap: var(--sp-2); margin-bottom: var(--sp-4); }
+    .chips { display: flex; flex-wrap: wrap; gap: var(--sp-1); align-items: center; }
+    .chip.plate { min-height: 32px; border-radius: 999px; padding: 0 10px; font-size: var(--text-xs); }
+    .chip.plate[aria-pressed="true"] { box-shadow: 0 0 0 2px var(--accent-ink); }
+    .tile { position: relative; align-items: center; text-align: center; padding: var(--sp-3) var(--sp-2); gap: var(--sp-1); }
+    .tile__img { image-rendering: pixelated; }
+    .tile__no { font-size: var(--text-xs); color: var(--ink-3); }
+    .tile__name { font-weight: 600; font-size: var(--text-sm); line-height: 1.2; }
+    .tile__plates { justify-content: center; }
+    .tile__flag { position: absolute; top: 6px; right: 6px; font-size: var(--text-xs); font-weight: 700; color: var(--accent-ink); }
+    .tile__flag--al { right: auto; left: 6px; color: var(--ink-3); border: 1px solid var(--line-strong); border-radius: 3px; padding: 0 4px; }
+    .tile.is-dimmed { opacity: 0.4; }
+    .tile.is-alolan { border-color: var(--accent-ink); }
+  </style>
+
+  <script>
+    /* three filters composed in one pass; scope is exclusive, types multi;
+       the Alolan toggle swaps a tile in place because the form shares its
+       base's dex number */
+    const init = () => {
+      const grid = document.getElementById('dexgrid');
+      if (!grid || grid.dataset.wired) return;
+      grid.dataset.wired = '1';
+      const tiles = [...grid.querySelectorAll('.tile')];
+      const typeBtns = [...document.querySelectorAll('[data-type]')];
+      const scopeBtns = [...document.querySelectorAll('[data-scope][aria-pressed]')];
+      const alBtn = document.querySelector('[data-alolan]');
+      const search = document.getElementById('dexsearch');
+      const out = document.getElementById('dexcount');
+      const empty = document.getElementById('dexempty');
+      const types = new Set(); let scope = null; let alolan = false;
+
+      const apply = () => {
+        const q = (search?.value || '').trim().toLowerCase();
+        let n = 0;
+        for (const t of tiles) {
+          const ts = (alolan && t.dataset.alolan ? t.dataset.alTypes : t.dataset.types).split(' ');
+          const ok = (types.size === 0 || ts.some((x) => types.has(x)))
+            && (!scope || t.dataset.scope === scope)
+            && (!q || t.dataset.q.includes(q));
+          t.hidden = !ok; if (ok) n++;
+        }
+        typeBtns.forEach((b) => b.classList.toggle('is-off', types.size > 0 && !types.has(b.dataset.type)));
+        if (out) out.textContent = String(n);
+        if (empty) empty.hidden = n > 0;
+      };
+      const swap = () => {
+        for (const t of tiles) {
+          if (!t.dataset.alolan) { t.classList.toggle('is-dimmed', alolan); continue; }
+          const name = t.querySelector('.tile__name'), img = t.querySelector('.tile__img'), plates = t.querySelector('.tile__plates');
+          if (alolan) {
+            t.dataset.nName ||= name.textContent; t.dataset.nSrc ||= img.src; t.dataset.nHref ||= t.href; t.dataset.nPlates ||= plates.innerHTML;
+            name.textContent = t.dataset.alName;
+            img.src = img.src.replace(/\/\d+\.png$/, '/' + t.dataset.alNat + '.png');
+            t.href = t.dataset.alHref;
+            plates.innerHTML = t.dataset.alTypes.split(' ').map((x) => `<span class="plate p-${x}">${x[0].toUpperCase() + x.slice(1)}</span>`).join('');
+          } else if (t.dataset.nName) {
+            name.textContent = t.dataset.nName; img.src = t.dataset.nSrc; t.href = t.dataset.nHref; plates.innerHTML = t.dataset.nPlates;
+          }
+          t.classList.toggle('is-alolan', alolan);
+        }
+      };
+      typeBtns.forEach((b) => b.addEventListener('click', () => {
+        const t = b.dataset.type; types.has(t) ? types.delete(t) : types.add(t);
+        b.setAttribute('aria-pressed', String(types.has(t))); apply();
+      }));
+      scopeBtns.forEach((b) => b.addEventListener('click', () => {
+        scope = scope === b.dataset.scope ? null : b.dataset.scope;
+        scopeBtns.forEach((o) => o.setAttribute('aria-pressed', String(scope === o.dataset.scope))); apply();
+      }));
+      alBtn?.addEventListener('click', () => { alolan = !alolan; alBtn.setAttribute('aria-pressed', String(alolan)); swap(); apply(); });
+      search?.addEventListener('input', apply);
+      document.querySelectorAll('[data-clear]').forEach((c) => c.addEventListener('click', () => {
+        types.clear(); scope = null; if (alolan) { alolan = false; swap(); }
+        if (search) search.value = '';
+        [...typeBtns, ...scopeBtns, alBtn].forEach((b) => b && b.setAttribute('aria-pressed', 'false'));
+        apply(); search?.focus();
+      }));
+      apply();
+    };
+    init();
+    document.addEventListener('astro:page-load', init);
+  </script>
+</Base>

@@ -1,0 +1,85 @@
+---
+import Base from '../../layouts/Base.astro';
+import PageHead from '../../components/PageHead.astro';
+import { TOWNS, ROUTES_P, OTHER_P, WILD_BY_PLACE, GYM_AT, PHENOM_BY_PLACE, hasContent, placePath, SPRITE, REACHABLE, LISTED } from '../../lib/data.js';
+
+const groups = [
+  ['towns', 'Cities & towns', TOWNS],
+  ['routes', 'Routes', ROUTES_P],
+  ['wilds', 'Caves, water & the rest', OTHER_P],
+];
+const strip = (name) => {
+  const w = WILD_BY_PLACE.get(name);
+  if (!w) return [];
+  const seen = new Set(); const out = [];
+  for (const g of w.methods) for (const m of g.mons) if (!seen.has(m.name)) { seen.add(m.name); out.push(m); }
+  return out;
+};
+const q = (p) => [p.name, ...strip(p.name).map((m) => m.name), GYM_AT.get(p.name)?.leader || '', ...(PHENOM_BY_PLACE.get(p.name) || []).map((x) => x.name)].join(' ').toLowerCase();
+---
+<Base title="Places" current="places" description="Every place in Zhery you can reach in v0.2.2, with the wild Pokémon the DexNav lists there.">
+  <PageHead title="Places">
+    <label class="field">
+      <svg width="16" height="16" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="9" cy="9" r="6"/><path d="m14 14 4 4"/></svg>
+      <input type="search" id="placesearch" placeholder="Place or Pokémon…" aria-label="Filter places" />
+    </label>
+    <p class="count"><output id="placecount">{LISTED.length}</output> places</p>
+  </PageHead>
+
+  {groups.map(([id, title, rows]) => {
+    const full = rows.filter(hasContent);
+    return (
+      <section class="group" id={id} data-group>
+        <h2>{title}</h2>
+        <div class="grid">
+          {full.map((p) => {
+            const gym = GYM_AT.get(p.name);
+            const ph = PHENOM_BY_PLACE.get(p.name) || [];
+            const mons = strip(p.name);
+            return (
+              <a class="card" href={placePath(p.name)} data-q={q(p)}>
+                <span class="card__title">{p.name}<span class="num">{p.kind}</span></span>
+                {(gym || ph.length > 0) && (
+                  <span class="card__meta">
+                    {gym && <><b>{gym.badge}</b> · {gym.leader}</>}
+                    {gym && ph.length > 0 && ' · '}
+                    {ph.map((x) => x.name).join(', ')}{ph.length > 0 && ' — phenomena'}
+                  </span>
+                )}
+                {mons.length > 0
+                  ? <span class="strip">{mons.slice(0, 8).map((m) => <img src={SPRITE(m.nat)} alt="" width="32" height="32" loading="lazy" decoding="async" />)}{mons.length > 8 && <span class="strip__more">+{mons.length - 8}</span>}</span>
+                  : <span class="card__foot">No wild list yet</span>}
+              </a>
+            );
+          })}
+        </div>
+      </section>
+    );
+  })}
+
+  <style>
+    .group { margin-top: var(--sp-6); }
+    .group h2 { margin-bottom: var(--sp-3); }
+    .group[hidden] { display: none; }
+  </style>
+
+  <script>
+    const init = () => {
+      const box = document.getElementById('placesearch');
+      if (!box || box.dataset.wired) return;
+      box.dataset.wired = '1';
+      const cards = [...document.querySelectorAll('.card[data-q]')];
+      const groups = [...document.querySelectorAll('[data-group]')];
+      const out = document.getElementById('placecount');
+      box.addEventListener('input', () => {
+        const q = box.value.trim().toLowerCase();
+        let n = 0;
+        for (const c of cards) { const hit = !q || c.dataset.q.includes(q); c.hidden = !hit; if (hit) n++; }
+        for (const g of groups) g.hidden = !!q && !g.querySelector('.card:not([hidden])');
+        if (out) out.textContent = String(n);
+      });
+    };
+    init();
+    document.addEventListener('astro:page-load', init);
+  </script>
+</Base>

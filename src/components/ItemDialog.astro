@@ -1,0 +1,73 @@
+---
+/* One dialog for a set of items. Any element on the page with
+   data-item="<slug>" opens it; links keep their href for no-JS. `hash` mirrors
+   the open item into the URL so it can be linked to. */
+import { POCKETS, pocketOf, itemSlug, shotsFor, WILD_OF, href, pic, dim, optSources } from '../lib/data.js';
+interface Props { items: any[]; hash?: boolean; }
+const { items, hash = false } = Astro.props;
+const icon = (i) => i.sprite || (i.localIcon ? href(`pictures/items/${i.localIcon}`) : null);
+const pocketLabel = (i) => POCKETS.find((p) => p.id === pocketOf(i))?.label || '';
+const detail = Object.fromEntries(items.map((i) => [itemSlug(i), {
+  name: i.name, tm: i.name === i.tm ? '' : i.tm, icon: icon(i), pocket: pocketLabel(i), category: i.category || (i.hackExclusive ? 'hack-exclusive' : ''),
+  effect: i.gameText || i.effect || '', note: i.note || '', flavor: (!i.hackExclusive && i.flavor) || '',
+  moveType: i.moveType || '', damageClass: i.damageClass || '', power: i.power, accuracy: i.accuracy, pp: i.pp,
+  locations: i.locations, wild: WILD_OF(i.name).map((w) => ({ mons: w.mons.map((m) => m.name), where: w.where || '', rarity: w.rarity || '' })),
+  shots: shotsFor(i).map(([f, place]) => ({ src: pic(f), w: dim(f)[0], h: dim(f)[1], place, srcset: optSources(f).join(', ') })),
+}]));
+---
+<dialog class="dialog" id="itemdialog" aria-labelledby="dlg-title" data-hash={hash ? '1' : '0'}>
+  <div class="dialog__bar"><p id="dlg-pocket"></p><button type="button" class="iconbtn" data-close aria-label="Close"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M3 3l10 10M13 3L3 13"/></svg></button></div>
+  <div class="dialog__body" id="dlg-body"></div>
+</dialog>
+<script type="application/json" id="itemdata" set:html={JSON.stringify(detail)} />
+
+<style is:global>
+  .dlg-head { display: flex; gap: var(--sp-3); align-items: center; }
+  .dlg-head img { width: 48px; height: 48px; image-rendering: pixelated; }
+  .dlg-head p { color: var(--ink-3); font-size: var(--text-sm); }
+  .dlg-stats { display: flex; gap: var(--sp-4); font-size: var(--text-sm); }
+  .dlg-stats b { display: block; font-family: var(--mono); }
+</style>
+
+<script>
+  const init = () => {
+    const dlg = document.getElementById('itemdialog');
+    const main = document.getElementById('main');
+    if (!dlg || !main || dlg.dataset.wired) return;
+    dlg.dataset.wired = '1';
+    const data = JSON.parse(document.getElementById('itemdata').textContent);
+    const body = document.getElementById('dlg-body');
+    const useHash = dlg.dataset.hash === '1';
+    const esc = (s) => String(s ?? '').replace(/&/g, '&amp;').replace(/</g, '&lt;');
+    const show = (key, push = true) => {
+      const d = data[key]; if (!d) return;
+      document.getElementById('dlg-pocket').textContent = d.pocket;
+      const media = d.shots.map((s) => `<figure class="shot"><picture>${s.srcset ? `<source type="image/webp" srcset="${s.srcset}">` : ''}<img src="${s.src}" width="${s.w}" height="${s.h}" alt="${esc(d.name)} — ${esc(s.place)}" loading="lazy"></picture><figcaption><b>${esc(d.name)}</b><span>${esc(s.place)}</span></figcaption></figure>`).join('');
+      body.innerHTML = `<div class="dialog__split"><div class="dialog__text">
+        <div class="dlg-head">${d.icon ? `<img src="${d.icon}" alt="">` : ''}<div><h2 id="dlg-title">${d.tm ? esc(d.tm) + ' ' : ''}${esc(d.name)}</h2>${d.category ? `<p>${esc(d.category)}</p>` : ''}</div></div>
+        ${d.moveType ? `<p><span class="plate p-${esc(d.moveType)}">${esc(d.moveType[0].toUpperCase() + d.moveType.slice(1))}</span> <span class="small muted">${esc(d.damageClass)}</span></p>
+        <div class="dlg-stats"><span>Power<b>${d.power ?? '—'}</b></span><span>Accuracy<b>${d.accuracy ? d.accuracy + '%' : '—'}</b></span><span>PP<b>${d.pp ?? '—'}</b></span></div>` : ''}
+        ${d.effect ? `<p>${esc(d.effect)}</p>` : ''}
+        ${d.note ? `<p class="small muted">${esc(d.note)}</p>` : ''}
+        ${d.flavor ? `<p class="small muted">${esc(d.flavor)}</p>` : ''}
+        <p class="dialog__label">Where</p>
+        ${d.locations.length ? `<ul>${d.locations.map((l) => `<li>${esc(l)}</li>`).join('')}</ul>` : `<p class="small muted">No location recorded.</p>`}
+        ${d.wild.length ? `<p class="dialog__label">Held by wild Pokémon</p><ul>${d.wild.map((w) => `<li>${esc(w.mons.join(', '))}${w.where ? ' — ' + esc(w.where) : ''}${w.rarity ? ` <em class="small muted">${esc(w.rarity)}</em>` : ''}</li>`).join('')}</ul><p class="small muted">Steal it with Thief or Covet, or swap for it with Trick or Switcheroo. Frisk shows what a wild Pokémon holds.</p>` : ''}
+      </div>${media ? `<div class="dialog__media">${media}</div>` : ''}</div>`;
+      dlg.classList.toggle('dialog--wide', d.shots.length > 0);
+      if (!dlg.open) dlg.showModal();
+      if (useHash && push) history.replaceState(null, '', '#' + key);
+    };
+    main.addEventListener('click', (e) => {
+      const b = e.target.closest('[data-item]');
+      if (!b || !data[b.dataset.item]) return;
+      e.preventDefault(); show(b.dataset.item);
+    });
+    dlg.querySelector('[data-close]').addEventListener('click', () => dlg.close());
+    dlg.addEventListener('click', (e) => { if (e.target === dlg) dlg.close(); });
+    dlg.addEventListener('close', () => { if (useHash) history.replaceState(null, '', location.pathname); });
+    if (useHash && location.hash && data[location.hash.slice(1)]) show(location.hash.slice(1), false);
+  };
+  init();
+  document.addEventListener('astro:page-load', init);
+</script>

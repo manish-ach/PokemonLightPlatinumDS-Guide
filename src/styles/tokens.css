@@ -1,0 +1,136 @@
+/* Light Platinum DS guide — tokens.
+   A lookup tool used mid-game, often on a phone beside a lit DS. Surfaces are
+   pure (chroma 0) in both themes; the only colour that carries mood is the
+   amber the game itself is named for, and it is spent on actions, selection
+   and focus — never on decoration. The eighteen type plates keep their hues
+   because those hues mean something. */
+
+:root {
+  /* surfaces */
+  --bg:            oklch(1 0 0);
+  --surface:       oklch(0.975 0 0);
+  --surface-2:     oklch(0.95 0 0);
+  --line:          oklch(0.9 0 0);
+  --line-strong:   oklch(0.72 0 0);
+
+  /* ink — every step clears 4.5:1 on --bg and on --surface */
+  --ink:           oklch(0.2 0 0);
+  --ink-2:         oklch(0.42 0 0);
+  --ink-3:         oklch(0.5 0 0);
+
+  /* the game's own amber */
+  --accent:        oklch(0.80 0.15 90);    /* fills: buttons, selection, focus ring */
+  --accent-ink:    oklch(0.50 0.12 85);    /* text and links on white — 5.1:1 */
+  --accent-soft:   oklch(0.96 0.04 90);    /* tint behind selected rows */
+  --on-accent:     oklch(0.2 0 0);
+
+  /* meaning */
+  --ok:            oklch(0.50 0.12 155);   /* recorded / obtainable */
+  --ok-soft:       oklch(0.96 0.03 155);
+  --warn:          oklch(0.53 0.17 30);    /* missable / timed */
+  --warn-soft:     oklch(0.96 0.03 30);
+  --odd:           oklch(0.48 0.12 300);   /* hack instability */
+  --odd-soft:      oklch(0.96 0.03 300);
+
+  /* type plates: one lightness, hue and chroma vary */
+  --plate-l: 0.87;
+  --plate-edge-l: 0.62;
+  --plate-normal:   oklch(var(--plate-l) 0.015 90);
+  --plate-fire:     oklch(var(--plate-l) 0.130 42);
+  --plate-water:    oklch(var(--plate-l) 0.110 250);
+  --plate-electric: oklch(var(--plate-l) 0.140 95);
+  --plate-grass:    oklch(var(--plate-l) 0.115 145);
+  --plate-ice:      oklch(var(--plate-l) 0.075 210);
+  --plate-fighting: oklch(var(--plate-l) 0.115 30);
+  --plate-poison:   oklch(var(--plate-l) 0.100 320);
+  --plate-ground:   oklch(var(--plate-l) 0.085 70);
+  --plate-flying:   oklch(var(--plate-l) 0.075 265);
+  --plate-psychic:  oklch(var(--plate-l) 0.110 5);
+  --plate-bug:      oklch(var(--plate-l) 0.105 125);
+  --plate-rock:     oklch(var(--plate-l) 0.060 80);
+  --plate-ghost:    oklch(var(--plate-l) 0.090 295);
+  --plate-dragon:   oklch(var(--plate-l) 0.105 275);
+  --plate-dark:     oklch(var(--plate-l) 0.020 60);
+  --plate-steel:    oklch(var(--plate-l) 0.025 240);
+  --plate-fairy:    oklch(var(--plate-l) 0.090 350);
+
+  /* type: one family, fixed rem scale at 1.2 */
+  --font: "IBM Plex Sans Variable", "IBM Plex Sans", system-ui, sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, monospace;
+  --text-xs: 0.75rem;
+  --text-sm: 0.875rem;
+  --text-md: 1rem;
+  --text-lg: 1.2rem;
+  --text-xl: 1.44rem;
+  --text-2xl: 1.728rem;
+  --measure: 66ch;
+
+  /* space, 4px base */
+  --sp-1: 0.25rem; --sp-2: 0.5rem; --sp-3: 0.75rem; --sp-4: 1rem;
+  --sp-6: 1.5rem;  --sp-8: 2rem;   --sp-12: 3rem;   --sp-16: 4rem;
+
+  --radius: 6px;
+  --radius-sm: 4px;
+
+  --z-sticky: 20; --z-dropdown: 30; --z-backdrop: 40; --z-dialog: 50; --z-toast: 60;
+
+  --ease: cubic-bezier(0.25, 1, 0.5, 1);
+  --t-fast: 120ms;
+  --t: 200ms;
+
+  --shadow-dialog: 0 12px 40px oklch(0 0 0 / 0.22);
+
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg:          oklch(0.24 0.004 260);
+    --surface:     oklch(0.28 0.004 260);
+    --surface-2:   oklch(0.33 0.004 260);
+    --line:        oklch(0.37 0.004 260);
+    --line-strong: oklch(0.52 0.004 260);
+    --ink:         oklch(0.96 0 0);
+    --ink-2:       oklch(0.82 0 0);
+    --ink-3:       oklch(0.74 0 0);
+    --accent:      oklch(0.80 0.15 90);
+    --accent-ink:  oklch(0.82 0.14 90);
+    --accent-soft: oklch(0.33 0.05 90);
+    --on-accent:   oklch(0.2 0 0);
+    --ok:          oklch(0.75 0.13 155);
+    --ok-soft:     oklch(0.31 0.04 155);
+    --warn:        oklch(0.74 0.15 35);
+    --warn-soft:   oklch(0.31 0.04 30);
+    --odd:         oklch(0.75 0.11 300);
+    --odd-soft:    oklch(0.31 0.035 300);
+    --plate-l: 0.33;
+    --plate-edge-l: 0.56;
+    --shadow-dialog: 0 12px 40px oklch(0 0 0 / 0.6);
+    color-scheme: dark;
+  }
+}
+
+:root[data-theme="dark"] {
+  --bg:          oklch(0.24 0.004 260);
+  --surface:     oklch(0.28 0.004 260);
+  --surface-2:   oklch(0.33 0.004 260);
+  --line:        oklch(0.37 0.004 260);
+  --line-strong: oklch(0.52 0.004 260);
+  --ink:         oklch(0.96 0 0);
+  --ink-2:       oklch(0.82 0 0);
+  --ink-3:       oklch(0.74 0 0);
+  --accent:      oklch(0.80 0.15 90);
+  --accent-ink:  oklch(0.82 0.14 90);
+  --accent-soft: oklch(0.33 0.05 90);
+  --on-accent:   oklch(0.2 0 0);
+  --ok:          oklch(0.75 0.13 155);
+  --ok-soft:     oklch(0.31 0.04 155);
+  --warn:        oklch(0.74 0.15 35);
+  --warn-soft:   oklch(0.31 0.04 30);
+  --odd:         oklch(0.75 0.11 300);
+  --odd-soft:    oklch(0.31 0.035 300);
+  --plate-l: 0.33;
+  --plate-edge-l: 0.56;
+  --shadow-dialog: 0 12px 40px oklch(0 0 0 / 0.6);
+  color-scheme: dark;
+}

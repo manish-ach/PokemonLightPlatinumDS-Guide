@@ -1,0 +1,16 @@
+---
+/* A trainer's party as a table: sprite and name, level, moves. */
+import Mon from './Mon.astro';
+interface Props { team: { name: string; nat?: number; level: number; moves: string[] }[]; }
+const { team } = Astro.props;
+---
+<div class="table-wrap">
+  <table class="table">
+    <thead><tr><th scope="col">Pokémon</th><th scope="col" class="num">Lv</th><th scope="col">Moves</th></tr></thead>
+    <tbody>
+      {team.map((m) => (
+        <tr><td><Mon name={m.name} nat={m.nat} /></td><td class="num">{m.level}</td><td>{m.moves.join(', ') || '—'}</td></tr>
+      ))}
+    </tbody>
+  </table>
+</div>

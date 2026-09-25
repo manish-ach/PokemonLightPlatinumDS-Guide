@@ -1,0 +1,134 @@
+---
+import Base from '../layouts/Base.astro';
+import Plate from '../components/Plate.astro';
+import { href, pic, dim, SPINE, GYMS, REACHABLE, WILDAT, ALLSPECIES, ITEMS, MEDALS, QUESTS, CARDS, TRADES, slug, SPRITE, WILD_BY_PLACE } from '../lib/data.js';
+const [ww, wh] = dim('TownMap/west.png');
+const [ew, eh] = dim('TownMap/east.png');
+const routes = REACHABLE.filter((p) => p.kind === 'Route').length;
+/* the three most recently walked places, by your visit order */
+const recent = [...WILDAT].sort((a, b) => b.order - a.order).slice(0, 3);
+---
+<Base title="Guide" current="home" description="Where everything is in Pokémon Light Platinum DS — places, Pokémon, items, medals, the Sun Palace puzzle.">
+  <div class="home">
+    <section class="home__find" aria-label="Search the guide">
+      <label class="field field--big">
+        <svg width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="9" cy="9" r="6"/><path d="m14 14 4 4"/></svg>
+        <input type="search" id="q" placeholder="Search a place, Pokémon, item, medal…" aria-label="Search the guide" autocomplete="off" />
+      </label>
+      <ul class="results" id="results" hidden></ul>
+    </section>
+
+    <section class="home__run" aria-labelledby="run-h">
+      <h2 id="run-h" class="small muted">The badge run</h2>
+      <ol class="run">
+        {GYMS.map((g) => (
+          <li>
+            <a class="run__step" href={href(`gyms/${slug(g.city)}/`)}>
+              <span class="run__no num">{g.order}</span>
+              <span class="run__city">{g.city.replace(/ (City|Town)$/, '')}</span>
+              <span class="run__who">{g.leader} · lv {g.levels}</span>
+              <span class="plates">{g.types.map((t) => <Plate type={t} />)}</span>
+            </a>
+          </li>
+        ))}
+      </ol>
+    </section>
+
+    <section class="home__grid">
+      <a class="card card--big" href={href('places/')}>
+        <span class="card__title">Places <span class="num">{REACHABLE.length}</span></span>
+        <span class="card__meta">Every reachable place, with what the DexNav shows there.</span>
+        <span class="strip">
+          {recent.flatMap((w) => w.methods[0].mons.slice(0, 3)).slice(0, 8).map((m) => <img src={SPRITE(m.nat)} alt="" width="32" height="32" loading="lazy" />)}
+        </span>
+        <span class="card__foot">Walked as far as {recent[0]?.place} · {routes} routes</span>
+      </a>
+      <a class="card" href={href('dex/')}>
+        <span class="card__title">Dex <span class="num">{ALLSPECIES.length}</span></span>
+        <span class="card__meta">Regional dex, the off-dex gifts, the Alolan forms.</span>
+      </a>
+      <a class="card" href={href('items/')}>
+        <span class="card__title">Items <span class="num">{ITEMS.length}</span></span>
+        <span class="card__meta">Seven pockets. Where each one is picked up or sold.</span>
+      </a>
+      <a class="card" href={href('medals/')}>
+        <span class="card__title">Medals <span class="num">{MEDALS.length}</span></span>
+        <span class="card__meta">What each does and where it is earned or bought.</span>
+      </a>
+      <a class="card" href={href('sun-palace/')}>
+        <span class="card__title">Sun Palace</span>
+        <span class="card__meta">The gear puzzle, with a solver for your exact board.</span>
+      </a>
+      <a class="card" href={href('quests/')}>
+        <span class="card__title">Quests <span class="num">{QUESTS.length}</span></span>
+        <span class="card__meta">Errands people offer you, and where the story stops.</span>
+      </a>
+      <a class="card" href={href('gifts/')}>
+        <span class="card__title">Mystery Gift <span class="num">{CARDS.length}</span></span>
+        <span class="card__meta">Every Wonder Card, and the PokéMileage shop.</span>
+      </a>
+      <a class="card" href={href('trades/')}>
+        <span class="card__title">Trade evolution <span class="num">{TRADES.length}</span></span>
+        <span class="card__meta">Two ways to trade-evolve on one console.</span>
+      </a>
+      <figure class="card card--map">
+        <span class="map2">
+          <img src={pic('TownMap/west.png')} width={ww} height={wh} alt="Zhery town map, western half, from the Pokégear" loading="lazy" decoding="async" />
+          <img src={pic('TownMap/east.png')} width={ew} height={eh} alt="Zhery town map, eastern half, from the Pokégear" loading="lazy" decoding="async" />
+        </span>
+        <figcaption class="card__foot">Zhery, from the in-game town map — west and east</figcaption>
+      </figure>
+    </section>
+  </div>
+
+  <style>
+    .home { display: grid; gap: var(--sp-6); padding-top: var(--sp-2); }
+    .field--big { max-width: none; min-height: 52px; font-size: var(--text-md); }
+    .results { list-style: none; margin-top: var(--sp-2); border: 1px solid var(--line); border-radius: var(--radius); background: var(--bg); max-height: 50vh; overflow: auto; }
+    .results[hidden] { display: none; }
+    .results a { display: flex; justify-content: space-between; gap: var(--sp-3); padding: var(--sp-2) var(--sp-3); min-height: 44px; align-items: center; text-decoration: none; color: var(--ink); border-bottom: 1px solid var(--line); }
+    .results li:last-child a { border-bottom: 0; }
+    .results a:hover, .results a:focus-visible { background: var(--surface); outline: none; }
+    .results span { color: var(--ink-3); font-size: var(--text-sm); white-space: nowrap; }
+    .results .results__none { padding: var(--sp-3); color: var(--ink-3); font-size: var(--text-sm); }
+    .run { list-style: none; display: grid; gap: var(--sp-2); grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); margin-top: var(--sp-2); }
+    .run__step { display: grid; gap: 2px; padding: var(--sp-3); border: 1px solid var(--line); border-radius: var(--radius); background: var(--surface); text-decoration: none; color: var(--ink); min-height: 44px; transition: border-color var(--t-fast) var(--ease); }
+    .run__step:hover { border-color: var(--line-strong); }
+    .run__no { font-size: var(--text-xs); color: var(--accent-ink); font-weight: 600; }
+    .run__city { font-weight: 600; }
+    .run__who { font-size: var(--text-sm); color: var(--ink-2); }
+    .home__grid { display: grid; gap: var(--sp-3); grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr)); grid-auto-flow: dense; }
+    .card--big { grid-column: span 2; }
+    .card--map { grid-column: span 2; padding: var(--sp-2); }
+    .map2 { display: grid; grid-template-columns: 1fr 1fr; gap: var(--sp-1); }
+    .card--map img { width: 100%; height: auto; image-rendering: pixelated; border-radius: var(--radius-sm); }
+    @media (max-width: 520px) { .card--big, .card--map { grid-column: auto; } }
+  </style>
+
+  <script>
+    /* search: the index is fetched the first time the box is focused */
+    const init = () => {
+      const box = document.getElementById('q');
+      const out = document.getElementById('results');
+      if (!box || !out || box.dataset.wired) return;
+      box.dataset.wired = '1';
+      let rows = null, loading = null;
+      const base = document.querySelector('.brand').getAttribute('href').replace(/\/$/, '');
+      const load = () => loading ||= fetch(base + '/search.json').then((r) => r.json()).then((r) => (rows = r));
+      const render = () => {
+        const q = box.value.trim().toLowerCase();
+        if (!q || !rows) { out.hidden = true; out.innerHTML = ''; return; }
+        const hits = rows.filter((r) => r.t.toLowerCase().includes(q)).slice(0, 14);
+        out.hidden = false;
+        out.innerHTML = hits.length
+          ? hits.map((r) => `<li><a href="${r.u}">${r.t}<span>${r.k}</span></a></li>`).join('')
+          : `<li class="results__none">Nothing matches “${q.replace(/</g, '&lt;')}”.</li>`;
+      };
+      box.addEventListener('focus', load, { once: true });
+      box.addEventListener('input', () => load().then(render));
+      box.addEventListener('keydown', (e) => { if (e.key === 'Escape') { box.value = ''; render(); } });
+    };
+    init();
+    document.addEventListener('astro:page-load', init);
+  </script>
+</Base>

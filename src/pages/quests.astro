@@ -1,0 +1,38 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHead from '../components/PageHead.astro';
+import { QUESTS, slug } from '../lib/data.js';
+const side = QUESTS.filter((q) => q.kind !== 'thread');
+const threads = QUESTS.filter((q) => q.kind === 'thread');
+---
+<Base title="Quests" current="quests" description="Optional errands around Zhery, and the story threads v0.2.2 leaves open.">
+  <PageHead title="Quests" note="Optional errands people offer you around Zhery." />
+
+  <div class="grid">
+    {side.map((q) => (
+      <article class="card" id={slug(q.name)}>
+        <h2 class="card__title">{q.name}</h2>
+        <p class="card__meta">{q.desc}</p>
+        <p class="card__foot">{q.where}</p>
+      </article>
+    ))}
+  </div>
+
+  <h2 class="threads-h">Where v0.2.2 leaves you</h2>
+  <p class="small muted threads-p">After Dardusk City the story stops, and three people call at your house in Yellow Town to set up what comes next. None can be followed further in this version.</p>
+  <div class="grid">
+    {threads.map((q) => (
+      <article class="card" id={slug(q.name)}>
+        <h2 class="card__title">{q.name}</h2>
+        <p class="card__meta">{q.desc}</p>
+        <p class="card__foot">{q.who} · {q.where}</p>
+      </article>
+    ))}
+  </div>
+
+  <style>
+    .threads-h { margin-top: var(--sp-8); }
+    .threads-p { margin: var(--sp-1) 0 var(--sp-3); max-width: var(--measure); }
+    .card__title { font-size: var(--text-md); }
+  </style>
+</Base>

@@ -1,0 +1,16 @@
+---
+/* An in-game screenshot on a plain mount, with the optimised webp sources the
+   old build produced where they exist, and intrinsic size so nothing shifts. */
+import { pic, dim, optSources } from '../lib/data.js';
+interface Props { src: string; title: string; place?: string; }
+const { src, title, place = '' } = Astro.props;
+const [w, h] = dim(src);
+const srcset = optSources(src);
+---
+<figure class="shot">
+  <picture>
+    {srcset.length > 0 && <source type="image/webp" sizes="(max-width: 700px) 92vw, min(560px, 46vw)" srcset={srcset.join(', ')} />}
+    <img src={pic(src)} width={w} height={h} alt={`${title}${place ? ' — ' + place : ''}, in-game screenshot`} loading="lazy" decoding="async" />
+  </picture>
+  <figcaption><b>{title}</b>{place && <span>{place}</span>}</figcaption>
+</figure>

@@ -1,0 +1,919 @@
+[
+ {
+  "order": 1,
+  "city": "Inhore City",
+  "leader": "Jessica",
+  "badge": "Honeycomb Badge",
+  "types": [
+   "bug",
+   "poison"
+  ],
+  "levels": "16-17",
+  "effect": "Traded Pokémon up to level 20 obey you.",
+  "team": [
+   {
+    "name": "Skorupi",
+    "nat": 451,
+    "level": 16,
+    "moves": [
+     "Toxic",
+     "Bite",
+     "Fury Cutter"
+    ]
+   },
+   {
+    "name": "Whirlipede",
+    "nat": 544,
+    "level": 16,
+    "moves": [
+     "Toxic",
+     "Rollout",
+     "Defense Curl"
+    ]
+   },
+   {
+    "name": "Ariados",
+    "nat": 168,
+    "level": 17,
+    "moves": [
+     "Toxic",
+     "Bug Bite",
+     "Shadow Sneak"
+    ]
+   },
+   {
+    "name": "Vespiquen",
+    "nat": 416,
+    "level": 17,
+    "moves": [
+     "Attack Order",
+     "Defend Order",
+     "Power Gem"
+    ]
+   }
+  ],
+  "rematch": [
+   {
+    "levels": "51-54",
+    "team": [
+     {
+      "name": "Drapion",
+      "nat": 452,
+      "level": 51,
+      "moves": [
+       "Night Slash",
+       "Cross Poison",
+       "Slash"
+      ]
+     },
+     {
+      "name": "Scolipede",
+      "nat": 545,
+      "level": 52,
+      "moves": [
+       "Poison Jab",
+       "Megahorn",
+       "Rock Slide"
+      ]
+     },
+     {
+      "name": "Venomoth",
+      "nat": 49,
+      "level": 52,
+      "moves": [
+       "Quiver Dance",
+       "Bug Buzz",
+       "Sleep Powder"
+      ]
+     },
+     {
+      "name": "Ariados",
+      "nat": 168,
+      "level": 51,
+      "moves": [
+       "Sucker Punch",
+       "Poison Jab",
+       "Bug Bite"
+      ]
+     },
+     {
+      "name": "Vespiquen",
+      "nat": 416,
+      "level": 54,
+      "moves": [
+       "Attack Order",
+       "Defend Order",
+       "Power Gem"
+      ]
+     }
+    ]
+   },
+   {
+    "levels": "58-62",
+    "team": [
+     {
+      "name": "Forretress",
+      "nat": 205,
+      "level": 59,
+      "moves": [
+       "Spikes",
+       "Toxic Spikes",
+       "Earthquake"
+      ]
+     },
+     {
+      "name": "Drapion",
+      "nat": 452,
+      "level": 58,
+      "moves": [
+       "Night Slash",
+       "Cross Poison",
+       "Slash"
+      ]
+     },
+     {
+      "name": "Scolipede",
+      "nat": 545,
+      "level": 58,
+      "moves": [
+       "Poison Jab",
+       "Megahorn",
+       "Rock Slide"
+      ]
+     },
+     {
+      "name": "Venomoth",
+      "nat": 49,
+      "level": 59,
+      "moves": [
+       "Quiver Dance",
+       "Bug Buzz",
+       "Sleep Powder"
+      ]
+     },
+     {
+      "name": "Ariados",
+      "nat": 168,
+      "level": 58,
+      "moves": [
+       "Sucker Punch",
+       "Poison Jab",
+       "Bug Bite"
+      ]
+     },
+     {
+      "name": "Vespiquen",
+      "nat": 416,
+      "level": 62,
+      "moves": [
+       "Attack Order",
+       "Defend Order",
+       "Power Gem"
+      ]
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "order": 2,
+  "city": "Esmerald City",
+  "leader": "Esmeralda",
+  "badge": "Green Badge",
+  "types": [
+   "grass"
+  ],
+  "levels": "24-25",
+  "effect": "Traded Pokémon up to level 30 obey you.",
+  "team": [
+   {
+    "name": "Bulbasaur",
+    "nat": 1,
+    "level": 24,
+    "moves": [
+     "Giga Drain",
+     "Sludge Bomb",
+     "Sleep Powder"
+    ]
+   },
+   {
+    "name": "Jumpluff",
+    "nat": 189,
+    "level": 25,
+    "moves": [
+     "Giga Drain",
+     "U-turn",
+     "Stun Spore"
+    ]
+   },
+   {
+    "name": "Servine",
+    "nat": 496,
+    "level": 24,
+    "moves": [
+     "Leaf Storm",
+     "Calm Mind",
+     "Aqua Tail"
+    ]
+   },
+   {
+    "name": "Cherrim",
+    "nat": 421,
+    "level": 25,
+    "moves": [
+     "Sunny Day",
+     "SolarBeam",
+     "Protect"
+    ]
+   },
+   {
+    "name": "Torterra",
+    "nat": 389,
+    "level": 25,
+    "moves": [
+     "SolarBeam",
+     "Bulldoze",
+     "Crunch"
+    ]
+   }
+  ],
+  "rematch": [
+   {
+    "levels": "51-54",
+    "team": [
+     {
+      "name": "Venusaur",
+      "nat": 3,
+      "level": 51,
+      "moves": [
+       "Giga Drain",
+       "Leech Seed",
+       "Sleep Powder"
+      ]
+     },
+     {
+      "name": "Jumpluff",
+      "nat": 189,
+      "level": 52,
+      "moves": [
+       "U-turn",
+       "Sunny Day",
+       "Stun Spore"
+      ]
+     },
+     {
+      "name": "Serperior",
+      "nat": 497,
+      "level": 52,
+      "moves": [
+       "Giga Drain",
+       "Calm Mind",
+       "Dragon Tail"
+      ]
+     },
+     {
+      "name": "Cherrim",
+      "nat": 421,
+      "level": 51,
+      "moves": [
+       "Energy Ball",
+       "Sunny Day",
+       "SolarBeam"
+      ]
+     },
+     {
+      "name": "Torterra",
+      "nat": 389,
+      "level": 54,
+      "moves": [
+       "Wood Hammer",
+       "Earthquake",
+       "Stone Edge"
+      ]
+     }
+    ]
+   },
+   {
+    "levels": "58-62",
+    "team": [
+     {
+      "name": "Venusaur",
+      "nat": 3,
+      "level": 59,
+      "moves": [
+       "Giga Drain",
+       "Leech Seed",
+       "Sleep Powder"
+      ]
+     },
+     {
+      "name": "Amoonguss",
+      "nat": 591,
+      "level": 58,
+      "moves": [
+       "Giga Drain",
+       "Spore",
+       "Protect"
+      ]
+     },
+     {
+      "name": "Jumpluff",
+      "nat": 189,
+      "level": 58,
+      "moves": [
+       "U-turn",
+       "Sunny Day",
+       "Stun Spore"
+      ]
+     },
+     {
+      "name": "Serperior",
+      "nat": 497,
+      "level": 59,
+      "moves": [
+       "Giga Drain",
+       "Calm Mind",
+       "Dragon Tail"
+      ]
+     },
+     {
+      "name": "Cherrim",
+      "nat": 421,
+      "level": 58,
+      "moves": [
+       "Energy Ball",
+       "Sunny Day",
+       "SolarBeam"
+      ]
+     },
+     {
+      "name": "Torterra",
+      "nat": 389,
+      "level": 62,
+      "moves": [
+       "Wood Hammer",
+       "Earthquake",
+       "Stone Edge"
+      ]
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "order": 3,
+  "city": "Seanport City",
+  "leader": "Lucas",
+  "badge": "Ocean Badge",
+  "types": [
+   "water"
+  ],
+  "levels": "29-32",
+  "effect": "Awarded with a gift from Lucas.",
+  "team": [
+   {
+    "name": "Octillery",
+    "nat": 224,
+    "level": 29,
+    "moves": [
+     "Water Pulse",
+     "Ice Beam",
+     "Energy Ball"
+    ]
+   },
+   {
+    "name": "Tentacruel",
+    "nat": 73,
+    "level": 30,
+    "moves": [
+     "Water Pulse",
+     "Toxic Spikes",
+     "Rapid Spin"
+    ]
+   },
+   {
+    "name": "Alomomola",
+    "nat": 594,
+    "level": 29,
+    "moves": [
+     "Water Pulse",
+     "Calm Mind",
+     "Rest"
+    ]
+   },
+   {
+    "name": "Gyarados",
+    "nat": 130,
+    "level": 31,
+    "moves": [
+     "Waterfall",
+     "Earthquake",
+     "Ice Fang"
+    ]
+   },
+   {
+    "name": "Kingdra",
+    "nat": 230,
+    "level": 32,
+    "moves": [
+     "Water Pulse",
+     "Hyper Beam",
+     "Dragon Pulse"
+    ]
+   }
+  ],
+  "rematch": [
+   {
+    "levels": "51-54",
+    "team": [
+     {
+      "name": "Octillery",
+      "nat": 224,
+      "level": 51,
+      "moves": [
+       "Surf",
+       "Ice Beam",
+       "Energy Ball"
+      ]
+     },
+     {
+      "name": "Tentacruel",
+      "nat": 73,
+      "level": 52,
+      "moves": [
+       "Toxic Spikes",
+       "Scald",
+       "Substitute"
+      ]
+     },
+     {
+      "name": "Alomomola",
+      "nat": 594,
+      "level": 52,
+      "moves": [
+       "Calm Mind",
+       "Surf",
+       "Ice Beam"
+      ]
+     },
+     {
+      "name": "Gyarados",
+      "nat": 130,
+      "level": 51,
+      "moves": [
+       "Dragon Dance",
+       "Waterfall",
+       "Earthquake"
+      ]
+     },
+     {
+      "name": "Kingdra",
+      "nat": 230,
+      "level": 54,
+      "moves": [
+       "Dragon Dance",
+       "Waterfall",
+       "Outrage"
+      ]
+     }
+    ]
+   },
+   {
+    "levels": "58-62",
+    "team": [
+     {
+      "name": "Octillery",
+      "nat": 224,
+      "level": 59,
+      "moves": [
+       "Surf",
+       "Ice Beam",
+       "Energy Ball"
+      ]
+     },
+     {
+      "name": "Dewgong",
+      "nat": 87,
+      "level": 58,
+      "moves": [
+       "Rain Dance",
+       "Surf",
+       "Ice Beam"
+      ]
+     },
+     {
+      "name": "Tentacruel",
+      "nat": 73,
+      "level": 58,
+      "moves": [
+       "Toxic Spikes",
+       "Scald",
+       "Substitute"
+      ]
+     },
+     {
+      "name": "Alomomola",
+      "nat": 594,
+      "level": 59,
+      "moves": [
+       "Calm Mind",
+       "Surf",
+       "Ice Beam"
+      ]
+     },
+     {
+      "name": "Gyarados",
+      "nat": 130,
+      "level": 58,
+      "moves": [
+       "Dragon Dance",
+       "Waterfall",
+       "Earthquake"
+      ]
+     },
+     {
+      "name": "Kingdra",
+      "nat": 230,
+      "level": 62,
+      "moves": [
+       "Dragon Dance",
+       "Waterfall",
+       "Outrage"
+      ]
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "order": 4,
+  "city": "Groment City",
+  "leader": "Arthur",
+  "badge": "Sand Badge",
+  "types": [
+   "ground",
+   "rock"
+  ],
+  "levels": "40-42",
+  "effect": "Traded Pokémon up to level 50 obey you; enables Fly outside battle.",
+  "team": [
+   {
+    "name": "Krookodile",
+    "nat": 553,
+    "level": 40,
+    "moves": [
+     "Earthquake",
+     "Sandstorm",
+     "Crunch"
+    ]
+   },
+   {
+    "name": "Camerupt",
+    "nat": 323,
+    "level": 41,
+    "moves": [
+     "Earthquake",
+     "Stealth Rock",
+     "Lava Plume"
+    ]
+   },
+   {
+    "name": "Excadrill",
+    "nat": 530,
+    "level": 40,
+    "moves": [
+     "Earthquake",
+     "Iron Head",
+     "Dig"
+    ]
+   },
+   {
+    "name": "Aerodactyl",
+    "nat": 142,
+    "level": 41,
+    "moves": [
+     "Earthquake",
+     "Stone Edge",
+     "Fly"
+    ]
+   },
+   {
+    "name": "Rampardos",
+    "nat": 409,
+    "level": 42,
+    "moves": [
+     "Earthquake",
+     "Head Smash",
+     "ThunderPunch"
+    ]
+   }
+  ],
+  "rematch": [
+   {
+    "levels": "51-54",
+    "team": [
+     {
+      "name": "Krookodile",
+      "nat": 553,
+      "level": 51,
+      "moves": [
+       "Earthquake",
+       "Sandstorm",
+       "Crunch"
+      ]
+     },
+     {
+      "name": "Camerupt",
+      "nat": 323,
+      "level": 52,
+      "moves": [
+       "Earthquake",
+       "Stealth Rock",
+       "Lava Plume"
+      ]
+     },
+     {
+      "name": "Excadrill",
+      "nat": 530,
+      "level": 52,
+      "moves": [
+       "Earthquake",
+       "Iron Head",
+       "Dig"
+      ]
+     },
+     {
+      "name": "Aerodactyl",
+      "nat": 142,
+      "level": 51,
+      "moves": [
+       "Earthquake",
+       "Stone Edge",
+       "Fly"
+      ]
+     },
+     {
+      "name": "Rampardos",
+      "nat": 409,
+      "level": 54,
+      "moves": [
+       "Earthquake",
+       "Head Smash",
+       "ThunderPunch"
+      ]
+     }
+    ]
+   },
+   {
+    "levels": "58-62",
+    "team": [
+     {
+      "name": "Krookodile",
+      "nat": 553,
+      "level": 59,
+      "moves": [
+       "Earthquake",
+       "Sandstorm",
+       "Crunch"
+      ]
+     },
+     {
+      "name": "Gliscor",
+      "nat": 472,
+      "level": 58,
+      "moves": [
+       "Earthquake",
+       "Toxic",
+       "Substitute"
+      ]
+     },
+     {
+      "name": "Camerupt",
+      "nat": 323,
+      "level": 58,
+      "moves": [
+       "Earthquake",
+       "Stealth Rock",
+       "Lava Plume"
+      ]
+     },
+     {
+      "name": "Excadrill",
+      "nat": 530,
+      "level": 59,
+      "moves": [
+       "Earthquake",
+       "Iron Head",
+       "Dig"
+      ]
+     },
+     {
+      "name": "Aerodactyl",
+      "nat": 142,
+      "level": 58,
+      "moves": [
+       "Earthquake",
+       "Stone Edge",
+       "Fly"
+      ]
+     },
+     {
+      "name": "Rampardos",
+      "nat": 409,
+      "level": 62,
+      "moves": [
+       "Earthquake",
+       "Head Smash",
+       "ThunderPunch"
+      ]
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "order": 5,
+  "city": "Dardusk City",
+  "leader": "Thomas",
+  "badge": "Shadow Badge",
+  "types": [
+   "ghost"
+  ],
+  "levels": "46-48",
+  "effect": "Enables Strength outside battle to move large rocks.",
+  "team": [
+   {
+    "name": "Spiritomb",
+    "nat": 442,
+    "level": 46,
+    "moves": [
+     "Shadow Ball",
+     "Dark Pulse",
+     "Will-O-Wisp"
+    ]
+   },
+   {
+    "name": "Aegislash",
+    "nat": 681,
+    "level": 47,
+    "moves": [
+     "Shadow Ball",
+     "Protect",
+     "Sacred Sword"
+    ]
+   },
+   {
+    "name": "Chandelure",
+    "nat": 609,
+    "level": 46,
+    "moves": [
+     "Shadow Ball",
+     "Flamethrower",
+     "Trick Room"
+    ]
+   },
+   {
+    "name": "Dusknoir",
+    "nat": 477,
+    "level": 47,
+    "moves": [
+     "Shadow Punch",
+     "Ice Punch",
+     "ThunderPunch"
+    ]
+   },
+   {
+    "name": "Gengar",
+    "nat": 94,
+    "level": 48,
+    "moves": [
+     "Shadow Ball",
+     "Substitute",
+     "Disable"
+    ]
+   }
+  ],
+  "rematch": [
+   {
+    "levels": "51-54",
+    "team": [
+     {
+      "name": "Spiritomb",
+      "nat": 442,
+      "level": 51,
+      "moves": [
+       "Ominous Wind",
+       "Dark Pulse",
+       "Will-O-Wisp"
+      ]
+     },
+     {
+      "name": "Aegislash",
+      "nat": 681,
+      "level": 52,
+      "moves": [
+       "Shadow Ball",
+       "Protect",
+       "Sacred Sword"
+      ]
+     },
+     {
+      "name": "Chandelure",
+      "nat": 609,
+      "level": 52,
+      "moves": [
+       "Confuse Ray",
+       "Fire Blast",
+       "Trick Room"
+      ]
+     },
+     {
+      "name": "Dusknoir",
+      "nat": 477,
+      "level": 51,
+      "moves": [
+       "Shadow Punch",
+       "Ice Punch",
+       "ThunderPunch"
+      ]
+     },
+     {
+      "name": "Gengar",
+      "nat": 94,
+      "level": 54,
+      "moves": [
+       "Shadow Ball",
+       "Substitute",
+       "Disable"
+      ]
+     }
+    ]
+   },
+   {
+    "levels": "58-62",
+    "team": [
+     {
+      "name": "Spiritomb",
+      "nat": 442,
+      "level": 59,
+      "moves": [
+       "Ominous Wind",
+       "Dark Pulse",
+       "Will-O-Wisp"
+      ]
+     },
+     {
+      "name": "Banette",
+      "nat": 354,
+      "level": 58,
+      "moves": [
+       "Shadow Claw",
+       "Shadow Sneak",
+       "Thunderbolt"
+      ]
+     },
+     {
+      "name": "Aegislash",
+      "nat": 681,
+      "level": 58,
+      "moves": [
+       "Shadow Ball",
+       "Protect",
+       "Sacred Sword"
+      ]
+     },
+     {
+      "name": "Chandelure",
+      "nat": 609,
+      "level": 59,
+      "moves": [
+       "Confuse Ray",
+       "Fire Blast",
+       "Trick Room"
+      ]
+     },
+     {
+      "name": "Dusknoir",
+      "nat": 477,
+      "level": 58,
+      "moves": [
+       "Shadow Punch",
+       "Ice Punch",
+       "ThunderPunch"
+      ]
+     },
+     {
+      "name": "Gengar",
+      "nat": 94,
+      "level": 62,
+      "moves": [
+       "Shadow Ball",
+       "Substitute",
+       "Disable"
+      ]
+     }
+    ]
+   }
+  ]
+ }
+]

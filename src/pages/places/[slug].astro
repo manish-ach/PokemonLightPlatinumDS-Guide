@@ -1,0 +1,264 @@
+---
+import Base from '../../layouts/Base.astro';
+import PageHead from '../../components/PageHead.astro';
+import Mon from '../../components/Mon.astro';
+import Shot from '../../components/Shot.astro';
+import Note from '../../components/Note.astro';
+import ItemDialog from '../../components/ItemDialog.astro';
+import Stepper from '../../components/Stepper.astro';
+import { REACHABLE, placeSlug, href, slug, WILD_BY_PLACE, GYM_AT, PHENOM_BY_PLACE, LOCATION_NOTES, PLACE_SHOTS, PLACE_EXTRA, ITEMS, ITEMS_AT, DEXNAV, WALK, PLACE_INSIDE, PLACE_CONTAINS, placePath, itemKey, pocketOf, itemSlug, pic, dim, optSources } from '../../lib/data.js';
+
+export function getStaticPaths() {
+  return REACHABLE.map((p) => ({ params: { slug: placeSlug(p.name) }, props: { place: p } }));
+}
+const { place } = Astro.props;
+const wild = WILD_BY_PLACE.get(place.name);
+const gym = GYM_AT.get(place.name);
+const ph = PHENOM_BY_PLACE.get(place.name) || [];
+const notes = LOCATION_NOTES.get(place.name);
+const shot = PLACE_SHOTS[place.name];
+const extra = PLACE_EXTRA[place.name];
+const items = ITEMS_AT(place.name);
+const icon = (i) => i.sprite || (i.localIcon ? href(`pictures/items/${i.localIcon}`) : null);
+const itemPath = (i) => href(`items/${pocketOf(i)}/#${itemSlug(i)}`);
+const itemHref = (name) => { const i = ITEMS.find((x) => itemKey(x.name) === itemKey(name)); return i ? itemPath(i) : null; };
+
+/* the pictures for the right-hand column: one DexNav capture per method,
+   then whatever else has been photographed here */
+const nav = DEXNAV[place.name] || {};
+/* "East island — Grass" is a sub-area and a method; group the rows by
+   sub-area so a big place reads as a few short lists, not one long one */
+const parseHow = (how) => { const i = how.indexOf(' — '); return i < 0 ? { area: null, how } : { area: how.slice(0, i), how: how.slice(i + 3) }; };
+const groups = [];
+for (const g of wild?.methods || []) {
+  const { area, how } = parseHow(g.how);
+  let grp = groups.find((x) => x.area === area);
+  if (!grp) groups.push(grp = { area, rows: [] });
+  grp.rows.push({ ...g, short: how });
+}
+const views = [
+  ...(wild ? wild.methods.filter((g) => nav[g.how]).map((g) => { const { area, how } = parseHow(g.how); return { id: slug(g.how), label: area ? `${area} · ${how}` : how, src: nav[g.how], caption: `DexNav — ${g.how}` }; }) : []),
+  ...(shot ? [{ id: 'seen', label: 'Seen here', src: shot[0], caption: shot[1] }] : []),
+];
+const areas = groups.filter((g) => g.area).map((g) => g.area);
+const segmented = areas.length > 1;
+const areaOf = (v) => { const g = wild?.methods.find((m) => slug(m.how) === v.id); return g ? parseHow(g.how).area : null; };
+const isR412 = place.name === 'Route 412';
+/* previous and next stop on the walk, by your numbering */
+const wi = WALK.indexOf(place.name);
+const prevP = wi > 0 ? WALK[wi - 1] : null, nextP = wi >= 0 && wi < WALK.length - 1 ? WALK[wi + 1] : null;
+const stop = (name) => { const o = WILD_BY_PLACE.get(name)?.order; return o == null ? '' : String(o).replace(/\.5$/, '½'); };
+const outer = PLACE_INSIDE[place.name];
+const inner = PLACE_CONTAINS.get(place.name) || [];
+---
+<Base title={place.name} current="places" description={`${place.name} in Pokémon Light Platinum DS — what lives there and what to pick up.`}>
+  <PageHead title={place.name} back={{ href: href('places/'), label: 'Places' }}>
+    <p class="count">{place.kind}</p>
+    {outer && <a class="btn btn--quiet btn--sm" href={placePath(outer)}>In {outer}</a>}
+    {inner.map((n) => <a class="btn btn--quiet btn--sm" href={placePath(n)}>Inside: {n}</a>)}
+    {(prevP || nextP) && <Stepper label="Neighbouring places on the walk"
+      prev={prevP ? { href: placePath(prevP), name: prevP, num: stop(prevP) } : { href: href('places/'), name: 'All places' }}
+      next={nextP ? { href: placePath(nextP), name: nextP, num: stop(nextP) } : { href: href('places/'), name: 'All places' }} />}
+  </PageHead>
+
+  <div class:list={['split', { 'split--media': views.length > 0 }]}>
+    <div class="split__text">
+      {(gym || ph.length > 0 || notes?.notes || extra) && (
+        <dl class="kv facts">
+          {gym && <div><dt>Gym</dt><dd><a href={href(`gyms/${slug(gym.city)}/`)}>{gym.badge}</a> — Leader {gym.leader}, {gym.types}, lv {gym.levels}</dd></div>}
+          {ph.map((x) => <div><dt>Phenomena</dt><dd><Mon name={x.name} nat={x.nat} /> <span class="small muted">{x.kind.toLowerCase()} · needs the <a href={href('medals/#phenomenal')}>Phenomenal medal</a></span></dd></div>)}
+          {notes?.notes && <div><dt>Notes</dt><dd>{notes.notes}</dd></div>}
+          {extra && <div><dt>Also</dt><dd>{extra}</dd></div>}
+        </dl>
+      )}
+
+      {wild ? (
+        <section class="block">
+          <h2>Wild Pokémon <span class="small muted">from the DexNav</span></h2>
+          {wild.note && <p class="small muted">{wild.note}</p>}
+          {segmented && (
+            <div class="seg" role="group" aria-label="Part of the area">
+              {areas.map((a, i) => <button type="button" class="seg__btn" data-area={slug(a)} aria-pressed={i === 0 ? 'true' : 'false'}>{a}</button>)}
+            </div>
+          )}
+          {groups.map((grp, i) => (
+            <div class="area" data-area-pane={grp.area ? slug(grp.area) : ''} hidden={segmented && i !== 0}>
+              <dl class="kv">
+                {grp.rows.map((g) => (
+                  <div>
+                    <dt>{nav[g.how] ? <button type="button" class="how" data-view={slug(g.how)} aria-pressed="false">{g.short}</button> : g.short}</dt>
+                    <dd class="mons">{g.mons.map((m) => <Mon name={m.name} nat={m.nat} form={m.form} />)}</dd>
+                  </div>
+                ))}
+              </dl>
+            </div>
+          ))}
+        </section>
+      ) : (
+        <p class="empty">No wild Pokémon listed for {place.name} yet.</p>
+      )}
+
+      {items.length > 0 && (
+        <section class="block">
+          <h2>Items here <span class="small muted num">{items.length}</span></h2>
+          <ul class="finds">
+            {items.map(({ item, detail }) => (
+              <li>
+                <a class="find" href={itemPath(item)} data-item={itemSlug(item)}>
+                  <span class="find__icon">{icon(item) ? <img src={icon(item)} alt="" width="32" height="32" loading="lazy" decoding="async" /> : <i aria-hidden="true"></i>}</span>
+                  <span class="find__name">{item.tm && item.name !== item.tm ? `${item.tm} ` : ''}{item.name}</span>
+                  {detail && <span class="find__where small muted">{detail}</span>}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </section>
+      )}
+
+      {isR412 && (
+        <section class="block prose">
+          <h2>Working the route</h2>
+          <p>Route 412 is the densest pickup route. Work the eastern ledges first; the fossil choice is one-time and the Everstone is easy to walk past.</p>
+          <h3>The eastern ledges</h3>
+          <p><a href={itemHref('Thick Club')}>Thick Club</a> sits behind the first ledge drop. It is a Marowak item, so it is worth collecting even if you have no Cubone yet.</p>
+          <Shot src="ItemLocations/ThickClubRoute412.jpeg" title="Thick Club" place="Route 412 — eastern ledges" />
+          <Note kind="warn" title="Missable — Sail Fossil or Jaw Fossil">
+            <p>You are offered one of the two and cannot return for the other on this save. Jaw Fossil gives Tyrunt; Sail Fossil gives Amaura.</p>
+            <p><b>Timed.</b> Talking to him starts a one-day countdown. He wants a drink — hand over a Lemonade, Fresh Water or Soda Pop before the day is out. Let it lapse and he leaves with both fossils. Buy the drink <em>before</em> you talk to him.</p>
+          </Note>
+          <Shot src="ItemLocations/SailOrJawFossilRoute412.jpeg" title="Sail / Jaw Fossil" place="Route 412 — the choice" />
+          <h3>TMs on the route</h3>
+          <p>TM37 Sandstorm is a field pickup. TM05 Roar is held by the Ace Trainer (F) and only changes hands after you beat her.</p>
+          <div class="shots">
+            <Shot src="Tm/TM37SandstormRoute412.jpeg" title="TM37 Sandstorm" place="Route 412" />
+            <Shot src="Tm/TM05RoarRoute412.jpeg" title="TM05 Roar" place="Ace Trainer (F) · Route 412" />
+          </div>
+          <h3>Held items worth the detour</h3>
+          <p><a href={itemHref('Bright Powder')}>Bright Powder</a> and the <a href={itemHref('Everstone')}>Everstone</a> are both on this route. The Everstone matters more than usual here — several evolution levels differ from vanilla.</p>
+          <div class="shots">
+            <Shot src="ItemLocations/BrightPowderROute412.jpeg" title="Bright Powder" place="Route 412" />
+            <Shot src="ItemLocations/EveStoneRoute412.jpeg" title="Everstone" place="Route 412" />
+          </div>
+          <h3>Checklist</h3>
+          <ul class="checks">
+            {['Thick Club — eastern ledges', 'Pick your fossil (one only)', 'TM37 Sandstorm', 'Beat Ace Trainer (F) for TM05 Roar', 'Bright Powder and Everstone', 'Harvest the Sitrus / Ganlon tree'].map((t, i) => (
+              <li><label><input type="checkbox" data-check={`r412-${i}`} /> {t}</label></li>
+            ))}
+          </ul>
+          <p class="small muted">Ticks are saved on this device only.</p>
+        </section>
+      )}
+    </div>
+
+    {views.length > 0 && (
+      <aside class="split__media" aria-label="Pictures">
+        <div class="viewer" data-viewer>
+          {views.length > 1 && (
+            <div class="viewer__tabs" role="tablist">
+              {views.map((v, i) => { const a = areaOf(v); const { how } = parseHow(v.caption.replace(/^DexNav — /, '')); return (
+                <button type="button" role="tab" class="viewer__tab" data-view={v.id} data-tab-area={a ? slug(a) : ''} aria-selected={i === 0 ? 'true' : 'false'} hidden={segmented && a && a !== areas[0]}>{a ? how : v.label}</button>
+              ); })}
+            </div>
+          )}
+          {views.map((v, i) => {
+            const [w, h] = dim(v.src); const srcset = optSources(v.src);
+            return (
+              <figure class="viewer__pane" data-pane={v.id} data-label={v.label} hidden={i !== 0}>
+                <picture>
+                  {srcset.length > 0 && <source type="image/webp" sizes="(max-width: 900px) 92vw, 420px" srcset={srcset.join(', ')} />}
+                  <img src={pic(v.src)} width={w} height={h} alt={`${v.caption}, ${place.name}`} loading="eager" decoding="async" />
+                </picture>
+                <figcaption><b>{v.caption}</b><span>{place.name}</span></figcaption>
+              </figure>
+            );
+          })}
+        </div>
+      </aside>
+    )}
+  </div>
+
+  {items.length > 0 && <ItemDialog items={items.map((x) => x.item)} />}
+
+  <style>
+    .split { display: grid; gap: var(--sp-6); align-items: start; }
+    @media (min-width: 900px) { .split--media { grid-template-columns: minmax(0, 1fr) 420px; } }
+    .split__text { min-width: 0; }
+    .split__media { min-width: 0; }
+    /* the picture stays put while the text beside it scrolls */
+    @media (min-width: 900px) { .split__media { position: sticky; top: calc(52px + var(--sp-4)); } }
+    @media (max-width: 899px) { .split__media { order: -1; } }
+    .viewer { border: 1px solid var(--line); border-radius: var(--radius); background: var(--surface); overflow: hidden; }
+    .viewer__tabs { display: flex; flex-wrap: wrap; gap: 2px; padding: var(--sp-1); border-bottom: 1px solid var(--line); }
+    .viewer__tab { min-height: 36px; padding: 0 var(--sp-3); border: 0; border-radius: var(--radius-sm); background: transparent; color: var(--ink-2); font: inherit; font-size: var(--text-sm); font-weight: 500; cursor: pointer; }
+    .viewer__tab:hover { background: var(--bg); color: var(--ink); }
+    .viewer__tab[aria-selected="true"] { background: var(--bg); color: var(--ink); box-shadow: inset 0 -2px 0 var(--accent); }
+    .seg { display: flex; flex-wrap: wrap; gap: var(--sp-1); margin-bottom: var(--sp-3); padding: 3px; border: 1px solid var(--line); border-radius: var(--radius); background: var(--surface); width: fit-content; max-width: 100%; }
+    .seg__btn { min-height: 34px; padding: 0 var(--sp-3); border: 0; border-radius: var(--radius-sm); background: transparent; color: var(--ink-2); font: inherit; font-size: var(--text-sm); font-weight: 500; cursor: pointer; }
+    .seg__btn:hover { color: var(--ink); }
+    .seg__btn[aria-pressed="true"] { background: var(--bg); color: var(--ink); box-shadow: 0 1px 2px oklch(0 0 0 / 0.12); font-weight: 600; }
+    .area[hidden] { display: none; }
+    .area__h { display: none; }
+    .viewer__tab[hidden] { display: none; }
+    .viewer__pane { margin: 0; }
+    .viewer__pane[hidden] { display: none; }
+    /* every capture sits in the same 4:3 frame, whatever its pixel size */
+    .viewer__pane picture { display: block; aspect-ratio: 4 / 3; background: var(--surface-2); }
+    .viewer__pane img { display: block; width: 100%; height: 100%; object-fit: contain; image-rendering: pixelated; }
+    .viewer__pane figcaption { display: flex; justify-content: space-between; gap: var(--sp-3); padding: var(--sp-2) var(--sp-3); font-size: var(--text-sm); }
+    .viewer__pane figcaption span { color: var(--ink-3); }
+    .facts { margin-bottom: var(--sp-6); }
+    .facts dt { padding-top: 0; }
+    .facts > div { align-items: baseline; }
+    .block { margin-top: var(--sp-6); }
+    .block:first-child { margin-top: 0; }
+    .block h2 { margin-bottom: var(--sp-3); display: flex; gap: var(--sp-2); align-items: baseline; }
+    .block .kv { gap: var(--sp-3); }
+    .how { border: 0; background: none; padding: 0; font: inherit; color: inherit; cursor: pointer; text-decoration: underline dotted; text-underline-offset: 3px; }
+    .how:hover, .how[aria-pressed="true"] { color: var(--accent-ink); }
+    .finds { list-style: none; display: grid; gap: var(--sp-2); grid-template-columns: repeat(auto-fill, minmax(min(100%, 240px), 1fr)); }
+    .find { display: grid; grid-template-columns: 36px minmax(0, 1fr); column-gap: var(--sp-2); align-items: center; padding: var(--sp-2); border: 1px solid var(--line); border-radius: var(--radius); background: var(--surface); text-decoration: none; color: var(--ink); height: 60px; transition: border-color var(--t-fast) var(--ease); }
+    .find:hover { border-color: var(--line-strong); }
+    .find__icon { width: 36px; height: 36px; display: grid; place-items: center; grid-row: span 2; }
+    .find__icon img { image-rendering: pixelated; }
+    .find__icon i { width: 12px; height: 12px; border: 1px solid var(--line-strong); border-radius: 3px; }
+    .find__name, .find__where { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; line-height: 1.3; }
+    .find__name { font-weight: 600; font-size: var(--text-sm); }
+    .prose h3 { margin-top: var(--sp-6); }
+    .checks { list-style: none; display: grid; gap: var(--sp-1); }
+    .checks label { display: flex; gap: var(--sp-2); align-items: center; min-height: 44px; cursor: pointer; }
+    .checks input { width: 20px; height: 20px; accent-color: var(--accent-ink); }
+  </style>
+
+  <script>
+    const init = () => {
+      for (const box of document.querySelectorAll('[data-check]')) {
+        const k = 'check:' + box.dataset.check;
+        try { box.checked = localStorage.getItem(k) === '1'; } catch (e) {}
+        box.addEventListener('change', () => { try { localStorage.setItem(k, box.checked ? '1' : '0'); } catch (e) {} });
+      }
+      /* method names in the list and tabs on the viewer pick the same picture */
+      const viewer = document.querySelector('[data-viewer]');
+      if (!viewer || viewer.dataset.wired) return;
+      viewer.dataset.wired = '1';
+      const panes = [...viewer.querySelectorAll('[data-pane]')];
+      const show = (id) => {
+        panes.forEach((p) => { p.hidden = p.dataset.pane !== id; });
+        viewer.querySelectorAll('[role=tab]').forEach((t) => t.setAttribute('aria-selected', String(t.dataset.view === id)));
+        document.querySelectorAll('.how').forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.view === id)));
+      };
+      document.querySelectorAll('[data-view]').forEach((b) => b.addEventListener('click', () => show(b.dataset.view)));
+      /* the segmented control narrows both the list and the picture tabs to one part of the area */
+      document.querySelectorAll('.seg__btn').forEach((b) => b.addEventListener('click', () => {
+        const a = b.dataset.area;
+        document.querySelectorAll('.seg__btn').forEach((o) => o.setAttribute('aria-pressed', String(o === b)));
+        document.querySelectorAll('[data-area-pane]').forEach((p) => { p.hidden = p.dataset.areaPane !== a; });
+        const tabs = [...viewer.querySelectorAll('[role=tab]')];
+        tabs.forEach((t) => { t.hidden = !!t.dataset.tabArea && t.dataset.tabArea !== a; });
+        const first = tabs.find((t) => t.dataset.tabArea === a) || tabs.find((t) => !t.hidden);
+        if (first) show(first.dataset.view);
+      }));
+    };
+    init();
+    document.addEventListener('astro:page-load', init);
+  </script>
+</Base>

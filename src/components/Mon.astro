@@ -1,0 +1,17 @@
+---
+/* A Pokémon as a small chip: sprite, name, optional level or form. Links to
+   its dex entry when it has one. */
+import { SPRITE, SPECIES_BY_NAME, spPath, NAT_OF, ALOLAN } from '../lib/data.js';
+interface Props { name: string; nat?: number; level?: number | string; form?: string; shiny?: boolean; link?: boolean; }
+const { name, nat, level, form, shiny = false, link = true } = Astro.props;
+const base = name.replace(/\s*\(.*\)$/, '');
+/* Alolan forms are named "Alolan X" and live on their own form page */
+const al = ALOLAN.find((a) => a.name === base);
+const sp = SPECIES_BY_NAME.get(base) || (al ? { ...al, alolan: true } : undefined);
+const id = nat || NAT_OF.get(base) || sp?.nat || 0;
+const Tag = link && sp ? 'a' : 'span';
+---
+<Tag class="mon" href={link && sp ? spPath(sp) : undefined}>
+  {id ? <img src={SPRITE(id, shiny)} alt="" width="28" height="28" loading="lazy" decoding="async" /> : null}
+  {name}{form && <i>{form}</i>}{level != null && <i>lv {level}</i>}
+</Tag>

@@ -1,0 +1,106 @@
+{
+ "Pantem Cave": {
+  "Cave": "DexNav/pantem-cave-cave.png"
+ },
+ "Foongus Swamp": {
+  "Swamp": "DexNav/foongus-swamp-swamp.png"
+ },
+ "Esmerald City": {
+  "Fishing": "DexNav/esmerald-city-fishing.png",
+  "Rooftop": "DexNav/esmerald-city-rooftop.png",
+  "Surfing": "DexNav/esmerald-city-surfing.png"
+ },
+ "Seanport City": {
+  "Fishing": "DexNav/seanport-city-fishing.png",
+  "Surfing": "DexNav/seanport-city-surfing.png"
+ },
+ "Yellow Town": {
+  "Fishing": "DexNav/yellow-town-fishing.png",
+  "Surfing": "DexNav/yellow-town-surfing.png"
+ },
+ "Central City": {
+  "Rooftop": "DexNav/central-city-rooftop.png"
+ },
+ "Marfeny Lake": {
+  "Grass (Central City side)": "DexNav/marfeny-lake-grass-central-city-side.png",
+  "Fishing": "DexNav/marfeny-lake-fishing.png",
+  "Surfing": "DexNav/marfeny-lake-surfing.png"
+ },
+ "Inhore Woods": {
+  "Fishing": "DexNav/inhore-woods-fishing.png",
+  "Grass": "DexNav/inhore-woods-grass.png",
+  "Surfing": "DexNav/inhore-woods-surfing.png"
+ },
+ "Moss Spring": {
+  "Cave": "DexNav/moss-spring-cave.png"
+ },
+ "Route 405": {
+  "Grass": "DexNav/route-405-grass.png",
+  "Fishing": "DexNav/route-405-fishing.png"
+ },
+ "Route 406": {
+  "Swamp": "DexNav/route-406-swamp.png"
+ },
+ "Route 407": {
+  "Fishing": "DexNav/route-407-fishing.png",
+  "Grass": "DexNav/route-407-grass.png",
+  "Surfing": "DexNav/route-407-surfing.png"
+ },
+ "Route 408": {
+  "Fishing": "DexNav/route-408-fishing.png",
+  "Grass": "DexNav/route-408-grass.png",
+  "Surfing": "DexNav/route-408-surfing.png"
+ },
+ "Route 401": {
+  "Grass": "DexNav/route-401-grass.png"
+ },
+ "Route 402": {
+  "Grass": "DexNav/route-402-grass.png"
+ },
+ "Route 403": {
+  "Grass": "DexNav/route-403-grass.png"
+ },
+ "Route 404": {
+  "Fishing": "DexNav/route-404-fishing.png",
+  "Grass": "DexNav/route-404-grass.png",
+  "Surfing": "DexNav/route-404-surfing.png"
+ },
+ "Botanic Garden": {
+  "Grass": "DexNav/botanic-garden-grass.png"
+ },
+ "Panotem Islands": {
+  "East island — Fishing": "DexNav/panotem-islands-east-island-fishing.png",
+  "East island — Grass": "DexNav/panotem-islands-east-island-grass.png",
+  "East island — Surfing": "DexNav/panotem-islands-east-island-surfing.png",
+  "East islet — Grass": "DexNav/panotem-islands-east-islet-grass.png",
+  "Snow forest — Fishing": "DexNav/panotem-islands-snow-forest-fishing.png",
+  "Snow forest — Grass": "DexNav/panotem-islands-snow-forest-grass.png",
+  "Snow forest — Surfing": "DexNav/panotem-islands-snow-forest-surfing.png",
+  "South island — Fishing": "DexNav/panotem-islands-south-island-fishing.png",
+  "South island — Grass": "DexNav/panotem-islands-south-island-grass.png",
+  "South island — Surfing": "DexNav/panotem-islands-south-island-surfing.png"
+ },
+ "Route 409": {
+  "Fishing": "DexNav/route-409-fishing.png",
+  "Grass": "DexNav/route-409-grass.png",
+  "Surfing": "DexNav/route-409-surfing.png"
+ },
+ "Route 410": {
+  "Fishing": "DexNav/route-410-fishing.png",
+  "Grass": "DexNav/route-410-grass.png",
+  "Surfing": "DexNav/route-410-surfing.png"
+ },
+ "Dardusk's Bane": {
+  "Ground floor — Cave": "DexNav/dardusk-s-bane-ground-floor-cave.png",
+  "Underground — Cave": "DexNav/dardusk-s-bane-underground-cave.png",
+  "Underground — Fishing": "DexNav/dardusk-s-bane-underground-fishing.png",
+  "Underground — Surfing": "DexNav/dardusk-s-bane-underground-surfing.png"
+ },
+ "Dardusk Woods": {
+  "Grass": "DexNav/dardusk-woods-grass.png"
+ },
+ "Route 411": {
+  "Fishing": "DexNav/route-411-fishing.png",
+  "Grass": "DexNav/route-411-grass.png"
+ }
+}

@@ -1,0 +1,141 @@
+/* The Sun Palace gear board. The SVG is drawn by the page; every state the
+   solver toggles (is-filled, is-target, is-blocked, is-solved) is styled here.
+   Track colour is meaning: red tracks step clockwise, blue anticlockwise. */
+.spboard { display: grid; gap: var(--sp-4); align-items: start; }
+@media (min-width: 900px) { .spboard { grid-template-columns: minmax(0, 1fr) 300px; } }
+.spboard__figure { min-width: 0; border: 1px solid var(--line); border-radius: var(--radius); background: var(--surface); padding: var(--sp-3); }
+.sp { width: 100%; height: auto; display: block; max-height: 76vh; margin-inline: auto;
+  --sp-cw: oklch(0.6 0.17 30); --sp-ccw: oklch(0.55 0.15 252);
+  --sp-stone: color-mix(in oklab, var(--ink-3) 22%, var(--surface)); }
+
+/* the floor: a warm-lit disc that darkens toward the wall, a ring of
+   sun rays cut into the outer margin */
+.sp__floor0 { stop-color: color-mix(in oklab, var(--accent-soft) 55%, var(--bg)); }
+.sp__floor1 { stop-color: var(--bg); }
+.sp__floor2 { stop-color: var(--surface-2); }
+.sp__field { stroke: var(--line); stroke-width: 1; }
+.sp__rays line { stroke: var(--accent-ink); stroke-width: 1.5; stroke-linecap: round; opacity: 0.45; }
+.sp__rim { fill: none; stroke: var(--line-strong); stroke-width: 2.5; }
+.sp__rim--inner { stroke: var(--line); stroke-width: 1; }
+
+/* tracks are grooves: a stone channel with the coloured rail laid in it */
+.sp__groove { fill: none; stroke: var(--sp-stone); stroke-width: 13; }
+.sp__track { fill: none; stroke-width: 5; }
+.sp__track--cw  { stroke: var(--sp-cw); }
+.sp__track--ccw { stroke: var(--sp-ccw); }
+.sp__dir { fill: var(--bg); stroke: var(--ink-2); stroke-width: 1.2; stroke-linejoin: round; }
+.sp__trackno circle { fill: var(--bg); stroke: var(--line-strong); stroke-width: 1.2; }
+.sp__trackno text { font-family: var(--mono); font-size: 11px; font-weight: 500; fill: var(--ink-2); text-anchor: middle; }
+.sp__radial { stroke: var(--ink-3); stroke-width: 1.5; stroke-dasharray: 2 8; stroke-linecap: round; opacity: 0.7; }
+
+/* the pillar is the sun the palace is named for */
+.sp__sun0 { stop-color: color-mix(in oklab, var(--accent) 55%, var(--bg)); }
+.sp__sun1 { stop-color: color-mix(in oklab, var(--accent) 22%, var(--bg)); }
+.sp__pillarbody { stroke: var(--accent-ink); stroke-width: 2; }
+.sp__pillarring { fill: none; stroke: var(--accent-ink); stroke-width: 1; opacity: 0.5; }
+.sp__sunrays line { stroke: var(--accent-ink); stroke-width: 2.5; stroke-linecap: round; opacity: 0.55; }
+.sp__suncore { fill: var(--bg); stroke: var(--accent-ink); stroke-width: 1.5; }
+.sp__pillarlbl { font-family: var(--font); fill: var(--accent-ink); text-anchor: middle; font-size: 10px; font-weight: 600; letter-spacing: 0.06em; }
+.sp__door { fill: var(--ok); stroke: color-mix(in oklab, var(--ok) 60%, black); stroke-width: 1.5; }
+.sp__steps { fill: none; stroke: var(--ink-3); stroke-width: 2; stroke-linecap: round; }
+.sp__entrylbl, .sp__tunnellbl, .sp__leverlbl { font-family: var(--font); fill: var(--ink-2); text-anchor: middle; font-size: 13px; font-weight: 600; }
+.sp__entrylbl { font-size: 11px; letter-spacing: 0.1em; fill: var(--ok); }
+.sp__tunnel { fill: none; stroke: var(--accent-ink); stroke-width: 3; stroke-dasharray: 9 7; stroke-linecap: round; }
+.sp__tunnellbl { fill: var(--accent-ink); font-size: 12px; }
+
+/* sockets sit in the groove; a placed gear rises out of it */
+.sp__slot { cursor: pointer; }
+.sp__slot:focus-visible { outline: none; }
+.sp__slot:focus-visible .sp__socket { stroke: var(--accent-ink); stroke-width: 3; }
+.sp__socket { fill: var(--bg); stroke: var(--line-strong); stroke-width: 1.5; transition: stroke var(--t-fast) var(--ease); }
+.sp__socketin { fill: var(--surface-2); stroke: var(--line); stroke-width: 1; }
+.sp__slot:hover .sp__socket { stroke: var(--ink-2); }
+.sp__slot.is-target .sp__socket { stroke: var(--accent); stroke-width: 3.5; }
+.sp__gear { opacity: 0; transform: scale(0.4) rotate(-40deg); transform-box: fill-box; transform-origin: center;
+  transition: opacity var(--t) var(--ease), transform var(--t) var(--ease); }
+.sp__slot.is-filled .sp__gear { opacity: 1; transform: none; }
+.sp__gear rect, .sp__gearbody { fill: var(--gearface); }
+.sp__gearbody { stroke: var(--gearedge); stroke-width: 1; }
+.sp__gearring { fill: none; stroke: var(--gearedge); stroke-width: 2; }
+.sp__gearhub { fill: var(--gearedge); }
+.sp__gear--cw  { --gearface: var(--sp-cw); --gearedge: oklch(0.98 0.02 30); }
+.sp__gear--ccw { --gearface: var(--sp-ccw); --gearedge: oklch(0.98 0.02 252); }
+
+/* levers are stone tablets with a chip for the action glyph */
+.sp__lever { cursor: pointer; }
+.sp__lever:focus-visible { outline: none; }
+.sp__lever:focus-visible .sp__plate { stroke: var(--accent-ink); stroke-width: 3; }
+.sp__plate { fill: var(--surface); stroke: var(--line-strong); stroke-width: 1.5; transition: fill var(--t-fast) var(--ease), stroke var(--t-fast) var(--ease); }
+.sp__plateedge { fill: none; stroke: var(--line); stroke-width: 1; }
+.sp__lever:hover .sp__plate { fill: var(--bg); stroke: var(--ink-3); }
+.sp__iconchip { fill: var(--bg); stroke: var(--line-strong); stroke-width: 1.2; }
+.sp__lever--rotate .sp__iconchip { fill: var(--accent-soft); stroke: var(--accent-ink); }
+.sp__icon { stroke: var(--ink); stroke-width: 2.6; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+.sp__iconfill { fill: var(--ink); stroke: none; }
+.sp__leverlbl { font-size: 11.5px; letter-spacing: 0.05em; }
+.sp__leverno { fill: var(--ink-3); font-family: var(--mono); font-weight: 500; }
+.sp__lever.is-protected .sp__plate { stroke: var(--accent-ink); stroke-width: 2; }
+.sp__badge circle { fill: var(--accent); }
+.sp__badge text { fill: var(--on-accent); font-size: 14px; font-weight: 700; text-anchor: middle; font-family: var(--font); }
+.sp__lock { display: none; }
+.sp__lock circle { fill: var(--warn); }
+.sp__lock path { stroke: var(--bg); stroke-width: 2.4; stroke-linecap: round; }
+.sp__lever.is-blocked { cursor: not-allowed; }
+.sp__lever.is-blocked .sp__plate { fill: var(--surface-2); stroke-dasharray: 5 5; }
+.sp__lever.is-blocked .sp__icon, .sp__lever.is-blocked .sp__iconfill, .sp__lever.is-blocked .sp__leverlbl, .sp__lever.is-blocked .sp__iconchip { opacity: 0.4; }
+.sp__lever.is-blocked .sp__lock { display: block; }
+.spboard.is-solved .sp__slot.is-target.is-filled .sp__socket { stroke: var(--ok); stroke-width: 4; }
+/* a gear in flight, and the lever the route wants pulled next */
+.sp__flier { transition: transform 0.55s cubic-bezier(0.22, 1, 0.36, 1); }
+.sp__flier .sp__gear { opacity: 1; transform: none; animation: sp-spin 0.55s linear; }
+@keyframes sp-spin { to { transform: rotate(120deg); } }
+.sp__lever.is-next .sp__plate { stroke: var(--accent); stroke-width: 3; animation: sp-pulse 1.1s ease-in-out infinite; }
+.sp__lever.is-next .sp__iconchip { fill: var(--accent-soft); }
+@keyframes sp-pulse { 50% { stroke-width: 5; } }
+/* the pillar turning after the main switch, then lit once the way is open */
+.sp__pillar { transform-box: fill-box; transform-origin: center; }
+.spboard.is-turning .sp__pillar { animation: sp-turn 1.5s cubic-bezier(0.22, 1, 0.36, 1); }
+.spboard.is-turning .sp__sunrays { animation: sp-rays 1.5s cubic-bezier(0.22, 1, 0.36, 1); transform-box: fill-box; transform-origin: center; }
+@keyframes sp-turn { 30% { transform: scale(1.12); } 100% { transform: none; } }
+@keyframes sp-rays { to { transform: rotate(360deg); } }
+.spboard.is-open .sp__pillarbody { stroke: var(--accent); stroke-width: 4; filter: drop-shadow(0 0 14px var(--accent)); }
+.spboard.is-open .sp__sunrays line { opacity: 1; stroke-width: 3.5; }
+.spboard.is-open .sp__suncore { fill: var(--accent); }
+.spreward { border: 1px solid var(--accent-ink); border-radius: var(--radius); background: var(--accent-soft); padding: var(--sp-3); display: grid; gap: var(--sp-2); font-size: var(--text-sm); }
+.spreward[hidden] { display: none; }
+.spreward .btn { justify-self: start; }
+@media (prefers-reduced-motion: reduce) { .sp__gear, .sp__plate, .sp__socket, .sp__flier { transition: none; } .sp__flier .sp__gear, .sp__lever.is-next .sp__plate, .spboard.is-turning .sp__pillar, .spboard.is-turning .sp__sunrays { animation: none; } }
+
+/* the panel beside the board */
+.spboard__panel { display: grid; gap: var(--sp-3); align-content: start; border: 1px solid var(--line); border-radius: var(--radius); background: var(--surface); padding: var(--sp-4); }
+.spboard__panel .btn--quiet { background: var(--bg); }
+.sp__status { font-size: var(--text-sm); color: var(--ink-2); min-height: 3lh; }
+.spctl { display: grid; gap: 4px; font-size: var(--text-sm); }
+.spctl__label { font-weight: 600; color: var(--ink-3); }
+.spctl__val { font-family: var(--mono); font-variant-numeric: tabular-nums; }
+.spctl select { min-height: 44px; padding: 0 var(--sp-3); border: 1px solid var(--line-strong); border-radius: var(--radius); background: var(--bg); color: var(--ink); }
+.spctl--acts { display: flex; flex-wrap: wrap; gap: var(--sp-2); }
+.spctl__hint { font-size: var(--text-sm); color: var(--ink-3); }
+.spsol { border-top: 1px solid var(--line); padding-top: var(--sp-3); }
+.spsol[hidden] { display: none; }
+.spsol__head { font-weight: 600; display: flex; align-items: center; gap: var(--sp-2); }
+.spsol__list { padding-left: 1.4em; margin-top: var(--sp-2); font-size: var(--text-sm); display: grid; gap: 2px; }
+.spsol__step { border: 0; background: none; padding: 2px 6px; margin-left: -6px; border-radius: var(--radius-sm); font: inherit; color: var(--ink); cursor: pointer; text-align: left; }
+.spsol__step:hover { background: var(--bg); }
+.spsol__step:disabled { cursor: default; }
+.spsol__list li.is-done .spsol__step { color: var(--ink-3); text-decoration: line-through; }
+.spsol__list li.is-next .spsol__step { background: var(--accent-soft); color: var(--accent-ink); font-weight: 600; }
+.spsol__final button { border: 0; background: none; padding: 0; font: inherit; color: inherit; text-align: left; cursor: pointer; }
+.spsol__final button:disabled { cursor: default; color: var(--ink-3); }
+.spsol__final.is-next { animation: sp-glow 1.2s ease-in-out infinite; }
+@keyframes sp-glow { 50% { box-shadow: 0 0 0 3px var(--accent-soft); } }
+.spsol__final { list-style: none; margin-left: -1.4em; margin-top: var(--sp-2); padding: var(--sp-2) var(--sp-3); border: 1px solid var(--accent-ink); border-radius: var(--radius-sm); background: var(--accent-soft); }
+.sporder { display: flex; flex-wrap: wrap; align-items: center; gap: var(--sp-2) var(--sp-3); font-size: var(--text-sm); margin-bottom: var(--sp-4); }
+.sporder__chain { display: inline-flex; align-items: center; gap: var(--sp-1); font-family: var(--mono); font-weight: 500; }
+.sporder__step { padding: 2px 8px; border: 1px solid var(--line-strong); border-radius: var(--radius-sm); background: var(--surface); }
+.sporder__step.is-final { border-color: var(--accent-ink); }
+.sporder__step.is-done { background: var(--ok-soft); border-color: var(--ok); color: var(--ok); text-decoration: line-through; }
+.sporder__step.is-here { background: var(--accent-soft); border-color: var(--accent-ink); color: var(--accent-ink); }
+.sporder__reset { margin-left: auto; }
+.sporder__arrow { color: var(--ink-3); }
+.sporder__note { color: var(--ink-3); flex-basis: 100%; }

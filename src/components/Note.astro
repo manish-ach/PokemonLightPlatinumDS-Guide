@@ -1,0 +1,15 @@
+---
+/* A callout with a full border and a tint. `kind` picks the meaning colour. */
+interface Props { kind?: 'info' | 'warn' | 'ok' | 'odd'; title?: string; }
+const { kind = 'info', title } = Astro.props;
+const ICON = {
+  info: '<circle cx="9" cy="9" r="7"/><path d="M9 5.5v4M9 12v.5"/>',
+  warn: '<path d="M9 2 17 16H1L9 2Z"/><path d="M9 7v4"/><path d="M9 13.5v.5"/>',
+  ok:   '<circle cx="9" cy="9" r="7"/><path d="m5.5 9 2.3 2.3L12.5 6.5"/>',
+  odd:  '<circle cx="9" cy="9" r="6.5"/><circle cx="9" cy="9" r="2.5"/>',
+}[kind];
+---
+<div class={`note note--${kind}`}>
+  <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true" set:html={ICON} />
+  <div>{title && <b>{title}</b>}<slot /></div>
+</div>

@@ -1,0 +1,116 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHead from '../components/PageHead.astro';
+import Mon from '../components/Mon.astro';
+import Shot from '../components/Shot.astro';
+import Note from '../components/Note.astro';
+import { TRADES, TRADE_ITEMS, SPRITE_ITEM, slug, pic, dim, optSources } from '../lib/data.js';
+const thumb = (file) => { const [w, h] = dim(file); const s = optSources(file); return { src: pic(file), w, h, srcset: s.join(', ') }; };
+const gts = thumb('SpecialLocations/GtsBuildingCentralCity.png');
+const cave = thumb('SpecialLocations/DungeonGateDarduskCave.png');
+---
+<Base title="Trade evolution" current="trades" description="How to evolve trade-only Pokémon in Pokémon Light Platinum DS: the GTS online, or a self-trade in Dardusk Cave.">
+  <PageHead title="Trade evolution" note="Two ways without a second console.">
+    <p class="count"><output>{TRADES.length}</output> species · {TRADE_ITEMS} need an item</p>
+  </PageHead>
+
+  <div class="ways">
+    <button type="button" class="way" data-open="gts">
+      <span class="way__thumb"><picture>{gts.srcset && <source type="image/webp" srcset={gts.srcset} sizes="120px" />}<img src={gts.src} width="96" height="64" alt="" loading="lazy" decoding="async" /></picture></span>
+      <span class="way__text"><b>GTS, online</b><span>Deposit at the GTS in Central City, take it back from the website.</span></span>
+      <span class="way__go" aria-hidden="true">How</span>
+    </button>
+    <button type="button" class="way" data-open="cave">
+      <span class="way__thumb"><picture>{cave.srcset && <source type="image/webp" srcset={cave.srcset} sizes="120px" />}<img src={cave.src} width="96" height="64" alt="" loading="lazy" decoding="async" /></picture></span>
+      <span class="way__text"><b>Self-trade, offline</b><span>The trader behind the gate at the bottom of Dardusk Cave.</span></span>
+      <span class="way__go" aria-hidden="true">How</span>
+    </button>
+  </div>
+
+  <p class="small muted lead">Feebas is not here: in this hack it evolves after two Wonder Meals at a Pokémon Center, then a level up.</p>
+  <div class="table-wrap"><table class="table">
+    <thead><tr><th scope="col">From</th><th scope="col">To</th><th scope="col">Holding</th></tr></thead>
+    <tbody>
+      {TRADES.map((t) => (
+        <tr id={slug(t.from)}>
+          <td><Mon name={t.from} nat={t.fromNat} /></td>
+          <td><Mon name={t.to} nat={t.toNat} /></td>
+          <td>{t.item ? <span class="mon"><img src={SPRITE_ITEM(slug(t.item))} alt="" width="28" height="28" loading="lazy" decoding="async" />{t.item}</span> : <span class="muted">—</span>}</td>
+        </tr>
+      ))}
+    </tbody>
+  </table></div>
+
+  <dialog class="dialog dialog--wide" id="way-gts" aria-labelledby="gts-t">
+    <div class="dialog__bar"><p>Trade evolution</p><button type="button" class="iconbtn" data-close aria-label="Close"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M3 3l10 10M13 3L3 13"/></svg></button></div>
+    <div class="dialog__body"><div class="dialog__split">
+      <div class="dialog__text">
+        <h2 id="gts-t">GTS, online</h2>
+        <p class="small muted">GTS building, Central City</p>
+        <p>Deposit the Pokémon (holding its item if it needs one) at the GTS, then take it back from the website. It counts as a trade, and it evolves.</p>
+        <p class="small"><a href="https://pokehacking.com/online/gts" rel="noopener">pokehacking.com/online/gts</a></p>
+        <Note kind="warn">Needs a properly patched ROM linked to a PokeHacking account. A mis-patched game will not connect.</Note>
+      </div>
+      <div class="dialog__media">
+        <Shot src="SpecialLocations/GtsBuildingCentralCity.png" title="The GTS building" place="Central City" />
+        <Shot src="SpecialLocations/GtsWebsite.png" title="The GTS site" place="pokehacking.com" />
+      </div>
+    </div></div>
+  </dialog>
+
+  <dialog class="dialog dialog--wide" id="way-cave" aria-labelledby="cave-t">
+    <div class="dialog__bar"><p>Trade evolution</p><button type="button" class="iconbtn" data-close aria-label="Close"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M3 3l10 10M13 3L3 13"/></svg></button></div>
+    <div class="dialog__body"><div class="dialog__split">
+      <div class="dialog__text">
+        <h2 id="cave-t">Self-trade, offline</h2>
+        <p class="small muted">Dardusk Cave, bottom floor · needs the Dungeon Key</p>
+        <ol class="steps">
+          <li>Unlock the gate at the bottom of Dardusk Cave with the Dungeon Key.</li>
+          <li>Talk to the trader inside with the Pokémon (and its item) in your party.</li>
+          <li>You get it back evolved.</li>
+        </ol>
+        <Note kind="warn" title="Something always stays behind">The trader keeps one Pokémon of theirs and you get yours back. Do not hand over anything you cannot spare a slot for.</Note>
+      </div>
+      <div class="dialog__media">
+        <Shot src="SpecialLocations/DungeonGateDarduskCave.png" title="The gate" place="Dardusk Cave" />
+        <Shot src="SpecialLocations/SelfTradeDungeon.jpeg" title="The trader" place="behind the gate" />
+      </div>
+    </div></div>
+  </dialog>
+
+  <style>
+    .ways { display: grid; gap: var(--sp-3); grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr)); margin-bottom: var(--sp-4); }
+    .way {
+      display: grid; grid-template-columns: 96px minmax(0, 1fr) auto; align-items: center; gap: var(--sp-3);
+      padding: var(--sp-2); padding-right: var(--sp-3); text-align: left; font: inherit; color: var(--ink); cursor: pointer;
+      border: 1px solid var(--accent-ink); border-radius: var(--radius); background: var(--accent-soft);
+      transition: background var(--t-fast) var(--ease), transform var(--t-fast) var(--ease);
+    }
+    .way:hover { background: color-mix(in oklab, var(--accent-soft) 70%, var(--accent)); }
+    .way:active { transform: translateY(1px); }
+    .way:focus-visible { outline: 2px solid var(--accent-ink); outline-offset: 2px; }
+    .way__thumb { width: 96px; height: 64px; border-radius: var(--radius-sm); overflow: hidden; border: 1px solid var(--line-strong); background: var(--surface); }
+    .way__thumb img { width: 100%; height: 100%; object-fit: cover; object-position: center 40%; image-rendering: pixelated; display: block; }
+    .way__text { display: grid; gap: 2px; min-width: 0; }
+    .way__text b { font-size: var(--text-md); }
+    .way__text span { font-size: var(--text-sm); color: var(--ink-2); }
+    .way__go { font-size: var(--text-sm); font-weight: 600; color: var(--on-accent); background: var(--accent); border-radius: 999px; padding: 6px 12px; white-space: nowrap; }
+    .lead { margin-bottom: var(--sp-3); max-width: var(--measure); }
+    .steps { padding-left: 1.3em; font-size: var(--text-sm); display: grid; gap: var(--sp-1); }
+    .dialog__text h2 { font-size: var(--text-lg); }
+  </style>
+
+  <script>
+    const init = () => {
+      for (const b of document.querySelectorAll('[data-open]')) {
+        if (b.dataset.wired) continue; b.dataset.wired = '1';
+        const dlg = document.getElementById('way-' + b.dataset.open);
+        b.addEventListener('click', () => dlg.showModal());
+        dlg.querySelector('[data-close]').addEventListener('click', () => dlg.close());
+        dlg.addEventListener('click', (e) => { if (e.target === dlg) dlg.close(); });
+      }
+    };
+    init();
+    document.addEventListener('astro:page-load', init);
+  </script>
+</Base>

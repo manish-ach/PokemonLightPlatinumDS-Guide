@@ -1,0 +1,14 @@
+---
+import Base from '../layouts/Base.astro';
+import { href } from '../lib/data.js';
+---
+<Base title="Not found" description="That page does not exist.">
+  <div class="lost">
+    <h1>Nothing here</h1>
+    <p>That page does not exist, or moved when the site was rebuilt.</p>
+    <p><a class="btn btn--primary" href={href('')}>Back to the start</a></p>
+  </div>
+  <style>
+    .lost { padding: var(--sp-8) 0; display: grid; gap: var(--sp-3); max-width: var(--measure); }
+  </style>
+</Base>

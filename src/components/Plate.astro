@@ -1,0 +1,7 @@
+---
+import { cap } from '../lib/data.js';
+interface Props { type: string; }
+const { type } = Astro.props;
+const t = String(type).toLowerCase();
+---
+<span class={`plate p-${t}`}>{cap(t)}</span>

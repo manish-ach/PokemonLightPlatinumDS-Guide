@@ -1,0 +1,113 @@
+---
+import Base from '../../layouts/Base.astro';
+import PageHead from '../../components/PageHead.astro';
+import Plate from '../../components/Plate.astro';
+import Note from '../../components/Note.astro';
+import Stepper from '../../components/Stepper.astro';
+import { ALLSPECIES, ALOLAN, ALOLAN_BY_BASE, SPECIES, NONDEX, spKey, spPath, SPRITE, href, ACQ, PHENOM_BY_MON, WILD_BY_MON, placePath, WILD_BY_PLACE, EGG_BASES, evolveFrom, SPECIES_BY_NAME } from '../../lib/data.js';
+
+export function getStaticPaths() {
+  const regular = ALLSPECIES.map((sp) => ({ params: { key: spKey(sp) }, props: { sp } }));
+  const forms = ALOLAN.map((a) => ({ params: { key: spKey({ ...a, alolan: true }) }, props: { sp: { ...a, alolan: true, shiny: false } } }));
+  return [...regular, ...forms];
+}
+const { sp } = Astro.props;
+/* neighbours by dex number: the regional dex in order, then the off-dex
+   entries by national number; Alolan forms step among themselves */
+const ring = sp.alolan ? ALOLAN.map((a) => ({ ...a, alolan: true })).sort((a, b) => a.reg - b.reg)
+  : sp.reg ? [...SPECIES].sort((a, b) => a.reg - b.reg) : [...NONDEX].sort((a, b) => a.nat - b.nat);
+const me = spKey(sp);
+const idx = ring.findIndex((x) => spKey(x) === me);
+const prev = ring[(idx - 1 + ring.length) % ring.length], next = ring[(idx + 1) % ring.length];
+const numOf = (x) => x.alolan || x.reg ? String(x.reg).padStart(3, '0') : `#${x.nat}`;
+const acq = ACQ.get(sp.name);
+const ph = PHENOM_BY_MON.get(sp.name);
+const wild = (WILD_BY_MON.get(sp.name) || []).filter((w) => WILD_BY_PLACE.has(w.place));
+const al = !sp.alolan && ALOLAN_BY_BASE.get(sp.name);
+const stats = sp.stats || {};
+const LABEL = { hp: 'HP', attack: 'Attack', defense: 'Defense', 'special-attack': 'Sp. Atk', 'special-defense': 'Sp. Def', speed: 'Speed' };
+const max = Math.max(150, ...Object.values(stats));
+const total = Object.values(stats).reduce((a, b) => a + b, 0);
+const egg = !sp.alolan && EGG_BASES.has(sp.name);
+const direct = !!(acq || ph || wild.length || egg);
+/* no recorded location: fall back to evolving something earlier in the line */
+const evos = direct || sp.alolan ? [] : evolveFrom(sp.nat);
+const known = direct || evos.length > 0;
+const link = (name) => { const s = SPECIES_BY_NAME.get(name); return s ? spPath(s) : null; };
+---
+<Base title={sp.name} current="dex" description={`${sp.name} in Pokémon Light Platinum DS — how to get it, base stats, dex entry.`}>
+  <PageHead title={sp.name} back={{ href: href('dex/'), label: 'Dex' }}>
+    <span class="plates">{sp.types.map((t) => <Plate type={t} />)}</span>
+    {ring.length > 1 && <Stepper label="Neighbouring entries" prev={{ href: spPath(prev), name: prev.name, num: numOf(prev), img: SPRITE(prev.nat, prev.shiny) }} next={{ href: spPath(next), name: next.name, num: numOf(next), img: SPRITE(next.nat, next.shiny) }} />}
+  </PageHead>
+
+  <div class="entry">
+    <div class="entry__art">
+      <img src={SPRITE(sp.nat, sp.shiny)} alt={`${sp.name}${sp.shiny ? ' (shiny)' : ''}`} width="112" height="112" />
+      <dl class="kv kv--tight">
+        <div><dt>Zhery</dt><dd class="num">{sp.reg ? String(sp.reg).padStart(3, '0') : '—'}</dd></div>
+        <div><dt>National</dt><dd class="num">{sp.nat}</dd></div>
+        {sp.genus && <div><dt>Class</dt><dd>{sp.genus}</dd></div>}
+        {sp.height && <div><dt>Size</dt><dd class="num">{(sp.height / 10).toFixed(1)} m · {(sp.weight / 10).toFixed(1)} kg</dd></div>}
+      </dl>
+      {sp.alolan && <p class="small muted">Alolan form — shares Zhery #{String(sp.reg).padStart(3, '0')} with <a href={spPath({ name: sp.base, reg: sp.reg, nat: sp.baseNat })}>{sp.base}</a>.</p>}
+      {al && <p class="small muted">Has an <a href={spPath({ ...al, alolan: true })}>Alolan form</a>, found on Panotem Islands.</p>}
+      {!sp.reg && !sp.alolan && <p class="small"><b style="color:var(--warn)">Not in the regional dex.</b></p>}
+    </div>
+
+    <div class="entry__body">
+      <section>
+        <h2>How to get it</h2>
+        {known ? (
+          <div class="table-wrap"><table class="table">
+            <thead><tr><th scope="col">Method</th><th scope="col">Where</th></tr></thead>
+            <tbody>
+              {acq && <tr><td>{acq.method}</td><td>{acq.location}</td></tr>}
+              {ph && <tr><td>{ph.kind} <span class="small muted">· Phenomenal medal</span></td><td>{ph.place}</td></tr>}
+              {wild.map((w) => <tr><td>{w.how}</td><td><a href={placePath(w.place)}>{w.place}</a></td></tr>)}
+              {egg && <tr><td>Mystery Gift</td><td><a href={href('gifts/')}>“A dragon egg…” Wonder Card</a> — hatches one of six lines, at random</td></tr>}
+              {evos.map((e) => <tr><td>Evolve {link(e.from) ? <a href={link(e.from)}>{e.from}</a> : e.from}</td><td>{e.how}</td></tr>)}
+            </tbody>
+          </table></div>
+        ) : (
+          <p class="empty">No known way to get {sp.name} yet.</p>
+        )}
+        {ph && <Note kind="info" title={`${ph.kind} — needs the Phenomenal medal`}><p>{ph.note}</p></Note>}
+      </section>
+
+      {sp.entry && (
+        <section>
+          <h2>Dex entry</h2>
+          <blockquote class="quote">
+            <p>{sp.entry}</p>
+          </blockquote>
+        </section>
+      )}
+
+      <section>
+        <h2>Base stats <span class="small muted num">{total}</span></h2>
+        <div class="table-wrap"><table class="table stats">
+          <tbody>
+            {Object.entries(LABEL).map(([k, label]) => (
+              <tr><th scope="row">{label}</th><td class="num">{stats[k] ?? '—'}</td><td><span class="bar"><i style={`width:${((stats[k] || 0) / max) * 100}%`}></i></span></td></tr>
+            ))}
+          </tbody>
+        </table></div>
+      </section>
+    </div>
+  </div>
+
+  <style>
+    .entry { display: grid; gap: var(--sp-6); align-items: start; }
+    @media (min-width: 760px) { .entry { grid-template-columns: 240px minmax(0, 1fr); } }
+    .entry__art { display: grid; gap: var(--sp-3); }
+    .entry__art img { image-rendering: pixelated; width: 112px; height: 112px; border: 1px solid var(--line); border-radius: var(--radius); background: var(--surface); padding: 8px; }
+    .kv--tight > div { grid-template-columns: 5rem 1fr; }
+    .entry__body { display: grid; gap: var(--sp-6); min-width: 0; }
+    .entry__body h2 { margin-bottom: var(--sp-3); display: flex; gap: var(--sp-2); align-items: baseline; }
+    .quote { border: 1px solid var(--line); border-radius: var(--radius); padding: var(--sp-3) var(--sp-4); background: var(--surface); max-width: var(--measure); }
+    .stats th { font-weight: 500; color: var(--ink-2); width: 6rem; }
+    .stats td:last-child { width: 220px; }
+    .note { margin-top: var(--sp-3); }
+  </style>
+</Base>

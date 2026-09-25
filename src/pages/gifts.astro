@@ -1,0 +1,72 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHead from '../components/PageHead.astro';
+import Mon from '../components/Mon.astro';
+import Note from '../components/Note.astro';
+import { CARDS, MILEAGE, SPRITE_ITEM, NONDEX, href, MEDALS, medalIcon, slug } from '../lib/data.js';
+const medalOf = (name) => MEDALS.find((m) => m.name === name);
+/* evolution lines of the gifted off-dex species, so the page says what a
+   Klink or a Beldum turns into without sending you to three dex pages */
+const lines = new Map();
+for (const g of NONDEX) { if (!g.line) continue; if (!lines.has(g.line)) lines.set(g.line, []); lines.get(g.line).push(g); }
+const LINES = [...lines.values()].map((l) => l.sort((a, b) => a.stage - b.stage)).filter((l) => l.length > 1);
+---
+<Base title="Mystery Gift" current="gifts" description="Every Wonder Card distributed for Pokémon Light Platinum DS, and what the PokéMileage Club sells.">
+  <PageHead title="Mystery Gift" note="Wonder Cards from the PokeHacking online service, dated when they went out.">
+    <p class="count"><output>{CARDS.length}</output> cards</p>
+  </PageHead>
+
+  <div class="grid cards">
+    {CARDS.map((c) => (
+      <article class="card wcard">
+        <h2 class="card__title">{c.title}</h2>
+        <p class="card__meta">{c.date || 'From the start'}</p>
+        <p class="wcard__body">{c.body}</p>
+        {c.gives && Array.isArray(c.species) && <p class="small">{c.gives}</p>}
+        <div class="wcard__gives">
+          {Array.isArray(c.species) ? c.species.map((s) => <Mon name={s} />) : c.species ? <Mon name={c.species} shiny={c.species === 'Beldum'} />
+            : c.medal && medalOf(c.medal) ? <a class="mon" href={href(`medals/#${slug(c.medal)}`)}><img src={href(`pictures/MedalIcons/${medalIcon(medalOf(c.medal))}`)} alt="" width="28" height="28" loading="lazy" decoding="async" />{c.medal} Medal</a>
+            : <p class="small">{c.gives}</p>}
+        </div>
+        {c.note && <p class="card__foot">{c.note}</p>}
+      </article>
+    ))}
+  </div>
+
+  <section class="sec">
+    <h2>What they evolve into</h2>
+    <p class="small muted">The off-dex gifts still evolve. Their lines, in order.</p>
+    <div class="grid grid--tight evo">
+      {LINES.map((l) => (
+        <div class="card evo__line">
+          {l.map((s, i) => (<>
+            {i > 0 && <span class="evo__how small muted">{s.evolveHow || 'evolves'}</span>}
+            <Mon name={s.name} nat={s.nat} shiny={s.shiny} />
+          </>))}
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <section class="sec">
+    <h2>PokéMileage Club</h2>
+    <p class="small muted">Evolution items sold for PokéMiles through the same online service.</p>
+    <div class="table-wrap"><table class="table">
+      <thead><tr><th scope="col">Item</th><th scope="col" class="num">PokéMiles</th></tr></thead>
+      <tbody>
+        {MILEAGE.map((m) => <tr><td><span class="mon"><img src={SPRITE_ITEM(m.slug)} alt="" width="28" height="28" loading="lazy" decoding="async" />{m.name}</span></td><td class="num">{m.cost.toLocaleString('en')}</td></tr>)}
+      </tbody>
+    </table></div>
+  </section>
+
+  <style>
+    .wcard__body { font-size: var(--text-sm); color: var(--ink-2); }
+    .wcard__gives { display: flex; flex-wrap: wrap; gap: var(--sp-1); }
+    .sec { margin-top: var(--sp-8); }
+    .sec h2 { margin-bottom: var(--sp-1); }
+    .sec > .small { margin-bottom: var(--sp-3); max-width: var(--measure); }
+    .evo__line { flex-direction: row; flex-wrap: wrap; align-items: center; gap: var(--sp-2); }
+    .evo__how::before { content: '→ '; }
+    .table td:last-child, .table th:last-child { text-align: right; }
+  </style>
+</Base>

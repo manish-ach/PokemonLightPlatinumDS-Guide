@@ -1,0 +1,2788 @@
+[
+ {
+  "fromNat": 1,
+  "from": "Bulbasaur",
+  "toNat": 2,
+  "to": "Ivysaur",
+  "how": "Level 16"
+ },
+ {
+  "fromNat": 2,
+  "from": "Ivysaur",
+  "toNat": 3,
+  "to": "Venusaur",
+  "how": "Level 32"
+ },
+ {
+  "fromNat": 4,
+  "from": "Charmander",
+  "toNat": 5,
+  "to": "Charmeleon",
+  "how": "Level 16"
+ },
+ {
+  "fromNat": 5,
+  "from": "Charmeleon",
+  "toNat": 6,
+  "to": "Charizard",
+  "how": "Level 36"
+ },
+ {
+  "fromNat": 7,
+  "from": "Squirtle",
+  "toNat": 8,
+  "to": "Wartortle",
+  "how": "Level 16"
+ },
+ {
+  "fromNat": 8,
+  "from": "Wartortle",
+  "toNat": 9,
+  "to": "Blastoise",
+  "how": "Level 36"
+ },
+ {
+  "fromNat": 10,
+  "from": "Caterpie",
+  "toNat": 11,
+  "to": "Metapod",
+  "how": "Level 7"
+ },
+ {
+  "fromNat": 11,
+  "from": "Metapod",
+  "toNat": 12,
+  "to": "Butterfree",
+  "how": "Level 10"
+ },
+ {
+  "fromNat": 13,
+  "from": "Weedle",
+  "toNat": 14,
+  "to": "Kakuna",
+  "how": "Level 7"
+ },
+ {
+  "fromNat": 14,
+  "from": "Kakuna",
+  "toNat": 15,
+  "to": "Beedrill",
+  "how": "Level 10"
+ },
+ {
+  "fromNat": 16,
+  "from": "Pidgey",
+  "toNat": 17,
+  "to": "Pidgeotto",
+  "how": "Level 18"
+ },
+ {
+  "fromNat": 17,
+  "from": "Pidgeotto",
+  "toNat": 18,
+  "to": "Pidgeot",
+  "how": "Level 36"
+ },
+ {
+  "fromNat": 19,
+  "from": "Rattata",
+  "toNat": 20,
+  "to": "Raticate",
+  "how": "Level 20"
+ },
+ {
+  "fromNat": 21,
+  "from": "Spearow",
+  "toNat": 22,
+  "to": "Fearow",
+  "how": "Level 20"
+ },
+ {
+  "fromNat": 23,
+  "from": "Ekans",
+  "toNat": 24,
+  "to": "Arbok",
+  "how": "Level 22"
+ },
+ {
+  "fromNat": 25,
+  "from": "Pikachu",
+  "toNat": 26,
+  "to": "Raichu",
+  "how": "Use a Thunderstone"
+ },
+ {
+  "fromNat": 27,
+  "from": "Sandshrew",
+  "toNat": 28,
+  "to": "Sandslash",
+  "how": "Level 22"
+ },
+ {
+  "fromNat": 29,
+  "from": "Nidoran♀",
+  "toNat": 30,
+  "to": "Nidorina",
+  "how": "Level 16"
+ },
+ {
+  "fromNat": 30,
+  "from": "Nidorina",
+  "toNat": 31,
+  "to": "Nidoqueen",
+  "how": "Use a Moon Stone"
+ },
+ {
+  "fromNat": 32,
+  "from": "Nidoran♂",
+  "toNat": 33,
+  "to": "Nidorino",
+  "how": "Level 16"
+ },
+ {
+  "fromNat": 33,
+  "from": "Nidorino",
+  "toNat": 34,
+  "to": "Nidoking",
+  "how": "Use a Moon Stone"
+ },
+ {
+  "fromNat": 35,
+  "from": "Clefairy",
+  "toNat": 36,
+  "to": "Clefable",
+  "how": "Use a Moon Stone"
+ },
+ {
+  "fromNat": 37,
+  "from": "Vulpix",
+  "toNat": 38,
+  "to": "Ninetales",
+  "how": "Use a Fire Stone"
+ },
+ {
+  "fromNat": 39,
+  "from": "Jigglypuff",
+  "toNat": 40,
+  "to": "Wigglytuff",
+  "how": "Use a Moon Stone"
+ },
+ {
+  "fromNat": 41,
+  "from": "Zubat",
+  "toNat": 42,
+  "to": "Golbat",
+  "how": "Level 22"
+ },
+ {
+  "fromNat": 42,
+  "from": "Golbat",
+  "toNat": 169,
+  "to": "Crobat",
+  "how": "High friendship"
+ },
+ {
+  "fromNat": 43,
+  "from": "Oddish",
+  "toNat": 44,
+  "to": "Gloom",
+  "how": "Level 21"
+ },
+ {
+  "fromNat": 44,
+  "from": "Gloom",
+  "toNat": 45,
+  "to": "Vileplume",
+  "how": "Use a Leaf Stone"
+ },
+ {
+  "fromNat": 44,
+  "from": "Gloom",
+  "toNat": 182,
+  "to": "Bellossom",
+  "how": "Use a Sun Stone"
+ },
+ {
+  "fromNat": 46,
+  "from": "Paras",
+  "toNat": 47,
+  "to": "Parasect",
+  "how": "Level 24"
+ },
+ {
+  "fromNat": 48,
+  "from": "Venonat",
+  "toNat": 49,
+  "to": "Venomoth",
+  "how": "Level 31"
+ },
+ {
+  "fromNat": 50,
+  "from": "Diglett",
+  "toNat": 51,
+  "to": "Dugtrio",
+  "how": "Level 26"
+ },
+ {
+  "fromNat": 52,
+  "from": "Meowth",
+  "toNat": 53,
+  "to": "Persian",
+  "how": "Level 28"
+ },
+ {
+  "fromNat": 54,
+  "from": "Psyduck",
+  "toNat": 55,
+  "to": "Golduck",
+  "how": "Level 33"
+ },
+ {
+  "fromNat": 56,
+  "from": "Mankey",
+  "toNat": 57,
+  "to": "Primeape",
+  "how": "Level 28"
+ },
+ {
+  "fromNat": 58,
+  "from": "Growlithe",
+  "toNat": 59,
+  "to": "Arcanine",
+  "how": "Use a Fire Stone"
+ },
+ {
+  "fromNat": 60,
+  "from": "Poliwag",
+  "toNat": 61,
+  "to": "Poliwhirl",
+  "how": "Level 25"
+ },
+ {
+  "fromNat": 61,
+  "from": "Poliwhirl",
+  "toNat": 62,
+  "to": "Poliwrath",
+  "how": "Use a Water Stone"
+ },
+ {
+  "fromNat": 61,
+  "from": "Poliwhirl",
+  "toNat": 186,
+  "to": "Politoed",
+  "how": "Trade holding King's Rock"
+ },
+ {
+  "fromNat": 63,
+  "from": "Abra",
+  "toNat": 64,
+  "to": "Kadabra",
+  "how": "Level 16"
+ },
+ {
+  "fromNat": 64,
+  "from": "Kadabra",
+  "toNat": 65,
+  "to": "Alakazam",
+  "how": "Trade"
+ },
+ {
+  "fromNat": 66,
+  "from": "Machop",
+  "toNat": 67,
+  "to": "Machoke",
+  "how": "Level 28"
+ },
+ {
+  "fromNat": 67,
+  "from": "Machoke",
+  "toNat": 68,
+  "to": "Machamp",
+  "how": "Trade"
+ },
+ {
+  "fromNat": 69,
+  "from": "Bellsprout",
+  "toNat": 70,
+  "to": "Weepinbell",
+  "how": "Level 21"
+ },
+ {
+  "fromNat": 70,
+  "from": "Weepinbell",
+  "toNat": 71,
+  "to": "Victreebel",
+  "how": "Use a Leaf Stone"
+ },
+ {
+  "fromNat": 72,
+  "from": "Tentacool",
+  "toNat": 73,
+  "to": "Tentacruel",
+  "how": "Level 30"
+ },
+ {
+  "fromNat": 74,
+  "from": "Geodude",
+  "toNat": 75,
+  "to": "Graveler",
+  "how": "Level 25"
+ },
+ {
+  "fromNat": 75,
+  "from": "Graveler",
+  "toNat": 76,
+  "to": "Golem",
+  "how": "Trade"
+ },
+ {
+  "fromNat": 77,
+  "from": "Ponyta",
+  "toNat": 78,
+  "to": "Rapidash",
+  "how": "Level 40"
+ },
+ {
+  "fromNat": 79,
+  "from": "Slowpoke",
+  "toNat": 80,
+  "to": "Slowbro",
+  "how": "Level 37"
+ },
+ {
+  "fromNat": 79,
+  "from": "Slowpoke",
+  "toNat": 199,
+  "to": "Slowking",
+  "how": "Trade holding King's Rock"
+ },
+ {
+  "fromNat": 81,
+  "from": "Magnemite",
+  "toNat": 82,
+  "to": "Magneton",
+  "how": "Level 30"
+ },
+ {
+  "fromNat": 82,
+  "from": "Magneton",
+  "toNat": 462,
+  "to": "Magnezone",
+  "how": "Level up in a magnetic field"
+ },
+ {
+  "fromNat": 84,
+  "from": "Doduo",
+  "toNat": 85,
+  "to": "Dodrio",
+  "how": "Level 31"
+ },
+ {
+  "fromNat": 86,
+  "from": "Seel",
+  "toNat": 87,
+  "to": "Dewgong",
+  "how": "Level 34"
+ },
+ {
+  "fromNat": 88,
+  "from": "Grimer",
+  "toNat": 89,
+  "to": "Muk",
+  "how": "Level 38"
+ },
+ {
+  "fromNat": 90,
+  "from": "Shellder",
+  "toNat": 91,
+  "to": "Cloyster",
+  "how": "Use a Water Stone"
+ },
+ {
+  "fromNat": 92,
+  "from": "Gastly",
+  "toNat": 93,
+  "to": "Haunter",
+  "how": "Level 25"
+ },
+ {
+  "fromNat": 93,
+  "from": "Haunter",
+  "toNat": 94,
+  "to": "Gengar",
+  "how": "Trade"
+ },
+ {
+  "fromNat": 95,
+  "from": "Onix",
+  "toNat": 208,
+  "to": "Steelix",
+  "how": "Trade holding Metal Coat"
+ },
+ {
+  "fromNat": 96,
+  "from": "Drowzee",
+  "toNat": 97,
+  "to": "Hypno",
+  "how": "Level 26"
+ },
+ {
+  "fromNat": 98,
+  "from": "Krabby",
+  "toNat": 99,
+  "to": "Kingler",
+  "how": "Level 28"
+ },
+ {
+  "fromNat": 100,
+  "from": "Voltorb",
+  "toNat": 101,
+  "to": "Electrode",
+  "how": "Level 30"
+ },
+ {
+  "fromNat": 102,
+  "from": "Exeggcute",
+  "toNat": 103,
+  "to": "Exeggutor",
+  "how": "Use a Leaf Stone"
+ },
+ {
+  "fromNat": 104,
+  "from": "Cubone",
+  "toNat": 105,
+  "to": "Marowak",
+  "how": "Level 28"
+ },
+ {
+  "fromNat": 108,
+  "from": "Lickitung",
+  "toNat": 463,
+  "to": "Lickilicky",
+  "how": "Level up knowing Rollout"
+ },
+ {
+  "fromNat": 109,
+  "from": "Koffing",
+  "toNat": 110,
+  "to": "Weezing",
+  "how": "Level 35"
+ },
+ {
+  "fromNat": 111,
+  "from": "Rhyhorn",
+  "toNat": 112,
+  "to": "Rhydon",
+  "how": "Level 42"
+ },
+ {
+  "fromNat": 112,
+  "from": "Rhydon",
+  "toNat": 464,
+  "to": "Rhyperior",
+  "how": "Trade holding Protector"
+ },
+ {
+  "fromNat": 113,
+  "from": "Chansey",
+  "toNat": 242,
+  "to": "Blissey",
+  "how": "High friendship"
+ },
+ {
+  "fromNat": 114,
+  "from": "Tangela",
+  "toNat": 465,
+  "to": "Tangrowth",
+  "how": "Level up knowing AncientPower"
+ },
+ {
+  "fromNat": 116,
+  "from": "Horsea",
+  "toNat": 117,
+  "to": "Seadra",
+  "how": "Level 32"
+ },
+ {
+  "fromNat": 117,
+  "from": "Seadra",
+  "toNat": 230,
+  "to": "Kingdra",
+  "how": "Trade holding Dragon Scale"
+ },
+ {
+  "fromNat": 118,
+  "from": "Goldeen",
+  "toNat": 119,
+  "to": "Seaking",
+  "how": "Level 33"
+ },
+ {
+  "fromNat": 120,
+  "from": "Staryu",
+  "toNat": 121,
+  "to": "Starmie",
+  "how": "Use a Water Stone"
+ },
+ {
+  "fromNat": 123,
+  "from": "Scyther",
+  "toNat": 212,
+  "to": "Scizor",
+  "how": "Trade holding Metal Coat"
+ },
+ {
+  "fromNat": 125,
+  "from": "Electabuzz",
+  "toNat": 466,
+  "to": "Electivire",
+  "how": "Trade holding Electirizer"
+ },
+ {
+  "fromNat": 126,
+  "from": "Magmar",
+  "toNat": 467,
+  "to": "Magmortar",
+  "how": "Trade holding Magmarizer"
+ },
+ {
+  "fromNat": 129,
+  "from": "Magikarp",
+  "toNat": 130,
+  "to": "Gyarados",
+  "how": "Level 20"
+ },
+ {
+  "fromNat": 133,
+  "from": "Eevee",
+  "toNat": 470,
+  "to": "Leafeon",
+  "how": "Level up near a mossy rock"
+ },
+ {
+  "fromNat": 133,
+  "from": "Eevee",
+  "toNat": 471,
+  "to": "Glaceon",
+  "how": "Level up near an icy rock"
+ },
+ {
+  "fromNat": 133,
+  "from": "Eevee",
+  "toNat": 135,
+  "to": "Jolteon",
+  "how": "Use a Thunderstone"
+ },
+ {
+  "fromNat": 133,
+  "from": "Eevee",
+  "toNat": 134,
+  "to": "Vaporeon",
+  "how": "Use a Water Stone"
+ },
+ {
+  "fromNat": 133,
+  "from": "Eevee",
+  "toNat": 136,
+  "to": "Flareon",
+  "how": "Use a Fire Stone"
+ },
+ {
+  "fromNat": 133,
+  "from": "Eevee",
+  "toNat": 196,
+  "to": "Espeon",
+  "how": "High friendship, daytime"
+ },
+ {
+  "fromNat": 133,
+  "from": "Eevee",
+  "toNat": 197,
+  "to": "Umbreon",
+  "how": "High friendship, at night"
+ },
+ {
+  "fromNat": 137,
+  "from": "Porygon",
+  "toNat": 233,
+  "to": "Porygon2",
+  "how": "Trade holding Up-Grade"
+ },
+ {
+  "fromNat": 138,
+  "from": "Omanyte",
+  "toNat": 139,
+  "to": "Omastar",
+  "how": "Level 40"
+ },
+ {
+  "fromNat": 140,
+  "from": "Kabuto",
+  "toNat": 141,
+  "to": "Kabutops",
+  "how": "Level 40"
+ },
+ {
+  "fromNat": 147,
+  "from": "Dratini",
+  "toNat": 148,
+  "to": "Dragonair",
+  "how": "Level 30"
+ },
+ {
+  "fromNat": 148,
+  "from": "Dragonair",
+  "toNat": 149,
+  "to": "Dragonite",
+  "how": "Level 55"
+ },
+ {
+  "fromNat": 152,
+  "from": "Chikorita",
+  "toNat": 153,
+  "to": "Bayleef",
+  "how": "Level 16"
+ },
+ {
+  "fromNat": 153,
+  "from": "Bayleef",
+  "toNat": 154,
+  "to": "Meganium",
+  "how": "Level 32"
+ },
+ {
+  "fromNat": 155,
+  "from": "Cyndaquil",
+  "toNat": 156,
+  "to": "Quilava",
+  "how": "Level 14"
+ },
+ {
+  "fromNat": 156,
+  "from": "Quilava",
+  "toNat": 157,
+  "to": "Typhlosion",
+  "how": "Level 36"
+ },
+ {
+  "fromNat": 158,
+  "from": "Totodile",
+  "toNat": 159,
+  "to": "Croconaw",
+  "how": "Level 18"
+ },
+ {
+  "fromNat": 159,
+  "from": "Croconaw",
+  "toNat": 160,
+  "to": "Feraligatr",
+  "how": "Level 30"
+ },
+ {
+  "fromNat": 161,
+  "from": "Sentret",
+  "toNat": 162,
+  "to": "Furret",
+  "how": "Level 15"
+ },
+ {
+  "fromNat": 163,
+  "from": "Hoothoot",
+  "toNat": 164,
+  "to": "Noctowl",
+  "how": "Level 20"
+ },
+ {
+  "fromNat": 165,
+  "from": "Ledyba",
+  "toNat": 166,
+  "to": "Ledian",
+  "how": "Level 18"
+ },
+ {
+  "fromNat": 167,
+  "from": "Spinarak",
+  "toNat": 168,
+  "to": "Ariados",
+  "how": "Level 22"
+ },
+ {
+  "fromNat": 170,
+  "from": "Chinchou",
+  "toNat": 171,
+  "to": "Lanturn",
+  "how": "Level 27"
+ },
+ {
+  "fromNat": 172,
+  "from": "Pichu",
+  "toNat": 25,
+  "to": "Pikachu",
+  "how": "High friendship"
+ },
+ {
+  "fromNat": 173,
+  "from": "Cleffa",
+  "toNat": 35,
+  "to": "Clefairy",
+  "how": "High friendship"
+ },
+ {
+  "fromNat": 174,
+  "from": "Igglybuff",
+  "toNat": 39,
+  "to": "Jigglypuff",
+  "how": "High friendship"
+ },
+ {
+  "fromNat": 175,
+  "from": "Togepi",
+  "toNat": 176,
+  "to": "Togetic",
+  "how": "High friendship"
+ },
+ {
+  "fromNat": 176,
+  "from": "Togetic",
+  "toNat": 468,
+  "to": "Togekiss",
+  "how": "Use a Shiny Stone"
+ },
+ {
+  "fromNat": 177,
+  "from": "Natu",
+  "toNat": 178,
+  "to": "Xatu",
+  "how": "Level 25"
+ },
+ {
+  "fromNat": 179,
+  "from": "Mareep",
+  "toNat": 180,
+  "to": "Flaaffy",
+  "how": "Level 15"
+ },
+ {
+  "fromNat": 180,
+  "from": "Flaaffy",
+  "toNat": 181,
+  "to": "Ampharos",
+  "how": "Level 30"
+ },
+ {
+  "fromNat": 183,
+  "from": "Marill",
+  "toNat": 184,
+  "to": "Azumarill",
+  "how": "Level 18"
+ },
+ {
+  "fromNat": 187,
+  "from": "Hoppip",
+  "toNat": 188,
+  "to": "Skiploom",
+  "how": "Level 18"
+ },
+ {
+  "fromNat": 188,
+  "from": "Skiploom",
+  "toNat": 189,
+  "to": "Jumpluff",
+  "how": "Level 27"
+ },
+ {
+  "fromNat": 190,
+  "from": "Aipom",
+  "toNat": 424,
+  "to": "Ambipom",
+  "how": "Level up knowing Double Hit"
+ },
+ {
+  "fromNat": 191,
+  "from": "Sunkern",
+  "toNat": 192,
+  "to": "Sunflora",
+  "how": "Use a Sun Stone"
+ },
+ {
+  "fromNat": 193,
+  "from": "Yanma",
+  "toNat": 469,
+  "to": "Yanmega",
+  "how": "Level up knowing AncientPower"
+ },
+ {
+  "fromNat": 194,
+  "from": "Wooper",
+  "toNat": 195,
+  "to": "Quagsire",
+  "how": "Level 20"
+ },
+ {
+  "fromNat": 198,
+  "from": "Murkrow",
+  "toNat": 430,
+  "to": "Honchkrow",
+  "how": "Use a Dusk Stone"
+ },
+ {
+  "fromNat": 200,
+  "from": "Misdreavus",
+  "toNat": 429,
+  "to": "Mismagius",
+  "how": "Use a Dusk Stone"
+ },
+ {
+  "fromNat": 204,
+  "from": "Pineco",
+  "toNat": 205,
+  "to": "Forretress",
+  "how": "Level 31"
+ },
+ {
+  "fromNat": 207,
+  "from": "Gligar",
+  "toNat": 472,
+  "to": "Gliscor",
+  "how": "Level up holding Razor Fang, at night"
+ },
+ {
+  "fromNat": 209,
+  "from": "Snubbull",
+  "toNat": 210,
+  "to": "Granbull",
+  "how": "Level 23"
+ },
+ {
+  "fromNat": 215,
+  "from": "Sneasel",
+  "toNat": 461,
+  "to": "Weavile",
+  "how": "Level up holding Razor Claw, at night"
+ },
+ {
+  "fromNat": 216,
+  "from": "Teddiursa",
+  "toNat": 217,
+  "to": "Ursaring",
+  "how": "Level 30"
+ },
+ {
+  "fromNat": 218,
+  "from": "Slugma",
+  "toNat": 219,
+  "to": "Magcargo",
+  "how": "Level 38"
+ },
+ {
+  "fromNat": 220,
+  "from": "Swinub",
+  "toNat": 221,
+  "to": "Piloswine",
+  "how": "Level 33"
+ },
+ {
+  "fromNat": 221,
+  "from": "Piloswine",
+  "toNat": 473,
+  "to": "Mamoswine",
+  "how": "Level up knowing AncientPower"
+ },
+ {
+  "fromNat": 223,
+  "from": "Remoraid",
+  "toNat": 224,
+  "to": "Octillery",
+  "how": "Level 25"
+ },
+ {
+  "fromNat": 228,
+  "from": "Houndour",
+  "toNat": 229,
+  "to": "Houndoom",
+  "how": "Level 24"
+ },
+ {
+  "fromNat": 231,
+  "from": "Phanpy",
+  "toNat": 232,
+  "to": "Donphan",
+  "how": "Level 25"
+ },
+ {
+  "fromNat": 233,
+  "from": "Porygon2",
+  "toNat": 474,
+  "to": "Porygon-Z",
+  "how": "Trade holding Dubious Disc"
+ },
+ {
+  "fromNat": 236,
+  "from": "Tyrogue",
+  "toNat": 107,
+  "to": "Hitmonchan",
+  "how": "Level 20, Defense higher than Attack"
+ },
+ {
+  "fromNat": 236,
+  "from": "Tyrogue",
+  "toNat": 106,
+  "to": "Hitmonlee",
+  "how": "Level 20, Attack higher than Defense"
+ },
+ {
+  "fromNat": 236,
+  "from": "Tyrogue",
+  "toNat": 237,
+  "to": "Hitmontop",
+  "how": "Level 20, Attack equal to Defense"
+ },
+ {
+  "fromNat": 238,
+  "from": "Smoochum",
+  "toNat": 124,
+  "to": "Jynx",
+  "how": "Level 30"
+ },
+ {
+  "fromNat": 239,
+  "from": "Elekid",
+  "toNat": 125,
+  "to": "Electabuzz",
+  "how": "Level 30"
+ },
+ {
+  "fromNat": 240,
+  "from": "Magby",
+  "toNat": 126,
+  "to": "Magmar",
+  "how": "Level 30"
+ },
+ {
+  "fromNat": 246,
+  "from": "Larvitar",
+  "toNat": 247,
+  "to": "Pupitar",
+  "how": "Level 30"
+ },
+ {
+  "fromNat": 247,
+  "from": "Pupitar",
+  "toNat": 248,
+  "to": "Tyranitar",
+  "how": "Level 55"
+ },
+ {
+  "fromNat": 252,
+  "from": "Treecko",
+  "toNat": 253,
+  "to": "Grovyle",
+  "how": "Level 16"
+ },
+ {
+  "fromNat": 253,
+  "from": "Grovyle",
+  "toNat": 254,
+  "to": "Sceptile",
+  "how": "Level 36"
+ },
+ {
+  "fromNat": 255,
+  "from": "Torchic",
+  "toNat": 256,
+  "to": "Combusken",
+  "how": "Level 16"
+ },
+ {
+  "fromNat": 256,
+  "from": "Combusken",
+  "toNat": 257,
+  "to": "Blaziken",
+  "how": "Level 36"
+ },
+ {
+  "fromNat": 258,
+  "from": "Mudkip",
+  "toNat": 259,
+  "to": "Marshtomp",
+  "how": "Level 16"
+ },
+ {
+  "fromNat": 259,
+  "from": "Marshtomp",
+  "toNat": 260,
+  "to": "Swampert",
+  "how": "Level 36"
+ },
+ {
+  "fromNat": 261,
+  "from": "Poochyena",
+  "toNat": 262,
+  "to": "Mightyena",
+  "how": "Level 18"
+ },
+ {
+  "fromNat": 263,
+  "from": "Zigzagoon",
+  "toNat": 264,
+  "to": "Linoone",
+  "how": "Level 20"
+ },
+ {
+  "fromNat": 265,
+  "from": "Wurmple",
+  "toNat": 266,
+  "to": "Silcoon",
+  "how": "Level 7 (personality)"
+ },
+ {
+  "fromNat": 265,
+  "from": "Wurmple",
+  "toNat": 268,
+  "to": "Cascoon",
+  "how": "Level 7 (personality)"
+ },
+ {
+  "fromNat": 266,
+  "from": "Silcoon",
+  "toNat": 267,
+  "to": "Beautifly",
+  "how": "Level 10"
+ },
+ {
+  "fromNat": 268,
+  "from": "Cascoon",
+  "toNat": 269,
+  "to": "Dustox",
+  "how": "Level 10"
+ },
+ {
+  "fromNat": 270,
+  "from": "Lotad",
+  "toNat": 271,
+  "to": "Lombre",
+  "how": "Level 14"
+ },
+ {
+  "fromNat": 271,
+  "from": "Lombre",
+  "toNat": 272,
+  "to": "Ludicolo",
+  "how": "Use a Water Stone"
+ },
+ {
+  "fromNat": 273,
+  "from": "Seedot",
+  "toNat": 274,
+  "to": "Nuzleaf",
+  "how": "Level 14"
+ },
+ {
+  "fromNat": 274,
+  "from": "Nuzleaf",
+  "toNat": 275,
+  "to": "Shiftry",
+  "how": "Use a Leaf Stone"
+ },
+ {
+  "fromNat": 276,
+  "from": "Taillow",
+  "toNat": 277,
+  "to": "Swellow",
+  "how": "Level 22"
+ },
+ {
+  "fromNat": 278,
+  "from": "Wingull",
+  "toNat": 279,
+  "to": "Pelipper",
+  "how": "Level 25"
+ },
+ {
+  "fromNat": 280,
+  "from": "Ralts",
+  "toNat": 281,
+  "to": "Kirlia",
+  "how": "Level 20"
+ },
+ {
+  "fromNat": 281,
+  "from": "Kirlia",
+  "toNat": 282,
+  "to": "Gardevoir",
+  "how": "Level 30"
+ },
+ {
+  "fromNat": 281,
+  "from": "Kirlia",
+  "toNat": 475,
+  "to": "Gallade",
+  "how": "Use a Dawn Stone (male)"
+ },
+ {
+  "fromNat": 283,
+  "from": "Surskit",
+  "toNat": 284,
+  "to": "Masquerain",
+  "how": "Level 22"
+ },
+ {
+  "fromNat": 285,
+  "from": "Shroomish",
+  "toNat": 286,
+  "to": "Breloom",
+  "how": "Level 23"
+ },
+ {
+  "fromNat": 287,
+  "from": "Slakoth",
+  "toNat": 288,
+  "to": "Vigoroth",
+  "how": "Level 18"
+ },
+ {
+  "fromNat": 288,
+  "from": "Vigoroth",
+  "toNat": 289,
+  "to": "Slaking",
+  "how": "Level 36"
+ },
+ {
+  "fromNat": 290,
+  "from": "Nincada",
+  "toNat": 291,
+  "to": "Ninjask",
+  "how": "Level 20"
+ },
+ {
+  "fromNat": 290,
+  "from": "Nincada",
+  "toNat": 292,
+  "to": "Shedinja",
+  "how": "Level 20, with a spare party slot and a Poké Ball"
+ },
+ {
+  "fromNat": 293,
+  "from": "Whismur",
+  "toNat": 294,
+  "to": "Loudred",
+  "how": "Level 20"
+ },
+ {
+  "fromNat": 294,
+  "from": "Loudred",
+  "toNat": 295,
+  "to": "Exploud",
+  "how": "Level 40"
+ },
+ {
+  "fromNat": 296,
+  "from": "Makuhita",
+  "toNat": 297,
+  "to": "Hariyama",
+  "how": "Level 24"
+ },
+ {
+  "fromNat": 298,
+  "from": "Azurill",
+  "toNat": 183,
+  "to": "Marill",
+  "how": "High friendship"
+ },
+ {
+  "fromNat": 299,
+  "from": "Nosepass",
+  "toNat": 476,
+  "to": "Probopass",
+  "how": "Level up in a magnetic field"
+ },
+ {
+  "fromNat": 300,
+  "from": "Skitty",
+  "toNat": 301,
+  "to": "Delcatty",
+  "how": "Use a Moon Stone"
+ },
+ {
+  "fromNat": 304,
+  "from": "Aron",
+  "toNat": 305,
+  "to": "Lairon",
+  "how": "Level 32"
+ },
+ {
+  "fromNat": 305,
+  "from": "Lairon",
+  "toNat": 306,
+  "to": "Aggron",
+  "how": "Level 42"
+ },
+ {
+  "fromNat": 307,
+  "from": "Meditite",
+  "toNat": 308,
+  "to": "Medicham",
+  "how": "Level 37"
+ },
+ {
+  "fromNat": 309,
+  "from": "Electrike",
+  "toNat": 310,
+  "to": "Manectric",
+  "how": "Level 26"
+ },
+ {
+  "fromNat": 315,
+  "from": "Roselia",
+  "toNat": 407,
+  "to": "Roserade",
+  "how": "Use a Shiny Stone"
+ },
+ {
+  "fromNat": 316,
+  "from": "Gulpin",
+  "toNat": 317,
+  "to": "Swalot",
+  "how": "Level 26"
+ },
+ {
+  "fromNat": 318,
+  "from": "Carvanha",
+  "toNat": 319,
+  "to": "Sharpedo",
+  "how": "Level 30"
+ },
+ {
+  "fromNat": 320,
+  "from": "Wailmer",
+  "toNat": 321,
+  "to": "Wailord",
+  "how": "Level 40"
+ },
+ {
+  "fromNat": 322,
+  "from": "Numel",
+  "toNat": 323,
+  "to": "Camerupt",
+  "how": "Level 33"
+ },
+ {
+  "fromNat": 325,
+  "from": "Spoink",
+  "toNat": 326,
+  "to": "Grumpig",
+  "how": "Level 32"
+ },
+ {
+  "fromNat": 328,
+  "from": "Trapinch",
+  "toNat": 329,
+  "to": "Vibrava",
+  "how": "Level 35"
+ },
+ {
+  "fromNat": 329,
+  "from": "Vibrava",
+  "toNat": 330,
+  "to": "Flygon",
+  "how": "Level 45"
+ },
+ {
+  "fromNat": 331,
+  "from": "Cacnea",
+  "toNat": 332,
+  "to": "Cacturne",
+  "how": "Level 32"
+ },
+ {
+  "fromNat": 333,
+  "from": "Swablu",
+  "toNat": 334,
+  "to": "Altaria",
+  "how": "Level 35"
+ },
+ {
+  "fromNat": 339,
+  "from": "Barboach",
+  "toNat": 340,
+  "to": "Whiscash",
+  "how": "Level 30"
+ },
+ {
+  "fromNat": 341,
+  "from": "Corphish",
+  "toNat": 342,
+  "to": "Crawdaunt",
+  "how": "Level 30"
+ },
+ {
+  "fromNat": 343,
+  "from": "Baltoy",
+  "toNat": 344,
+  "to": "Claydol",
+  "how": "Level 36"
+ },
+ {
+  "fromNat": 345,
+  "from": "Lileep",
+  "toNat": 346,
+  "to": "Cradily",
+  "how": "Level 40"
+ },
+ {
+  "fromNat": 347,
+  "from": "Anorith",
+  "toNat": 348,
+  "to": "Armaldo",
+  "how": "Level 40"
+ },
+ {
+  "fromNat": 349,
+  "from": "Feebas",
+  "toNat": 350,
+  "to": "Milotic",
+  "how": "Level up with high beauty"
+ },
+ {
+  "fromNat": 353,
+  "from": "Shuppet",
+  "toNat": 354,
+  "to": "Banette",
+  "how": "Level 37"
+ },
+ {
+  "fromNat": 355,
+  "from": "Duskull",
+  "toNat": 356,
+  "to": "Dusclops",
+  "how": "Level 37"
+ },
+ {
+  "fromNat": 356,
+  "from": "Dusclops",
+  "toNat": 477,
+  "to": "Dusknoir",
+  "how": "Trade holding Reaper Cloth"
+ },
+ {
+  "fromNat": 360,
+  "from": "Wynaut",
+  "toNat": 202,
+  "to": "Wobbuffet",
+  "how": "Level 15"
+ },
+ {
+  "fromNat": 361,
+  "from": "Snorunt",
+  "toNat": 362,
+  "to": "Glalie",
+  "how": "Level 42"
+ },
+ {
+  "fromNat": 361,
+  "from": "Snorunt",
+  "toNat": 478,
+  "to": "Froslass",
+  "how": "Use a Dawn Stone (female)"
+ },
+ {
+  "fromNat": 363,
+  "from": "Spheal",
+  "toNat": 364,
+  "to": "Sealeo",
+  "how": "Level 32"
+ },
+ {
+  "fromNat": 364,
+  "from": "Sealeo",
+  "toNat": 365,
+  "to": "Walrein",
+  "how": "Level 44"
+ },
+ {
+  "fromNat": 366,
+  "from": "Clamperl",
+  "toNat": 367,
+  "to": "Huntail",
+  "how": "Trade holding DeepSeaTooth"
+ },
+ {
+  "fromNat": 366,
+  "from": "Clamperl",
+  "toNat": 368,
+  "to": "Gorebyss",
+  "how": "Trade holding DeepSeaScale"
+ },
+ {
+  "fromNat": 371,
+  "from": "Bagon",
+  "toNat": 372,
+  "to": "Shelgon",
+  "how": "Level 30"
+ },
+ {
+  "fromNat": 372,
+  "from": "Shelgon",
+  "toNat": 373,
+  "to": "Salamence",
+  "how": "Level 50"
+ },
+ {
+  "fromNat": 374,
+  "from": "Beldum",
+  "toNat": 375,
+  "to": "Metang",
+  "how": "Level 20"
+ },
+ {
+  "fromNat": 375,
+  "from": "Metang",
+  "toNat": 376,
+  "to": "Metagross",
+  "how": "Level 45"
+ },
+ {
+  "fromNat": 387,
+  "from": "Turtwig",
+  "toNat": 388,
+  "to": "Grotle",
+  "how": "Level 18"
+ },
+ {
+  "fromNat": 388,
+  "from": "Grotle",
+  "toNat": 389,
+  "to": "Torterra",
+  "how": "Level 32"
+ },
+ {
+  "fromNat": 390,
+  "from": "Chimchar",
+  "toNat": 391,
+  "to": "Monferno",
+  "how": "Level 14"
+ },
+ {
+  "fromNat": 391,
+  "from": "Monferno",
+  "toNat": 392,
+  "to": "Infernape",
+  "how": "Level 36"
+ },
+ {
+  "fromNat": 393,
+  "from": "Piplup",
+  "toNat": 394,
+  "to": "Prinplup",
+  "how": "Level 16"
+ },
+ {
+  "fromNat": 394,
+  "from": "Prinplup",
+  "toNat": 395,
+  "to": "Empoleon",
+  "how": "Level 36"
+ },
+ {
+  "fromNat": 396,
+  "from": "Starly",
+  "toNat": 397,
+  "to": "Staravia",
+  "how": "Level 14"
+ },
+ {
+  "fromNat": 397,
+  "from": "Staravia",
+  "toNat": 398,
+  "to": "Staraptor",
+  "how": "Level 34"
+ },
+ {
+  "fromNat": 399,
+  "from": "Bidoof",
+  "toNat": 400,
+  "to": "Bibarel",
+  "how": "Level 15"
+ },
+ {
+  "fromNat": 401,
+  "from": "Kricketot",
+  "toNat": 402,
+  "to": "Kricketune",
+  "how": "Level 10"
+ },
+ {
+  "fromNat": 403,
+  "from": "Shinx",
+  "toNat": 404,
+  "to": "Luxio",
+  "how": "Level 15"
+ },
+ {
+  "fromNat": 404,
+  "from": "Luxio",
+  "toNat": 405,
+  "to": "Luxray",
+  "how": "Level 30"
+ },
+ {
+  "fromNat": 406,
+  "from": "Budew",
+  "toNat": 315,
+  "to": "Roselia",
+  "how": "High friendship, daytime"
+ },
+ {
+  "fromNat": 408,
+  "from": "Cranidos",
+  "toNat": 409,
+  "to": "Rampardos",
+  "how": "Level 30"
+ },
+ {
+  "fromNat": 410,
+  "from": "Shieldon",
+  "toNat": 411,
+  "to": "Bastiodon",
+  "how": "Level 30"
+ },
+ {
+  "fromNat": 412,
+  "from": "Burmy",
+  "toNat": 413,
+  "to": "Wormadam",
+  "how": "Level 20 (female)"
+ },
+ {
+  "fromNat": 412,
+  "from": "Burmy",
+  "toNat": 414,
+  "to": "Mothim",
+  "how": "Level 20 (male)"
+ },
+ {
+  "fromNat": 415,
+  "from": "Combee",
+  "toNat": 416,
+  "to": "Vespiquen",
+  "how": "Level 21 (female)"
+ },
+ {
+  "fromNat": 418,
+  "from": "Buizel",
+  "toNat": 419,
+  "to": "Floatzel",
+  "how": "Level 26"
+ },
+ {
+  "fromNat": 420,
+  "from": "Cherubi",
+  "toNat": 421,
+  "to": "Cherrim",
+  "how": "Level 25"
+ },
+ {
+  "fromNat": 422,
+  "from": "Shellos",
+  "toNat": 423,
+  "to": "Gastrodon",
+  "how": "Level 30"
+ },
+ {
+  "fromNat": 425,
+  "from": "Drifloon",
+  "toNat": 426,
+  "to": "Drifblim",
+  "how": "Level 28"
+ },
+ {
+  "fromNat": 427,
+  "from": "Buneary",
+  "toNat": 428,
+  "to": "Lopunny",
+  "how": "High friendship"
+ },
+ {
+  "fromNat": 431,
+  "from": "Glameow",
+  "toNat": 432,
+  "to": "Purugly",
+  "how": "Level 38"
+ },
+ {
+  "fromNat": 433,
+  "from": "Chingling",
+  "toNat": 358,
+  "to": "Chimecho",
+  "how": "High friendship, at night"
+ },
+ {
+  "fromNat": 434,
+  "from": "Stunky",
+  "toNat": 435,
+  "to": "Skuntank",
+  "how": "Level 34"
+ },
+ {
+  "fromNat": 436,
+  "from": "Bronzor",
+  "toNat": 437,
+  "to": "Bronzong",
+  "how": "Level 33"
+ },
+ {
+  "fromNat": 438,
+  "from": "Bonsly",
+  "toNat": 185,
+  "to": "Sudowoodo",
+  "how": "Level up knowing Mimic"
+ },
+ {
+  "fromNat": 439,
+  "from": "Mime Jr.",
+  "toNat": 122,
+  "to": "Mr. Mime",
+  "how": "Level up knowing Mimic"
+ },
+ {
+  "fromNat": 440,
+  "from": "Happiny",
+  "toNat": 113,
+  "to": "Chansey",
+  "how": "Level up holding Oval Stone, daytime"
+ },
+ {
+  "fromNat": 443,
+  "from": "Gible",
+  "toNat": 444,
+  "to": "Gabite",
+  "how": "Level 24"
+ },
+ {
+  "fromNat": 444,
+  "from": "Gabite",
+  "toNat": 445,
+  "to": "Garchomp",
+  "how": "Level 48"
+ },
+ {
+  "fromNat": 446,
+  "from": "Munchlax",
+  "toNat": 143,
+  "to": "Snorlax",
+  "how": "High friendship"
+ },
+ {
+  "fromNat": 447,
+  "from": "Riolu",
+  "toNat": 448,
+  "to": "Lucario",
+  "how": "High friendship, daytime"
+ },
+ {
+  "fromNat": 449,
+  "from": "Hippopotas",
+  "toNat": 450,
+  "to": "Hippowdon",
+  "how": "Level 34"
+ },
+ {
+  "fromNat": 451,
+  "from": "Skorupi",
+  "toNat": 452,
+  "to": "Drapion",
+  "how": "Level 40"
+ },
+ {
+  "fromNat": 453,
+  "from": "Croagunk",
+  "toNat": 454,
+  "to": "Toxicroak",
+  "how": "Level 37"
+ },
+ {
+  "fromNat": 456,
+  "from": "Finneon",
+  "toNat": 457,
+  "to": "Lumineon",
+  "how": "Level 31"
+ },
+ {
+  "fromNat": 458,
+  "from": "Mantyke",
+  "toNat": 226,
+  "to": "Mantine",
+  "how": "Level up with Remoraid in the party"
+ },
+ {
+  "fromNat": 459,
+  "from": "Snover",
+  "toNat": 460,
+  "to": "Abomasnow",
+  "how": "Level 40"
+ },
+ {
+  "fromNat": 495,
+  "from": "Snivy",
+  "toNat": 496,
+  "to": "Servine",
+  "how": "Level 17"
+ },
+ {
+  "fromNat": 496,
+  "from": "Servine",
+  "toNat": 497,
+  "to": "Serperior",
+  "how": "Level 36"
+ },
+ {
+  "fromNat": 498,
+  "from": "Tepig",
+  "toNat": 499,
+  "to": "Pignite",
+  "how": "Level 17"
+ },
+ {
+  "fromNat": 499,
+  "from": "Pignite",
+  "toNat": 500,
+  "to": "Emboar",
+  "how": "Level 36"
+ },
+ {
+  "fromNat": 501,
+  "from": "Oshawott",
+  "toNat": 502,
+  "to": "Dewott",
+  "how": "Level 17"
+ },
+ {
+  "fromNat": 502,
+  "from": "Dewott",
+  "toNat": 503,
+  "to": "Samurott",
+  "how": "Level 36"
+ },
+ {
+  "fromNat": 504,
+  "from": "Patrat",
+  "toNat": 505,
+  "to": "Watchog",
+  "how": "Level 20"
+ },
+ {
+  "fromNat": 506,
+  "from": "Lillipup",
+  "toNat": 507,
+  "to": "Herdier",
+  "how": "Level 16"
+ },
+ {
+  "fromNat": 507,
+  "from": "Herdier",
+  "toNat": 508,
+  "to": "Stoutland",
+  "how": "Level 32"
+ },
+ {
+  "fromNat": 509,
+  "from": "Purrloin",
+  "toNat": 510,
+  "to": "Liepard",
+  "how": "Level 20"
+ },
+ {
+  "fromNat": 511,
+  "from": "Pansage",
+  "toNat": 512,
+  "to": "Simisage",
+  "how": "Use a Leaf Stone"
+ },
+ {
+  "fromNat": 513,
+  "from": "Pansear",
+  "toNat": 514,
+  "to": "Simisear",
+  "how": "Use a Fire Stone"
+ },
+ {
+  "fromNat": 515,
+  "from": "Panpour",
+  "toNat": 516,
+  "to": "Simipour",
+  "how": "Use a Water Stone"
+ },
+ {
+  "fromNat": 517,
+  "from": "Munna",
+  "toNat": 518,
+  "to": "Musharna",
+  "how": "Use a Moon Stone"
+ },
+ {
+  "fromNat": 519,
+  "from": "Pidove",
+  "toNat": 520,
+  "to": "Tranquill",
+  "how": "Level 21"
+ },
+ {
+  "fromNat": 520,
+  "from": "Tranquill",
+  "toNat": 521,
+  "to": "Unfezant",
+  "how": "Level 32"
+ },
+ {
+  "fromNat": 522,
+  "from": "Blitzle",
+  "toNat": 523,
+  "to": "Zebstrika",
+  "how": "Level 27"
+ },
+ {
+  "fromNat": 524,
+  "from": "Roggenrola",
+  "toNat": 525,
+  "to": "Boldore",
+  "how": "Level 25"
+ },
+ {
+  "fromNat": 525,
+  "from": "Boldore",
+  "toNat": 526,
+  "to": "Gigalith",
+  "how": "Trade"
+ },
+ {
+  "fromNat": 527,
+  "from": "Woobat",
+  "toNat": 528,
+  "to": "Swoobat",
+  "how": "High friendship"
+ },
+ {
+  "fromNat": 529,
+  "from": "Drilbur",
+  "toNat": 530,
+  "to": "Excadrill",
+  "how": "Level 31"
+ },
+ {
+  "fromNat": 532,
+  "from": "Timburr",
+  "toNat": 533,
+  "to": "Gurdurr",
+  "how": "Level 25"
+ },
+ {
+  "fromNat": 533,
+  "from": "Gurdurr",
+  "toNat": 534,
+  "to": "Conkeldurr",
+  "how": "Trade"
+ },
+ {
+  "fromNat": 535,
+  "from": "Tympole",
+  "toNat": 536,
+  "to": "Palpitoad",
+  "how": "Level 25"
+ },
+ {
+  "fromNat": 536,
+  "from": "Palpitoad",
+  "toNat": 537,
+  "to": "Seismitoad",
+  "how": "Level 36"
+ },
+ {
+  "fromNat": 540,
+  "from": "Sewaddle",
+  "toNat": 541,
+  "to": "Swadloon",
+  "how": "Level 20"
+ },
+ {
+  "fromNat": 541,
+  "from": "Swadloon",
+  "toNat": 542,
+  "to": "Leavanny",
+  "how": "High friendship"
+ },
+ {
+  "fromNat": 543,
+  "from": "Venipede",
+  "toNat": 544,
+  "to": "Whirlipede",
+  "how": "Level 22"
+ },
+ {
+  "fromNat": 544,
+  "from": "Whirlipede",
+  "toNat": 545,
+  "to": "Scolipede",
+  "how": "Level 30"
+ },
+ {
+  "fromNat": 546,
+  "from": "Cottonee",
+  "toNat": 547,
+  "to": "Whimsicott",
+  "how": "Use a Sun Stone"
+ },
+ {
+  "fromNat": 548,
+  "from": "Petilil",
+  "toNat": 549,
+  "to": "Lilligant",
+  "how": "Use a Sun Stone"
+ },
+ {
+  "fromNat": 551,
+  "from": "Sandile",
+  "toNat": 552,
+  "to": "Krokorok",
+  "how": "Level 29"
+ },
+ {
+  "fromNat": 552,
+  "from": "Krokorok",
+  "toNat": 553,
+  "to": "Krookodile",
+  "how": "Level 40"
+ },
+ {
+  "fromNat": 554,
+  "from": "Darumaka",
+  "toNat": 555,
+  "to": "Darmanitan",
+  "how": "Level 35"
+ },
+ {
+  "fromNat": 557,
+  "from": "Dwebble",
+  "toNat": 558,
+  "to": "Crustle",
+  "how": "Level 34"
+ },
+ {
+  "fromNat": 559,
+  "from": "Scraggy",
+  "toNat": 560,
+  "to": "Scrafty",
+  "how": "Level 39"
+ },
+ {
+  "fromNat": 562,
+  "from": "Yamask",
+  "toNat": 563,
+  "to": "Cofagrigus",
+  "how": "Level 34"
+ },
+ {
+  "fromNat": 564,
+  "from": "Tirtouga",
+  "toNat": 565,
+  "to": "Carracosta",
+  "how": "Level 37"
+ },
+ {
+  "fromNat": 566,
+  "from": "Archen",
+  "toNat": 567,
+  "to": "Archeops",
+  "how": "Level 37"
+ },
+ {
+  "fromNat": 568,
+  "from": "Trubbish",
+  "toNat": 569,
+  "to": "Garbodor",
+  "how": "Level 36"
+ },
+ {
+  "fromNat": 570,
+  "from": "Zorua",
+  "toNat": 571,
+  "to": "Zoroark",
+  "how": "Level 30"
+ },
+ {
+  "fromNat": 572,
+  "from": "Minccino",
+  "toNat": 573,
+  "to": "Cinccino",
+  "how": "Use a Shiny Stone"
+ },
+ {
+  "fromNat": 574,
+  "from": "Gothita",
+  "toNat": 575,
+  "to": "Gothorita",
+  "how": "Level 32"
+ },
+ {
+  "fromNat": 575,
+  "from": "Gothorita",
+  "toNat": 576,
+  "to": "Gothitelle",
+  "how": "Level 41"
+ },
+ {
+  "fromNat": 577,
+  "from": "Solosis",
+  "toNat": 578,
+  "to": "Duosion",
+  "how": "Level 32"
+ },
+ {
+  "fromNat": 578,
+  "from": "Duosion",
+  "toNat": 579,
+  "to": "Reuniclus",
+  "how": "Level 41"
+ },
+ {
+  "fromNat": 580,
+  "from": "Ducklett",
+  "toNat": 581,
+  "to": "Swanna",
+  "how": "Level 35"
+ },
+ {
+  "fromNat": 582,
+  "from": "Vanillite",
+  "toNat": 583,
+  "to": "Vanillish",
+  "how": "Level 35"
+ },
+ {
+  "fromNat": 583,
+  "from": "Vanillish",
+  "toNat": 584,
+  "to": "Vanilluxe",
+  "how": "Level 47"
+ },
+ {
+  "fromNat": 585,
+  "from": "Deerling",
+  "toNat": 586,
+  "to": "Sawsbuck",
+  "how": "Level 34"
+ },
+ {
+  "fromNat": 588,
+  "from": "Karrablast",
+  "toNat": 589,
+  "to": "Escavalier",
+  "how": "Level up with Shelmet in the party"
+ },
+ {
+  "fromNat": 590,
+  "from": "Foongus",
+  "toNat": 591,
+  "to": "Amoonguss",
+  "how": "Level 39"
+ },
+ {
+  "fromNat": 592,
+  "from": "Frillish",
+  "toNat": 593,
+  "to": "Jellicent",
+  "how": "Level 40"
+ },
+ {
+  "fromNat": 595,
+  "from": "Joltik",
+  "toNat": 596,
+  "to": "Galvantula",
+  "how": "Level 36"
+ },
+ {
+  "fromNat": 597,
+  "from": "Ferroseed",
+  "toNat": 598,
+  "to": "Ferrothorn",
+  "how": "Level 40"
+ },
+ {
+  "fromNat": 599,
+  "from": "Klink",
+  "toNat": 600,
+  "to": "Klang",
+  "how": "Level 38"
+ },
+ {
+  "fromNat": 600,
+  "from": "Klang",
+  "toNat": 601,
+  "to": "Klinklang",
+  "how": "Level 49"
+ },
+ {
+  "fromNat": 602,
+  "from": "Tynamo",
+  "toNat": 603,
+  "to": "Eelektrik",
+  "how": "Level 39"
+ },
+ {
+  "fromNat": 603,
+  "from": "Eelektrik",
+  "toNat": 604,
+  "to": "Eelektross",
+  "how": "Use a Thunderstone"
+ },
+ {
+  "fromNat": 605,
+  "from": "Elgyem",
+  "toNat": 606,
+  "to": "Beheeyem",
+  "how": "Level 42"
+ },
+ {
+  "fromNat": 607,
+  "from": "Litwick",
+  "toNat": 608,
+  "to": "Lampent",
+  "how": "Level 41"
+ },
+ {
+  "fromNat": 608,
+  "from": "Lampent",
+  "toNat": 609,
+  "to": "Chandelure",
+  "how": "Use a Dusk Stone"
+ },
+ {
+  "fromNat": 610,
+  "from": "Axew",
+  "toNat": 611,
+  "to": "Fraxure",
+  "how": "Level 38"
+ },
+ {
+  "fromNat": 611,
+  "from": "Fraxure",
+  "toNat": 612,
+  "to": "Haxorus",
+  "how": "Level 48"
+ },
+ {
+  "fromNat": 613,
+  "from": "Cubchoo",
+  "toNat": 614,
+  "to": "Beartic",
+  "how": "Level 37"
+ },
+ {
+  "fromNat": 616,
+  "from": "Shelmet",
+  "toNat": 617,
+  "to": "Accelgor",
+  "how": "Level up with Karrablast in the party"
+ },
+ {
+  "fromNat": 619,
+  "from": "Mienfoo",
+  "toNat": 620,
+  "to": "Mienshao",
+  "how": "Level 50"
+ },
+ {
+  "fromNat": 622,
+  "from": "Golett",
+  "toNat": 623,
+  "to": "Golurk",
+  "how": "Level 43"
+ },
+ {
+  "fromNat": 624,
+  "from": "Pawniard",
+  "toNat": 625,
+  "to": "Bisharp",
+  "how": "Level 52"
+ },
+ {
+  "fromNat": 627,
+  "from": "Rufflet",
+  "toNat": 628,
+  "to": "Braviary",
+  "how": "Level 54"
+ },
+ {
+  "fromNat": 629,
+  "from": "Vullaby",
+  "toNat": 630,
+  "to": "Mandibuzz",
+  "how": "Level 54"
+ },
+ {
+  "fromNat": 633,
+  "from": "Deino",
+  "toNat": 634,
+  "to": "Zweilous",
+  "how": "Level 50"
+ },
+ {
+  "fromNat": 634,
+  "from": "Zweilous",
+  "toNat": 635,
+  "to": "Hydreigon",
+  "how": "Level 64"
+ },
+ {
+  "fromNat": 636,
+  "from": "Larvesta",
+  "toNat": 637,
+  "to": "Volcarona",
+  "how": "Level 59"
+ },
+ {
+  "fromNat": 650,
+  "from": "Chespin",
+  "toNat": 651,
+  "to": "Quilladin",
+  "how": "Level 16"
+ },
+ {
+  "fromNat": 651,
+  "from": "Quilladin",
+  "toNat": 652,
+  "to": "Chesnaught",
+  "how": "Level 36"
+ },
+ {
+  "fromNat": 653,
+  "from": "Fennekin",
+  "toNat": 654,
+  "to": "Braixen",
+  "how": "Level 16"
+ },
+ {
+  "fromNat": 654,
+  "from": "Braixen",
+  "toNat": 655,
+  "to": "Delphox",
+  "how": "Level 36"
+ },
+ {
+  "fromNat": 656,
+  "from": "Froakie",
+  "toNat": 657,
+  "to": "Frogadier",
+  "how": "Level 16"
+ },
+ {
+  "fromNat": 657,
+  "from": "Frogadier",
+  "toNat": 658,
+  "to": "Greninja",
+  "how": "Level 36"
+ },
+ {
+  "fromNat": 659,
+  "from": "Bunnelby",
+  "toNat": 660,
+  "to": "Diggersby",
+  "how": "Level 20"
+ },
+ {
+  "fromNat": 661,
+  "from": "Fletchling",
+  "toNat": 662,
+  "to": "Fletchinder",
+  "how": "Level 17"
+ },
+ {
+  "fromNat": 662,
+  "from": "Fletchinder",
+  "toNat": 663,
+  "to": "Talonflame",
+  "how": "Level 35"
+ },
+ {
+  "fromNat": 664,
+  "from": "Scatterbug",
+  "toNat": 665,
+  "to": "Spewpa",
+  "how": "Level 9"
+ },
+ {
+  "fromNat": 665,
+  "from": "Spewpa",
+  "toNat": 666,
+  "to": "Vivillon",
+  "how": "Level 12"
+ },
+ {
+  "fromNat": 667,
+  "from": "Litleo",
+  "toNat": 668,
+  "to": "Pyroar",
+  "how": "Level 35"
+ },
+ {
+  "fromNat": 669,
+  "from": "Flabébé",
+  "toNat": 670,
+  "to": "Floette",
+  "how": "Level 19"
+ },
+ {
+  "fromNat": 670,
+  "from": "Floette",
+  "toNat": 671,
+  "to": "Florges",
+  "how": "Use a Shiny Stone"
+ },
+ {
+  "fromNat": 672,
+  "from": "Skiddo",
+  "toNat": 673,
+  "to": "Gogoat",
+  "how": "Level 32"
+ },
+ {
+  "fromNat": 674,
+  "from": "Pancham",
+  "toNat": 675,
+  "to": "Pangoro",
+  "how": "Level 32 (special condition)"
+ },
+ {
+  "fromNat": 677,
+  "from": "Espurr",
+  "toNat": 678,
+  "to": "Meowstic",
+  "how": "Level 25"
+ },
+ {
+  "fromNat": 679,
+  "from": "Honedge",
+  "toNat": 680,
+  "to": "Doublade",
+  "how": "Level 35"
+ },
+ {
+  "fromNat": 680,
+  "from": "Doublade",
+  "toNat": 681,
+  "to": "Aegislash",
+  "how": "Use a Dusk Stone"
+ },
+ {
+  "fromNat": 682,
+  "from": "Spritzee",
+  "toNat": 683,
+  "to": "Aromatisse",
+  "how": "Trade holding None"
+ },
+ {
+  "fromNat": 684,
+  "from": "Swirlix",
+  "toNat": 685,
+  "to": "Slurpuff",
+  "how": "Trade holding None"
+ },
+ {
+  "fromNat": 686,
+  "from": "Inkay",
+  "toNat": 687,
+  "to": "Malamar",
+  "how": "Level 30 (special condition)"
+ },
+ {
+  "fromNat": 688,
+  "from": "Binacle",
+  "toNat": 689,
+  "to": "Barbaracle",
+  "how": "Level 39"
+ },
+ {
+  "fromNat": 690,
+  "from": "Skrelp",
+  "toNat": 691,
+  "to": "Dragalge",
+  "how": "Level 48"
+ },
+ {
+  "fromNat": 692,
+  "from": "Clauncher",
+  "toNat": 693,
+  "to": "Clawitzer",
+  "how": "Level 37"
+ },
+ {
+  "fromNat": 694,
+  "from": "Helioptile",
+  "toNat": 695,
+  "to": "Heliolisk",
+  "how": "Use a Sun Stone"
+ },
+ {
+  "fromNat": 696,
+  "from": "Tyrunt",
+  "toNat": 697,
+  "to": "Tyrantrum",
+  "how": "Level 39, daytime"
+ },
+ {
+  "fromNat": 698,
+  "from": "Amaura",
+  "toNat": 699,
+  "to": "Aurorus",
+  "how": "Level 39, at night"
+ },
+ {
+  "fromNat": 704,
+  "from": "Goomy",
+  "toNat": 705,
+  "to": "Sliggoo",
+  "how": "Level 40"
+ },
+ {
+  "fromNat": 705,
+  "from": "Sliggoo",
+  "toNat": 706,
+  "to": "Goodra",
+  "how": "Level 50 (special condition)"
+ },
+ {
+  "fromNat": 708,
+  "from": "Phantump",
+  "toNat": 709,
+  "to": "Trevenant",
+  "how": "Trade"
+ },
+ {
+  "fromNat": 710,
+  "from": "Pumpkaboo",
+  "toNat": 711,
+  "to": "Gourgeist",
+  "how": "Trade"
+ },
+ {
+  "fromNat": 712,
+  "from": "Bergmite",
+  "toNat": 713,
+  "to": "Avalugg",
+  "how": "Level 37"
+ },
+ {
+  "fromNat": 714,
+  "from": "Noibat",
+  "toNat": 715,
+  "to": "Noivern",
+  "how": "Level 48"
+ },
+ {
+  "fromNat": 722,
+  "from": "Rowlet",
+  "toNat": 723,
+  "to": "Dartrix",
+  "how": "Level 17"
+ },
+ {
+  "fromNat": 723,
+  "from": "Dartrix",
+  "toNat": 724,
+  "to": "Decidueye",
+  "how": "Level 34"
+ },
+ {
+  "fromNat": 725,
+  "from": "Litten",
+  "toNat": 726,
+  "to": "Torracat",
+  "how": "Level 17"
+ },
+ {
+  "fromNat": 726,
+  "from": "Torracat",
+  "toNat": 727,
+  "to": "Incineroar",
+  "how": "Level 34"
+ },
+ {
+  "fromNat": 728,
+  "from": "Popplio",
+  "toNat": 729,
+  "to": "Brionne",
+  "how": "Level 17"
+ },
+ {
+  "fromNat": 729,
+  "from": "Brionne",
+  "toNat": 730,
+  "to": "Primarina",
+  "how": "Level 34"
+ },
+ {
+  "fromNat": 731,
+  "from": "Pikipek",
+  "toNat": 732,
+  "to": "Trumbeak",
+  "how": "Level 14"
+ },
+ {
+  "fromNat": 732,
+  "from": "Trumbeak",
+  "toNat": 733,
+  "to": "Toucannon",
+  "how": "Level 28"
+ },
+ {
+  "fromNat": 734,
+  "from": "Yungoos",
+  "toNat": 735,
+  "to": "Gumshoos",
+  "how": "Level 20, daytime"
+ },
+ {
+  "fromNat": 736,
+  "from": "Grubbin",
+  "toNat": 737,
+  "to": "Charjabug",
+  "how": "Level 20"
+ },
+ {
+  "fromNat": 737,
+  "from": "Charjabug",
+  "toNat": 738,
+  "to": "Vikavolt",
+  "how": "Level up in a magnetic field"
+ },
+ {
+  "fromNat": 739,
+  "from": "Crabrawler",
+  "toNat": 740,
+  "to": "Crabominab",
+  "how": "Use a ???"
+ },
+ {
+  "fromNat": 742,
+  "from": "Cutiefly",
+  "toNat": 743,
+  "to": "Ribombee",
+  "how": "Level 25"
+ },
+ {
+  "fromNat": 744,
+  "from": "Rockruff",
+  "toNat": 745,
+  "to": "Lycanroc",
+  "how": "Level 25 (special condition)"
+ },
+ {
+  "fromNat": 747,
+  "from": "Mareanie",
+  "toNat": 748,
+  "to": "Toxapex",
+  "how": "Level 38"
+ },
+ {
+  "fromNat": 749,
+  "from": "Mudbray",
+  "toNat": 750,
+  "to": "Mudsdale",
+  "how": "Level 30"
+ },
+ {
+  "fromNat": 751,
+  "from": "Dewpider",
+  "toNat": 752,
+  "to": "Araquanid",
+  "how": "Level 22"
+ },
+ {
+  "fromNat": 753,
+  "from": "Fomantis",
+  "toNat": 754,
+  "to": "Lurantis",
+  "how": "Level 34, daytime"
+ },
+ {
+  "fromNat": 755,
+  "from": "Murelull",
+  "toNat": 756,
+  "to": "Shiinotic",
+  "how": "Level 24"
+ },
+ {
+  "fromNat": 757,
+  "from": "Salandit",
+  "toNat": 758,
+  "to": "Salazzle",
+  "how": "Level 33 (female)"
+ },
+ {
+  "fromNat": 759,
+  "from": "Stufful",
+  "toNat": 760,
+  "to": "Bewear",
+  "how": "Level 27"
+ },
+ {
+  "fromNat": 761,
+  "from": "Bounsweet",
+  "toNat": 762,
+  "to": "Steenee",
+  "how": "Level 18"
+ },
+ {
+  "fromNat": 762,
+  "from": "Steenee",
+  "toNat": 763,
+  "to": "Tsareena",
+  "how": "Level up knowing Stomp"
+ },
+ {
+  "fromNat": 767,
+  "from": "Wimpod",
+  "toNat": 768,
+  "to": "Golisopod",
+  "how": "Level 30"
+ },
+ {
+  "fromNat": 769,
+  "from": "Sandygast",
+  "toNat": 770,
+  "to": "Palossand",
+  "how": "Level 42"
+ },
+ {
+  "fromNat": 772,
+  "from": "Type: Null",
+  "toNat": 773,
+  "to": "Silvally",
+  "how": "High friendship"
+ },
+ {
+  "fromNat": 782,
+  "from": "Jangmo-o",
+  "toNat": 783,
+  "to": "Hakamo-o",
+  "how": "Level 35"
+ },
+ {
+  "fromNat": 783,
+  "from": "Hakamo-o",
+  "toNat": 784,
+  "to": "Kommo-o",
+  "how": "Level 45"
+ },
+ {
+  "fromNat": 789,
+  "from": "Cosmog",
+  "toNat": 790,
+  "to": "Cosmoem",
+  "how": "Level 43"
+ },
+ {
+  "fromNat": 790,
+  "from": "Cosmoem",
+  "toNat": 791,
+  "to": "Solgaleo",
+  "how": "Level 53, daytime"
+ },
+ {
+  "fromNat": 790,
+  "from": "Cosmoem",
+  "toNat": 792,
+  "to": "Lunala",
+  "how": "Level 53, at night"
+ },
+ {
+  "fromNat": 803,
+  "from": "Poipole",
+  "toNat": 804,
+  "to": "Naganadel",
+  "how": "Level up knowing Dragon Pulse"
+ },
+ {
+  "fromNat": 812,
+  "from": "#812",
+  "toNat": 105,
+  "to": "Marowak",
+  "how": "Level 28, at night"
+ },
+ {
+  "fromNat": 816,
+  "from": "#816",
+  "toNat": 51,
+  "to": "Dugtrio",
+  "how": "Level 26"
+ },
+ {
+  "fromNat": 818,
+  "from": "#818",
+  "toNat": 103,
+  "to": "Exeggutor",
+  "how": "Use a Leaf Stone"
+ },
+ {
+  "fromNat": 820,
+  "from": "#820",
+  "toNat": 75,
+  "to": "Graveler",
+  "how": "Level 25"
+ },
+ {
+  "fromNat": 823,
+  "from": "#823",
+  "toNat": 76,
+  "to": "Golem",
+  "how": "Trade"
+ },
+ {
+  "fromNat": 824,
+  "from": "#824",
+  "toNat": 89,
+  "to": "Muk",
+  "how": "Level 38"
+ },
+ {
+  "fromNat": 826,
+  "from": "#826",
+  "toNat": 53,
+  "to": "Persian",
+  "how": "High friendship"
+ },
+ {
+  "fromNat": 830,
+  "from": "#830",
+  "toNat": 25,
+  "to": "Pikachu",
+  "how": "High friendship"
+ },
+ {
+  "fromNat": 832,
+  "from": "#832",
+  "toNat": 26,
+  "to": "Raichu",
+  "how": "Use a Thunderstone"
+ },
+ {
+  "fromNat": 835,
+  "from": "#835",
+  "toNat": 20,
+  "to": "Raticate",
+  "how": "Level 20, at night"
+ },
+ {
+  "fromNat": 841,
+  "from": "#841",
+  "toNat": 28,
+  "to": "Sandslash",
+  "how": "Use a ???"
+ },
+ {
+  "fromNat": 844,
+  "from": "#844",
+  "toNat": 38,
+  "to": "Ninetales",
+  "how": "Use a ???"
+ }
+]

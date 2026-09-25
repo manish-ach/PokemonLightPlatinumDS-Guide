@@ -1,0 +1,44 @@
+---
+import Base from '../../layouts/Base.astro';
+import PageHead from '../../components/PageHead.astro';
+import Plate from '../../components/Plate.astro';
+import Team from '../../components/Team.astro';
+import { GYMS, href, slug, placePath, PLACES } from '../../lib/data.js';
+
+export function getStaticPaths() {
+  return GYMS.map((g) => ({ params: { slug: slug(g.city) }, props: { gym: g } }));
+}
+const { gym } = Astro.props;
+const cityBuilt = PLACES.some((p) => p.name === gym.city && p.built);
+---
+<Base title={`${gym.city} Gym`} current="gyms" description={`Leader ${gym.leader} of ${gym.city}: badge, team and rematches.`}>
+  <PageHead title={`${gym.city} Gym`} back={{ href: href('gyms/'), label: 'Gyms' }}>
+    <span class="plates">{gym.types.map((t) => <Plate type={t} />)}</span>
+  </PageHead>
+
+  <dl class="kv facts">
+    <div><dt>Leader</dt><dd>{gym.leader} · badge {gym.order} of {GYMS.length}</dd></div>
+    <div><dt>Badge</dt><dd><b>{gym.badge}</b> — {gym.effect}</dd></div>
+    <div><dt>Levels</dt><dd class="num">{gym.levels}</dd></div>
+    {cityBuilt && <div><dt>City</dt><dd><a href={placePath(gym.city)}>{gym.city}</a></dd></div>}
+  </dl>
+
+  <section class="block">
+    <h2>The team</h2>
+    <Team team={gym.team} />
+  </section>
+
+  {gym.rematch.map((r, i) => (
+    <section class="block">
+      <h2>Rematch {i + 1} <span class="small muted num">lv {r.levels}</span></h2>
+      <Team team={r.team} />
+    </section>
+  ))}
+
+
+  <style>
+    .facts { margin-bottom: var(--sp-6); }
+    .block { margin-top: var(--sp-6); }
+    .block h2 { margin-bottom: var(--sp-3); display: flex; gap: var(--sp-2); align-items: baseline; }
+  </style>
+</Base>

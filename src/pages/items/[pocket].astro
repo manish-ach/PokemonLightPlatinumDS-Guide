@@ -1,0 +1,65 @@
+---
+import Base from '../../layouts/Base.astro';
+import PageHead from '../../components/PageHead.astro';
+import ItemDialog from '../../components/ItemDialog.astro';
+import { POCKETS, inPocket, href, itemSlug } from '../../lib/data.js';
+
+export function getStaticPaths() {
+  return POCKETS.map((p) => ({ params: { pocket: p.id }, props: { pocket: p } }));
+}
+const { pocket } = Astro.props;
+const list = inPocket(pocket.id);
+const icon = (i) => i.sprite || (i.localIcon ? href(`pictures/items/${i.localIcon}`) : null);
+---
+<Base title={pocket.label} current="items" description={`${pocket.label} in Pokémon Light Platinum DS and where each is found.`}>
+  <PageHead title={pocket.label} back={{ href: href('items/'), label: 'Items' }}>
+    <label class="field">
+      <svg width="16" height="16" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="9" cy="9" r="6"/><path d="m14 14 4 4"/></svg>
+      <input type="search" id="itemsearch" placeholder={`Search ${pocket.label.toLowerCase()}…`} aria-label="Search this pocket" />
+    </label>
+    <p class="count"><output id="itemcount">{list.length}</output> of {list.length}</p>
+  </PageHead>
+  {pocket.id === 'machines' && <p class="small muted lead">TMs and HMs with a known pickup or shop are marked <b>obtainable</b>.</p>}
+
+  <div class="grid grid--tight" id="itemgrid">
+    {list.map((i) => (
+      <button type="button" class="card item" id={itemSlug(i)} data-item={itemSlug(i)} data-q={`${i.tm || ''} ${i.name} ${(i.locations || []).join(' ')}`.toLowerCase()}>
+        <span class="item__slot">{icon(i) ? <img src={icon(i)} alt="" width="40" height="40" loading="lazy" decoding="async" /> : <i aria-hidden="true"></i>}</span>
+        <span class="item__name">{i.tm && i.name !== i.tm && <span class="num muted">{i.tm} </span>}{i.name}</span>
+        {i.tm && i.confirmed && <span class="item__tag">obtainable</span>}
+        {i.locations.length > 1 && <span class="item__n num">×{i.locations.length}</span>}
+      </button>
+    ))}
+  </div>
+  <p class="empty" id="itemempty" hidden>Nothing here matches.</p>
+
+  <ItemDialog items={list} hash={true} />
+
+  <style>
+    .lead { margin-bottom: var(--sp-3); max-width: var(--measure); }
+    .item { position: relative; align-items: center; text-align: center; padding: var(--sp-3) var(--sp-2); gap: var(--sp-1); cursor: pointer; }
+    .item__slot { width: 48px; height: 48px; display: grid; place-items: center; }
+    .item__slot img { image-rendering: pixelated; }
+    .item__slot i { width: 14px; height: 14px; border: 1px solid var(--line-strong); border-radius: 3px; }
+    .item__name { font-size: var(--text-sm); font-weight: 600; line-height: 1.2; }
+    .item__tag { font-size: var(--text-xs); color: var(--ok); font-weight: 600; }
+    .item__n { position: absolute; top: 6px; right: 8px; font-size: var(--text-xs); color: var(--ink-3); }
+  </style>
+
+  <script>
+    const init = () => {
+      const grid = document.getElementById('itemgrid');
+      if (!grid || grid.dataset.wired) return;
+      grid.dataset.wired = '1';
+      const box = document.getElementById('itemsearch'), out = document.getElementById('itemcount'), empty = document.getElementById('itemempty');
+      const items = [...grid.querySelectorAll('[data-item]')];
+      box?.addEventListener('input', () => {
+        const q = box.value.trim().toLowerCase(); let n = 0;
+        for (const i of items) { const ok = !q || i.dataset.q.includes(q); i.hidden = !ok; if (ok) n++; }
+        out.textContent = String(n); empty.hidden = n > 0;
+      });
+    };
+    init();
+    document.addEventListener('astro:page-load', init);
+  </script>
+</Base>

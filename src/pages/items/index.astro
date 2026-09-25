@@ -1,0 +1,32 @@
+---
+import Base from '../../layouts/Base.astro';
+import PageHead from '../../components/PageHead.astro';
+import { POCKETS, inPocket, href, ITEMS, WILD } from '../../lib/data.js';
+const icon = (i) => i.sprite || (i.localIcon ? href(`pictures/items/${i.localIcon}`) : null);
+---
+<Base title="Items" current="items" description="Every item in Pokémon Light Platinum DS, by pocket, with where to find it.">
+  <PageHead title="Items">
+    <p class="count"><output>{ITEMS.length}</output> items · {WILD.length} held by wild Pokémon</p>
+  </PageHead>
+
+  <div class="grid grid--wide pockets">
+    {POCKETS.map((p) => {
+      const list = inPocket(p.id);
+      const known = list.filter((i) => i.locations.length).length;
+      return (
+        <a class="card pocket" href={href(`items/${p.id}/`)} style={`--hue:${p.hue}`}>
+          <span class="pocket__glyph"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d={p.glyph}/></svg></span>
+          <span class="card__title">{p.label}<span class="num">{list.length}</span></span>
+          <span class="strip">{list.filter(icon).slice(0, 10).map((i) => <img src={icon(i)} alt="" width="32" height="32" loading="lazy" decoding="async" />)}</span>
+          <span class="card__foot">{known} with a known source</span>
+        </a>
+      );
+    })}
+  </div>
+
+  <style>
+    .pocket { position: relative; padding-left: calc(var(--sp-4) + 40px); }
+    .pocket__glyph { position: absolute; left: var(--sp-3); top: var(--sp-3); width: 32px; height: 32px; display: grid; place-items: center; border-radius: var(--radius-sm); color: oklch(var(--plate-edge-l) 0.1 var(--hue)); background: oklch(var(--plate-l) 0.06 var(--hue)); }
+    .pocket__glyph svg { width: 20px; height: 20px; }
+  </style>
+</Base>

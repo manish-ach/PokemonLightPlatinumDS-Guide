@@ -1,0 +1,57 @@
+[
+ {
+  "order": 1,
+  "city": "Inhore City",
+  "leader": "Jessica",
+  "badge": "Honeycomb Badge",
+  "types": "Bug / Poison",
+  "levels": "16-17",
+  "steamBattles": 3,
+  "steamLevels": "3-14",
+  "unlocks": "Traded Pokémon up to level 20 obey you."
+ },
+ {
+  "order": 2,
+  "city": "Esmerald City",
+  "leader": "Esmeralda",
+  "badge": "Green Badge",
+  "types": "Grass",
+  "levels": "24-25",
+  "steamBattles": 2,
+  "steamLevels": "21-21",
+  "unlocks": "Traded Pokémon up to level 30 obey you."
+ },
+ {
+  "order": 3,
+  "city": "Seanport City",
+  "leader": "Lucas",
+  "badge": "Ocean Badge",
+  "types": "Water",
+  "levels": "29-32",
+  "steamBattles": 3,
+  "steamLevels": "26-27",
+  "unlocks": "Awarded with a gift from Lucas."
+ },
+ {
+  "order": 4,
+  "city": "Groment City",
+  "leader": "Arthur",
+  "badge": "Sand Badge",
+  "types": "Ground / Rock",
+  "levels": "40-42",
+  "steamBattles": 13,
+  "steamLevels": "32-35",
+  "unlocks": "Traded Pokémon up to level 50 obey you; enables Fly outside battle."
+ },
+ {
+  "order": 5,
+  "city": "Dardusk City",
+  "leader": "Thomas",
+  "badge": "Shadow Badge",
+  "types": "Ghost",
+  "levels": "46-48",
+  "steamBattles": 0,
+  "steamLevels": "-",
+  "unlocks": "Enables Strength outside battle to move large rocks."
+ }
+]
