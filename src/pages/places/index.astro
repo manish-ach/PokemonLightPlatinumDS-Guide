@@ -1,7 +1,7 @@
 ---
 import Base from '../../layouts/Base.astro';
 import PageHead from '../../components/PageHead.astro';
-import { TOWNS, ROUTES_P, OTHER_P, WILD_BY_PLACE, GYM_AT, PHENOM_BY_PLACE, hasContent, placePath, SPRITE, REACHABLE, LISTED } from '../../lib/data.js';
+import { TOWNS, ROUTES_P, OTHER_P, WILD_BY_PLACE, GYM_AT, PHENOM_BY_PLACE, OUTBREAK_BY_PLACE, hasContent, placePath, SPRITE, REACHABLE, LISTED } from '../../lib/data.js';
 
 const groups = [
   ['towns', 'Cities & towns', TOWNS],
@@ -15,7 +15,7 @@ const strip = (name) => {
   for (const g of w.methods) for (const m of g.mons) if (!seen.has(m.name)) { seen.add(m.name); out.push(m); }
   return out;
 };
-const q = (p) => [p.name, ...strip(p.name).map((m) => m.name), GYM_AT.get(p.name)?.leader || '', ...(PHENOM_BY_PLACE.get(p.name) || []).map((x) => x.name)].join(' ').toLowerCase();
+const q = (p) => [p.name, ...strip(p.name).map((m) => m.name), GYM_AT.get(p.name)?.leader || '', ...(PHENOM_BY_PLACE.get(p.name) || []).map((x) => x.name), ...(OUTBREAK_BY_PLACE.get(p.name) || []).map((x) => x.name)].join(' ').toLowerCase();
 ---
 <Base title="Places" current="places" description="Every place in Zhery you can reach in v0.2.2, with the wild Pokémon the DexNav lists there.">
   <PageHead title="Places">
@@ -35,15 +35,18 @@ const q = (p) => [p.name, ...strip(p.name).map((m) => m.name), GYM_AT.get(p.name
           {full.map((p) => {
             const gym = GYM_AT.get(p.name);
             const ph = PHENOM_BY_PLACE.get(p.name) || [];
+            const ob = OUTBREAK_BY_PLACE.get(p.name) || [];
             const mons = strip(p.name);
             return (
               <a class="card" href={placePath(p.name)} data-q={q(p)}>
                 <span class="card__title">{p.name}<span class="num">{p.kind}</span></span>
-                {(gym || ph.length > 0) && (
+                {(gym || ph.length > 0 || ob.length > 0) && (
                   <span class="card__meta">
                     {gym && <><b>{gym.badge}</b> · {gym.leader}</>}
                     {gym && ph.length > 0 && ' · '}
                     {ph.map((x) => x.name).join(', ')}{ph.length > 0 && ' — phenomena'}
+                    {(gym || ph.length > 0) && ob.length > 0 && ' · '}
+                    {ob.map((x) => x.name).join(', ')}{ob.length > 0 && ' — outbreak'}
                   </span>
                 )}
                 {mons.length > 0

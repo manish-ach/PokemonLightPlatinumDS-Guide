@@ -35,10 +35,24 @@
   "note": "Surf onto the whirlpool on Marfeny Lake. It also shows on the lake’s DexNav list."
  },
  {
-  "name": "Smeargle",
-  "nat": 235,
-  "place": "Overworld — anywhere",
-  "kind": "Daily mail spawn",
-  "note": "Once a day, mail in the PDA puts one Pokémon from a set out in the overworld; Smeargle is one of them."
+  "name": "Charmander",
+  "nat": 4,
+  "place": "Route 412",
+  "kind": "Shaking grass",
+  "note": "Walk into the shaking patch on Route 412."
+ },
+ {
+  "name": "Cyndaquil",
+  "nat": 155,
+  "place": "Mt. Shuem",
+  "kind": "Phenomenon",
+  "note": "Turns up in a phenomenon inside Mt. Shuem."
+ },
+ {
+  "name": "Zoroark",
+  "nat": 571,
+  "place": "Route 401",
+  "kind": "Phenomenon",
+  "note": "Its Illusion ability disguises it as another Pokémon, so it won't look like Zoroark until the battle starts."
  }
 ]

@@ -19,6 +19,7 @@ import quests from '../data/quests.json';
 import placesRaw from '../data/places.json';
 import spine from '../data/spine.json';
 import phenomena from '../data/phenomena.json';
+import outbreaks from '../data/outbreaks.json';
 import wildlocations from '../data/wildlocations.json';
 import mileage from '../data/mileage.json';
 import romitems from '../data/romitems.json';
@@ -66,9 +67,10 @@ const STARTERS = {
   'Hoenn Starters': ['Treecko', 'Torchic', 'Mudkip'],
   'Sinnoh Starters': ['Turtwig', 'Chimchar', 'Piplup'],
 };
-/* the first stage of each starter line also turns up in phenomena once the
-   Phenomenal medal is on */
-export const STARTER_BASES = new Set(Object.values(STARTERS).flat());
+/* the first stage of every starter line from Gen 1 to Gen 5 also turns up in
+   phenomena once the Phenomenal medal is on */
+export const STARTER_BASES = new Set(['Bulbasaur', 'Charmander', 'Squirtle', 'Chikorita', 'Cyndaquil', 'Totodile',
+  'Treecko', 'Torchic', 'Mudkip', 'Turtwig', 'Chimchar', 'Piplup', 'Snivy', 'Tepig', 'Oshawott']);
 export const ACQ = new Map();
 for (const e of seed.entries.filter((x) => x.section === 'acquisition')) {
   const names = STARTERS[e.name] || [e.name.replace(/\s*\(Egg\)|\s*Egg$/, '').trim()];
@@ -284,6 +286,12 @@ export const PHENOM = phenomena;
 export const PHENOM_BY_PLACE = new Map();
 export const PHENOM_BY_MON = new Map(PHENOM.map((p) => [p.name, p]));
 for (const p of PHENOM) { if (!PHENOM_BY_PLACE.has(p.place)) PHENOM_BY_PLACE.set(p.place, []); PHENOM_BY_PLACE.get(p.place).push(p); }
+/* mass outbreaks: after the Groment City gym, with the story run to the end of
+   this version, PDA mail each day puts one of these out in the overworld */
+export const OUTBREAK = outbreaks;
+export const OUTBREAK_BY_MON = new Map(OUTBREAK.map((o) => [o.name, o]));
+export const OUTBREAK_BY_PLACE = new Map();
+for (const o of OUTBREAK) { if (!OUTBREAK_BY_PLACE.has(o.place)) OUTBREAK_BY_PLACE.set(o.place, []); OUTBREAK_BY_PLACE.get(o.place).push(o); }
 export const SPINE = spine;
 export const GYMS = gymsRaw;
 export const GYM_AT = new Map(GYMS.map((g) => [g.city, g]));
@@ -352,7 +360,7 @@ export const EVO_TO = new Map();
 for (const e of EVOS) { if (!EVO_TO.has(e.toNat)) EVO_TO.set(e.toNat, []); EVO_TO.get(e.toNat).push(e); }
 export const EGG_BASES = new Map([['Dratini', 147], ['Bagon', 371], ['Gible', 443], ['Deino', 633], ['Goomy', 704], ['Jangmo-o', 782]]);
 const NAT_NAME = new Map(ALLSPECIES.map((sp) => [sp.nat, sp.name]));
-export const isRecorded = (name) => ACQ.has(name) || PHENOM_BY_MON.has(name) || EGG_BASES.has(name)
+export const isRecorded = (name) => ACQ.has(name) || PHENOM_BY_MON.has(name) || OUTBREAK_BY_MON.has(name) || EGG_BASES.has(name)
   || (WILD_BY_MON.get(name) || []).some((w) => WILD_BY_PLACE.has(w.place));
 const viaMemo = new Map();
 export const obtainable = (nat) => {
@@ -375,7 +383,7 @@ export const ROUTES_P = REACHABLE.filter((p) => p.kind === 'Route');
 export const OTHER_P = REACHABLE.filter((p) => !['City', 'Town', 'Route'].includes(p.kind));
 export const UNBUILT_P = PLACES.filter((p) => !p.built);
 export const hasContent = (p) => WILD_BY_PLACE.has(p.name) || GYM_AT.has(p.name)
-  || PHENOM_BY_PLACE.has(p.name) || LOCATION_NOTES.has(p.name) || !!PLACE_SHOTS[p.name] || ITEMS_AT(p.name).length > 0;
+  || PHENOM_BY_PLACE.has(p.name) || OUTBREAK_BY_PLACE.has(p.name) || LOCATION_NOTES.has(p.name) || !!PLACE_SHOTS[p.name] || ITEMS_AT(p.name).length > 0;
 export const LISTED = REACHABLE.filter(hasContent);
 
 /* ---------- gifts and trades ------------------------------------- */

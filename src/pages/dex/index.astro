@@ -2,7 +2,7 @@
 import Base from '../../layouts/Base.astro';
 import PageHead from '../../components/PageHead.astro';
 import Plate from '../../components/Plate.astro';
-import { ALLSPECIES, ALOLAN_BY_BASE, spPath, SPRITE, TYPES, cap, ACQ, STARTER_BASES, PHENOM_BY_MON } from '../../lib/data.js';
+import { ALLSPECIES, ALOLAN_BY_BASE, spPath, SPRITE, TYPES, cap, ACQ, STARTER_BASES, PHENOM_BY_MON, OUTBREAK_BY_MON } from '../../lib/data.js';
 /* The one page allowed to be long: a grid of every entry, filtered in place. */
 ---
 <Base title="Dex" current="dex" description="Every Pokémon in the Zhery regional dex, plus the off-dex gifts and the Alolan forms.">
@@ -40,6 +40,7 @@ import { ALLSPECIES, ALOLAN_BY_BASE, spPath, SPRITE, TYPES, cap, ACQ, STARTER_BA
           <span class="plates tile__plates">{sp.types.map((t) => <Plate type={t} />)}</span>
           {(STARTER_BASES.has(sp.name) || PHENOM_BY_MON.has(sp.name))
             ? <span class="tile__tag" title="Appears in phenomena with the Phenomenal medal">Phenomena</span>
+            : OUTBREAK_BY_MON.has(sp.name) ? <span class="tile__tag tile__tag--ob" title="Appears in a daily mass outbreak">Outbreak</span>
             : sp.shiny && <span class="tile__flag" title="Distributed shiny">★</span>}
           {al && <span class="tile__flag tile__flag--al" title="Has an Alolan form">A</span>}
         </a>
@@ -60,6 +61,7 @@ import { ALLSPECIES, ALOLAN_BY_BASE, spPath, SPRITE, TYPES, cap, ACQ, STARTER_BA
     .tile__plates { justify-content: center; }
     .tile__flag { position: absolute; top: 6px; right: 6px; font-size: var(--text-xs); font-weight: 700; color: var(--accent-ink); }
     .tile__tag { position: absolute; top: 6px; right: 6px; font-size: 10px; font-weight: 600; line-height: 1; letter-spacing: 0.02em; color: var(--accent-ink); border: 1px solid currentColor; border-radius: 999px; padding: 3px 6px; }
+    .tile__tag--ob { color: var(--ink-2); }
     .tile.is-alolan .tile__tag { visibility: hidden; }
     .tile__flag--al { right: auto; left: 6px; color: var(--ink-3); border: 1px solid var(--line-strong); border-radius: 3px; padding: 0 4px; }
     .tile.is-dimmed { opacity: 0.4; }

@@ -1,15 +1,32 @@
 ---
 import Base from '../../layouts/Base.astro';
 import PageHead from '../../components/PageHead.astro';
-import { POCKETS, inPocket, href, ITEMS, WILD } from '../../lib/data.js';
+import { POCKETS, inPocket, href, ITEMS, WILD, itemSlug } from '../../lib/data.js';
 const icon = (i) => i.sprite || (i.localIcon ? href(`pictures/items/${i.localIcon}`) : null);
+/* every item once, tagged with its pocket, for the search across pockets */
+const all = POCKETS.flatMap((p) => inPocket(p.id).map((i) => ({ i, p })));
 ---
 <Base title="Items" current="items" description="Every item in Pokémon Light Platinum DS, by pocket, with where to find it.">
   <PageHead title="Items">
-    <p class="count"><output>{ITEMS.length}</output> items · {WILD.length} held by wild Pokémon</p>
+    <label class="field">
+      <svg width="16" height="16" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="9" cy="9" r="6"/><path d="m14 14 4 4"/></svg>
+      <input type="search" id="itemsearch" placeholder="Search every item…" aria-label="Search every item" />
+    </label>
+    <p class="count"><output id="itemcount">{ITEMS.length}</output> items · {WILD.length} held by wild Pokémon</p>
   </PageHead>
 
-  <div class="grid grid--wide pockets">
+  <div class="grid grid--tight" id="itemresults" hidden>
+    {all.map(({ i, p }) => (
+      <a class="card item" href={href(`items/${p.id}/#${itemSlug(i)}`)} data-q={`${i.tm || ''} ${i.name} ${(i.locations || []).join(' ')}`.toLowerCase()} hidden>
+        <span class="item__slot">{icon(i) ? <img src={icon(i)} alt="" width="40" height="40" loading="lazy" decoding="async" /> : <i aria-hidden="true"></i>}</span>
+        <span class="item__name">{i.tm && i.name !== i.tm && <span class="num muted">{i.tm} </span>}{i.name}</span>
+        <span class="item__pocket">{p.label}</span>
+      </a>
+    ))}
+  </div>
+  <p class="empty" id="itemempty" hidden>Nothing matches.</p>
+
+  <div class="grid grid--wide pockets" id="pockets">
     {POCKETS.map((p) => {
       const list = inPocket(p.id);
       const known = list.filter((i) => i.locations.length).length;
@@ -28,5 +45,34 @@ const icon = (i) => i.sprite || (i.localIcon ? href(`pictures/items/${i.localIco
     .pocket { position: relative; padding-left: calc(var(--sp-4) + 40px); }
     .pocket__glyph { position: absolute; left: var(--sp-3); top: var(--sp-3); width: 32px; height: 32px; display: grid; place-items: center; border-radius: var(--radius-sm); color: oklch(var(--plate-edge-l) 0.1 var(--hue)); background: oklch(var(--plate-l) 0.06 var(--hue)); }
     .pocket__glyph svg { width: 20px; height: 20px; }
+    .grid[hidden] { display: none; }
+    .item { align-items: center; text-align: center; padding: var(--sp-3) var(--sp-2); gap: var(--sp-1); }
+    .item__slot { width: 48px; height: 48px; display: grid; place-items: center; }
+    .item__slot img { image-rendering: pixelated; }
+    .item__slot i { width: 14px; height: 14px; border: 1px solid var(--line-strong); border-radius: 3px; }
+    .item__name { font-size: var(--text-sm); font-weight: 600; line-height: 1.2; }
+    .item__pocket { font-size: var(--text-xs); color: var(--ink-3); }
   </style>
+
+  <script>
+    /* an empty box shows the pockets; any query swaps them for matching items */
+    const init = () => {
+      const res = document.getElementById('itemresults');
+      if (!res || res.dataset.wired) return;
+      res.dataset.wired = '1';
+      const box = document.getElementById('itemsearch'), out = document.getElementById('itemcount');
+      const empty = document.getElementById('itemempty'), pockets = document.getElementById('pockets');
+      const items = [...res.querySelectorAll('[data-q]')], total = out.textContent;
+      const apply = () => {
+        const q = box.value.trim().toLowerCase(); let n = 0;
+        for (const i of items) { const ok = !!q && i.dataset.q.includes(q); i.hidden = !ok; if (ok) n++; }
+        res.hidden = !q; pockets.hidden = !!q; empty.hidden = !q || n > 0;
+        out.textContent = q ? String(n) : total;
+      };
+      box?.addEventListener('input', apply);
+      if (box?.value) apply();
+    };
+    init();
+    document.addEventListener('astro:page-load', init);
+  </script>
 </Base>

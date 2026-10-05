@@ -56,7 +56,7 @@
   {"item": "Light Clay", "slug": "light-clay", "where": "Sun Palace, Pantem Cave", "rarity": null,
    "mons": [{"name": "Golett", "nat": 622}, {"name": "Baltoy", "nat": 343}]},
   {"item": "Mental Herb", "slug": "mental-herb", "where": "Route 404", "rarity": null,
-   "mons": [{"name": "Natu", "nat": 177}]},
+   "mons": [{"name": "Natu", "nat": 177}, {"name": "Pancham", "nat": 674}]},
   {"item": "Oran Berry", "slug": "oran-berry", "where": "Route 404", "rarity": null,
    "mons": [{"name": "Pikachu", "nat": 25}]},
   {"item": "Moomoo Milk", "slug": "moomoo-milk", "where": "Route 405", "rarity": null,
@@ -74,5 +74,9 @@
   {"item": "Chesto Berry", "slug": "chesto-berry", "where": null, "rarity": null,
    "mons": [{"name": "Minccino", "nat": 572}]},
   {"item": "Razor Claw", "slug": "razor-claw", "where": null, "rarity": null,
-   "mons": [{"name": "Excadrill", "nat": 530}]}
+   "mons": [{"name": "Excadrill", "nat": 530}]},
+  {"item": "Shed Shell", "slug": "shed-shell", "where": null, "rarity": null,
+   "mons": [{"name": "Dwebble", "nat": 557}]},
+  {"item": "Miracle Seed", "slug": "miracle-seed", "where": null, "rarity": null,
+   "mons": [{"name": "Cherrim", "nat": 421}]}
 ]

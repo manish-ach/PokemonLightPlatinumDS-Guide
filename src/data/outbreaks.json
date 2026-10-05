@@ -1,0 +1,77 @@
+[
+ {
+  "name": "Audino",
+  "nat": 531,
+  "place": "Route 401"
+ },
+ {
+  "name": "Inkay",
+  "nat": 686,
+  "place": "Route 408"
+ },
+ {
+  "name": "Plusle",
+  "nat": 311,
+  "place": "Route 403"
+ },
+ {
+  "name": "Minun",
+  "nat": 312,
+  "place": "Route 403"
+ },
+ {
+  "name": "Smeargle",
+  "nat": 235,
+  "place": "Route 404"
+ },
+ {
+  "name": "Carnivine",
+  "nat": 455,
+  "place": "Route 406"
+ },
+ {
+  "name": "Riolu",
+  "nat": 447,
+  "place": "Route 405"
+ },
+ {
+  "name": "Rufflet",
+  "nat": 627,
+  "place": "Route 412"
+ },
+ {
+  "name": "Vullaby",
+  "nat": 629,
+  "place": "Route 412"
+ },
+ {
+  "name": "Munna",
+  "nat": 517,
+  "place": "Dardusk Woods"
+ },
+ {
+  "name": "Buneary",
+  "nat": 427,
+  "place": "Route 402"
+ },
+ {
+  "name": "Mawile",
+  "nat": 303,
+  "place": "Route 410"
+ },
+ {
+  "name": "Mime Jr.",
+  "nat": 439,
+  "place": "Route 411"
+ },
+ {
+  "name": "Growlithe",
+  "nat": 58,
+  "place": "Marfeny Lake"
+ },
+ {
+  "name": "Venipede",
+  "nat": 543,
+  "place": "Inhore Woods"
+ }
+]

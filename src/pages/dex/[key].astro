@@ -4,7 +4,7 @@ import PageHead from '../../components/PageHead.astro';
 import Plate from '../../components/Plate.astro';
 import Note from '../../components/Note.astro';
 import Stepper from '../../components/Stepper.astro';
-import { ALLSPECIES, ALOLAN, ALOLAN_BY_BASE, SPECIES, NONDEX, spKey, spPath, SPRITE, href, ACQ, PHENOM_BY_MON, WILD_BY_MON, placePath, WILD_BY_PLACE, EGG_BASES, STARTER_BASES, evolveFrom, SPECIES_BY_NAME } from '../../lib/data.js';
+import { ALLSPECIES, ALOLAN, ALOLAN_BY_BASE, SPECIES, NONDEX, spKey, spPath, SPRITE, href, ACQ, PHENOM_BY_MON, OUTBREAK_BY_MON, WILD_BY_MON, placePath, WILD_BY_PLACE, EGG_BASES, REACHABLE, STARTER_BASES, evolveFrom, SPECIES_BY_NAME } from '../../lib/data.js';
 
 export function getStaticPaths() {
   const regular = ALLSPECIES.map((sp) => ({ params: { key: spKey(sp) }, props: { sp } }));
@@ -22,6 +22,7 @@ const prev = ring[(idx - 1 + ring.length) % ring.length], next = ring[(idx + 1) 
 const numOf = (x) => x.alolan || x.reg ? String(x.reg).padStart(3, '0') : `#${x.nat}`;
 const acq = ACQ.get(sp.name);
 const ph = PHENOM_BY_MON.get(sp.name);
+const ob = OUTBREAK_BY_MON.get(sp.name);
 const wild = (WILD_BY_MON.get(sp.name) || []).filter((w) => WILD_BY_PLACE.has(w.place));
 const al = !sp.alolan && ALOLAN_BY_BASE.get(sp.name);
 const stats = sp.stats || {};
@@ -31,10 +32,12 @@ const total = Object.values(stats).reduce((a, b) => a + b, 0);
 const egg = !sp.alolan && EGG_BASES.has(sp.name);
 const starter = !sp.alolan && STARTER_BASES.has(sp.name);
 const medal = href('medals/#phenomenal');
-const direct = !!(acq || ph || wild.length || egg);
-/* no recorded location: fall back to evolving something earlier in the line */
-const evos = direct || sp.alolan ? [] : evolveFrom(sp.nat);
+const direct = !!(acq || ph || ob || wild.length || egg);
+/* mid and final stages always list how to evolve up to them, alongside any
+   place they can be caught */
+const evos = sp.alolan ? [] : evolveFrom(sp.nat);
 const known = direct || evos.length > 0;
+const placeHref = (p) => WILD_BY_PLACE.has(p) || REACHABLE.some((x) => x.name === p) ? placePath(p) : null;
 const link = (name) => { const s = SPECIES_BY_NAME.get(name); return s ? spPath(s) : null; };
 ---
 <Base title={sp.name} current="dex" description={`${sp.name} in Pokémon Light Platinum DS — how to get it, base stats, dex entry.`}>
@@ -65,7 +68,8 @@ const link = (name) => { const s = SPECIES_BY_NAME.get(name); return s ? spPath(
             <thead><tr><th scope="col">Method</th><th scope="col">Where</th></tr></thead>
             <tbody>
               {acq && <tr><td>{acq.method}</td><td>{acq.location}</td></tr>}
-              {ph && <tr><td>{ph.kind} <span class="small muted">· Phenomenal medal</span></td><td>{ph.place}</td></tr>}
+              {ph && <tr><td>{ph.kind} <span class="small muted">· Phenomenal medal</span></td><td>{placeHref(ph.place) ? <a href={placeHref(ph.place)}>{ph.place}</a> : ph.place}</td></tr>}
+              {ob && <tr><td>Mass outbreak</td><td>{placeHref(ob.place) ? <a href={placeHref(ob.place)}>{ob.place}</a> : ob.place}</td></tr>}
               {wild.map((w) => <tr><td>{w.how}</td><td><a href={placePath(w.place)}>{w.place}</a></td></tr>)}
               {egg && <tr><td>Mystery Gift</td><td><a href={href('gifts/')}>“A dragon egg…” Wonder Card</a> — hatches one of six lines, at random</td></tr>}
               {evos.map((e) => <tr><td>Evolve {link(e.from) ? <a href={link(e.from)}>{e.from}</a> : e.from}</td><td>{e.how}</td></tr>)}
@@ -75,7 +79,8 @@ const link = (name) => { const s = SPECIES_BY_NAME.get(name); return s ? spPath(
           <p class="empty">No known way to get {sp.name} yet.</p>
         )}
         {ph && <Note kind="info" title={`${ph.kind} — needs the Phenomenal medal`}><p>{ph.note} Equip the <a href={medal}>Phenomenal medal</a> first.</p></Note>}
-        {starter && <Note kind="info" title="Also appears in phenomena"><p>With the <a href={medal}>Phenomenal medal</a> on, {sp.name} can turn up in phenomena — shaking grass, whirlpools in water and dust clouds in caves.</p></Note>}
+        {ob && <Note kind="info" title="Mass outbreak"><p>Outbreaks start once you've beaten the Groment City gym and played to the end of this version. Each day a message in the PDA announces one random Pokémon out in the overworld — {sp.name} is one of them, at {ob.place}.</p></Note>}
+        {starter && !ph && <Note kind="info" title="Also appears in phenomena"><p>With the <a href={medal}>Phenomenal medal</a> on, {sp.name} can turn up in phenomena — shaking grass, whirlpools in water and dust clouds in caves.</p></Note>}
       </section>
 
       {sp.entry && (
