@@ -1,38 +1,102 @@
 ---
 import Base from '../layouts/Base.astro';
 import PageHead from '../components/PageHead.astro';
-import { QUESTS, slug } from '../lib/data.js';
+import { QUESTS, slug, href, SPRITE, NAT_OF, SPECIES_BY_NAME, spPath } from '../lib/data.js';
 const side = QUESTS.filter((q) => q.kind !== 'thread');
 const threads = QUESTS.filter((q) => q.kind === 'thread');
+const foot = (q) => q.who ? `${q.who} · ${q.where}` : q.where;
 ---
 <Base title="Quests" current="quests" description="Optional errands around Zhery, and the story threads v0.2.2 leaves open.">
   <PageHead title="Quests" note="Optional errands people offer you around Zhery." />
 
-  <div class="grid">
-    {side.map((q) => (
-      <article class="card" id={slug(q.name)}>
-        <h2 class="card__title">{q.name}</h2>
-        <p class="card__meta">{q.desc}</p>
-        <p class="card__foot">{q.where}</p>
-      </article>
-    ))}
-  </div>
+  {[[null, side], ['Where v0.2.2 leaves you', threads]].map(([title, list]) => (
+    <>
+      {title && <h2 class="threads-h">{title}</h2>}
+      {title && <p class="small muted threads-p">After Dardusk City the story stops, and three people call at your house in Yellow Town to set up what comes next. None can be followed further in this version.</p>}
+      <div class="grid" data-questgrid>
+        {list.map((q) => (
+          <button type="button" class="card card--link quest" id={slug(q.name)} data-quest={slug(q.name)} aria-haspopup="dialog">
+            {q.mons && <span class="quest__mons" aria-hidden="true">{q.mons.map((m) => <img src={SPRITE(NAT_OF.get(m))} alt="" width="40" height="40" loading="lazy" decoding="async" />)}</span>}
+            <span class="card__title">{q.name}</span>
+            <span class="card__meta quest__short">{q.short || q.desc}</span>
+            <span class="card__foot">{foot(q)}<span class="quest__more">Details →</span></span>
+          </button>
+        ))}
+      </div>
+    </>
+  ))}
 
-  <h2 class="threads-h">Where v0.2.2 leaves you</h2>
-  <p class="small muted threads-p">After Dardusk City the story stops, and three people call at your house in Yellow Town to set up what comes next. None can be followed further in this version.</p>
-  <div class="grid">
-    {threads.map((q) => (
-      <article class="card" id={slug(q.name)}>
-        <h2 class="card__title">{q.name}</h2>
-        <p class="card__meta">{q.desc}</p>
-        <p class="card__foot">{q.who} · {q.where}</p>
-      </article>
-    ))}
-  </div>
+  <dialog class="dialog" id="questdialog" aria-labelledby="qdl-title">
+    <div class="dialog__bar"><p>Quest</p><button type="button" class="iconbtn" data-close aria-label="Close"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M3 3l10 10M13 3L3 13"/></svg></button></div>
+    <div class="dialog__body" id="qdl-body"></div>
+  </dialog>
+
+  {/* each quest's full text, rendered at build time and copied into the dialog */}
+  {QUESTS.map((q) => (
+    <template data-quest-detail={slug(q.name)}>
+      <div class="dialog__head">
+        <div><h2 id="qdl-title">{q.name}</h2><p class="small muted">{foot(q)}</p></div>
+      </div>
+      {q.steps ? (
+        <>
+          <p>{q.short}</p>
+          <p class="dialog__label">Steps</p>
+          <ol class="quest__steps">{q.steps.map((s) => <li>{s}</li>)}</ol>
+        </>
+      ) : <p>{q.desc}</p>}
+      {q.mons && (
+        <>
+          <p class="dialog__label">Pokémon</p>
+          <div class="quest__monrow">{q.mons.map((m) => { const sp = SPECIES_BY_NAME.get(m); return (
+            <a class="quest__mon" href={sp ? spPath(sp) : undefined}><img src={SPRITE(NAT_OF.get(m))} alt="" width="48" height="48" />{m}</a>
+          ); })}</div>
+        </>
+      )}
+      {q.links && <p>{q.links.map(([label, to]) => <a href={href(to)}>{label} →</a>)}</p>}
+    </template>
+  ))}
 
   <style>
     .threads-h { margin-top: var(--sp-8); }
     .threads-p { margin: var(--sp-1) 0 var(--sp-3); max-width: var(--measure); }
-    .card__title { font-size: var(--text-md); }
+    .quest { position: relative; text-align: left; cursor: pointer; font: inherit; }
+    .quest .card__title { font-size: var(--text-md); }
+    .quest:has(.quest__mons) .card__title { padding-right: 112px; }
+    .quest__short { display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+    .quest .card__foot { justify-content: space-between; }
+    .quest__more { color: var(--accent-ink); font-weight: 600; }
+    .quest__mons { position: absolute; top: 4px; right: 8px; display: flex; }
+    .quest__mons img { image-rendering: pixelated; margin-left: -6px; }
+    @media (hover: hover) { .quest:hover { transform: translateY(-1px); } }
+    .quest__steps { padding-left: 1.3em; display: grid; gap: var(--sp-1); font-size: var(--text-sm); }
+    .quest__monrow { display: flex; flex-wrap: wrap; gap: var(--sp-2); }
+    .quest__mon { display: grid; justify-items: center; font-size: var(--text-sm); font-weight: 600; border: 1px solid var(--line); border-radius: var(--radius); padding: var(--sp-1) var(--sp-3) var(--sp-2); text-decoration: none; color: inherit; }
+    .quest__mon:hover { border-color: var(--line-strong); background: var(--surface-2); }
+    .quest__mon img { image-rendering: pixelated; }
   </style>
+
+  <script>
+    const init = () => {
+      const dlg = document.getElementById('questdialog');
+      if (!dlg || dlg.dataset.wired) return;
+      dlg.dataset.wired = '1';
+      const body = document.getElementById('qdl-body');
+      const show = (key, push = true) => {
+        const t = document.querySelector(`template[data-quest-detail="${key}"]`);
+        if (!t) return;
+        body.replaceChildren(t.content.cloneNode(true));
+        if (!dlg.open) dlg.showModal();
+        if (push) history.replaceState(null, '', '#' + key);
+      };
+      document.querySelectorAll('[data-questgrid]').forEach((g) => g.addEventListener('click', (e) => {
+        const b = e.target.closest('[data-quest]'); if (b) show(b.dataset.quest);
+      }));
+      dlg.querySelector('[data-close]').addEventListener('click', () => dlg.close());
+      dlg.addEventListener('click', (e) => { if (e.target === dlg) dlg.close(); });
+      dlg.addEventListener('close', () => history.replaceState(null, '', location.pathname));
+      if (location.hash) show(location.hash.slice(1), false);
+    };
+    init();
+    document.addEventListener('astro:page-load', init);
+  </script>
 </Base>
