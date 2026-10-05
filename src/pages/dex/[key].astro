@@ -116,6 +116,6 @@ const link = (name) => { const s = SPECIES_BY_NAME.get(name); return s ? spPath(
     .quote { border: 1px solid var(--line); border-radius: var(--radius); padding: var(--sp-3) var(--sp-4); background: var(--surface); max-width: var(--measure); }
     .stats th { font-weight: 500; color: var(--ink-2); width: 6rem; }
     .stats td:last-child { width: 220px; }
-    .note { margin-top: var(--sp-3); }
+    .entry__body :global(.note) { margin-top: var(--sp-3); }
   </style>
 </Base>

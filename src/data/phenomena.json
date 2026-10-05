@@ -45,8 +45,8 @@
   "name": "Cyndaquil",
   "nat": 155,
   "place": "Mt. Shuem",
-  "kind": "Phenomenon",
-  "note": "Turns up in a phenomenon inside Mt. Shuem."
+  "kind": "Dust cloud",
+  "note": "Walk into a dust cloud inside Mt. Shuem."
  },
  {
   "name": "Zoroark",
@@ -54,5 +54,12 @@
   "place": "Route 401",
   "kind": "Phenomenon",
   "note": "Its Illusion ability disguises it as another Pokémon, so it won't look like Zoroark until the battle starts."
+ },
+ {
+  "name": "Mudkip",
+  "nat": 258,
+  "place": "Route 412",
+  "kind": "Water phenomenon",
+  "note": "Surf on Route 412 and move onto the rippling water."
  }
 ]
