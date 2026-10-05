@@ -82,8 +82,6 @@ ACQ.set('Dragonite', { method: 'Mystery Gift — “The Champions’ Dragonite�
   location: 'Commemorates Spain’s 2026 FIFA World Cup win' });
 for (const n of ['Uxie', 'Mesprit', 'Azelf']) ACQ.set(n, { method: 'Roaming — freed by the Pantem Cave disk puzzle, after the end of this version',
   location: 'Random routes; the PDA shows where it is' });
-ACQ.set('Goomy', { method: 'Wild, in the water on the right side of the Safari Zone', location: 'Safari Zone, Central City' });
-ACQ.set('Rockruff', { method: 'Wild, on the left side of the Safari Zone', location: 'Safari Zone, Central City' });
 ACQ.set('Milotic', { method: 'Evolve Feebas — feed it a Wonder Meal at a Pokémon Center twice, then level it up',
   location: 'Any Pokémon Center' });
 
@@ -278,6 +276,11 @@ const ICON_ALIAS = { 'Second Chance': 'seconchance', 'Treasure Hunter': 'treaasu
 export const medalIcon = (m) => ICON_BY_KEY.get(ICON_ALIAS[m.name] || itemKey(m.name)) || null;
 
 /* ---------- places ----------------------------------------------- */
+/* the original Spanish names, for players on the untranslated ROM */
+export const ES_NAME = { 'Yellow Town': 'Pueblo Amarillo', 'Central City': 'Ciudad Central', 'Inhore City': 'Ciudad Melífera',
+  'Pantem Town': 'Pueblo Lodazal', 'Esmerald City': 'Ciudad Algaida', 'Bramboach Town': 'Pueblo Céfiro',
+  'Seanport City': 'Ciudad Náutica', 'Dardusk City': 'Ciudad Crepúsculo', 'Enermy Town': 'Villaeterna',
+  'Groment City': 'Ciudad Antica', 'Panotem Islands': 'Islas Panotem' };
 export const PLACES = placesRaw;
 export const WILDAT = wildlocations;
 export const WILD_BY_PLACE = new Map(WILDAT.map((w) => [w.place, w]));
@@ -310,12 +313,13 @@ export const LOCATION_NOTES = new Map();
 for (const e of seed.entries.filter((x) => x.section === 'locations' || x.section === 'routes'))
   LOCATION_NOTES.set(canon(e.name), { kind: e.data.kind || (e.section === 'routes' ? 'Route' : ''), notes: e.data.notes || '' });
 /* places that sit inside another place */
-export const PLACE_INSIDE = { 'Botanic Garden': 'Esmerald City' };
+export const PLACE_INSIDE = { 'Botanic Garden': 'Esmerald City', 'Safari Zone': 'Central City' };
 export const PLACE_CONTAINS = new Map();
 for (const [inner, outer] of Object.entries(PLACE_INSIDE)) { if (!PLACE_CONTAINS.has(outer)) PLACE_CONTAINS.set(outer, []); PLACE_CONTAINS.get(outer).push(inner); }
 /* the visit order, from the places walked so far */
 export const WALK = [...WILDAT].sort((a, b) => a.order - b.order).map((w) => w.place);
-export const PLACE_EXTRA = { 'Panotem Islands': 'The only place the Alolan forms appear.',
+export const PLACE_EXTRA = { 'Safari Zone': 'Everything listed by area lives only here; the last list turns up elsewhere too. Phanpy (left grass) and Kecleon (first area) may also be exclusive — unconfirmed.',
+   'Panotem Islands': 'The only place the Alolan forms appear.',
   'Desire Island': 'Reached with the Old Sea Map from a Poké Mart (the “A secret map…” Wonder Card). Save first — Jirachi is waiting.' };
 export const PLACE_SHOTS = {
   'Desire Island': ['SpecialLocations/JirachiDesireIsland.png', 'Jirachi'],

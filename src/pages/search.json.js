@@ -2,11 +2,12 @@
    anchor, with the text a player would type. Fetched on first focus, not on
    load, so the home page itself stays small. */
 import { ALLSPECIES, ALOLAN, spPath, ITEMS, POCKETS, pocketOf, itemSlug, href,
-  ALL_PLACES, placePath, GYMS, slug, MEDALS, QUESTS } from '../lib/data.js';
+  ALL_PLACES, placePath, GYMS, slug, MEDALS, QUESTS, ES_NAME } from '../lib/data.js';
 
 export function GET() {
   const rows = [];
   for (const p of ALL_PLACES) if (p.built) rows.push({ t: p.name, k: p.kind, u: placePath(p.name) });
+  for (const [en, es] of Object.entries(ES_NAME)) rows.push({ t: es, k: `Spanish name of ${en}`, u: placePath(en) });
   for (const g of GYMS) rows.push({ t: `${g.city} Gym`, k: `${g.leader} · ${g.badge}`, u: href(`gyms/${slug(g.city)}/`) });
   for (const s of ALLSPECIES) rows.push({ t: s.name, k: s.reg ? `Dex ${String(s.reg).padStart(3, '0')}` : 'Not in dex', u: spPath(s) });
   for (const a of ALOLAN) rows.push({ t: a.name, k: `Alolan form · Dex ${String(a.reg).padStart(3, '0')}`, u: spPath({ ...a, alolan: true }) });

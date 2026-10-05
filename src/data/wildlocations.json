@@ -2065,5 +2065,176 @@
     ]
    }
   ]
+ },
+ {
+  "order": 3.5,
+  "place": "Safari Zone",
+  "methods": [
+   {
+    "how": "First area — Honey tree",
+    "mons": [
+     {
+      "name": "Bounsweet",
+      "nat": 761
+     },
+     {
+      "name": "Weedle",
+      "nat": 13
+     },
+     {
+      "name": "Pikipek",
+      "nat": 731
+     },
+     {
+      "name": "Stufful",
+      "nat": 759
+     },
+     {
+      "name": "Kecleon",
+      "nat": 352
+     }
+    ]
+   },
+   {
+    "how": "Left side — Grass",
+    "mons": [
+     {
+      "name": "Hawlucha",
+      "nat": 701
+     },
+     {
+      "name": "Rockruff",
+      "nat": 744
+     },
+     {
+      "name": "Larvitar",
+      "nat": 246
+     },
+     {
+      "name": "Grubbin",
+      "nat": 736
+     },
+     {
+      "name": "Machop",
+      "nat": 66
+     },
+     {
+      "name": "Phanpy",
+      "nat": 231
+     }
+    ]
+   },
+   {
+    "how": "North side — Sand",
+    "mons": [
+     {
+      "name": "Kangaskhan",
+      "nat": 115
+     },
+     {
+      "name": "Rhyhorn",
+      "nat": 111
+     },
+     {
+      "name": "Litleo",
+      "nat": 667
+     },
+     {
+      "name": "Yungoos",
+      "nat": 734
+     },
+     {
+      "name": "Cubone",
+      "nat": 104
+     },
+     {
+      "name": "Scrafty",
+      "nat": 560
+     },
+     {
+      "name": "Diglett",
+      "nat": 50
+     },
+     {
+      "name": "Togedemaru",
+      "nat": 777
+     }
+    ]
+   },
+   {
+    "how": "Right side — Water",
+    "mons": [
+     {
+      "name": "Lotad",
+      "nat": 270
+     },
+     {
+      "name": "Dewpider",
+      "nat": 751
+     },
+     {
+      "name": "Goomy",
+      "nat": 704
+     }
+    ]
+   },
+   {
+    "how": "Also here — Found elsewhere too",
+    "mons": [
+     {
+      "name": "Surskit",
+      "nat": 283
+     },
+     {
+      "name": "Ducklett",
+      "nat": 580
+     },
+     {
+      "name": "Beedrill",
+      "nat": 15
+     },
+     {
+      "name": "Butterfree",
+      "nat": 12
+     },
+     {
+      "name": "Swirlix",
+      "nat": 684
+     },
+     {
+      "name": "Spritzee",
+      "nat": 682
+     },
+     {
+      "name": "Caterpie",
+      "nat": 10
+     },
+     {
+      "name": "Paras",
+      "nat": 46
+     },
+     {
+      "name": "Sunkern",
+      "nat": 191
+     },
+     {
+      "name": "Marill",
+      "nat": 183
+     },
+     {
+      "name": "Buizel",
+      "nat": 418
+     },
+     {
+      "name": "Slowpoke",
+      "nat": 79
+     },
+     {
+      "name": "Wooper",
+      "nat": 194
+     }
+    ]
+   }
+  ]
  }
 ]
