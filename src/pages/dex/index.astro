@@ -2,7 +2,7 @@
 import Base from '../../layouts/Base.astro';
 import PageHead from '../../components/PageHead.astro';
 import Plate from '../../components/Plate.astro';
-import { ALLSPECIES, ALOLAN_BY_BASE, spPath, SPRITE, TYPES, cap, ACQ, STARTER_BASES, PHENOM_BY_MON, OUTBREAK_BY_MON, SAFARI_ONLY } from '../../lib/data.js';
+import { ALLSPECIES, ALOLAN_BY_BASE, spPath, SPRITE, TYPES, cap, ACQ, STARTER_BASES, PHENOM_BY_MON, OUTBREAK_BY_MON, SAFARI_MONS } from '../../lib/data.js';
 /* The one page allowed to be long: a grid of every entry, filtered in place. */
 ---
 <Base title="Dex" current="dex" description="Every Pokémon in the Zhery regional dex, plus the off-dex gifts and the Alolan forms.">
@@ -35,7 +35,7 @@ import { ALLSPECIES, ALOLAN_BY_BASE, spPath, SPRITE, TYPES, cap, ACQ, STARTER_BA
       const al = ALOLAN_BY_BASE.get(sp.name);
       const data = al ? { 'data-alolan': '1', 'data-al-name': al.name, 'data-al-nat': String(al.nat),
         'data-al-href': spPath({ ...al, alolan: true }), 'data-al-types': al.types.join(' ') } : {};
-      const tags = [STARTER_BASES.has(sp.name) && 'starter', (STARTER_BASES.has(sp.name) || PHENOM_BY_MON.has(sp.name)) && 'phenom', OUTBREAK_BY_MON.has(sp.name) && 'outbreak', SAFARI_ONLY.has(sp.name) && 'safari'].filter(Boolean).join(' ');
+      const tags = [STARTER_BASES.has(sp.name) && 'starter', (STARTER_BASES.has(sp.name) || PHENOM_BY_MON.has(sp.name)) && 'phenom', OUTBREAK_BY_MON.has(sp.name) && 'outbreak', SAFARI_MONS.has(sp.name) && 'safari'].filter(Boolean).join(' ');
       return (
         <a class="card tile" href={spPath(sp)} data-scope={sp.reg ? 'dex' : 'nondex'} data-types={sp.types.join(' ')} data-tags={tags}
            data-q={`${sp.name} ${sp.reg || ''} ${sp.nat} ${al ? al.name + ' alolan' : ''}`.toLowerCase()} {...data}>
@@ -46,7 +46,7 @@ import { ALLSPECIES, ALOLAN_BY_BASE, spPath, SPRITE, TYPES, cap, ACQ, STARTER_BA
           {(STARTER_BASES.has(sp.name) || PHENOM_BY_MON.has(sp.name))
             ? <span class="tile__tag" title="Appears in phenomena with the Phenomenal medal">Phenomena</span>
             : OUTBREAK_BY_MON.has(sp.name) ? <span class="tile__tag tile__tag--ob" title="Appears in a daily mass outbreak">Outbreak</span>
-            : SAFARI_ONLY.has(sp.name) ? <span class="tile__tag tile__tag--sf" title="Found only in the Safari Zone">Safari</span>
+            : SAFARI_MONS.has(sp.name) ? <span class="tile__tag tile__tag--sf" title="Found in the Safari Zone">Safari</span>
             : sp.shiny && <span class="tile__flag" title="Distributed shiny">★</span>}
           {al && <span class="tile__flag tile__flag--al" title="Has an Alolan form">A</span>}
         </a>

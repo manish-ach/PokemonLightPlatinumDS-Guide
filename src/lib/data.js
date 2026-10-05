@@ -289,9 +289,8 @@ for (const w of WILDAT) for (const g of w.methods) for (const m of g.mons) {
   if (!WILD_BY_MON.has(m.name)) WILD_BY_MON.set(m.name, []);
   WILD_BY_MON.get(m.name).push({ place: w.place, how: g.how, order: w.order });
 }
-/* Safari Zone species found only there: every area list except the catch-all */
-export const SAFARI_ONLY = new Set((WILD_BY_PLACE.get('Safari Zone')?.methods || [])
-  .filter((g) => !g.how.startsWith('Also here')).flatMap((g) => g.mons.map((m) => m.name)));
+/* every species you can catch in the Safari Zone, exclusive or not */
+export const SAFARI_MONS = new Set((WILD_BY_PLACE.get('Safari Zone')?.methods || []).flatMap((g) => g.mons.map((m) => m.name)));
 export const PHENOM = phenomena;
 export const PHENOM_BY_PLACE = new Map();
 export const PHENOM_BY_MON = new Map(PHENOM.map((p) => [p.name, p]));
