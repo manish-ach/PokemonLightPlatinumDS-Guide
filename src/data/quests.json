@@ -4,14 +4,16 @@
   "kind": "sidequest",
   "where": "Prof. Jasmine's Lab, Yellow Town",
   "desc": "Hand a fossil to the scientists working with Professor Jasmine and they send it to a laboratory on Cinnabar Island for revival. They call you back once the Pokémon is ready.",
-  "source": "text bank 215"
+  "source": "text bank 215",
+  "itemSprite": "helix-fossil"
  },
  {
   "name": "Show a Poké Ball Pokémon",
   "kind": "sidequest",
   "where": "Inhore University, Inhore City",
   "desc": "A student is writing up class notes. Show her a Pokémon that looks like a Poké Ball (Voltorb line) and she rewards you.",
-  "source": "text bank 214"
+  "source": "text bank 214",
+  "icon": "items/poke-ball.png"
  },
  {
   "name": "Shiny hunt",
@@ -32,14 +34,16 @@
   "kind": "sidequest",
   "where": "Dardusk City",
   "desc": "Dardusk is permanently dark, so residents tell day from night by the Moon Stones, which glow only at night. A townsperson gives you one to use as a guide.",
-  "source": "text bank 241"
+  "source": "text bank 241",
+  "icon": "items/moon-stone.png"
  },
  {
   "name": "Lustroustone in the Mines",
   "kind": "sidequest",
   "where": "Groment Mines",
   "desc": "Finding a Lustroustone in the Mines impresses the Museum staff. The Director has you take the stone disk for safekeeping, because Team Steam will work out that what they stole was a replica and come back for the real one.",
-  "source": "text bank 257"
+  "source": "text bank 257",
+  "icon": "items/lustroustone.png"
  },
  {
   "name": "Complete the collection",
@@ -60,14 +64,23 @@
   "kind": "sidequest",
   "where": "Central City",
   "desc": "A vendor gives you a leather Coin Case, and a lucky player at the Game Corner hands over some of his winnings.",
-  "source": "text bank 193"
+  "source": "text bank 193",
+  "icon": "items/coin-case.png"
  },
  {
   "name": "Show your Pokédex",
   "kind": "sidequest",
-  "where": "Zhery (various)",
-  "desc": "An old Trainer is delighted to see a Pokédex again and gives you something.",
-  "source": "text bank 328"
+  "where": "National Park gate, Route 410",
+  "desc": "A scientist in the gate between the National Park and Route 410 is delighted to see a Pokédex again and gives you the Catch ’Em All medal (1 medal energy). With it on, wild Pokémon are randomly easier to catch, depending on how many Pokémon you have registered in the Pokédex.",
+  "source": "text bank 328",
+  "icon": "MedalIcons/CatchEmAll.png",
+  "short": "A scientist is delighted to see a Pokédex and gives you the Catch ’Em All medal.",
+  "links": [
+   [
+    "Catch ’Em All medal",
+    "medals/#catch-em-all"
+   ]
+  ]
  },
  {
   "name": "The lake trio",
@@ -109,7 +122,8 @@
   "who": "Kaohri",
   "where": "Your house, Yellow Town",
   "desc": "Agreed in Dardusk City. The map found in Central City may hold the locations of many of the Plates.",
-  "source": "text bank 351"
+  "source": "text bank 351",
+  "itemSprite": "splash-plate"
  },
  {
   "name": "Find Team Steam's base",

@@ -1,9 +1,11 @@
 ---
 import Base from '../layouts/Base.astro';
 import PageHead from '../components/PageHead.astro';
-import { QUESTS, slug, href, SPRITE, NAT_OF, SPECIES_BY_NAME, spPath } from '../lib/data.js';
+import { QUESTS, slug, href, pic, SPRITE, SPRITE_ITEM, NAT_OF, SPECIES_BY_NAME, spPath } from '../lib/data.js';
 const side = QUESTS.filter((q) => q.kind !== 'thread');
 const threads = QUESTS.filter((q) => q.kind === 'thread');
+/* a quest's corner art: the Pokémon involved, else the item or medal it hands over */
+const art = (q) => q.icon ? pic(q.icon) : q.itemSprite ? SPRITE_ITEM(q.itemSprite) : null;
 const foot = (q) => q.who ? `${q.who} · ${q.where}` : q.where;
 ---
 <Base title="Quests" current="quests" description="Optional errands around Zhery, and the story threads v0.2.2 leaves open.">
@@ -16,7 +18,8 @@ const foot = (q) => q.who ? `${q.who} · ${q.where}` : q.where;
       <div class="grid" data-questgrid>
         {list.map((q) => (
           <button type="button" class="card card--link quest" id={slug(q.name)} data-quest={slug(q.name)} aria-haspopup="dialog">
-            {q.mons && <span class="quest__mons" aria-hidden="true">{q.mons.map((m) => <img src={SPRITE(NAT_OF.get(m))} alt="" width="40" height="40" loading="lazy" decoding="async" />)}</span>}
+            {q.mons ? <span class="quest__mons" aria-hidden="true">{q.mons.map((m) => <img src={SPRITE(NAT_OF.get(m))} alt="" width="40" height="40" loading="lazy" decoding="async" />)}</span>
+              : art(q) && <span class="quest__mons quest__mons--one" aria-hidden="true"><img src={art(q)} alt="" width="32" height="32" loading="lazy" decoding="async" /></span>}
             <span class="card__title">{q.name}</span>
             <span class="card__meta quest__short">{q.short || q.desc}</span>
             <span class="card__foot">{foot(q)}<span class="quest__more">Details →</span></span>
@@ -35,6 +38,7 @@ const foot = (q) => q.who ? `${q.who} · ${q.where}` : q.where;
   {QUESTS.map((q) => (
     <template data-quest-detail={slug(q.name)}>
       <div class="dialog__head">
+        {!q.mons && art(q) && <img src={art(q)} alt="" />}
         <div><h2 id="qdl-title">{q.name}</h2><p class="small muted">{foot(q)}</p></div>
       </div>
       {q.steps ? (
@@ -62,6 +66,9 @@ const foot = (q) => q.who ? `${q.who} · ${q.where}` : q.where;
     .quest { position: relative; text-align: left; cursor: pointer; font: inherit; }
     .quest .card__title { font-size: var(--text-md); }
     .quest:has(.quest__mons) .card__title { padding-right: 112px; }
+    .quest:has(.quest__mons--one) .card__title { padding-right: 40px; }
+    .quest__mons--one { top: 10px; right: 12px; }
+    .quest__mons--one img { margin-left: 0; width: 32px; height: 32px; object-fit: contain; }
     .quest__short { display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
     .quest .card__foot { justify-content: space-between; }
     .quest__more { color: var(--accent-ink); font-weight: 600; }
