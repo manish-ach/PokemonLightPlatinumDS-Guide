@@ -166,7 +166,11 @@ export const itemKey = (s) => String(s).toLowerCase().replace(/[^a-z0-9]/g, '');
       localIcon: null, tm: r.tm, berries: null, kind: r.tm ? 'machine' : 'item', matched: false,
       slug: sl, sprite: sl ? SPRITE_ITEM(sl) : null, category: null, cost: r.price || null,
       effect: null, gameText: r.gameText || null, flavor: null, confirmed: false });
-  }
+  }  /* every evolution stone and fossil can be dug up in Groment Mines */
+  const DUG = ['Fire Stone', 'Water Stone', 'Thunderstone', 'Leaf Stone', 'Moon Stone', 'Sun Stone', 'Shiny Stone',
+    'Dusk Stone', 'Dawn Stone', 'Helix Fossil', 'Dome Fossil', 'Old Amber', 'Root Fossil', 'Claw Fossil',
+    'Skull Fossil', 'Armor Fossil', 'Jaw Fossil', 'Sail Fossil'].map(itemKey);
+  for (const i of items) if (DUG.includes(itemKey(i.name))) i.locations.push('Groment Mines — dug up while mining');
 }
 export const ITEMS = items;
 export const ITEM_BY_KEY = new Map();

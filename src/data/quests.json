@@ -1,10 +1,28 @@
 [
  {
+  "name": "The thirsty man",
+  "kind": "sidequest",
+  "urgent": true,
+  "where": "Route 412",
+  "short": "Give him a drink within 24 real-world hours, or he leaves for good.",
+  "desc": "A man on Route 412 is desperate for a drink. Give him a Fresh Water, Soda Pop, Lemonade or any other drink from a vending machine. You have 24 real-world hours: if you don't help him in time, he disappears and the quest is gone.",
+  "reward": "Jaw Fossil or Sail Fossil, at random",
+  "rewardItems": [
+   "Jaw Fossil",
+   "Sail Fossil"
+  ],
+  "shot": [
+   "ItemLocations/SailOrJawFossilRoute412.jpeg",
+   "Route 412"
+  ],
+  "item": "Jaw Fossil"
+ },
+ {
   "name": "Pikachu fan",
   "kind": "sidequest",
-  "where": "Poké Mart, Inhore City",
-  "short": "Walk in with a Pikachu following you.",
-  "desc": "Walk in with a Pikachu following you.",
+  "where": "Pokémon Center, Inhore City",
+  "short": "Talk to the girl with a Pikachu while yours follows you.",
+  "desc": "In the Pokémon Center in Inhore City, talk to the girl with the Pikachu while a Pikachu of your own is following you.",
   "reward": "Pikachu PDA background",
   "mons": [
    "Pikachu"
@@ -52,9 +70,28 @@
   "kind": "sidequest",
   "where": "Archaeology Department, Inhore University",
   "short": "Hand over a fossil to have it revived.",
-  "desc": "Hand a fossil to the Archaeology Department. They send it to a laboratory on Cinnabar Island and call you back once the Pokémon is ready.",
-  "reward": "The revived Pokémon",
-  "itemSprite": "helix-fossil"
+  "desc": "Hand a fossil to the Archaeology Department. They send it to a laboratory on Cinnabar Island and call you back once the Pokémon is ready. Every fossil up to Gen 6 can be revived; you can dig them up in Groment Mines.",
+  "reward": "The revived Pokémon, from any of these fossils",
+  "itemSprite": "helix-fossil",
+  "rewardItems": [
+   "Helix Fossil",
+   "Dome Fossil",
+   "Old Amber",
+   "Root Fossil",
+   "Claw Fossil",
+   "Skull Fossil",
+   "Armor Fossil",
+   "Cover Fossil",
+   "Plume Fossil",
+   "Jaw Fossil",
+   "Sail Fossil"
+  ],
+  "links": [
+   [
+    "Groment Mines",
+    "places/groment-mines/"
+   ]
+  ]
  },
  {
   "name": "The Moon Stone guide",
@@ -78,7 +115,7 @@
  {
   "name": "The cook's berries",
   "kind": "sidequest",
-  "where": "Lighthouse, Seanport City",
+  "where": "Seanport City",
   "short": "Bring three of the berry she asks for.",
   "desc": "The cook asks for three of one berry, picked at random each time. Bring her three of it.",
   "reward": "Heart Scale",
@@ -197,7 +234,7 @@
  {
   "name": "The Villa",
   "kind": "sidequest",
-  "where": "Mt. Shuem area",
+  "where": "Enermy Town",
   "desc": "An owner moving to Kanto hands over his Villa, furniture and all.",
   "source": "text bank 364"
  },
@@ -238,9 +275,9 @@
  {
   "name": "Silph PDA background",
   "kind": "gift",
-  "where": "Poké Mart, Central City",
-  "short": "On a later visit.",
-  "desc": "Central City Poké Mart, on a later visit."
+  "where": "Poké Ball Corp., Central City",
+  "short": "",
+  "desc": "At the Poké Ball Corp. in Central City."
  },
  {
   "name": "Experienced medal and HM06 Rock Smash",
@@ -285,19 +322,19 @@
  {
   "name": "Magikarp PDA background",
   "kind": "gift",
-  "where": "Route 406",
+  "where": "Route 408",
   "short": "From a fisherman.",
-  "desc": "A fisherman on Route 406.",
+  "desc": "A fisherman on Route 408.",
   "mons": [
    "Magikarp"
   ]
  },
  {
-  "name": "One random item",
+  "name": "Daily random item",
   "kind": "gift",
-  "where": "A house on Route 406",
-  "short": "10% each of ten items, e.g. Leftovers or Rare Candy.",
-  "desc": "A house on Route 406. Each has a 10% chance: Leftovers, Poké Doll, TwistedSpoon, Poké Ball, BlackGlasses, Repel, Rare Candy, Ether, Silk Scarf, Wide Lens.",
+  "where": "Route 407",
+  "short": "A girl gives you a random item every day.",
+  "desc": "A girl on Route 407 hands you a random item once a day. Each has a 10% chance: Leftovers, Poké Doll, TwistedSpoon, Poké Ball, BlackGlasses, Repel, Rare Candy, Ether, Silk Scarf, Wide Lens.",
   "item": "Poké Doll",
   "rewardItems": [
    "Leftovers",
