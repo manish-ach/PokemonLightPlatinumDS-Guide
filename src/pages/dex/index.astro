@@ -22,6 +22,9 @@ import { ALLSPECIES, ALOLAN_BY_BASE, spPath, SPRITE, TYPES, cap, ACQ, STARTER_BA
       <button type="button" class="chip" data-scope="dex" aria-pressed="false">In the dex</button>
       <button type="button" class="chip" data-scope="nondex" aria-pressed="false">Not in the dex</button>
       <button type="button" class="chip" data-alolan aria-pressed="false">Alolan forms</button>
+      <button type="button" class="chip" data-tag="starter" aria-pressed="false">Starters</button>
+      <button type="button" class="chip" data-tag="phenom" aria-pressed="false">Phenomena</button>
+      <button type="button" class="chip" data-tag="outbreak" aria-pressed="false">Mass outbreak</button>
       <button type="button" class="btn btn--quiet btn--sm" data-clear>Clear</button>
     </div>
   </div>
@@ -31,8 +34,9 @@ import { ALLSPECIES, ALOLAN_BY_BASE, spPath, SPRITE, TYPES, cap, ACQ, STARTER_BA
       const al = ALOLAN_BY_BASE.get(sp.name);
       const data = al ? { 'data-alolan': '1', 'data-al-name': al.name, 'data-al-nat': String(al.nat),
         'data-al-href': spPath({ ...al, alolan: true }), 'data-al-types': al.types.join(' ') } : {};
+      const tags = [STARTER_BASES.has(sp.name) && 'starter', (STARTER_BASES.has(sp.name) || PHENOM_BY_MON.has(sp.name)) && 'phenom', OUTBREAK_BY_MON.has(sp.name) && 'outbreak'].filter(Boolean).join(' ');
       return (
-        <a class="card tile" href={spPath(sp)} data-scope={sp.reg ? 'dex' : 'nondex'} data-types={sp.types.join(' ')}
+        <a class="card tile" href={spPath(sp)} data-scope={sp.reg ? 'dex' : 'nondex'} data-types={sp.types.join(' ')} data-tags={tags}
            data-q={`${sp.name} ${sp.reg || ''} ${sp.nat} ${al ? al.name + ' alolan' : ''}`.toLowerCase()} {...data}>
           <img class="tile__img" src={SPRITE(sp.nat, sp.shiny)} alt="" width="64" height="64" loading="lazy" decoding="async" />
           <span class="tile__no num">{sp.reg ? String(sp.reg).padStart(3, '0') : '—'}</span>
@@ -69,7 +73,8 @@ import { ALLSPECIES, ALOLAN_BY_BASE, spPath, SPRITE, TYPES, cap, ACQ, STARTER_BA
   </style>
 
   <script>
-    /* three filters composed in one pass; scope is exclusive, types multi;
+    /* four filters composed in one pass; scope and encounter tag are
+       exclusive, types multi;
        the Alolan toggle swaps a tile in place because the form shares its
        base's dex number */
     const init = () => {
@@ -80,10 +85,11 @@ import { ALLSPECIES, ALOLAN_BY_BASE, spPath, SPRITE, TYPES, cap, ACQ, STARTER_BA
       const typeBtns = [...document.querySelectorAll('[data-type]')];
       const scopeBtns = [...document.querySelectorAll('[data-scope][aria-pressed]')];
       const alBtn = document.querySelector('[data-alolan]');
+      const tagBtns = [...document.querySelectorAll('button[data-tag]')];
       const search = document.getElementById('dexsearch');
       const out = document.getElementById('dexcount');
       const empty = document.getElementById('dexempty');
-      const types = new Set(); let scope = null; let alolan = false;
+      const types = new Set(); let scope = null; let alolan = false; let tag = null;
 
       const apply = () => {
         const q = (search?.value || '').trim().toLowerCase();
@@ -92,6 +98,7 @@ import { ALLSPECIES, ALOLAN_BY_BASE, spPath, SPRITE, TYPES, cap, ACQ, STARTER_BA
           const ts = (alolan && t.dataset.alolan ? t.dataset.alTypes : t.dataset.types).split(' ');
           const ok = (types.size === 0 || ts.some((x) => types.has(x)))
             && (!scope || t.dataset.scope === scope)
+            && (!tag || t.dataset.tags.split(' ').includes(tag))
             && (!q || t.dataset.q.includes(q));
           t.hidden = !ok; if (ok) n++;
         }
@@ -123,12 +130,16 @@ import { ALLSPECIES, ALOLAN_BY_BASE, spPath, SPRITE, TYPES, cap, ACQ, STARTER_BA
         scope = scope === b.dataset.scope ? null : b.dataset.scope;
         scopeBtns.forEach((o) => o.setAttribute('aria-pressed', String(scope === o.dataset.scope))); apply();
       }));
+      tagBtns.forEach((b) => b.addEventListener('click', () => {
+        tag = tag === b.dataset.tag ? null : b.dataset.tag;
+        tagBtns.forEach((o) => o.setAttribute('aria-pressed', String(tag === o.dataset.tag))); apply();
+      }));
       alBtn?.addEventListener('click', () => { alolan = !alolan; alBtn.setAttribute('aria-pressed', String(alolan)); swap(); apply(); });
       search?.addEventListener('input', apply);
       document.querySelectorAll('[data-clear]').forEach((c) => c.addEventListener('click', () => {
-        types.clear(); scope = null; if (alolan) { alolan = false; swap(); }
+        types.clear(); scope = null; tag = null; if (alolan) { alolan = false; swap(); }
         if (search) search.value = '';
-        [...typeBtns, ...scopeBtns, alBtn].forEach((b) => b && b.setAttribute('aria-pressed', 'false'));
+        [...typeBtns, ...scopeBtns, ...tagBtns, alBtn].forEach((b) => b && b.setAttribute('aria-pressed', 'false'));
         apply(); search?.focus();
       }));
       apply();
