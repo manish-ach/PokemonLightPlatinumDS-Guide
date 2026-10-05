@@ -82,6 +82,8 @@ ACQ.set('Dragonite', { method: 'Mystery Gift — “The Champions’ Dragonite�
   location: 'Commemorates Spain’s 2026 FIFA World Cup win' });
 for (const n of ['Uxie', 'Mesprit', 'Azelf']) ACQ.set(n, { method: 'Roaming — freed by the Pantem Cave disk puzzle, after the end of this version',
   location: 'Random routes; the PDA shows where it is' });
+ACQ.set('Goomy', { method: 'Wild, in the water on the right side of the Safari Zone', location: 'Safari Zone, Central City' });
+ACQ.set('Rockruff', { method: 'Wild, on the left side of the Safari Zone', location: 'Safari Zone, Central City' });
 ACQ.set('Milotic', { method: 'Evolve Feebas — feed it a Wonder Meal at a Pokémon Center twice, then level it up',
   location: 'Any Pokémon Center' });
 
