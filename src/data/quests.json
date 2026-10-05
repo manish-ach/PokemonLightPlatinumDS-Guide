@@ -1,33 +1,52 @@
 [
  {
-  "name": "Fossil revival",
+  "name": "Pikachu fan",
   "kind": "sidequest",
-  "where": "Prof. Jasmine's Lab, Yellow Town",
-  "desc": "Hand a fossil to the scientists working with Professor Jasmine and they send it to a laboratory on Cinnabar Island for revival. They call you back once the Pokémon is ready.",
-  "source": "text bank 215",
-  "itemSprite": "helix-fossil"
+  "where": "Poké Mart, Inhore City",
+  "short": "Walk in with a Pikachu following you.",
+  "desc": "Walk in with a Pikachu following you.",
+  "reward": "Pikachu PDA background",
+  "mons": [
+   "Pikachu"
+  ]
  },
  {
-  "name": "Show a Poké Ball Pokémon",
+  "name": "A Pokémon that looks like a Poké Ball",
   "kind": "sidequest",
   "where": "Inhore University, Inhore City",
-  "desc": "A student is writing up class notes. Show her a Pokémon that looks like a Poké Ball (Voltorb line) and she rewards you.",
-  "source": "text bank 214",
-  "icon": "items/poke-ball.png"
+  "short": "Walk with a Voltorb or a Foongus.",
+  "desc": "A student is writing up class notes and wants to see a Pokémon that looks like a Poké Ball. Walk in with a Voltorb or a Foongus following you.",
+  "reward": "Normativity medal",
+  "medal": "Normativity"
  },
  {
   "name": "Shiny hunt",
   "kind": "sidequest",
   "where": "Inhore University, Inhore City",
-  "desc": "A long-serving Trainer has never seen a Pokémon with unusual colouring and asks you to come back if you find one.",
-  "source": "text bank 212"
+  "short": "Have a shiny Pokémon in your party and a free slot.",
+  "desc": "A long-serving Trainer has never seen a Pokémon with unusual colouring. Come back with a shiny Pokémon in your party and a free party slot.",
+  "reward": "Togepi Egg",
+  "mons": [
+   "Togepi"
+  ]
  },
  {
-  "name": "Show a Fairy-type",
+  "name": "Battle Club",
   "kind": "sidequest",
-  "where": "Dardusk Woods",
-  "desc": "A traveller unnerved by the forest wishes she had a Fairy-type; showing her one you are walking with prompts a reward.",
-  "source": "text bank 296"
+  "where": "Inhore University (downstairs), Inhore City",
+  "short": "Beat each of the six club Trainers once.",
+  "desc": "Downstairs at Inhore University. You need a Gym Badge to get in. Beat each of the six club Trainers once.",
+  "reward": "One each of Power Bracer, Power Belt, Power Lens, Power Band, Power Anklet and Power Weight",
+  "item": "Power Band"
+ },
+ {
+  "name": "Fossil revival",
+  "kind": "sidequest",
+  "where": "Archaeology Department, Inhore University",
+  "short": "Hand over a fossil to have it revived.",
+  "desc": "Hand a fossil to the Archaeology Department. They send it to a laboratory on Cinnabar Island and call you back once the Pokémon is ready.",
+  "reward": "The revived Pokémon",
+  "itemSprite": "helix-fossil"
  },
  {
   "name": "The Moon Stone guide",
@@ -35,15 +54,122 @@
   "where": "Dardusk City",
   "desc": "Dardusk is permanently dark, so residents tell day from night by the Moon Stones, which glow only at night. A townsperson gives you one to use as a guide.",
   "source": "text bank 241",
-  "icon": "items/moon-stone.png"
+  "icon": "items/moon-stone.png",
+  "short": "A townsperson gives you a Moon Stone to tell day from night.",
+  "reward": "Moon Stone"
  },
  {
-  "name": "Lustroustone in the Mines",
+  "name": "Shaymin and the Gracidea",
   "kind": "sidequest",
-  "where": "Groment Mines",
-  "desc": "Finding a Lustroustone in the Mines impresses the Museum staff. The Director has you take the stone disk for safekeeping, because Team Steam will work out that what they stole was a replica and come back for the real one.",
-  "source": "text bank 257",
-  "icon": "items/lustroustone.png"
+  "where": "Botanic Garden, Esmerald City",
+  "short": "Walk with Shaymin.",
+  "desc": "Walk into the Botanic Garden with Shaymin following you. It only works if you don't already carry a Gracidea.",
+  "reward": "Gracidea",
+  "item": "Gracidea"
+ },
+ {
+  "name": "The cook's berries",
+  "kind": "sidequest",
+  "where": "Lighthouse, Seanport City",
+  "short": "Bring three of the berry she asks for.",
+  "desc": "The cook asks for three of one berry, picked at random each time. Bring her three of it.",
+  "reward": "Heart Scale",
+  "item": "Heart Scale"
+ },
+ {
+  "name": "The Lustroustone",
+  "kind": "sidequest",
+  "where": "Museum, Groment City",
+  "short": "Find a Lustroustone in the Mines and show the Director.",
+  "desc": "Find a Lustroustone in Groment Mines and show it to the Museum Director. (The stone disk you're handed during the robbery is a different stone, the Adamanstone.)",
+  "reward": "Master Ball",
+  "item": "Master Ball"
+ },
+ {
+  "name": "The stolen stone",
+  "kind": "sidequest",
+  "where": "Museum, Groment City",
+  "short": "Pay the thief $5000.",
+  "desc": "Pay the thief $5000 to get the stone back.",
+  "reward": "Oval Stone",
+  "item": "Oval Stone"
+ },
+ {
+  "name": "Catch ’Em All",
+  "kind": "sidequest",
+  "where": "National Park gate",
+  "short": "Have 50 or more species caught.",
+  "desc": "Prof. Oak's aide in the gate building by the National Park checks your Pokédex. Have 50 or more species caught. With the medal on (1 medal energy), wild Pokémon are randomly easier to catch, depending on how many species you have registered.",
+  "reward": "Catch ’Em All medal",
+  "medal": "Catch 'Em All",
+  "links": [
+   [
+    "Catch ’Em All medal",
+    "medals/#catch-em-all"
+   ]
+  ]
+ },
+ {
+  "name": "Route 411 habitat list",
+  "kind": "sidequest",
+  "where": "Route 409",
+  "short": "Complete Route 411's habitat list with the Dex Radar.",
+  "desc": "A researcher on Route 409 asks you to complete Route 411's habitat list with the Dex Radar.",
+  "reward": "TM54 False Swipe",
+  "item": "False Swipe",
+  "links": [
+   [
+    "TM54 False Swipe",
+    "items/machines/#tm54-false-swipe"
+   ]
+  ]
+ },
+ {
+  "name": "The cactus Pokémon",
+  "kind": "sidequest",
+  "where": "Route 412",
+  "short": "Walk with a Maractus.",
+  "desc": "Walk with a Maractus.",
+  "reward": "BrightPowder",
+  "item": "Bright Powder"
+ },
+ {
+  "name": "A Fairy for the forest",
+  "kind": "sidequest",
+  "where": "Dardusk Woods",
+  "short": "Walk with a Fairy-type.",
+  "desc": "A traveller unnerved by the forest wishes she had a Fairy-type. Walk past her with one following you.",
+  "reward": "Silk Scarf",
+  "item": "Silk Scarf"
+ },
+ {
+  "name": "Bramboach's plane",
+  "kind": "sidequest",
+  "where": "A house in Bramboach Town",
+  "short": "Say yes, you'd be proud of the town's little plane.",
+  "desc": "Say yes, you'd be proud of the town's little plane.",
+  "reward": "TM40 Aerial Ace",
+  "item": "Aerial Ace"
+ },
+ {
+  "name": "A valuable Egg",
+  "kind": "sidequest",
+  "where": "A house in Pantem Town",
+  "short": "Accept the Egg, with a free party slot.",
+  "desc": "Accept the Egg, with a free party slot.",
+  "reward": "Mantyke Egg",
+  "mons": [
+   "Mantyke"
+  ]
+ },
+ {
+  "name": "TV documentary",
+  "kind": "sidequest",
+  "where": "TV station, Central City",
+  "short": "Bring the Pokémon the writer asks for. New request every day.",
+  "desc": "The writer at the TV station wants a different Pokémon every day. Bring the one asked for before the date changes.",
+  "reward": "Heart Scale plus a random piece of Villa furniture",
+  "item": "Heart Scale"
  },
  {
   "name": "Complete the collection",
@@ -58,29 +184,6 @@
   "where": "Mt. Shuem area",
   "desc": "An owner moving to Kanto hands over his Villa, furniture and all.",
   "source": "text bank 364"
- },
- {
-  "name": "Coin Case and free Coins",
-  "kind": "sidequest",
-  "where": "Central City",
-  "desc": "A vendor gives you a leather Coin Case, and a lucky player at the Game Corner hands over some of his winnings.",
-  "source": "text bank 193",
-  "icon": "items/coin-case.png"
- },
- {
-  "name": "Show your Pokédex",
-  "kind": "sidequest",
-  "where": "National Park gate, Route 410",
-  "desc": "A scientist in the gate between the National Park and Route 410 is delighted to see a Pokédex again and gives you the Catch ’Em All medal (1 medal energy). With it on, wild Pokémon are randomly easier to catch, depending on how many Pokémon you have registered in the Pokédex.",
-  "source": "text bank 328",
-  "icon": "MedalIcons/CatchEmAll.png",
-  "short": "A scientist is delighted to see a Pokédex and gives you the Catch ’Em All medal.",
-  "links": [
-   [
-    "Catch ’Em All medal",
-    "medals/#catch-em-all"
-   ]
-  ]
  },
  {
   "name": "The lake trio",
@@ -107,6 +210,137 @@
     "places/pantem-cave/"
    ]
   ]
+ },
+ {
+  "name": "Coin Case",
+  "kind": "gift",
+  "where": "A vendor's house, Central City",
+  "short": "A Game Corner player also hands over some winnings.",
+  "desc": "A vendor's house in Central City. A lucky player at the Game Corner also hands over some of his winnings.",
+  "item": "Coin Case"
+ },
+ {
+  "name": "Silph PDA background",
+  "kind": "gift",
+  "where": "Poké Mart, Central City",
+  "short": "On a later visit.",
+  "desc": "Central City Poké Mart, on a later visit."
+ },
+ {
+  "name": "Experienced medal and HM06 Rock Smash",
+  "kind": "gift",
+  "where": "Inhore University, Inhore City",
+  "short": "From Prof. Jasmine.",
+  "desc": "Prof. Jasmine at Inhore University.",
+  "medal": "Experienced"
+ },
+ {
+  "name": "Max Repel",
+  "kind": "gift",
+  "where": "Inhore City",
+  "short": "From a mountaineer.",
+  "desc": "A mountaineer in Inhore City.",
+  "item": "Max Repel"
+ },
+ {
+  "name": "Mining Kit",
+  "kind": "gift",
+  "where": "Museum, Groment City",
+  "short": "After the robbery. Sell Mines treasures to the Museum.",
+  "desc": "Groment Museum, after the robbery. It lets you sell treasures from the Mines to the Museum.",
+  "item": "Mining Kit"
+ },
+ {
+  "name": "Rockbreaker Feet medal",
+  "kind": "gift",
+  "where": "Groment Mines",
+  "short": "From a miner.",
+  "desc": "A miner in Groment Mines.",
+  "medal": "Rockbreaker Feet"
+ },
+ {
+  "name": "Imprisonment medal",
+  "kind": "gift",
+  "where": "Rest-area house, Route 405–407",
+  "short": "Map data says Route 405; the guide says 406–407.",
+  "desc": "A house at a rest area. The map data says Route 405; the guide says Route 406–407.",
+  "medal": "Imprisonment"
+ },
+ {
+  "name": "Magikarp PDA background",
+  "kind": "gift",
+  "where": "Route 406",
+  "short": "From a fisherman.",
+  "desc": "A fisherman on Route 406.",
+  "mons": [
+   "Magikarp"
+  ]
+ },
+ {
+  "name": "One random item",
+  "kind": "gift",
+  "where": "A house on Route 406",
+  "short": "10% each of ten items, e.g. Leftovers or Rare Candy.",
+  "desc": "A house on Route 406. Each has a 10% chance: Leftovers, Poké Doll, TwistedSpoon, Poké Ball, BlackGlasses, Repel, Rare Candy, Ether, Silk Scarf, Wide Lens.",
+  "item": "Poké Doll"
+ },
+ {
+  "name": "TM05 Roar",
+  "kind": "gift",
+  "where": "Route 412",
+  "short": "From the “roaring” hiker.",
+  "desc": "The “roaring” hiker on Route 412.",
+  "item": "Roar"
+ },
+ {
+  "name": "Toxic Orb",
+  "kind": "gift",
+  "where": "Dardusk Woods",
+  "short": "",
+  "desc": "Dardusk Woods.",
+  "item": "Toxic Orb"
+ },
+ {
+  "name": "Larvesta Egg",
+  "kind": "gift",
+  "where": "Sun Palace",
+  "short": "On an altar. Needs a free party slot.",
+  "desc": "On an altar in the Sun Palace. Needs a free party slot.",
+  "mons": [
+   "Larvesta"
+  ]
+ },
+ {
+  "name": "Old Rod",
+  "kind": "gift",
+  "where": "Panotem Islands",
+  "short": "In a fisherman's house.",
+  "desc": "A fisherman's house in the Panotem Islands.",
+  "item": "Old Rod"
+ },
+ {
+  "name": "Good Rod",
+  "kind": "gift",
+  "where": "National Park",
+  "short": "At the entrance.",
+  "desc": "The National Park entrance.",
+  "item": "Good Rod"
+ },
+ {
+  "name": "SilverPowder",
+  "kind": "gift",
+  "where": "Route 401",
+  "short": "",
+  "desc": "Route 401.",
+  "item": "Silver Powder"
+ },
+ {
+  "name": "Dungeon Key",
+  "kind": "gift",
+  "where": "Shadow Tower",
+  "short": "Reach into the urn.",
+  "desc": "Reach into the urn in Shadow Tower.",
+  "item": "Dungeon Key"
  },
  {
   "name": "Mt. Origin expedition",

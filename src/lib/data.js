@@ -238,6 +238,7 @@ const TM_SHOTS = {
   TM39: ['Tm/TM39RockTombMtShuem.jpeg', 'Mt. Shuem'],
   TM42: ['Tm/TM42FacadeNationalPark.jpg', 'National Park'],
   TM43: ['Tm/TM43SecretPowerSunPalace.jpeg', 'Sun Palace'],
+  TM54: ['Tm/TM54FalseSwipeRoute409.webp', 'Route 409 — the researcher'],
   TM65: ['Tm/TM65ShadowClawDarduskForest.jpg', 'Darkdusk Forest'],
   TM70: ['Tm/TM70FlashGromentCIty.jpeg', 'Gromet City'],
   TM74: ['Tm/TM74GyroBallMine.jpeg', 'Gromet Mine'],
