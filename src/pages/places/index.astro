@@ -12,7 +12,7 @@ const strip = (name) => {
   const w = WILD_BY_PLACE.get(name);
   if (!w) return [];
   const seen = new Set(); const out = [];
-  for (const g of w.methods) for (const m of g.mons) if (!seen.has(m.name)) { seen.add(m.name); out.push(m); }
+  for (const g of w.methods) for (const m of g.mons) if (m.nat && !seen.has(m.name)) { seen.add(m.name); out.push(m); }
   return out;
 };
 const q = (p) => [p.name, ES_NAME[p.name] || '', ...strip(p.name).map((m) => m.name), GYM_AT.get(p.name)?.leader || '', ...(PHENOM_BY_PLACE.get(p.name) || []).map((x) => x.name), ...(OUTBREAK_BY_PLACE.get(p.name) || []).map((x) => x.name)].join(' ').toLowerCase();

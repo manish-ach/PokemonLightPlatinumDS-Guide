@@ -73,5 +73,20 @@
   "name": "Venipede",
   "nat": 543,
   "place": "Inhore Woods"
+ },
+ {
+  "name": "Foongus",
+  "nat": 590,
+  "place": "Foongus Swamp"
+ },
+ {
+  "name": "Jigglypuff",
+  "nat": 39,
+  "place": "Route 407"
+ },
+ {
+  "name": "Skitty",
+  "nat": 300,
+  "place": "Route 409"
  }
 ]

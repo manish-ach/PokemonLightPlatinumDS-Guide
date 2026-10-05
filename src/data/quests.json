@@ -437,6 +437,47 @@
   "item": "Dungeon Key"
  },
  {
+  "name": "Carvanha",
+  "kind": "gift",
+  "where": "Beach, Seanport City",
+  "short": "From a man on the beach, after 10 pm.",
+  "desc": "A man on the beach in Seanport City gives you a Carvanha. He's only there after 10 pm.",
+  "mons": [
+   "Carvanha"
+  ]
+ },
+ {
+  "name": "Daily Incense",
+  "kind": "gift",
+  "where": "Shadow Tower, Dardusk City",
+  "short": "An old lady gives a different Incense each day.",
+  "desc": "An old lady in Shadow Tower hands you an Incense, a different one each day.",
+  "reward": "One Incense a day, at random",
+  "rewardItems": [
+   "Sea Incense",
+   "Lax Incense",
+   "Rock Incense",
+   "Odd Incense",
+   "Full Incense",
+   "Wave Incense",
+   "Rose Incense",
+   "Luck Incense",
+   "Pure Incense"
+  ],
+  "item": "Lax Incense"
+ },
+ {
+  "name": "Lugia and Ho-Oh in the Pokédex",
+  "kind": "gift",
+  "where": "Library, Inhore University",
+  "short": "Read about them to register both in the Pokédex.",
+  "desc": "Neither can be caught in this version, but the library at Inhore University registers Lugia and Ho-Oh in your Pokédex.",
+  "mons": [
+   "Lugia",
+   "Ho-Oh"
+  ]
+ },
+ {
   "name": "Mt. Origin expedition",
   "kind": "thread",
   "who": "Prof. Jasmine",

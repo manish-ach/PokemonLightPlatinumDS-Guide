@@ -1194,7 +1194,7 @@
   "from": "Nosepass",
   "toNat": 476,
   "to": "Probopass",
-  "how": "Level up in a magnetic field"
+  "how": "Level up on the island east of the Panotem Islands during the aurora borealis, which depends on the real-world time"
  },
  {
   "fromNat": 300,
@@ -2552,7 +2552,7 @@
   "from": "Charjabug",
   "toNat": 738,
   "to": "Vikavolt",
-  "how": "Level up in a magnetic field"
+  "how": "Level up on the island east of the Panotem Islands during the aurora borealis, which depends on the real-world time"
  },
  {
   "fromNat": 739,

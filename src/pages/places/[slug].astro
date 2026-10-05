@@ -43,6 +43,8 @@ const views = [
   ...(shot ? [{ id: 'seen', label: 'Seen here', src: shot[0], caption: shot[1] }] : []),
 ];
 const areas = groups.filter((g) => g.area).map((g) => g.area);
+/* an area named only in punctuation ("???") still needs an id to switch to */
+const areaId = (a) => slug(a) || 'unknown';
 const segmented = areas.length > 1;
 const areaOf = (v) => { const g = wild?.methods.find((m) => slug(m.how) === v.id); return g ? parseHow(g.how).area : null; };
 const isR412 = place.name === 'Route 412';
@@ -84,15 +86,15 @@ const inner = PLACE_CONTAINS.get(place.name) || [];
 
       {wild ? (
         <section class="block">
-          <h2>Wild Pokémon <span class="small muted">from the DexNav</span></h2>
+          <h2>Wild Pokémon <span class="small muted">from the game’s encounter tables</span></h2>
           {wild.note && <p class="small muted">{wild.note}</p>}
           {segmented && (
             <div class="seg" role="group" aria-label="Part of the area">
-              {areas.map((a, i) => <button type="button" class="seg__btn" data-area={slug(a)} aria-pressed={i === 0 ? 'true' : 'false'}>{a}</button>)}
+              {areas.map((a, i) => <button type="button" class="seg__btn" data-area={areaId(a)} aria-pressed={i === 0 ? 'true' : 'false'}>{a}</button>)}
             </div>
           )}
           {groups.map((grp, i) => (
-            <div class="area" data-area-pane={grp.area ? slug(grp.area) : ''} hidden={segmented && i !== 0}>
+            <div class="area" data-area-pane={grp.area ? areaId(grp.area) : ''} hidden={segmented && i !== 0}>
               <dl class="kv">
                 {grp.rows.map((g) => (
                   <div>
@@ -132,8 +134,8 @@ const inner = PLACE_CONTAINS.get(place.name) || [];
           <h3>The eastern ledges</h3>
           <p><a href={itemHref('Thick Club')}>Thick Club</a> sits behind the first ledge drop. It is a Marowak item, so it is worth collecting even if you have no Cubone yet.</p>
           <Shot src="ItemLocations/ThickClubRoute412.jpeg" title="Thick Club" place="Route 412 — eastern ledges" />
-          <Note kind="warn" title="Missable — Sail Fossil or Jaw Fossil">
-            <p>You are offered one of the two and cannot return for the other on this save. Jaw Fossil gives Tyrunt; Sail Fossil gives Amaura.</p>
+          <Note kind="warn" title="Missable — Sail Fossil or Jaw Fossil, at random">
+            <p>He gives you one of the two at random, and you cannot come back for the other on this save. Jaw Fossil gives Tyrunt; Sail Fossil gives Amaura.</p>
             <p><b>Timed.</b> Talking to him starts a one-day countdown. He wants a drink — hand over a Lemonade, Fresh Water or Soda Pop before the day is out. Let it lapse and he leaves with both fossils. Buy the drink <em>before</em> you talk to him.</p>
           </Note>
           <Shot src="ItemLocations/SailOrJawFossilRoute412.jpeg" title="Sail / Jaw Fossil" place="Route 412 — the choice" />
@@ -166,7 +168,7 @@ const inner = PLACE_CONTAINS.get(place.name) || [];
           {views.length > 1 && (
             <div class="viewer__tabs" role="tablist">
               {views.map((v, i) => { const a = areaOf(v); const { how } = parseHow(v.caption.replace(/^DexNav — /, '')); return (
-                <button type="button" role="tab" class="viewer__tab" data-view={v.id} data-tab-area={a ? slug(a) : ''} aria-selected={i === 0 ? 'true' : 'false'} hidden={segmented && a && a !== areas[0]}>{a ? how : v.label}</button>
+                <button type="button" role="tab" class="viewer__tab" data-view={v.id} data-tab-area={a ? areaId(a) : ''} aria-selected={i === 0 ? 'true' : 'false'} hidden={segmented && a && a !== areas[0]}>{a ? how : v.label}</button>
               ); })}
             </div>
           )}
@@ -247,11 +249,15 @@ const inner = PLACE_CONTAINS.get(place.name) || [];
         box.addEventListener('change', () => { try { localStorage.setItem(k, box.checked ? '1' : '0'); } catch (e) {} });
       }
       /* method names in the list and tabs on the viewer pick the same picture */
+      /* not every place has pictures, but its area tabs must still switch */
+      const seg = document.querySelector('.seg');
       const viewer = document.querySelector('[data-viewer]');
-      if (!viewer || viewer.dataset.wired) return;
-      viewer.dataset.wired = '1';
-      const panes = [...viewer.querySelectorAll('[data-pane]')];
+      const root = viewer || seg;
+      if (!root || root.dataset.wired) return;
+      root.dataset.wired = '1';
+      const panes = viewer ? [...viewer.querySelectorAll('[data-pane]')] : [];
       const show = (id) => {
+        if (!viewer) return;
         panes.forEach((p) => { p.hidden = p.dataset.pane !== id; });
         viewer.querySelectorAll('[role=tab]').forEach((t) => t.setAttribute('aria-selected', String(t.dataset.view === id)));
         document.querySelectorAll('.how').forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.view === id)));
@@ -262,6 +268,7 @@ const inner = PLACE_CONTAINS.get(place.name) || [];
         const a = b.dataset.area;
         document.querySelectorAll('.seg__btn').forEach((o) => o.setAttribute('aria-pressed', String(o === b)));
         document.querySelectorAll('[data-area-pane]').forEach((p) => { p.hidden = p.dataset.areaPane !== a; });
+        if (!viewer) return;
         const tabs = [...viewer.querySelectorAll('[role=tab]')];
         tabs.forEach((t) => { t.hidden = !!t.dataset.tabArea && t.dataset.tabArea !== a; });
         const first = tabs.find((t) => t.dataset.tabArea === a) || tabs.find((t) => !t.hidden);

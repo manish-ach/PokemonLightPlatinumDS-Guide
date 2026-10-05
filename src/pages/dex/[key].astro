@@ -3,8 +3,9 @@ import Base from '../../layouts/Base.astro';
 import PageHead from '../../components/PageHead.astro';
 import Plate from '../../components/Plate.astro';
 import Note from '../../components/Note.astro';
+import Shot from '../../components/Shot.astro';
 import Stepper from '../../components/Stepper.astro';
-import { ALLSPECIES, ALOLAN, ALOLAN_BY_BASE, SPECIES, NONDEX, spKey, spPath, SPRITE, href, ACQ, PHENOM_BY_MON, OUTBREAK_BY_MON, WILD_BY_MON, placePath, WILD_BY_PLACE, EGG_BASES, REACHABLE, STARTER_BASES, evolveFrom, SPECIES_BY_NAME } from '../../lib/data.js';
+import { ALLSPECIES, ALOLAN, ALOLAN_BY_BASE, SPECIES, NONDEX, spKey, spPath, SPRITE, href, ACQ, PHENOM_BY_MON, OUTBREAK_BY_MON, WILD_BY_MON, placePath, WILD_BY_PLACE, EGG_BASES, breedFrom, REACHABLE, STARTER_BASES, evolveFrom, SPECIES_BY_NAME } from '../../lib/data.js';
 
 export function getStaticPaths() {
   const regular = ALLSPECIES.map((sp) => ({ params: { key: spKey(sp) }, props: { sp } }));
@@ -36,7 +37,10 @@ const direct = !!(acq || ph || ob || wild.length || egg);
 /* mid and final stages always list how to evolve up to them, alongside any
    place they can be caught */
 const evos = sp.alolan ? [] : evolveFrom(sp.nat);
-const known = direct || evos.length > 0;
+const breed = sp.alolan ? null : breedFrom(sp.name);
+/* the lines that evolve under the aurora, or are levelled up there */
+const aurora = ['Nosepass', 'Probopass', 'Charjabug', 'Vikavolt'].includes(sp.name);
+const known = direct || evos.length > 0 || !!breed;
 const placeHref = (p) => WILD_BY_PLACE.has(p) || REACHABLE.some((x) => x.name === p) ? placePath(p) : null;
 const link = (name) => { const s = SPECIES_BY_NAME.get(name); return s ? spPath(s) : null; };
 ---
@@ -72,6 +76,7 @@ const link = (name) => { const s = SPECIES_BY_NAME.get(name); return s ? spPath(
               {ob && <tr><td>Mass outbreak</td><td>{placeHref(ob.place) ? <a href={placeHref(ob.place)}>{ob.place}</a> : ob.place}</td></tr>}
               {wild.map((w) => <tr><td>{w.how}</td><td><a href={placePath(w.place)}>{w.place}</a></td></tr>)}
               {egg && <tr><td>Mystery Gift</td><td><a href={href('gifts/')}>“A dragon egg…” Wonder Card</a> — hatches one of six lines, at random</td></tr>}
+              {breed && <tr><td>Breed {breed.parents.map((n, i) => <>{i > 0 && (i === breed.parents.length - 1 ? ' or ' : ', ')}{link(n) ? <a href={link(n)}>{n}</a> : n}</>)}{breed.incense && <> holding {/^[AEIOU]/.test(breed.incense) ? 'an' : 'a'} <a href={href('quests/#daily-incense')}>{breed.incense}</a></>}</td><td>Day Care — hatch the Egg</td></tr>}
               {evos.map((e) => <tr><td>Evolve {link(e.from) ? <a href={link(e.from)}>{e.from}</a> : e.from}</td><td>{e.how}</td></tr>)}
             </tbody>
           </table></div>
@@ -80,6 +85,7 @@ const link = (name) => { const s = SPECIES_BY_NAME.get(name); return s ? spPath(
         )}
         {ph && <Note kind="info" title={`${ph.kind} — needs the Phenomenal medal`}><p>{ph.note} Equip the <a href={medal}>Phenomenal medal</a> first.</p></Note>}
         {ob && <Note kind="info" title="Mass outbreak"><p>Outbreaks start once you've beaten the Groment City gym and played to the end of this version. Each day a message in the PDA announces one random Pokémon out in the overworld — {sp.name} is one of them, at {ob.place}.</p></Note>}
+        {aurora && <div class="aurora"><Shot src="SpecialLocations/AuroraBorealisPanotem.webp" title="The aurora borealis" place="Island east of the Panotem Islands" /></div>}
         {starter && !ph && <Note kind="info" title="Also appears in phenomena"><p>With the <a href={medal}>Phenomenal medal</a> on, {sp.name} can turn up in phenomena — shaking grass, whirlpools in water and dust clouds in caves.</p></Note>}
       </section>
 
@@ -116,6 +122,8 @@ const link = (name) => { const s = SPECIES_BY_NAME.get(name); return s ? spPath(
     .quote { border: 1px solid var(--line); border-radius: var(--radius); padding: var(--sp-3) var(--sp-4); background: var(--surface); max-width: var(--measure); }
     .stats th { font-weight: 500; color: var(--ink-2); width: 6rem; }
     .stats td:last-child { width: 220px; }
+    .aurora { margin-top: var(--sp-3); max-width: 480px; }
+    .aurora :global(img) { image-rendering: pixelated; }
     .entry__body :global(.note) { margin-top: var(--sp-3); }
   </style>
 </Base>

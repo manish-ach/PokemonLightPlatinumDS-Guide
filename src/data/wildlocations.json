@@ -7,32 +7,32 @@
     "how": "Fishing",
     "mons": [
      {
-      "name": "Poliwag",
-      "nat": 60
-     },
-     {
-      "name": "Poliwhirl",
-      "nat": 61
-     },
-     {
-      "name": "Poliwrath",
-      "nat": 62
-     },
-     {
       "name": "Magikarp",
-      "nat": 129
-     },
-     {
-      "name": "Gyarados",
-      "nat": 130
+      "nat": 129,
+      "rate": 100,
+      "levels": "5–25",
+      "form": "Old Rod"
      },
      {
       "name": "Goldeen",
-      "nat": 118
+      "nat": 118,
+      "rate": 60,
+      "levels": "15–30",
+      "form": "Good Rod"
      },
      {
-      "name": "Seaking",
-      "nat": 119
+      "name": "Poliwag",
+      "nat": 60,
+      "rate": 35,
+      "levels": "15–30",
+      "form": "Good Rod"
+     },
+     {
+      "name": "Poliwhirl",
+      "nat": 61,
+      "rate": 5,
+      "levels": "25–30",
+      "form": "Good Rod"
      }
     ]
    },
@@ -40,16 +40,41 @@
     "how": "Surfing",
     "mons": [
      {
+      "name": "Marill",
+      "nat": 183,
+      "rate": 60,
+      "levels": "20–30"
+     },
+     {
+      "name": "Azumarill",
+      "nat": 184,
+      "rate": 40,
+      "levels": "25–35"
+     }
+    ]
+   },
+   {
+    "how": "Phenomena",
+    "mons": [
+     {
+      "name": "Azumarill",
+      "nat": 184
+     },
+     {
       "name": "Totodile",
       "nat": 158
      },
      {
-      "name": "Marill",
-      "nat": 183
+      "name": "Gyarados",
+      "nat": 130
      },
      {
-      "name": "Azumarill",
-      "nat": 184
+      "name": "Seaking",
+      "nat": 119
+     },
+     {
+      "name": "Poliwrath",
+      "nat": 62
      }
     ]
    }
@@ -63,16 +88,8 @@
     "how": "Grass",
     "mons": [
      {
-      "name": "Ledyba",
-      "nat": 165
-     },
-     {
-      "name": "Blitzle",
-      "nat": 522
-     },
-     {
-      "name": "Cascoon",
-      "nat": 268
+      "name": "Caterpie",
+      "nat": 10
      },
      {
       "name": "Wurmple",
@@ -83,32 +100,49 @@
       "nat": 396
      },
      {
-      "name": "Caterpie",
-      "nat": 10
-     },
-     {
-      "name": "Silcoon",
-      "nat": 266
-     },
-     {
-      "name": "Zorua",
-      "nat": 570
-     },
-     {
-      "name": "Purrloin",
-      "nat": 509
+      "name": "Ledyba",
+      "nat": 165
      },
      {
       "name": "Bidoof",
       "nat": 399
      },
      {
+      "name": "Blitzle",
+      "nat": 522
+     },
+     {
       "name": "Poochyena",
       "nat": 261
      },
      {
+      "name": "Purrloin",
+      "nat": 509
+     },
+     {
       "name": "Spinarak",
       "nat": 167
+     }
+    ]
+   },
+   {
+    "how": "Phenomena",
+    "mons": [
+     {
+      "name": "Wurmple",
+      "nat": 265
+     },
+     {
+      "name": "Silcoon",
+      "nat": 266
+     },
+     {
+      "name": "Cascoon",
+      "nat": 268
+     },
+     {
+      "name": "Zorua",
+      "nat": 570
      }
     ]
    }
@@ -122,16 +156,8 @@
     "how": "Rooftop",
     "mons": [
      {
-      "name": "Fearow",
-      "nat": 22
-     },
-     {
       "name": "Pidove",
       "nat": 519
-     },
-     {
-      "name": "Fletchling",
-      "nat": 661
      }
     ]
    }
@@ -145,32 +171,32 @@
     "how": "Fishing",
     "mons": [
      {
+      "name": "Magikarp",
+      "nat": 129,
+      "rate": 100,
+      "levels": "5–25",
+      "form": "Old Rod"
+     },
+     {
       "name": "Shellder",
-      "nat": 90
-     },
-     {
-      "name": "Cloyster",
-      "nat": 91
-     },
-     {
-      "name": "Clamperl",
-      "nat": 366
+      "nat": 90,
+      "rate": 60,
+      "levels": "15–30",
+      "form": "Good Rod"
      },
      {
       "name": "Finneon",
-      "nat": 456
+      "nat": 456,
+      "rate": 35,
+      "levels": "15–30",
+      "form": "Good Rod"
      },
      {
-      "name": "Lumineon",
-      "nat": 457
-     },
-     {
-      "name": "Magikarp",
-      "nat": 129
-     },
-     {
-      "name": "Gyarados",
-      "nat": 130
+      "name": "Cloyster",
+      "nat": 91,
+      "rate": 5,
+      "levels": "25–30",
+      "form": "Good Rod"
      }
     ]
    },
@@ -178,24 +204,22 @@
     "how": "Surfing",
     "mons": [
      {
-      "name": "Dewgong",
-      "nat": 87
-     },
-     {
-      "name": "Seel",
-      "nat": 86
-     },
-     {
       "name": "Horsea",
-      "nat": 116
+      "nat": 116,
+      "rate": 65,
+      "levels": "20–35"
+     },
+     {
+      "name": "Frillish",
+      "nat": 592,
+      "rate": 30,
+      "levels": "25–30"
      },
      {
       "name": "Seadra",
-      "nat": 117
-     },
-     {
-      "name": "Kingdra",
-      "nat": 230
+      "nat": 117,
+      "rate": 5,
+      "levels": "32–35"
      }
     ]
    },
@@ -203,40 +227,32 @@
     "how": "Grass (Central City side)",
     "mons": [
      {
-      "name": "Luxio",
-      "nat": 404
+      "name": "Fletchling",
+      "nat": 661
      },
      {
       "name": "Shinx",
       "nat": 403
      },
      {
+      "name": "Caterpie",
+      "nat": 10
+     },
+     {
       "name": "Wurmple",
       "nat": 265
+     },
+     {
+      "name": "Nincada",
+      "nat": 290
      },
      {
       "name": "Bidoof",
       "nat": 399
      },
      {
-      "name": "Purrloin",
-      "nat": 509
-     },
-     {
-      "name": "Caterpie",
-      "nat": 10
-     },
-     {
-      "name": "Fletchling",
-      "nat": 661
-     },
-     {
-      "name": "Fletchinder",
-      "nat": 662
-     },
-     {
-      "name": "Vulpix",
-      "nat": 37
+      "name": "Ekans",
+      "nat": 23
      },
      {
       "name": "Poochyena",
@@ -251,17 +267,82 @@
       "nat": 29
      },
      {
-      "name": "Nidorina",
-      "nat": 30
+      "name": "Purrloin",
+      "nat": 509
+     }
+    ]
+   },
+   {
+    "how": "Honey tree",
+    "mons": [
+     {
+      "name": "Combee",
+      "nat": 415
      },
      {
-      "name": "Ekans",
-      "nat": 23
+      "name": "Sewaddle",
+      "nat": 540
+     },
+     {
+      "name": "Swadloon",
+      "nat": 541
+     },
+     {
+      "name": "Vespiquen",
+      "nat": 416
+     },
+     {
+      "name": "Beautifly",
+      "nat": 267
+     }
+    ]
+   },
+   {
+    "how": "Phenomena",
+    "mons": [
+     {
+      "name": "Vulpix",
+      "nat": 37
+     },
+     {
+      "name": "Luxio",
+      "nat": 404
+     },
+     {
+      "name": "Fletchinder",
+      "nat": 662
+     },
+     {
+      "name": "Nincada",
+      "nat": 290
+     },
+     {
+      "name": "Seadra",
+      "nat": 117
+     },
+     {
+      "name": "Jellicent",
+      "nat": 593
+     },
+     {
+      "name": "Kingdra",
+      "nat": 230
+     },
+     {
+      "name": "Gyarados",
+      "nat": 130
+     },
+     {
+      "name": "Clamperl",
+      "nat": 366
+     },
+     {
+      "name": "Lumineon",
+      "nat": 457
      }
     ]
    }
-  ],
-  "note": "The lake and the road beside it, on the Central City side."
+  ]
  },
  {
   "order": 5,
@@ -271,48 +352,28 @@
     "how": "Grass",
     "mons": [
      {
-      "name": "Linoone",
-      "nat": 264
-     },
-     {
-      "name": "Zigzagoon",
-      "nat": 263
-     },
-     {
-      "name": "Wurmple",
-      "nat": 265
-     },
-     {
-      "name": "Buneary",
-      "nat": 427
-     },
-     {
-      "name": "Glameow",
-      "nat": 431
-     },
-     {
-      "name": "Sentret",
-      "nat": 161
+      "name": "Taillow",
+      "nat": 276
      },
      {
       "name": "Pidgey",
       "nat": 16
      },
      {
-      "name": "Pidgeotto",
-      "nat": 17
+      "name": "Sentret",
+      "nat": 161
      },
      {
-      "name": "Taillow",
-      "nat": 276
+      "name": "Wurmple",
+      "nat": 265
      },
      {
-      "name": "Swellow",
-      "nat": 277
+      "name": "Zigzagoon",
+      "nat": 263
      },
      {
-      "name": "Poochyena",
-      "nat": 261
+      "name": "Buneary",
+      "nat": 427
      },
      {
       "name": "Rattata",
@@ -325,6 +386,31 @@
      {
       "name": "Hoothoot",
       "nat": 163
+     },
+     {
+      "name": "Poochyena",
+      "nat": 261
+     }
+    ]
+   },
+   {
+    "how": "Phenomena",
+    "mons": [
+     {
+      "name": "Glameow",
+      "nat": 431
+     },
+     {
+      "name": "Pidgeotto",
+      "nat": 17
+     },
+     {
+      "name": "Linoone",
+      "nat": 264
+     },
+     {
+      "name": "Swellow",
+      "nat": 277
      }
     ]
    }
@@ -338,24 +424,12 @@
     "how": "Grass",
     "mons": [
      {
-      "name": "Linoone",
-      "nat": 264
+      "name": "Taillow",
+      "nat": 276
      },
      {
-      "name": "Zigzagoon",
-      "nat": 263
-     },
-     {
-      "name": "Treecko",
-      "nat": 252
-     },
-     {
-      "name": "Mankey",
-      "nat": 56
-     },
-     {
-      "name": "Ledian",
-      "nat": 166
+      "name": "Pidgey",
+      "nat": 16
      },
      {
       "name": "Sentret",
@@ -366,28 +440,24 @@
       "nat": 265
      },
      {
-      "name": "Purrloin",
-      "nat": 509
+      "name": "Zigzagoon",
+      "nat": 263
      },
      {
       "name": "Skiddo",
       "nat": 672
      },
      {
-      "name": "Gogoat",
-      "nat": 673
+      "name": "Kricketot",
+      "nat": 401
      },
      {
-      "name": "Taillow",
-      "nat": 276
+      "name": "Rattata",
+      "nat": 19
      },
      {
-      "name": "Arbok",
-      "nat": 24
-     },
-     {
-      "name": "Pidgey",
-      "nat": 16
+      "name": "Ekans",
+      "nat": 23
      },
      {
       "name": "Hoothoot",
@@ -396,6 +466,74 @@
      {
       "name": "Poochyena",
       "nat": 261
+     }
+    ]
+   },
+   {
+    "how": "Headbutt tree",
+    "mons": [
+     {
+      "name": "Pineco",
+      "nat": 204,
+      "levels": "5–10"
+     },
+     {
+      "name": "Burmy",
+      "nat": 412,
+      "levels": "5–10"
+     },
+     {
+      "name": "Silcoon",
+      "nat": 266,
+      "levels": "5–10"
+     },
+     {
+      "name": "Cascoon",
+      "nat": 268,
+      "levels": "5–10"
+     }
+    ]
+   },
+   {
+    "how": "Phenomena",
+    "mons": [
+     {
+      "name": "Mankey",
+      "nat": 56
+     },
+     {
+      "name": "Linoone",
+      "nat": 264
+     },
+     {
+      "name": "Gogoat",
+      "nat": 673
+     },
+     {
+      "name": "Treecko",
+      "nat": 252
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "place": "Inhore City",
+  "methods": [
+   {
+    "how": "Honey tree",
+    "mons": [
+     {
+      "name": "Combee",
+      "nat": 415
+     },
+     {
+      "name": "Ledyba",
+      "nat": 165
+     },
+     {
+      "name": "Heracross",
+      "nat": 214
      }
     ]
    }
@@ -409,56 +547,36 @@
     "how": "Grass",
     "mons": [
      {
-      "name": "Snivy",
-      "nat": 495
-     },
-     {
-      "name": "Oddish",
-      "nat": 43
-     },
-     {
-      "name": "Patrat",
-      "nat": 504
-     },
-     {
-      "name": "Spinarak",
-      "nat": 167
-     },
-     {
-      "name": "Zubat",
-      "nat": 41
-     },
-     {
-      "name": "Golbat",
-      "nat": 42
-     },
-     {
       "name": "Budew",
       "nat": 406
-     },
-     {
-      "name": "Roselia",
-      "nat": 315
-     },
-     {
-      "name": "Paras",
-      "nat": 46
-     },
-     {
-      "name": "Kakuna",
-      "nat": 14
      },
      {
       "name": "Caterpie",
       "nat": 10
      },
      {
+      "name": "Patrat",
+      "nat": 504
+     },
+     {
+      "name": "Zubat",
+      "nat": 41
+     },
+     {
       "name": "Metapod",
       "nat": 11
      },
      {
-      "name": "Furret",
-      "nat": 162
+      "name": "Paras",
+      "nat": 46
+     },
+     {
+      "name": "Oddish",
+      "nat": 43
+     },
+     {
+      "name": "Spinarak",
+      "nat": 167
      }
     ]
    },
@@ -466,8 +584,101 @@
     "how": "Surfing",
     "mons": [
      {
+      "name": "Ducklett",
+      "nat": 580,
+      "rate": 60,
+      "levels": "20–30"
+     },
+     {
       "name": "Lotad",
-      "nat": 270
+      "nat": 270,
+      "rate": 30,
+      "levels": "20–30"
+     },
+     {
+      "name": "Lombre",
+      "nat": 271,
+      "rate": 10,
+      "levels": "25–35"
+     }
+    ]
+   },
+   {
+    "how": "Fishing",
+    "mons": [
+     {
+      "name": "Magikarp",
+      "nat": 129,
+      "rate": 100,
+      "levels": "5–25",
+      "form": "Old Rod"
+     },
+     {
+      "name": "Goldeen",
+      "nat": 118,
+      "rate": 60,
+      "levels": "15–30",
+      "form": "Good Rod"
+     },
+     {
+      "name": "Poliwag",
+      "nat": 60,
+      "rate": 35,
+      "levels": "15–30",
+      "form": "Good Rod"
+     },
+     {
+      "name": "Poliwhirl",
+      "nat": 61,
+      "rate": 5,
+      "levels": "25–30",
+      "form": "Good Rod"
+     }
+    ]
+   },
+   {
+    "how": "Honey tree",
+    "mons": [
+     {
+      "name": "Combee",
+      "nat": 415
+     },
+     {
+      "name": "Vespiquen",
+      "nat": 416
+     },
+     {
+      "name": "Heracross",
+      "nat": 214
+     }
+    ]
+   },
+   {
+    "how": "Phenomena",
+    "mons": [
+     {
+      "name": "Roselia",
+      "nat": 315
+     },
+     {
+      "name": "Golbat",
+      "nat": 42
+     },
+     {
+      "name": "Watchog",
+      "nat": 505
+     },
+     {
+      "name": "Snivy",
+      "nat": 495
+     },
+     {
+      "name": "Ducklett",
+      "nat": 580
+     },
+     {
+      "name": "Swanna",
+      "nat": 581
      },
      {
       "name": "Lombre",
@@ -478,45 +689,16 @@
       "nat": 272
      },
      {
-      "name": "Ducklett",
-      "nat": 580
-     },
-     {
-      "name": "Swanna",
-      "nat": 581
-     }
-    ]
-   },
-   {
-    "how": "Fishing",
-    "mons": [
-     {
-      "name": "Poliwag",
-      "nat": 60
-     },
-     {
-      "name": "Poliwhirl",
-      "nat": 61
-     },
-     {
-      "name": "Poliwrath",
-      "nat": 62
-     },
-     {
-      "name": "Magikarp",
-      "nat": 129
-     },
-     {
       "name": "Gyarados",
       "nat": 130
      },
      {
-      "name": "Goldeen",
-      "nat": 118
-     },
-     {
       "name": "Seaking",
       "nat": 119
+     },
+     {
+      "name": "Poliwrath",
+      "nat": 62
      }
     ]
    }
@@ -530,12 +712,28 @@
     "how": "Grass",
     "mons": [
      {
-      "name": "Sunflora",
-      "nat": 192
+      "name": "Blitzle",
+      "nat": 522
+     },
+     {
+      "name": "Hoppip",
+      "nat": 187
      },
      {
       "name": "Pikachu",
       "nat": 25
+     },
+     {
+      "name": "Deerling",
+      "nat": 585
+     },
+     {
+      "name": "Venonat",
+      "nat": 48
+     },
+     {
+      "name": "Smeargle",
+      "nat": 235
      },
      {
       "name": "Pancham",
@@ -544,34 +742,15 @@
      {
       "name": "Teddiursa",
       "nat": 216
-     },
+     }
+    ]
+   },
+   {
+    "how": "Tall grass (double battles)",
+    "mons": [
      {
-      "name": "Deerling",
-      "nat": 585
-     },
-     {
-      "name": "Blitzle",
-      "nat": 522
-     },
-     {
-      "name": "Smeargle",
-      "nat": 235
-     },
-     {
-      "name": "Grovyle",
-      "nat": 253
-     },
-     {
-      "name": "Jumpluff",
-      "nat": 189
-     },
-     {
-      "name": "Venonat",
-      "nat": 48
-     },
-     {
-      "name": "Natu",
-      "nat": 177
+      "name": "Scyther",
+      "nat": 123
      },
      {
       "name": "Pinsir",
@@ -584,11 +763,15 @@
     "mons": [
      {
       "name": "Marill",
-      "nat": 183
+      "nat": 183,
+      "rate": 60,
+      "levels": "20–30"
      },
      {
       "name": "Azumarill",
-      "nat": 184
+      "nat": 184,
+      "rate": 40,
+      "levels": "25–35"
      }
     ]
    },
@@ -596,20 +779,74 @@
     "how": "Fishing",
     "mons": [
      {
-      "name": "Poliwag",
-      "nat": 60
-     },
-     {
-      "name": "Poliwhirl",
-      "nat": 61
-     },
-     {
       "name": "Magikarp",
-      "nat": 129
+      "nat": 129,
+      "rate": 100,
+      "levels": "5–25",
+      "form": "Old Rod"
      },
      {
       "name": "Goldeen",
-      "nat": 118
+      "nat": 118,
+      "rate": 60,
+      "levels": "15–30",
+      "form": "Good Rod"
+     },
+     {
+      "name": "Poliwag",
+      "nat": 60,
+      "rate": 35,
+      "levels": "15–30",
+      "form": "Good Rod"
+     },
+     {
+      "name": "Poliwhirl",
+      "nat": 61,
+      "rate": 5,
+      "levels": "25–30",
+      "form": "Good Rod"
+     }
+    ]
+   },
+   {
+    "how": "Honey tree",
+    "mons": [
+     {
+      "name": "Combee",
+      "nat": 415
+     },
+     {
+      "name": "Venonat",
+      "nat": 48
+     },
+     {
+      "name": "Ledyba",
+      "nat": 165
+     },
+     {
+      "name": "Heracross",
+      "nat": 214
+     }
+    ]
+   },
+   {
+    "how": "Phenomena",
+    "mons": [
+     {
+      "name": "Natu",
+      "nat": 177
+     },
+     {
+      "name": "Skiploom",
+      "nat": 188
+     },
+     {
+      "name": "Blitzle",
+      "nat": 522
+     },
+     {
+      "name": "Pikachu",
+      "nat": 25
      }
     ]
    }
@@ -623,8 +860,8 @@
     "how": "Cave",
     "mons": [
      {
-      "name": "Parasect",
-      "nat": 47
+      "name": "Skorupi",
+      "nat": 451
      },
      {
       "name": "Paras",
@@ -635,24 +872,29 @@
       "nat": 74
      },
      {
-      "name": "Graveler",
-      "nat": 75
-     },
-     {
       "name": "Zubat",
       "nat": 41
      },
      {
-      "name": "Gligar",
-      "nat": 207
-     },
+      "name": "Clefairy",
+      "nat": 35
+     }
+    ]
+   },
+   {
+    "how": "Phenomena",
+    "mons": [
      {
       "name": "Drapion",
       "nat": 452
      },
      {
-      "name": "Clefairy",
-      "nat": 35
+      "name": "Parasect",
+      "nat": 47
+     },
+     {
+      "name": "Graveler",
+      "nat": 75
      }
     ]
    }
@@ -666,44 +908,36 @@
     "how": "Grass",
     "mons": [
      {
-      "name": "Venonat",
-      "nat": 48
+      "name": "Mareep",
+      "nat": 179
+     },
+     {
+      "name": "Hoppip",
+      "nat": 187
      },
      {
       "name": "Doduo",
       "nat": 84
      },
      {
-      "name": "Pancham",
-      "nat": 674
-     },
-     {
       "name": "Lillipup",
       "nat": 506
-     },
-     {
-      "name": "Mareep",
-      "nat": 179
-     },
-     {
-      "name": "Electrike",
-      "nat": 309
-     },
-     {
-      "name": "Miltank",
-      "nat": 241
      },
      {
       "name": "Tauros",
       "nat": 128
      },
      {
-      "name": "Jumpluff",
-      "nat": 189
+      "name": "Miltank",
+      "nat": 241
      },
      {
-      "name": "Chikorita",
-      "nat": 152
+      "name": "Venonat",
+      "nat": 48
+     },
+     {
+      "name": "Pancham",
+      "nat": 674
      }
     ]
    },
@@ -711,20 +945,99 @@
     "how": "Fishing",
     "mons": [
      {
-      "name": "Poliwag",
-      "nat": 60
-     },
-     {
-      "name": "Poliwhirl",
-      "nat": 61
-     },
-     {
       "name": "Magikarp",
-      "nat": 129
+      "nat": 129,
+      "rate": 100,
+      "levels": "5–25",
+      "form": "Old Rod"
      },
      {
       "name": "Goldeen",
-      "nat": 118
+      "nat": 118,
+      "rate": 60,
+      "levels": "15–30",
+      "form": "Good Rod"
+     },
+     {
+      "name": "Poliwag",
+      "nat": 60,
+      "rate": 35,
+      "levels": "15–30",
+      "form": "Good Rod"
+     },
+     {
+      "name": "Poliwhirl",
+      "nat": 61,
+      "rate": 5,
+      "levels": "25–30",
+      "form": "Good Rod"
+     }
+    ]
+   },
+   {
+    "how": "Headbutt tree",
+    "mons": [
+     {
+      "name": "Pineco",
+      "nat": 204,
+      "levels": "10–20"
+     },
+     {
+      "name": "Seedot",
+      "nat": 273,
+      "levels": "10–20"
+     },
+     {
+      "name": "Metapod",
+      "nat": 11,
+      "levels": "10–20"
+     },
+     {
+      "name": "Kakuna",
+      "nat": 14,
+      "levels": "10–20"
+     }
+    ]
+   },
+   {
+    "how": "Honey tree",
+    "mons": [
+     {
+      "name": "Combee",
+      "nat": 415
+     },
+     {
+      "name": "Butterfree",
+      "nat": 12
+     },
+     {
+      "name": "Beautifly",
+      "nat": 267
+     },
+     {
+      "name": "Heracross",
+      "nat": 214
+     }
+    ]
+   },
+   {
+    "how": "Phenomena",
+    "mons": [
+     {
+      "name": "Electrike",
+      "nat": 309
+     },
+     {
+      "name": "Tauros",
+      "nat": 128
+     },
+     {
+      "name": "Miltank",
+      "nat": 241
+     },
+     {
+      "name": "Chikorita",
+      "nat": 152
      }
     ]
    }
@@ -742,12 +1055,8 @@
       "nat": 436
      },
      {
-      "name": "Bronzong",
-      "nat": 437
-     },
-     {
-      "name": "Druddigon",
-      "nat": 621
+      "name": "Baltoy",
+      "nat": 343
      },
      {
       "name": "Zubat",
@@ -758,16 +1067,25 @@
       "nat": 42
      },
      {
-      "name": "Solrock",
-      "nat": 338
-     },
-     {
       "name": "Lunatone",
       "nat": 337
      },
      {
-      "name": "Claydol",
-      "nat": 344
+      "name": "Solrock",
+      "nat": 338
+     }
+    ]
+   },
+   {
+    "how": "Phenomena",
+    "mons": [
+     {
+      "name": "Bronzong",
+      "nat": 437
+     },
+     {
+      "name": "Druddigon",
+      "nat": 621
      }
     ]
    }
@@ -781,49 +1099,44 @@
     "how": "Swamp",
     "mons": [
      {
-      "name": "Barboach",
-      "nat": 339
+      "name": "Wooper",
+      "nat": 194
+     },
+     {
+      "name": "Bellsprout",
+      "nat": 69
      },
      {
       "name": "Psyduck",
       "nat": 54
      },
      {
-      "name": "Carnivine",
-      "nat": 455
-     },
-     {
       "name": "Foongus",
       "nat": 590
+     },
+     {
+      "name": "Karrablast",
+      "nat": 588
+     },
+     {
+      "name": "Goomy",
+      "nat": 704
+     },
+     {
+      "name": "Carnivine",
+      "nat": 455
      },
      {
       "name": "Croagunk",
       "nat": 453
      },
      {
-      "name": "Wooper",
-      "nat": 194
-     },
-     {
       "name": "Murkrow",
       "nat": 198
      },
      {
-      "name": "Shelmet",
-      "nat": 616
-     },
-     {
-      "name": "Heracross",
-      "nat": 214
-     },
-     {
-      "name": "Weepinbell",
-      "nat": 70
-     },
-     {
-      "name": "Voltorb (Hisuian)",
-      "nat": 100,
-      "form": "Hisuian"
+      "name": "Gastly",
+      "nat": 92
      },
      {
       "name": "Volbeat",
@@ -832,6 +1145,19 @@
      {
       "name": "Illumise",
       "nat": 314
+     }
+    ]
+   },
+   {
+    "how": "Phenomena",
+    "mons": [
+     {
+      "name": "Stunfisk",
+      "nat": 618
+     },
+     {
+      "name": "Weepinbell",
+      "nat": 70
      }
     ]
    }
@@ -845,37 +1171,45 @@
     "how": "Swamp",
     "mons": [
      {
-      "name": "Murkrow",
-      "nat": 198
+      "name": "Foongus",
+      "nat": 590
+     },
+     {
+      "name": "Shroomish",
+      "nat": 285
      },
      {
       "name": "Croagunk",
       "nat": 453
      },
      {
-      "name": "Phantump",
-      "nat": 708
-     },
-     {
-      "name": "Foongus",
-      "nat": 590
-     },
-     {
-      "name": "Scolipede",
-      "nat": 545
-     },
-     {
-      "name": "Voltorb (Hisuian)",
-      "nat": 100,
-      "form": "Hisuian"
+      "name": "Barboach",
+      "nat": 339
      },
      {
       "name": "Budew",
       "nat": 406
      },
      {
-      "name": "Sandygast",
-      "nat": 769
+      "name": "Gastly",
+      "nat": 92
+     },
+     {
+      "name": "Murkrow",
+      "nat": 198
+     },
+     {
+      "name": "Phantump",
+      "nat": 708
+     }
+    ]
+   },
+   {
+    "how": "Phenomena",
+    "mons": [
+     {
+      "name": "Foongus",
+      "nat": 590
      }
     ]
    }
@@ -886,367 +1220,77 @@
   "place": "Esmerald City",
   "methods": [
    {
-    "how": "Rooftop",
+    "how": "Surfing",
     "mons": [
      {
-      "name": "Swablu",
-      "nat": 333
+      "name": "Marill",
+      "nat": 183,
+      "rate": 60,
+      "levels": "20–30"
+     },
+     {
+      "name": "Azumarill",
+      "nat": 184,
+      "rate": 40,
+      "levels": "25–35"
      }
     ]
    },
    {
-    "how": "Surfing",
+    "how": "Fishing",
     "mons": [
+     {
+      "name": "Magikarp",
+      "nat": 129,
+      "rate": 100,
+      "levels": "5–25",
+      "form": "Old Rod"
+     },
+     {
+      "name": "Goldeen",
+      "nat": 118,
+      "rate": 60,
+      "levels": "15–30",
+      "form": "Good Rod"
+     },
+     {
+      "name": "Poliwag",
+      "nat": 60,
+      "rate": 35,
+      "levels": "15–30",
+      "form": "Good Rod"
+     },
+     {
+      "name": "Poliwhirl",
+      "nat": 61,
+      "rate": 5,
+      "levels": "25–30",
+      "form": "Good Rod"
+     }
+    ]
+   },
+   {
+    "how": "Phenomena",
+    "mons": [
+     {
+      "name": "Azumarill",
+      "nat": 184
+     },
      {
       "name": "Squirtle",
       "nat": 7
      },
      {
-      "name": "Marill",
-      "nat": 183
+      "name": "Gyarados",
+      "nat": 130
      },
      {
-      "name": "Azumarill",
-      "nat": 184
-     }
-    ]
-   },
-   {
-    "how": "Fishing",
-    "mons": [
-     {
-      "name": "Poliwag",
-      "nat": 60
-     },
-     {
-      "name": "Poliwhirl",
-      "nat": 61
+      "name": "Seaking",
+      "nat": 119
      },
      {
       "name": "Poliwrath",
       "nat": 62
-     },
-     {
-      "name": "Magikarp",
-      "nat": 129
-     },
-     {
-      "name": "Gyarados",
-      "nat": 130
-     },
-     {
-      "name": "Goldeen",
-      "nat": 118
-     },
-     {
-      "name": "Seaking",
-      "nat": 119
-     }
-    ]
-   }
-  ]
- },
- {
-  "order": 15,
-  "place": "Route 407",
-  "methods": [
-   {
-    "how": "Grass",
-    "mons": [
-     {
-      "name": "Turtwig",
-      "nat": 387
-     },
-     {
-      "name": "Pachirisu",
-      "nat": 417
-     },
-     {
-      "name": "Zangoose",
-      "nat": 335
-     },
-     {
-      "name": "Seviper",
-      "nat": 336
-     },
-     {
-      "name": "Sunkern",
-      "nat": 191
-     },
-     {
-      "name": "Minccino",
-      "nat": 572
-     },
-     {
-      "name": "Bidoof",
-      "nat": 399
-     },
-     {
-      "name": "Bibarel",
-      "nat": 400
-     },
-     {
-      "name": "Cottonee",
-      "nat": 546
-     },
-     {
-      "name": "Whimsicott",
-      "nat": 547
-     },
-     {
-      "name": "Cherubi",
-      "nat": 420
-     },
-     {
-      "name": "Gloom",
-      "nat": 44
-     }
-    ]
-   },
-   {
-    "how": "Surfing",
-    "mons": [
-     {
-      "name": "Buizel",
-      "nat": 418
-     },
-     {
-      "name": "Floatzel",
-      "nat": 419
-     },
-     {
-      "name": "Bibarel",
-      "nat": 400
-     }
-    ]
-   },
-   {
-    "how": "Fishing",
-    "mons": [
-     {
-      "name": "Magikarp",
-      "nat": 129
-     },
-     {
-      "name": "Gyarados",
-      "nat": 130
-     },
-     {
-      "name": "Goldeen",
-      "nat": 118
-     },
-     {
-      "name": "Seaking",
-      "nat": 119
-     },
-     {
-      "name": "Crawdaunt",
-      "nat": 342
-     },
-     {
-      "name": "Remoraid",
-      "nat": 223
-     },
-     {
-      "name": "Octillery",
-      "nat": 224
-     }
-    ]
-   }
-  ]
- },
- {
-  "order": 16,
-  "place": "Route 408",
-  "methods": [
-   {
-    "how": "Grass",
-    "mons": [
-     {
-      "name": "Pelipper",
-      "nat": 279
-     },
-     {
-      "name": "Wingull",
-      "nat": 278
-     },
-     {
-      "name": "Chatot",
-      "nat": 441
-     },
-     {
-      "name": "Exeggcute",
-      "nat": 102
-     },
-     {
-      "name": "Exeggutor",
-      "nat": 103
-     },
-     {
-      "name": "Kecleon",
-      "nat": 352
-     },
-     {
-      "name": "Marill",
-      "nat": 183
-     },
-     {
-      "name": "Tropius",
-      "nat": 357
-     },
-     {
-      "name": "Minccino",
-      "nat": 572
-     },
-     {
-      "name": "Slakoth",
-      "nat": 287
-     },
-     {
-      "name": "Oddish",
-      "nat": 43
-     },
-     {
-      "name": "Gloom",
-      "nat": 44
-     },
-     {
-      "name": "Emolga",
-      "nat": 587
-     },
-     {
-      "name": "Tepig",
-      "nat": 498
-     }
-    ]
-   },
-   {
-    "how": "Surfing",
-    "mons": [
-     {
-      "name": "Chinchou",
-      "nat": 170
-     },
-     {
-      "name": "Lanturn",
-      "nat": 171
-     },
-     {
-      "name": "Tentacool",
-      "nat": 72
-     },
-     {
-      "name": "Tentacruel",
-      "nat": 73
-     },
-     {
-      "name": "Horsea",
-      "nat": 116
-     },
-     {
-      "name": "Wailmer",
-      "nat": 320
-     },
-     {
-      "name": "Wailord",
-      "nat": 321
-     }
-    ]
-   },
-   {
-    "how": "Fishing",
-    "mons": [
-     {
-      "name": "Magikarp",
-      "nat": 129
-     },
-     {
-      "name": "Gyarados",
-      "nat": 130
-     },
-     {
-      "name": "Seaking",
-      "nat": 119
-     },
-     {
-      "name": "Qwilfish",
-      "nat": 211
-     },
-     {
-      "name": "Remoraid",
-      "nat": 223
-     },
-     {
-      "name": "Octillery",
-      "nat": 224
-     }
-    ]
-   }
-  ]
- },
- {
-  "order": 17,
-  "place": "Seanport City",
-  "methods": [
-   {
-    "how": "Surfing",
-    "mons": [
-     {
-      "name": "Chinchou",
-      "nat": 170
-     },
-     {
-      "name": "Lanturn",
-      "nat": 171
-     },
-     {
-      "name": "Tentacool",
-      "nat": 72
-     },
-     {
-      "name": "Tentacruel",
-      "nat": 73
-     },
-     {
-      "name": "Horsea",
-      "nat": 116
-     },
-     {
-      "name": "Wailmer",
-      "nat": 320
-     },
-     {
-      "name": "Wailord",
-      "nat": 321
-     }
-    ]
-   },
-   {
-    "how": "Fishing",
-    "mons": [
-     {
-      "name": "Magikarp",
-      "nat": 129
-     },
-     {
-      "name": "Gyarados",
-      "nat": 130
-     },
-     {
-      "name": "Seaking",
-      "nat": 119
-     },
-     {
-      "name": "Qwilfish",
-      "nat": 211
-     },
-     {
-      "name": "Remoraid",
-      "nat": 223
-     },
-     {
-      "name": "Octillery",
-      "nat": 224
      }
     ]
    }
@@ -1260,12 +1304,8 @@
     "how": "Grass",
     "mons": [
      {
-      "name": "Beautifly",
-      "nat": 267
-     },
-     {
-      "name": "Torchic",
-      "nat": 255
+      "name": "Wurmple",
+      "nat": 265
      },
      {
       "name": "Silcoon",
@@ -1276,12 +1316,546 @@
       "nat": 268
      },
      {
-      "name": "Wurmple",
-      "nat": 265
+      "name": "Beautifly",
+      "nat": 267
      },
      {
       "name": "Dustox",
       "nat": 269
+     }
+    ]
+   },
+   {
+    "how": "Phenomena",
+    "mons": [
+     {
+      "name": "Wurmple",
+      "nat": 265
+     },
+     {
+      "name": "Silcoon",
+      "nat": 266
+     },
+     {
+      "name": "Cascoon",
+      "nat": 268
+     },
+     {
+      "name": "Torchic",
+      "nat": 255
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "order": 15,
+  "place": "Route 407",
+  "methods": [
+   {
+    "how": "Grass",
+    "mons": [
+     {
+      "name": "Cottonee",
+      "nat": 546
+     },
+     {
+      "name": "Petilil",
+      "nat": 548
+     },
+     {
+      "name": "Zangoose",
+      "nat": 335
+     },
+     {
+      "name": "Sunkern",
+      "nat": 191
+     },
+     {
+      "name": "Bidoof",
+      "nat": 399
+     },
+     {
+      "name": "Bibarel",
+      "nat": 400
+     },
+     {
+      "name": "Pachirisu",
+      "nat": 417
+     },
+     {
+      "name": "Espurr",
+      "nat": 677
+     },
+     {
+      "name": "Seviper",
+      "nat": 336
+     }
+    ]
+   },
+   {
+    "how": "Surfing",
+    "mons": [
+     {
+      "name": "Buizel",
+      "nat": 418,
+      "rate": 60,
+      "levels": "20–30"
+     },
+     {
+      "name": "Bibarel",
+      "nat": 400,
+      "rate": 30,
+      "levels": "25–30"
+     },
+     {
+      "name": "Floatzel",
+      "nat": 419,
+      "rate": 10,
+      "levels": "30–35"
+     }
+    ]
+   },
+   {
+    "how": "Fishing",
+    "mons": [
+     {
+      "name": "Magikarp",
+      "nat": 129,
+      "rate": 100,
+      "levels": "5–25",
+      "form": "Old Rod"
+     },
+     {
+      "name": "Remoraid",
+      "nat": 223,
+      "rate": 60,
+      "levels": "15–30",
+      "form": "Good Rod"
+     },
+     {
+      "name": "Corphish",
+      "nat": 341,
+      "rate": 40,
+      "levels": "20–30",
+      "form": "Good Rod"
+     }
+    ]
+   },
+   {
+    "how": "Headbutt tree",
+    "mons": [
+     {
+      "name": "Pineco",
+      "nat": 204,
+      "levels": "10–25"
+     },
+     {
+      "name": "Burmy",
+      "nat": 412,
+      "levels": "10–25"
+     },
+     {
+      "name": "Spewpa",
+      "nat": 665,
+      "levels": "10–25"
+     },
+     {
+      "name": "Spinarak",
+      "nat": 167,
+      "levels": "10–25"
+     }
+    ]
+   },
+   {
+    "how": "Honey tree",
+    "mons": [
+     {
+      "name": "Spritzee",
+      "nat": 682
+     },
+     {
+      "name": "Swirlix",
+      "nat": 684
+     },
+     {
+      "name": "Combee",
+      "nat": 415
+     },
+     {
+      "name": "Butterfree",
+      "nat": 12
+     },
+     {
+      "name": "Beautifly",
+      "nat": 267
+     },
+     {
+      "name": "Heracross",
+      "nat": 214
+     }
+    ]
+   },
+   {
+    "how": "Phenomena",
+    "mons": [
+     {
+      "name": "Bibarel",
+      "nat": 400
+     },
+     {
+      "name": "Lilligant",
+      "nat": 549
+     },
+     {
+      "name": "Whimsicott",
+      "nat": 547
+     },
+     {
+      "name": "Turtwig",
+      "nat": 387
+     },
+     {
+      "name": "Floatzel",
+      "nat": 419
+     },
+     {
+      "name": "Gyarados",
+      "nat": 130
+     },
+     {
+      "name": "Octillery",
+      "nat": 224
+     },
+     {
+      "name": "Crawdaunt",
+      "nat": 342
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "order": 16,
+  "place": "Route 408",
+  "methods": [
+   {
+    "how": "Grass",
+    "mons": [
+     {
+      "name": "Marill",
+      "nat": 183
+     },
+     {
+      "name": "Wingull",
+      "nat": 278
+     },
+     {
+      "name": "Exeggcute",
+      "nat": 102
+     },
+     {
+      "name": "Chatot",
+      "nat": 441
+     },
+     {
+      "name": "Emolga",
+      "nat": 587
+     },
+     {
+      "name": "Kecleon",
+      "nat": 352
+     },
+     {
+      "name": "Exeggutor",
+      "nat": 103
+     },
+     {
+      "name": "Slakoth",
+      "nat": 287
+     },
+     {
+      "name": "Oddish",
+      "nat": 43
+     },
+     {
+      "name": "Gloom",
+      "nat": 44
+     }
+    ]
+   },
+   {
+    "how": "Tall grass (double battles)",
+    "mons": [
+     {
+      "name": "Tropius",
+      "nat": 357
+     }
+    ]
+   },
+   {
+    "how": "Surfing",
+    "mons": [
+     {
+      "name": "Horsea",
+      "nat": 116,
+      "rate": 60,
+      "levels": "20–30"
+     },
+     {
+      "name": "Tentacool",
+      "nat": 72,
+      "rate": 30,
+      "levels": "25–30"
+     },
+     {
+      "name": "Chinchou",
+      "nat": 170,
+      "rate": 9,
+      "levels": "25–35"
+     },
+     {
+      "name": "Lanturn",
+      "nat": 171,
+      "rate": 1,
+      "levels": "30–35"
+     }
+    ]
+   },
+   {
+    "how": "Fishing",
+    "mons": [
+     {
+      "name": "Magikarp",
+      "nat": 129,
+      "rate": 100,
+      "levels": "5–25",
+      "form": "Old Rod"
+     },
+     {
+      "name": "Remoraid",
+      "nat": 223,
+      "rate": 60,
+      "levels": "15–30",
+      "form": "Good Rod"
+     },
+     {
+      "name": "Corphish",
+      "nat": 341,
+      "rate": 30,
+      "levels": "15–30",
+      "form": "Good Rod"
+     },
+     {
+      "name": "Qwilfish",
+      "nat": 211,
+      "rate": 10,
+      "levels": "20–30",
+      "form": "Good Rod"
+     }
+    ]
+   },
+   {
+    "how": "Headbutt tree",
+    "mons": [
+     {
+      "name": "Pineco",
+      "nat": 204,
+      "levels": "15–25"
+     },
+     {
+      "name": "Burmy",
+      "nat": 412,
+      "levels": "15–25"
+     },
+     {
+      "name": "Aipom",
+      "nat": 190,
+      "levels": "15–25"
+     },
+     {
+      "name": "Wormadam",
+      "nat": 413,
+      "levels": "15–25"
+     }
+    ]
+   },
+   {
+    "how": "Honey tree",
+    "mons": [
+     {
+      "name": "Combee",
+      "nat": 415
+     },
+     {
+      "name": "Cutiefly",
+      "nat": 742
+     },
+     {
+      "name": "Butterfree",
+      "nat": 12
+     },
+     {
+      "name": "Beautifly",
+      "nat": 267
+     },
+     {
+      "name": "Ledyba",
+      "nat": 165
+     },
+     {
+      "name": "Heracross",
+      "nat": 214
+     }
+    ]
+   },
+   {
+    "how": "Phenomena",
+    "mons": [
+     {
+      "name": "Minccino",
+      "nat": 572
+     },
+     {
+      "name": "Pelipper",
+      "nat": 279
+     },
+     {
+      "name": "Exeggutor",
+      "nat": 103
+     },
+     {
+      "name": "Tepig",
+      "nat": 498
+     },
+     {
+      "name": "Wailmer",
+      "nat": 320
+     },
+     {
+      "name": "Tentacruel",
+      "nat": 73
+     },
+     {
+      "name": "Lanturn",
+      "nat": 171
+     },
+     {
+      "name": "Wailord",
+      "nat": 321
+     },
+     {
+      "name": "Gyarados",
+      "nat": 130
+     },
+     {
+      "name": "Octillery",
+      "nat": 224
+     },
+     {
+      "name": "Qwilfish",
+      "nat": 211
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "order": 17,
+  "place": "Seanport City",
+  "methods": [
+   {
+    "how": "Surfing",
+    "mons": [
+     {
+      "name": "Horsea",
+      "nat": 116,
+      "rate": 60,
+      "levels": "20–30"
+     },
+     {
+      "name": "Tentacool",
+      "nat": 72,
+      "rate": 30,
+      "levels": "25–30"
+     },
+     {
+      "name": "Chinchou",
+      "nat": 170,
+      "rate": 9,
+      "levels": "25–35"
+     },
+     {
+      "name": "Lanturn",
+      "nat": 171,
+      "rate": 1,
+      "levels": "30–35"
+     }
+    ]
+   },
+   {
+    "how": "Fishing",
+    "mons": [
+     {
+      "name": "Magikarp",
+      "nat": 129,
+      "rate": 100,
+      "levels": "5–25",
+      "form": "Old Rod"
+     },
+     {
+      "name": "Remoraid",
+      "nat": 223,
+      "rate": 60,
+      "levels": "15–30",
+      "form": "Good Rod"
+     },
+     {
+      "name": "Corphish",
+      "nat": 341,
+      "rate": 30,
+      "levels": "15–30",
+      "form": "Good Rod"
+     },
+     {
+      "name": "Qwilfish",
+      "nat": 211,
+      "rate": 10,
+      "levels": "20–30",
+      "form": "Good Rod"
+     }
+    ]
+   },
+   {
+    "how": "Phenomena",
+    "mons": [
+     {
+      "name": "Wailmer",
+      "nat": 320
+     },
+     {
+      "name": "Tentacruel",
+      "nat": 73
+     },
+     {
+      "name": "Lanturn",
+      "nat": 171
+     },
+     {
+      "name": "Wailord",
+      "nat": 321
+     },
+     {
+      "name": "Gyarados",
+      "nat": 130
+     },
+     {
+      "name": "Octillery",
+      "nat": 224
+     },
+     {
+      "name": "Qwilfish",
+      "nat": 211
      }
     ]
    }
@@ -1543,44 +2117,36 @@
     "how": "Grass",
     "mons": [
      {
-      "name": "Wingull",
-      "nat": 278
-     },
-     {
-      "name": "Krabby",
-      "nat": 98
-     },
-     {
-      "name": "Chimchar",
-      "nat": 390
-     },
-     {
-      "name": "Bellsprout",
-      "nat": 69
-     },
-     {
-      "name": "Venonat",
-      "nat": 48
-     },
-     {
       "name": "Yanma",
       "nat": 193
      },
      {
-      "name": "Paras",
-      "nat": 46
-     },
-     {
-      "name": "Pelipper",
-      "nat": 279
+      "name": "Weepinbell",
+      "nat": 70
      },
      {
       "name": "Tangela",
       "nat": 114
      },
      {
-      "name": "Carnivine",
-      "nat": 455
+      "name": "Wingull",
+      "nat": 278
+     },
+     {
+      "name": "Dwebble",
+      "nat": 557
+     },
+     {
+      "name": "Krabby",
+      "nat": 98
+     },
+     {
+      "name": "Victreebel",
+      "nat": 71
+     },
+     {
+      "name": "Tangrowth",
+      "nat": 465
      },
      {
       "name": "Gloom",
@@ -1592,8 +2158,115 @@
     "how": "Surfing",
     "mons": [
      {
+      "name": "Horsea",
+      "nat": 116,
+      "rate": 60,
+      "levels": "20–30"
+     },
+     {
+      "name": "Tentacool",
+      "nat": 72,
+      "rate": 30,
+      "levels": "25–30"
+     },
+     {
       "name": "Chinchou",
-      "nat": 170
+      "nat": 170,
+      "rate": 9,
+      "levels": "25–35"
+     },
+     {
+      "name": "Lanturn",
+      "nat": 171,
+      "rate": 1,
+      "levels": "30–35"
+     }
+    ]
+   },
+   {
+    "how": "Fishing",
+    "mons": [
+     {
+      "name": "Magikarp",
+      "nat": 129,
+      "rate": 100,
+      "levels": "5–25",
+      "form": "Old Rod"
+     },
+     {
+      "name": "Remoraid",
+      "nat": 223,
+      "rate": 60,
+      "levels": "15–30",
+      "form": "Good Rod"
+     },
+     {
+      "name": "Corphish",
+      "nat": 341,
+      "rate": 30,
+      "levels": "15–30",
+      "form": "Good Rod"
+     },
+     {
+      "name": "Qwilfish",
+      "nat": 211,
+      "rate": 10,
+      "levels": "20–30",
+      "form": "Good Rod"
+     }
+    ]
+   },
+   {
+    "how": "Honey tree",
+    "mons": [
+     {
+      "name": "Combee",
+      "nat": 415
+     },
+     {
+      "name": "Wurmple",
+      "nat": 265
+     },
+     {
+      "name": "Butterfree",
+      "nat": 12
+     },
+     {
+      "name": "Beautifly",
+      "nat": 267
+     },
+     {
+      "name": "Ledyba",
+      "nat": 165
+     },
+     {
+      "name": "Masquerain",
+      "nat": 284
+     }
+    ]
+   },
+   {
+    "how": "Phenomena",
+    "mons": [
+     {
+      "name": "Wingull",
+      "nat": 278
+     },
+     {
+      "name": "Pelipper",
+      "nat": 279
+     },
+     {
+      "name": "Tangela",
+      "nat": 114
+     },
+     {
+      "name": "Chimchar",
+      "nat": 390
+     },
+     {
+      "name": "Wailmer",
+      "nat": 320
      },
      {
       "name": "Tentacruel",
@@ -1604,49 +2277,20 @@
       "nat": 171
      },
      {
-      "name": "Tentacool",
-      "nat": 72
+      "name": "Wailord",
+      "nat": 321
      },
      {
-      "name": "Horsea",
-      "nat": 116
-     },
-     {
-      "name": "Wailmer",
-      "nat": 320
-     },
-     {
-      "name": "Whiscash",
-      "nat": 340
-     }
-    ]
-   },
-   {
-    "how": "Fishing",
-    "mons": [
-     {
-      "name": "Qwilfish",
-      "nat": 211
+      "name": "Gyarados",
+      "nat": 130
      },
      {
       "name": "Octillery",
       "nat": 224
      },
      {
-      "name": "Barboach",
-      "nat": 339
-     },
-     {
-      "name": "Corphish",
-      "nat": 341
-     },
-     {
-      "name": "Magikarp",
-      "nat": 129
-     },
-     {
-      "name": "Gyarados",
-      "nat": 130
+      "name": "Qwilfish",
+      "nat": 211
      }
     ]
    }
@@ -1660,20 +2304,8 @@
     "how": "Grass",
     "mons": [
      {
-      "name": "Absol",
-      "nat": 359
-     },
-     {
-      "name": "Geodude",
-      "nat": 74
-     },
-     {
-      "name": "Mime Jr.",
-      "nat": 439
-     },
-     {
-      "name": "Dusknoir",
-      "nat": 477
+      "name": "Shuppet",
+      "nat": 353
      },
      {
       "name": "Spoink",
@@ -1684,20 +2316,20 @@
       "nat": 355
      },
      {
-      "name": "Shuppet",
-      "nat": 353
+      "name": "Geodude",
+      "nat": 74
      },
      {
       "name": "Abra",
       "nat": 63
      },
      {
-      "name": "Noctowl",
-      "nat": 164
+      "name": "Gothita",
+      "nat": 574
      },
      {
-      "name": "Sableye",
-      "nat": 302
+      "name": "Ralts",
+      "nat": 280
      },
      {
       "name": "Drifloon",
@@ -1708,8 +2340,8 @@
       "nat": 75
      },
      {
-      "name": "Ralts",
-      "nat": 280
+      "name": "Noctowl",
+      "nat": 164
      }
     ]
    },
@@ -1717,16 +2349,16 @@
     "how": "Surfing",
     "mons": [
      {
-      "name": "Oshawott",
-      "nat": 501
-     },
-     {
       "name": "Marill",
-      "nat": 183
+      "nat": 183,
+      "rate": 60,
+      "levels": "20–30"
      },
      {
       "name": "Azumarill",
-      "nat": 184
+      "nat": 184,
+      "rate": 40,
+      "levels": "25–35"
      }
     ]
    },
@@ -1734,32 +2366,98 @@
     "how": "Fishing",
     "mons": [
      {
-      "name": "Poliwhirl",
-      "nat": 61
+      "name": "Magikarp",
+      "nat": 129,
+      "rate": 100,
+      "levels": "5–25",
+      "form": "Old Rod"
      },
      {
       "name": "Goldeen",
-      "nat": 118
+      "nat": 118,
+      "rate": 60,
+      "levels": "15–30",
+      "form": "Good Rod"
      },
      {
       "name": "Poliwag",
-      "nat": 60
+      "nat": 60,
+      "rate": 35,
+      "levels": "15–30",
+      "form": "Good Rod"
+     },
+     {
+      "name": "Poliwhirl",
+      "nat": 61,
+      "rate": 5,
+      "levels": "25–30",
+      "form": "Good Rod"
+     }
+    ]
+   },
+   {
+    "how": "Honey tree",
+    "mons": [
+     {
+      "name": "Combee",
+      "nat": 415
+     },
+     {
+      "name": "Spinarak",
+      "nat": 167
+     },
+     {
+      "name": "Surskit",
+      "nat": 283
+     },
+     {
+      "name": "Masquerain",
+      "nat": 284
+     },
+     {
+      "name": "Beedrill",
+      "nat": 15
+     },
+     {
+      "name": "Dustox",
+      "nat": 269
+     }
+    ]
+   },
+   {
+    "how": "Phenomena",
+    "mons": [
+     {
+      "name": "Dusclops",
+      "nat": 356
+     },
+     {
+      "name": "Banette",
+      "nat": 354
+     },
+     {
+      "name": "Absol",
+      "nat": 359
+     },
+     {
+      "name": "Azumarill",
+      "nat": 184
+     },
+     {
+      "name": "Oshawott",
+      "nat": 501
+     },
+     {
+      "name": "Gyarados",
+      "nat": 130
      },
      {
       "name": "Seaking",
       "nat": 119
      },
      {
-      "name": "Magikarp",
-      "nat": 129
-     },
-     {
       "name": "Poliwrath",
       "nat": 62
-     },
-     {
-      "name": "Gyarados",
-      "nat": 130
      }
     ]
    }
@@ -1775,10 +2473,6 @@
      {
       "name": "Zubat",
       "nat": 41
-     },
-     {
-      "name": "Drowzee",
-      "nat": 96
      },
      {
       "name": "Geodude",
@@ -1797,8 +2491,25 @@
       "nat": 75
      },
      {
+      "name": "Drowzee",
+      "nat": 96
+     },
+     {
+      "name": "Dunsparce",
+      "nat": 206
+     },
+     {
       "name": "Crobat",
       "nat": 169
+     }
+    ]
+   },
+   {
+    "how": "Ground floor — Phenomena",
+    "mons": [
+     {
+      "name": "Graveler",
+      "nat": 75
      },
      {
       "name": "Dunsparce",
@@ -1818,10 +2529,6 @@
       "nat": 41
      },
      {
-      "name": "Misdreavus",
-      "nat": 200
-     },
-     {
       "name": "Geodude",
       "nat": 74
      },
@@ -1838,16 +2545,16 @@
       "nat": 75
      },
      {
-      "name": "Deino",
-      "nat": 633
-     },
-     {
-      "name": "Dunsparce",
-      "nat": 206
+      "name": "Misdreavus",
+      "nat": 200
      },
      {
       "name": "Drowzee",
       "nat": 96
+     },
+     {
+      "name": "Dunsparce",
+      "nat": 206
      },
      {
       "name": "Crobat",
@@ -1859,24 +2566,28 @@
     "how": "Underground — Surfing",
     "mons": [
      {
-      "name": "Crobat",
-      "nat": 169
-     },
-     {
-      "name": "Golbat",
-      "nat": 42
-     },
-     {
       "name": "Grimer",
-      "nat": 88
-     },
-     {
-      "name": "Muk",
-      "nat": 89
+      "nat": 88,
+      "rate": 60,
+      "levels": "20–30"
      },
      {
       "name": "Zubat",
-      "nat": 41
+      "nat": 41,
+      "rate": 30,
+      "levels": "25–30"
+     },
+     {
+      "name": "Golbat",
+      "nat": 42,
+      "rate": 9,
+      "levels": "25–35"
+     },
+     {
+      "name": "Crobat",
+      "nat": 169,
+      "rate": 1,
+      "levels": "30–35"
      }
     ]
    },
@@ -1884,32 +2595,128 @@
     "how": "Underground — Fishing",
     "mons": [
      {
-      "name": "Poliwhirl",
-      "nat": 61
+      "name": "Magikarp",
+      "nat": 129,
+      "rate": 100,
+      "levels": "5–25",
+      "form": "Old Rod"
      },
      {
       "name": "Goldeen",
-      "nat": 118
+      "nat": 118,
+      "rate": 60,
+      "levels": "15–30",
+      "form": "Good Rod"
      },
      {
       "name": "Poliwag",
-      "nat": 60
+      "nat": 60,
+      "rate": 35,
+      "levels": "15–30",
+      "form": "Good Rod"
+     },
+     {
+      "name": "Poliwhirl",
+      "nat": 61,
+      "rate": 5,
+      "levels": "25–30",
+      "form": "Good Rod"
+     }
+    ]
+   },
+   {
+    "how": "Underground — Phenomena",
+    "mons": [
+     {
+      "name": "Graveler",
+      "nat": 75
+     },
+     {
+      "name": "Dunsparce",
+      "nat": 206
+     },
+     {
+      "name": "Deino",
+      "nat": 633
+     },
+     {
+      "name": "Muk",
+      "nat": 89
+     },
+     {
+      "name": "Golbat",
+      "nat": 42
+     },
+     {
+      "name": "Crobat",
+      "nat": 169
+     },
+     {
+      "name": "Gyarados",
+      "nat": 130
      },
      {
       "name": "Seaking",
       "nat": 119
      },
      {
-      "name": "Magikarp",
-      "nat": 129
-     },
-     {
       "name": "Poliwrath",
       "nat": 62
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "place": "Dardusk's Bridge",
+  "methods": [
+   {
+    "how": "Grass",
+    "mons": [
+     {
+      "name": "Metapod",
+      "nat": 11
      },
      {
-      "name": "Gyarados",
-      "nat": 130
+      "name": "Kakuna",
+      "nat": 14
+     },
+     {
+      "name": "Butterfree",
+      "nat": 12
+     },
+     {
+      "name": "Beedrill",
+      "nat": 15
+     },
+     {
+      "name": "Parasect",
+      "nat": 47
+     },
+     {
+      "name": "Spinarak",
+      "nat": 167
+     },
+     {
+      "name": "Ariados",
+      "nat": 168
+     }
+    ]
+   },
+   {
+    "how": "Phenomena",
+    "mons": [
+     {
+      "name": "Parasect",
+      "nat": 47
+     },
+     {
+      "name": "Butterfree",
+      "nat": 12
+     },
+     {
+      "name": "Beedrill",
+      "nat": 15
      }
     ]
    }
@@ -1923,34 +2730,6 @@
     "how": "Grass",
     "mons": [
      {
-      "name": "Ariados",
-      "nat": 168
-     },
-     {
-      "name": "Bulbasaur",
-      "nat": 1
-     },
-     {
-      "name": "Gourgeist",
-      "nat": 711
-     },
-     {
-      "name": "Kakuna",
-      "nat": 14
-     },
-     {
-      "name": "Metapod",
-      "nat": 11
-     },
-     {
-      "name": "Murkrow",
-      "nat": 198
-     },
-     {
-      "name": "Paras",
-      "nat": 46
-     },
-     {
       "name": "Phantump",
       "nat": 708
      },
@@ -1963,8 +2742,117 @@
       "nat": 167
      },
      {
+      "name": "Ariados",
+      "nat": 168
+     },
+     {
+      "name": "Parasect",
+      "nat": 47
+     },
+     {
+      "name": "Murkrow",
+      "nat": 198
+     },
+     {
+      "name": "Metapod",
+      "nat": 11
+     },
+     {
+      "name": "Kakuna",
+      "nat": 14
+     },
+     {
       "name": "Trevenant",
       "nat": 709
+     },
+     {
+      "name": "Gourgeist",
+      "nat": 711
+     }
+    ]
+   },
+   {
+    "how": "Honey tree",
+    "mons": [
+     {
+      "name": "Venonat",
+      "nat": 48
+     },
+     {
+      "name": "Ariados",
+      "nat": 168
+     },
+     {
+      "name": "Beedrill",
+      "nat": 15
+     },
+     {
+      "name": "Dustox",
+      "nat": 269
+     },
+     {
+      "name": "Karrablast",
+      "nat": 588
+     },
+     {
+      "name": "Shelmet",
+      "nat": 616
+     }
+    ]
+   },
+   {
+    "how": "Phenomena",
+    "mons": [
+     {
+      "name": "Parasect",
+      "nat": 47
+     },
+     {
+      "name": "Trevenant",
+      "nat": 709
+     },
+     {
+      "name": "Gourgeist",
+      "nat": 711
+     },
+     {
+      "name": "Bulbasaur",
+      "nat": 1
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "place": "Shadow Tower",
+  "note": "The same Pokémon on every floor that has any; the ground floor and the top rooms have none.",
+  "methods": [
+   {
+    "how": "Indoors",
+    "mons": [
+     {
+      "name": "Gastly",
+      "nat": 92
+     },
+     {
+      "name": "Rattata",
+      "nat": 19
+     },
+     {
+      "name": "Litwick",
+      "nat": 607
+     },
+     {
+      "name": "Duskull",
+      "nat": 355
+     },
+     {
+      "name": "Raticate",
+      "nat": 20
+     },
+     {
+      "name": "Haunter",
+      "nat": 93
      }
     ]
    }
@@ -1978,56 +2866,52 @@
     "how": "Grass",
     "mons": [
      {
-      "name": "Blissey",
-      "nat": 242
-     },
-     {
-      "name": "Furret",
-      "nat": 162
-     },
-     {
-      "name": "Girafarig",
-      "nat": 203
-     },
-     {
-      "name": "Granbull",
-      "nat": 210
-     },
-     {
-      "name": "Illumise",
-      "nat": 314
-     },
-     {
-      "name": "Meowth",
-      "nat": 52
-     },
-     {
-      "name": "Oddish",
-      "nat": 43
-     },
-     {
       "name": "Ponyta",
       "nat": 77
      },
      {
-      "name": "Sentret",
-      "nat": 161
+      "name": "Swellow",
+      "nat": 277
      },
      {
       "name": "Snubbull",
       "nat": 209
      },
      {
-      "name": "Taillow",
-      "nat": 276
+      "name": "Sentret",
+      "nat": 161
+     },
+     {
+      "name": "Meowth",
+      "nat": 52
+     },
+     {
+      "name": "Yanma",
+      "nat": 193
+     },
+     {
+      "name": "Furret",
+      "nat": 162
+     },
+     {
+      "name": "Chansey",
+      "nat": 113
+     },
+     {
+      "name": "Illumise",
+      "nat": 314
      },
      {
       "name": "Volbeat",
       "nat": 313
      },
      {
-      "name": "Yanma",
-      "nat": 193
+      "name": "Oddish",
+      "nat": 43
+     },
+     {
+      "name": "Gloom",
+      "nat": 44
      }
     ]
    },
@@ -2035,32 +2919,907 @@
     "how": "Fishing",
     "mons": [
      {
+      "name": "Magikarp",
+      "nat": 129,
+      "rate": 100,
+      "levels": "5–25",
+      "form": "Old Rod"
+     },
+     {
       "name": "Goldeen",
-      "nat": 118
+      "nat": 118,
+      "rate": 60,
+      "levels": "15–30",
+      "form": "Good Rod"
+     },
+     {
+      "name": "Poliwag",
+      "nat": 60,
+      "rate": 35,
+      "levels": "15–30",
+      "form": "Good Rod"
+     },
+     {
+      "name": "Poliwhirl",
+      "nat": 61,
+      "rate": 5,
+      "levels": "25–30",
+      "form": "Good Rod"
+     }
+    ]
+   },
+   {
+    "how": "Headbutt tree",
+    "mons": [
+     {
+      "name": "Pineco",
+      "nat": 204,
+      "levels": "25–35"
+     },
+     {
+      "name": "Burmy",
+      "nat": 412,
+      "levels": "25–35"
+     },
+     {
+      "name": "Cherubi",
+      "nat": 420,
+      "levels": "25–35"
+     },
+     {
+      "name": "Cherrim",
+      "nat": 421,
+      "levels": "25–35"
+     },
+     {
+      "name": "Shedinja",
+      "nat": 292,
+      "levels": "25–35"
+     }
+    ]
+   },
+   {
+    "how": "Honey tree",
+    "mons": [
+     {
+      "name": "Combee",
+      "nat": 415
+     },
+     {
+      "name": "Yanma",
+      "nat": 193
+     },
+     {
+      "name": "Butterfree",
+      "nat": 12
+     },
+     {
+      "name": "Beautifly",
+      "nat": 267
+     },
+     {
+      "name": "Volbeat",
+      "nat": 313
+     },
+     {
+      "name": "Illumise",
+      "nat": 314
+     },
+     {
+      "name": "Munchlax",
+      "nat": 446
+     }
+    ]
+   },
+   {
+    "how": "Phenomena",
+    "mons": [
+     {
+      "name": "Girafarig",
+      "nat": 203
+     },
+     {
+      "name": "Persian",
+      "nat": 53
+     },
+     {
+      "name": "Granbull",
+      "nat": 210
+     },
+     {
+      "name": "Furret",
+      "nat": 162
      },
      {
       "name": "Gyarados",
       "nat": 130
      },
      {
+      "name": "Seaking",
+      "nat": 119
+     },
+     {
+      "name": "Poliwrath",
+      "nat": 62
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "place": "Enermy Town",
+  "methods": [
+   {
+    "how": "Surfing",
+    "mons": [
+     {
+      "name": "Marill",
+      "nat": 183,
+      "rate": 60,
+      "levels": "20–30"
+     },
+     {
+      "name": "Azumarill",
+      "nat": 184,
+      "rate": 40,
+      "levels": "25–35"
+     }
+    ]
+   },
+   {
+    "how": "Fishing",
+    "mons": [
+     {
       "name": "Magikarp",
-      "nat": 129
+      "nat": 129,
+      "rate": 100,
+      "levels": "5–25",
+      "form": "Old Rod"
+     },
+     {
+      "name": "Goldeen",
+      "nat": 118,
+      "rate": 60,
+      "levels": "15–30",
+      "form": "Good Rod"
      },
      {
       "name": "Poliwag",
-      "nat": 60
+      "nat": 60,
+      "rate": 35,
+      "levels": "15–30",
+      "form": "Good Rod"
      },
      {
       "name": "Poliwhirl",
-      "nat": 61
+      "nat": 61,
+      "rate": 5,
+      "levels": "25–30",
+      "form": "Good Rod"
+     }
+    ]
+   },
+   {
+    "how": "Honey tree",
+    "mons": [
+     {
+      "name": "Combee",
+      "nat": 415
+     },
+     {
+      "name": "Ledyba",
+      "nat": 165
+     },
+     {
+      "name": "Butterfree",
+      "nat": 12
+     },
+     {
+      "name": "Beautifly",
+      "nat": 267
+     },
+     {
+      "name": "Vespiquen",
+      "nat": 416
+     },
+     {
+      "name": "Ledian",
+      "nat": 166
+     }
+    ]
+   },
+   {
+    "how": "Phenomena",
+    "mons": [
+     {
+      "name": "Azumarill",
+      "nat": 184
+     },
+     {
+      "name": "Gyarados",
+      "nat": 130
+     },
+     {
+      "name": "Seaking",
+      "nat": 119
+     },
+     {
+      "name": "Poliwrath",
+      "nat": 62
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "place": "Mt. Shuem",
+  "note": "The top floor has no wild Pokémon.",
+  "methods": [
+   {
+    "how": "Cave",
+    "mons": [
+     {
+      "name": "Slugma",
+      "nat": 218
+     },
+     {
+      "name": "Roggenrola",
+      "nat": 524
+     },
+     {
+      "name": "Golbat",
+      "nat": 42
+     },
+     {
+      "name": "Magmar",
+      "nat": 126
+     },
+     {
+      "name": "Boldore",
+      "nat": 525
+     },
+     {
+      "name": "Aron",
+      "nat": 304
+     },
+     {
+      "name": "Gigalith",
+      "nat": 526
+     },
+     {
+      "name": "Crobat",
+      "nat": 169
+     },
+     {
+      "name": "Torkoal",
+      "nat": 324,
+      "form": "one floor"
+     }
+    ]
+   },
+   {
+    "how": "Phenomena",
+    "mons": [
+     {
+      "name": "Skarmory",
+      "nat": 227
+     },
+     {
+      "name": "Lairon",
+      "nat": 305
+     },
+     {
+      "name": "Boldore",
+      "nat": 525
+     },
+     {
+      "name": "Gigalith",
+      "nat": 526
+     },
+     {
+      "name": "Cyndaquil",
+      "nat": 155,
+      "form": "one floor"
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "place": "Sun Palace",
+  "note": "The last two rooms have no wild Pokémon.",
+  "methods": [
+   {
+    "how": "Indoors",
+    "mons": [
+     {
+      "name": "Golett",
+      "nat": 622
+     },
+     {
+      "name": "Yamask",
+      "nat": 562
+     },
+     {
+      "name": "Golbat",
+      "nat": 42
+     },
+     {
+      "name": "Sandshrew",
+      "nat": 27
+     },
+     {
+      "name": "Sandslash",
+      "nat": 28
+     },
+     {
+      "name": "Cofagrigus",
+      "nat": 563
+     },
+     {
+      "name": "Sigilyph",
+      "nat": 561
+     },
+     {
+      "name": "Crobat",
+      "nat": 169
+     },
+     {
+      "name": "Honedge",
+      "nat": 679,
+      "form": "one room"
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "place": "Route 412",
+  "methods": [
+   {
+    "how": "Grass",
+    "mons": [
+     {
+      "name": "Cacnea",
+      "nat": 331
+     },
+     {
+      "name": "Numel",
+      "nat": 322
+     },
+     {
+      "name": "Trapinch",
+      "nat": 328
+     },
+     {
+      "name": "Hippopotas",
+      "nat": 449
+     },
+     {
+      "name": "Maractus",
+      "nat": 556
+     },
+     {
+      "name": "Camerupt",
+      "nat": 323
+     },
+     {
+      "name": "Gligar",
+      "nat": 207
+     },
+     {
+      "name": "Sandile",
+      "nat": 551
+     },
+     {
+      "name": "Krokorok",
+      "nat": 552
+     },
+     {
+      "name": "Cacturne",
+      "nat": 332
+     },
+     {
+      "name": "Gliscor",
+      "nat": 472
+     }
+    ]
+   },
+   {
+    "how": "Surfing",
+    "mons": [
+     {
+      "name": "Shellos",
+      "nat": 422,
+      "rate": 60,
+      "levels": "25–30"
+     },
+     {
+      "name": "Gastrodon",
+      "nat": 423,
+      "rate": 40,
+      "levels": "25–35"
+     }
+    ]
+   },
+   {
+    "how": "Fishing",
+    "mons": [
+     {
+      "name": "Magikarp",
+      "nat": 129,
+      "rate": 100,
+      "levels": "5–25",
+      "form": "Old Rod"
+     },
+     {
+      "name": "Barboach",
+      "nat": 339,
+      "rate": 60,
+      "levels": "25–30",
+      "form": "Good Rod"
+     },
+     {
+      "name": "Poliwag",
+      "nat": 60,
+      "rate": 35,
+      "levels": "25–35",
+      "form": "Good Rod"
+     },
+     {
+      "name": "Poliwhirl",
+      "nat": 61,
+      "rate": 5,
+      "levels": "30–35",
+      "form": "Good Rod"
+     }
+    ]
+   },
+   {
+    "how": "Honey tree",
+    "mons": [
+     {
+      "name": "Combee",
+      "nat": 415
+     },
+     {
+      "name": "Surskit",
+      "nat": 283
+     },
+     {
+      "name": "Masquerain",
+      "nat": 284
+     },
+     {
+      "name": "Shuckle",
+      "nat": 213
+     }
+    ]
+   },
+   {
+    "how": "Phenomena",
+    "mons": [
+     {
+      "name": "Cacturne",
+      "nat": 332
+     },
+     {
+      "name": "Hippowdon",
+      "nat": 450
+     },
+     {
+      "name": "Camerupt",
+      "nat": 323
+     },
+     {
+      "name": "Charmander",
+      "nat": 4
+     },
+     {
+      "name": "Gastrodon",
+      "nat": 423
+     },
+     {
+      "name": "Mudkip",
+      "nat": 258
+     },
+     {
+      "name": "Gyarados",
+      "nat": 130
+     },
+     {
+      "name": "Whiscash",
+      "nat": 340
+     },
+     {
+      "name": "Poliwrath",
+      "nat": 62
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "place": "Groment Mines",
+  "methods": [
+   {
+    "how": "Cave",
+    "mons": [
+     {
+      "name": "Drilbur",
+      "nat": 529
+     },
+     {
+      "name": "Geodude",
+      "nat": 74
+     },
+     {
+      "name": "Timburr",
+      "nat": 532,
+      "form": "two rooms"
+     },
+     {
+      "name": "Noibat",
+      "nat": 714
+     },
+     {
+      "name": "Graveler",
+      "nat": 75
+     },
+     {
+      "name": "Sableye",
+      "nat": 302
+     },
+     {
+      "name": "Onix",
+      "nat": 95
+     },
+     {
+      "name": "Carbink",
+      "nat": 703
+     },
+     {
+      "name": "Excadrill",
+      "nat": 530
+     },
+     {
+      "name": "Steelix",
+      "nat": 208
+     },
+     {
+      "name": "Wobbuffet",
+      "nat": 202,
+      "form": "one room"
+     },
+     {
+      "name": "Joltik",
+      "nat": 595,
+      "form": "one room"
+     },
+     {
+      "name": "Durant",
+      "nat": 632,
+      "form": "one room"
+     }
+    ]
+   },
+   {
+    "how": "Surfing",
+    "mons": [
+     {
+      "name": "Barboach",
+      "nat": 339,
+      "rate": 60,
+      "levels": "25–30",
+      "form": "water rooms"
+     },
+     {
+      "name": "Noibat",
+      "nat": 714,
+      "rate": 30,
+      "levels": "30–35",
+      "form": "water rooms"
+     },
+     {
+      "name": "Whiscash",
+      "nat": 340,
+      "rate": 10,
+      "levels": "30–35",
+      "form": "water rooms"
+     }
+    ]
+   },
+   {
+    "how": "Fishing",
+    "mons": [
+     {
+      "name": "Magikarp",
+      "nat": 129,
+      "rate": 100,
+      "levels": "5–25",
+      "form": "Old Rod · water rooms"
+     },
+     {
+      "name": "Goldeen",
+      "nat": 118,
+      "rate": 60,
+      "levels": "15–30",
+      "form": "Good Rod · water rooms"
+     },
+     {
+      "name": "Poliwag",
+      "nat": 60,
+      "rate": 35,
+      "levels": "15–30",
+      "form": "Good Rod · water rooms"
+     },
+     {
+      "name": "Poliwhirl",
+      "nat": 61,
+      "rate": 5,
+      "levels": "25–30",
+      "form": "Good Rod · water rooms"
+     }
+    ]
+   },
+   {
+    "how": "Phenomena",
+    "mons": [
+     {
+      "name": "Diglett",
+      "nat": 50
+     },
+     {
+      "name": "Dugtrio",
+      "nat": 51
+     },
+     {
+      "name": "Excadrill",
+      "nat": 530
+     },
+     {
+      "name": "Whiscash",
+      "nat": 340,
+      "form": "water rooms"
+     },
+     {
+      "name": "Gyarados",
+      "nat": 130,
+      "form": "water rooms"
+     },
+     {
+      "name": "Seaking",
+      "nat": 119,
+      "form": "water rooms"
+     },
+     {
+      "name": "Poliwrath",
+      "nat": 62,
+      "form": "water rooms"
+     },
+     {
+      "name": "Dratini",
+      "nat": 147,
+      "form": "one room"
+     },
+     {
+      "name": "Dragonair",
+      "nat": 148,
+      "form": "one room"
+     },
+     {
+      "name": "Heatmor",
+      "nat": 631,
+      "form": "one room"
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "place": "Mt. Icestorm",
+  "note": "Some rooms have no wild Pokémon, and the rarer ones live in just one or two rooms.",
+  "methods": [
+   {
+    "how": "Cave",
+    "mons": [
+     {
+      "name": "Zubat",
+      "nat": 41
+     },
+     {
+      "name": "Snorunt",
+      "nat": 361
+     },
+     {
+      "name": "Cubchoo",
+      "nat": 613
+     },
+     {
+      "name": "Chingling",
+      "nat": 433
+     },
+     {
+      "name": "Golbat",
+      "nat": 42
+     },
+     {
+      "name": "Chimecho",
+      "nat": 358
+     },
+     {
+      "name": "Crobat",
+      "nat": 169
+     },
+     {
+      "name": "Swinub",
+      "nat": 220,
+      "form": "some rooms"
+     },
+     {
+      "name": "Cryogonal",
+      "nat": 615,
+      "form": "two rooms"
+     },
+     {
+      "name": "Jynx",
+      "nat": 124,
+      "form": "two rooms"
+     },
+     {
+      "name": "Glalie",
+      "nat": 362,
+      "form": "one room"
+     },
+     {
+      "name": "Beartic",
+      "nat": 614,
+      "form": "one room"
+     },
+     {
+      "name": "Solrock",
+      "nat": 338,
+      "form": "one room"
+     },
+     {
+      "name": "Lunatone",
+      "nat": 337,
+      "form": "one room"
+     },
+     {
+      "name": "Vanillite",
+      "nat": 582,
+      "form": "one room"
+     }
+    ]
+   },
+   {
+    "how": "Surfing",
+    "mons": [
+     {
+      "name": "Slowpoke",
+      "nat": 79,
+      "rate": 60,
+      "levels": "20–30"
+     },
+     {
+      "name": "Zubat",
+      "nat": 41,
+      "rate": 30,
+      "levels": "25–30"
+     },
+     {
+      "name": "Golbat",
+      "nat": 42,
+      "rate": 9,
+      "levels": "25–35"
+     },
+     {
+      "name": "Crobat",
+      "nat": 169,
+      "rate": 1,
+      "levels": "30–35"
+     }
+    ]
+   },
+   {
+    "how": "Fishing",
+    "mons": [
+     {
+      "name": "Magikarp",
+      "nat": 129,
+      "rate": 100,
+      "levels": "5–25",
+      "form": "Old Rod"
+     },
+     {
+      "name": "Goldeen",
+      "nat": 118,
+      "rate": 60,
+      "levels": "15–30",
+      "form": "Good Rod"
+     },
+     {
+      "name": "Poliwag",
+      "nat": 60,
+      "rate": 35,
+      "levels": "15–30",
+      "form": "Good Rod"
+     },
+     {
+      "name": "Poliwhirl",
+      "nat": 61,
+      "rate": 5,
+      "levels": "25–30",
+      "form": "Good Rod"
+     },
+     {
+      "name": "Feebas",
+      "nat": 349,
+      "rate": 100,
+      "levels": "20–30",
+      "form": "Old Rod · Feebas room"
+     },
+     {
+      "name": "Feebas",
+      "nat": 349,
+      "rate": 100,
+      "levels": "20–30",
+      "form": "Good Rod · Feebas room"
+     }
+    ]
+   },
+   {
+    "how": "Phenomena",
+    "mons": [
+     {
+      "name": "Bergmite",
+      "nat": 712
+     },
+     {
+      "name": "Makuhita",
+      "nat": 296
+     },
+     {
+      "name": "Hariyama",
+      "nat": 297
+     },
+     {
+      "name": "Piloswine",
+      "nat": 221
+     },
+     {
+      "name": "Mamoswine",
+      "nat": 473
+     },
+     {
+      "name": "Slowpoke",
+      "nat": 79
+     },
+     {
+      "name": "Slowbro",
+      "nat": 80
+     },
+     {
+      "name": "Slowking",
+      "nat": 199
+     },
+     {
+      "name": "Gyarados",
+      "nat": 130
+     },
+     {
+      "name": "Seaking",
+      "nat": 119
      },
      {
       "name": "Poliwrath",
       "nat": 62
      },
      {
-      "name": "Seaking",
-      "nat": 119
+      "name": "Relicanth",
+      "nat": 369,
+      "form": "one room"
      }
     ]
    }
@@ -2071,15 +3830,23 @@
   "place": "Safari Zone",
   "methods": [
    {
-    "how": "First area — Honey tree",
+    "how": "First area — Grass",
     "mons": [
      {
-      "name": "Bounsweet",
-      "nat": 761
+      "name": "Caterpie",
+      "nat": 10
      },
      {
       "name": "Weedle",
       "nat": 13
+     },
+     {
+      "name": "Sunkern",
+      "nat": 191
+     },
+     {
+      "name": "Paras",
+      "nat": 46
      },
      {
       "name": "Pikipek",
@@ -2090,8 +3857,49 @@
       "nat": 759
      },
      {
+      "name": "Pachirisu",
+      "nat": 417
+     },
+     {
       "name": "Kecleon",
       "nat": 352
+     },
+     {
+      "name": "Venonat",
+      "nat": 48
+     },
+     {
+      "name": "Spinarak",
+      "nat": 167
+     }
+    ]
+   },
+   {
+    "how": "First area — Honey tree",
+    "mons": [
+     {
+      "name": "Combee",
+      "nat": 415
+     },
+     {
+      "name": "Bounsweet",
+      "nat": 761
+     },
+     {
+      "name": "Metapod",
+      "nat": 11
+     },
+     {
+      "name": "Kakuna",
+      "nat": 14
+     },
+     {
+      "name": "Butterfree",
+      "nat": 12
+     },
+     {
+      "name": "Beedrill",
+      "nat": 15
      }
     ]
    },
@@ -2099,42 +3907,75 @@
     "how": "Left side — Grass",
     "mons": [
      {
-      "name": "Hawlucha",
-      "nat": 701
-     },
-     {
       "name": "Rockruff",
       "nat": 744
-     },
-     {
-      "name": "Larvitar",
-      "nat": 246
      },
      {
       "name": "Grubbin",
       "nat": 736
      },
      {
-      "name": "Machop",
-      "nat": 66
+      "name": "Geodude",
+      "nat": 74
+     },
+     {
+      "name": "Skiddo",
+      "nat": 672
      },
      {
       "name": "Phanpy",
       "nat": 231
+     },
+     {
+      "name": "Machop",
+      "nat": 66
+     },
+     {
+      "name": "Hoppip",
+      "nat": 187
+     },
+     {
+      "name": "Hawlucha",
+      "nat": 701
+     },
+     {
+      "name": "Larvitar",
+      "nat": 246
+     },
+     {
+      "name": "Houndour",
+      "nat": 228
+     }
+    ]
+   },
+   {
+    "how": "Left side — Honey tree",
+    "mons": [
+     {
+      "name": "Spritzee",
+      "nat": 682
+     },
+     {
+      "name": "Swirlix",
+      "nat": 684
+     },
+     {
+      "name": "Combee",
+      "nat": 415
+     },
+     {
+      "name": "Hoppip",
+      "nat": 187
+     },
+     {
+      "name": "Heracross",
+      "nat": 214
      }
     ]
    },
    {
     "how": "North side — Sand",
     "mons": [
-     {
-      "name": "Kangaskhan",
-      "nat": 115
-     },
-     {
-      "name": "Rhyhorn",
-      "nat": 111
-     },
      {
       "name": "Litleo",
       "nat": 667
@@ -2144,26 +3985,50 @@
       "nat": 734
      },
      {
-      "name": "Cubone",
-      "nat": 104
+      "name": "Scraggy",
+      "nat": 559
      },
      {
-      "name": "Scrafty",
-      "nat": 560
+      "name": "Cubone",
+      "nat": 104
      },
      {
       "name": "Diglett",
       "nat": 50
      },
      {
+      "name": "Rhyhorn",
+      "nat": 111
+     },
+     {
       "name": "Togedemaru",
       "nat": 777
+     },
+     {
+      "name": "Kangaskhan",
+      "nat": 115
      }
     ]
    },
    {
-    "how": "Right side — Water",
+    "how": "Right side — Grass",
     "mons": [
+     {
+      "name": "Marill",
+      "nat": 183
+     },
+     {
+      "name": "Surskit",
+      "nat": 283
+     },
+     {
+      "name": "Wooper",
+      "nat": 194
+     },
+     {
+      "name": "Ducklett",
+      "nat": 580
+     },
      {
       "name": "Lotad",
       "nat": 270
@@ -2179,59 +4044,101 @@
     ]
    },
    {
-    "how": "Also here — Found elsewhere too",
+    "how": "Right side — Surfing",
     "mons": [
      {
-      "name": "Surskit",
-      "nat": 283
+      "name": "Slowpoke",
+      "nat": 79,
+      "rate": 60,
+      "levels": "25–30"
      },
      {
-      "name": "Ducklett",
-      "nat": 580
+      "name": "Buizel",
+      "nat": 418,
+      "rate": 30,
+      "levels": "25–30"
      },
      {
-      "name": "Beedrill",
-      "nat": 15
+      "name": "Floatzel",
+      "nat": 419,
+      "rate": 9,
+      "levels": "26–35"
+     },
+     {
+      "name": "Slowking",
+      "nat": 199,
+      "rate": 1,
+      "levels": "30–35"
+     }
+    ]
+   },
+   {
+    "how": "Right side — Fishing",
+    "mons": [
+     {
+      "name": "Magikarp",
+      "nat": 129,
+      "rate": 100,
+      "levels": "5–25",
+      "form": "Old Rod"
+     },
+     {
+      "name": "Goldeen",
+      "nat": 118,
+      "rate": 60,
+      "levels": "15–30",
+      "form": "Good Rod"
+     },
+     {
+      "name": "Poliwag",
+      "nat": 60,
+      "rate": 35,
+      "levels": "15–30",
+      "form": "Good Rod"
+     },
+     {
+      "name": "Poliwhirl",
+      "nat": 61,
+      "rate": 5,
+      "levels": "25–30",
+      "form": "Good Rod"
+     }
+    ]
+   },
+   {
+    "how": "Right side — Honey tree",
+    "mons": [
+     {
+      "name": "Combee",
+      "nat": 415
+     },
+     {
+      "name": "Cutiefly",
+      "nat": 742
+     },
+     {
+      "name": "Metapod",
+      "nat": 11
+     },
+     {
+      "name": "Kakuna",
+      "nat": 14
      },
      {
       "name": "Butterfree",
       "nat": 12
      },
      {
-      "name": "Swirlix",
-      "nat": 684
-     },
+      "name": "Beedrill",
+      "nat": 15
+     }
+    ]
+   },
+   {
+    "how": "??? — Grass",
+    "mons": [
      {
-      "name": "Spritzee",
-      "nat": 682
-     },
-     {
-      "name": "Caterpie",
-      "nat": 10
-     },
-     {
-      "name": "Paras",
-      "nat": 46
-     },
-     {
-      "name": "Sunkern",
-      "nat": 191
-     },
-     {
-      "name": "Marill",
-      "nat": 183
-     },
-     {
-      "name": "Buizel",
-      "nat": 418
-     },
-     {
-      "name": "Slowpoke",
-      "nat": 79
-     },
-     {
-      "name": "Wooper",
-      "nat": 194
+      "name": "Caballo Homosexual De Las Montañas"
      }
     ]
    }

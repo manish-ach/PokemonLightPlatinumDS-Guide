@@ -84,6 +84,20 @@ for (const n of ['Uxie', 'Mesprit', 'Azelf']) ACQ.set(n, { method: 'Roaming — 
   location: 'Random routes; the PDA shows where it is' });
 ACQ.set('Spiritomb', { method: 'Roams the overworld by the well, after the Odd Keystone event — holds an Odd Keystone',
   location: 'Abandoned village, down the river from Mt. Icestorm' });
+/* gifts, eggs and revivals the seed doesn't cover */
+const REVIVE = { Omanyte: 'Helix Fossil', Kabuto: 'Dome Fossil', Aerodactyl: 'Old Amber', Lileep: 'Root Fossil',
+  Anorith: 'Claw Fossil', Cranidos: 'Skull Fossil', Shieldon: 'Armor Fossil', Tirtouga: 'Cover Fossil',
+  Archen: 'Plume Fossil', Tyrunt: 'Jaw Fossil', Amaura: 'Sail Fossil' };
+for (const [mon, fossil] of Object.entries(REVIVE))
+  ACQ.set(mon, { method: `Revive the ${fossil} — Archaeology Department`, location: 'Inhore University, Inhore City' });
+ACQ.set('Mantyke', { method: 'Egg from a house (needs a free party slot)', location: 'Pantem Town' });
+ACQ.set('Carvanha', { method: 'Gift from a man on the beach, after 10 pm', location: 'Seanport City' });
+ACQ.set('Pyukumuku', { method: 'Catch it in Prof. Oak’s Poké Ball tutorial, on your first visit to the beach', location: 'Marfeny Lake' });
+ACQ.set('Nosepass', { method: 'Found on the island east of the Panotem Islands', location: 'Panotem Islands' });
+for (const n of ['Lugia', 'Ho-Oh']) ACQ.set(n, { method: 'Can’t be caught in this version — read about it in the library to register it in the Pokédex',
+  location: 'Inhore University, Inhore City' });
+/* Feebas is in the wild table for Mt. Icestorm now; the old note would only repeat it */
+ACQ.delete('Feebas');
 ACQ.set('Milotic', { method: 'Evolve Feebas — feed it a Wonder Meal at a Pokémon Center twice, then level it up',
   location: 'Any Pokémon Center' });
 
@@ -296,10 +310,13 @@ export const WILD_BY_PLACE = new Map(WILDAT.map((w) => [w.place, w]));
 export const WILD_BY_MON = new Map();
 for (const w of WILDAT) for (const g of w.methods) for (const m of g.mons) {
   if (!WILD_BY_MON.has(m.name)) WILD_BY_MON.set(m.name, []);
-  WILD_BY_MON.get(m.name).push({ place: w.place, how: g.how, order: w.order });
+  /* the chip's tag (rod, or the room it keeps to) rides along; rates and levels stay in the data */
+  WILD_BY_MON.get(m.name).push({ place: w.place, how: m.form ? `${g.how} (${m.form})` : g.how, order: w.order });
 }
 /* every species you can catch in the Safari Zone, exclusive or not */
 export const SAFARI_MONS = new Set((WILD_BY_PLACE.get('Safari Zone')?.methods || []).flatMap((g) => g.mons.map((m) => m.name)));
+/* every species that drops out of a Headbutt tree somewhere */
+export const HEADBUTT_MONS = new Set(WILDAT.flatMap((w) => w.methods.filter((g) => g.how === 'Headbutt tree').flatMap((g) => g.mons.map((m) => m.name))));
 export const PHENOM = phenomena;
 export const PHENOM_BY_PLACE = new Map();
 export const PHENOM_BY_MON = new Map(PHENOM.map((p) => [p.name, p]));
@@ -328,8 +345,9 @@ export const PLACE_INSIDE = { 'Botanic Garden': 'Esmerald City', 'Safari Zone': 
 export const PLACE_CONTAINS = new Map();
 for (const [inner, outer] of Object.entries(PLACE_INSIDE)) { if (!PLACE_CONTAINS.has(outer)) PLACE_CONTAINS.set(outer, []); PLACE_CONTAINS.get(outer).push(inner); }
 /* the visit order, from the places walked so far */
-export const WALK = [...WILDAT].sort((a, b) => a.order - b.order).map((w) => w.place);
-export const PLACE_EXTRA = { 'Safari Zone': 'Everything listed by area lives only here; the last list turns up elsewhere too. Phanpy (left grass) and Kecleon (first area) may also be exclusive — unconfirmed.',
+/* only places with a number on your walk get a previous/next stepper */
+export const WALK = WILDAT.filter((w) => w.order != null).sort((a, b) => a.order - b.order).map((w) => w.place);
+export const PLACE_EXTRA = { 'Safari Zone': 'Each area of the Safari Zone has its own set of Pokémon.',
    'Panotem Islands': 'The only place the Alolan forms appear.',
   'Mt. Icestorm': 'A secret route off the river leads to the Odd Keystone event and, later, Spiritomb. In v0.2.3 and earlier, picking up the Poké Doll in the ice puzzle there blocks the way in.',
   'Desire Island': 'Reached with the Old Sea Map from a Poké Mart (the “A secret map…” Wonder Card). Save first — Jirachi is waiting.' };
@@ -392,6 +410,21 @@ export const obtainable = (nat) => {
 };
 /* the pre-evolutions you can actually reach, with how to evolve them */
 export const evolveFrom = (nat) => (EVO_TO.get(nat) || []).filter((e) => obtainable(e.fromNat));
+/* baby Pokémon hatch from Eggs laid by their evolved forms; these ones only
+   appear if the parent holds the right incense */
+const INCENSE = { Azurill: 'Sea Incense', Wynaut: 'Lax Incense', Budew: 'Rose Incense', Chingling: 'Pure Incense',
+  'Mime Jr.': 'Odd Incense', Happiny: 'Luck Incense', Munchlax: 'Full Incense', Mantyke: 'Wave Incense' };
+const BABIES = ['Pichu', 'Cleffa', 'Igglybuff', 'Togepi', 'Smoochum', 'Elekid', 'Magby', 'Azurill', 'Wynaut', 'Budew',
+  'Chingling', 'Mime Jr.', 'Happiny', 'Munchlax', 'Riolu', 'Mantyke'];
+const EVO_FROM = new Map();
+for (const e of EVOS) { if (!EVO_FROM.has(e.fromNat)) EVO_FROM.set(e.fromNat, []); EVO_FROM.get(e.fromNat).push(e.toNat); }
+/* the obtainable evolved forms that can lay this baby's Egg, and the incense they must hold */
+export const breedFrom = (name) => {
+  if (!BABIES.includes(name)) return null;
+  const start = NAT_OF.get(name); const parents = []; const stack = [...(EVO_FROM.get(start) || [])];
+  while (stack.length) { const n = stack.pop(); if (obtainable(n)) parents.push(NAT_NAME.get(n)); stack.push(...(EVO_FROM.get(n) || [])); }
+  return parents.length ? { parents: parents.filter(Boolean), incense: INCENSE[name] || null } : null;
+};
 export const placeSlug = (name) => slug(name);
 export const placePath = (name) => href(`places/${placeSlug(name)}/`);
 const NAMED = new Set(PLACES.map((p) => p.name));

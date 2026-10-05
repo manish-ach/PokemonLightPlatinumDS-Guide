@@ -49,11 +49,11 @@
   "note": "Walk into a dust cloud inside Mt. Shuem."
  },
  {
-  "name": "Zoroark",
-  "nat": 571,
+  "name": "Zorua",
+  "nat": 570,
   "place": "Route 401",
   "kind": "Phenomenon",
-  "note": "Its Illusion ability disguises it as another Pokémon, so it won't look like Zoroark until the battle starts."
+  "note": "Its Illusion ability disguises it as another Pokémon, so it won’t look like Zorua until the battle starts."
  },
  {
   "name": "Mudkip",
@@ -61,5 +61,19 @@
   "place": "Route 412",
   "kind": "Water phenomenon",
   "note": "Surf on Route 412 and move onto the rippling water."
+ },
+ {
+  "name": "Spearow",
+  "nat": 21,
+  "place": "Central City",
+  "kind": "Swooping from the air",
+  "note": "On the rooftop, walk across its shadow and it swoops down on you."
+ },
+ {
+  "name": "Fearow",
+  "nat": 22,
+  "place": "Central City",
+  "kind": "Swooping from the air",
+  "note": "On the rooftop, walk across its shadow and it swoops down on you."
  }
 ]
