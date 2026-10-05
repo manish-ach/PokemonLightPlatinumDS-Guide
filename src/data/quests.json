@@ -172,11 +172,19 @@
   "item": "Heart Scale"
  },
  {
-  "name": "Complete the collection",
+  "name": "Complete the Pokédex",
   "kind": "sidequest",
-  "where": "Dardusk City",
-  "desc": "A collector rewards you once you have found them all.",
-  "source": "text bank 341"
+  "where": "TV station, Central City",
+  "short": "Complete the Pokédex and show Prof. Oak.",
+  "desc": "Fill the Pokédex, then talk to Prof. Oak at the TV station in Central City. With the medal on (6 medal energy), wild Pokémon appear wandering in tall grass.",
+  "reward": "Infestation medal",
+  "medal": "Infestation",
+  "links": [
+   [
+    "Infestation medal",
+    "medals/#infestation"
+   ]
+  ]
  },
  {
   "name": "The Villa",
@@ -288,8 +296,8 @@
   "name": "TM05 Roar",
   "kind": "gift",
   "where": "Route 412",
-  "short": "From the “roaring” hiker.",
-  "desc": "The “roaring” hiker on Route 412.",
+  "short": "From an Ace Trainer.",
+  "desc": "An Ace Trainer (F) on Route 412.",
   "item": "Roar"
  },
  {
@@ -321,17 +329,17 @@
  {
   "name": "Good Rod",
   "kind": "gift",
-  "where": "National Park",
-  "short": "At the entrance.",
-  "desc": "The National Park entrance.",
+  "where": "Fishing Guru's house, Route 408",
+  "short": "",
+  "desc": "The Fishing Guru's house on Route 408 (needs Surf).",
   "item": "Good Rod"
  },
  {
   "name": "SilverPowder",
   "kind": "gift",
-  "where": "Route 401",
-  "short": "",
-  "desc": "Route 401.",
+  "where": "Route 402",
+  "short": "From a Bug Catcher.",
+  "desc": "A Bug Catcher on Route 402.",
   "item": "Silver Powder"
  },
  {

@@ -197,7 +197,7 @@ export const WILD_OF = (name) => WILD.filter((w) => itemKey(w.item) === itemKey(
 
 /* screenshots, mapped by hand: filenames in the source folder are irregular */
 const ITEM_SHOTS = {
-  'Silk Scarf': [['ItemLocations/SilkScarfFairyShowDardusk.png', 'Dardusk City — Fairy Pokémon show reward']],
+  'Silk Scarf': [['ItemLocations/SilkScarfFairyShowDardusk.png', 'Dardusk Woods — Fairy Pokémon show reward']],
   'Big Pearl': [['ItemLocations/BigPearlMine.jpeg', 'Gromet Mine']],
   'Bright Powder': [['ItemLocations/BrightPowderROute412.jpeg', 'Route 412']],
   'Deep Sea Tooth': [['ItemLocations/DeepSeaToothPanotemIslands.jpeg', 'Panotem Islands — by Surf']],
