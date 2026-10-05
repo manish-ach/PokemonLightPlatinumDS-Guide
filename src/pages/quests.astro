@@ -32,7 +32,7 @@ const foot = (q) => q.who ? `${q.who} · ${q.where}` : q.where;
           <button type="button" class="card card--link quest" style={q.mons && `--n:${q.mons.length}`} id={slug(q.name)} data-quest={slug(q.name)} aria-haspopup="dialog">
             {q.mons ? <span class="quest__mons" aria-hidden="true">{q.mons.map((m) => <img src={SPRITE(NAT_OF.get(m))} alt="" width="48" height="48" loading="lazy" decoding="async" />)}</span>
               : art(q) && <span class="quest__mons quest__mons--one" aria-hidden="true"><img src={art(q)} alt="" width="32" height="32" loading="lazy" decoding="async" /></span>}
-            <span class="card__title">{q.name}{q.urgent && <span class="quest__urgent">Timed</span>}</span>
+            <span class="card__title">{q.name}{q.urgent && <span class="quest__urgent">Timed</span>}{q.warn && <span class="quest__urgent">Bug ≤ v0.2.3</span>}</span>
             {(q.short ?? q.desc) && <span class="card__meta quest__short">{q.short ?? q.desc}</span>}
             <span class="card__foot">{foot(q)}<span class="quest__more">Details →</span></span>
           </button>
@@ -60,6 +60,7 @@ const foot = (q) => q.who ? `${q.who} · ${q.where}` : q.where;
           <ol class="quest__steps">{q.steps.map((s) => <li>{s}</li>)}</ol>
         </>
       ) : <p>{q.desc}</p>}
+      {q.warn && <p class="quest__warn">{q.warn}</p>}
       {q.reward && <><p class="dialog__label">Reward</p><p>{q.reward}</p></>}
       {(q.rewardItems || (q.item ? [q.item] : [])).length > 0 && (
         <div class="quest__items">{(q.rewardItems || [q.item]).map((n) => (
@@ -91,6 +92,7 @@ const foot = (q) => q.who ? `${q.who} · ${q.where}` : q.where;
     .quest__short { display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
     .quest .card__foot { justify-content: space-between; }
     .quest__urgent { font-size: 10px; font-weight: 600; line-height: 1; letter-spacing: 0.02em; color: var(--warn); background: var(--warn-soft); border: 1px solid currentColor; border-radius: 999px; padding: 3px 6px; align-self: center; }
+    .quest__warn { border: 1px solid var(--warn); background: var(--warn-soft); border-radius: var(--radius); padding: var(--sp-2) var(--sp-3); font-size: var(--text-sm); }
     .quest__more { color: var(--accent-ink); font-weight: 600; margin-left: auto; }
     .quest__mons { position: absolute; top: 0; right: 6px; display: flex; }
     .quest__mons img { image-rendering: pixelated; margin-left: -6px; }

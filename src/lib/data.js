@@ -82,6 +82,8 @@ ACQ.set('Dragonite', { method: 'Mystery Gift — “The Champions’ Dragonite�
   location: 'Commemorates Spain’s 2026 FIFA World Cup win' });
 for (const n of ['Uxie', 'Mesprit', 'Azelf']) ACQ.set(n, { method: 'Roaming — freed by the Pantem Cave disk puzzle, after the end of this version',
   location: 'Random routes; the PDA shows where it is' });
+ACQ.set('Spiritomb', { method: 'Roams the overworld by the well, after the Odd Keystone event — holds an Odd Keystone',
+  location: 'Abandoned village, down the river from Mt. Icestorm' });
 ACQ.set('Milotic', { method: 'Evolve Feebas — feed it a Wonder Meal at a Pokémon Center twice, then level it up',
   location: 'Any Pokémon Center' });
 
@@ -171,6 +173,8 @@ export const itemKey = (s) => String(s).toLowerCase().replace(/[^a-z0-9]/g, '');
     'Dusk Stone', 'Dawn Stone', 'Helix Fossil', 'Dome Fossil', 'Old Amber', 'Root Fossil', 'Claw Fossil',
     'Skull Fossil', 'Armor Fossil', 'Jaw Fossil', 'Sail Fossil'].map(itemKey);
   for (const i of items) if (DUG.includes(itemKey(i.name))) i.locations.push('Groment Mines — dug up while mining');
+  const MORE = { oddkeystone: ['Suspicious little girl / Mt. Icestorm — hidden area off the river', 'Held by the wild Spiritomb at the abandoned village well'] };
+  for (const i of items) if (MORE[itemKey(i.name)]) i.locations.push(...MORE[itemKey(i.name)]);
 }
 export const ITEMS = items;
 export const ITEM_BY_KEY = new Map();
@@ -327,6 +331,7 @@ for (const [inner, outer] of Object.entries(PLACE_INSIDE)) { if (!PLACE_CONTAINS
 export const WALK = [...WILDAT].sort((a, b) => a.order - b.order).map((w) => w.place);
 export const PLACE_EXTRA = { 'Safari Zone': 'Everything listed by area lives only here; the last list turns up elsewhere too. Phanpy (left grass) and Kecleon (first area) may also be exclusive — unconfirmed.',
    'Panotem Islands': 'The only place the Alolan forms appear.',
+  'Mt. Icestorm': 'A secret route off the river leads to the Odd Keystone event and, later, Spiritomb. In v0.2.3 and earlier, picking up the Poké Doll in the ice puzzle there blocks the way in.',
   'Desire Island': 'Reached with the Old Sea Map from a Poké Mart (the “A secret map…” Wonder Card). Save first — Jirachi is waiting.' };
 export const PLACE_SHOTS = {
   'Desire Island': ['SpecialLocations/JirachiDesireIsland.png', 'Jirachi'],

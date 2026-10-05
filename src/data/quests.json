@@ -239,6 +239,34 @@
   "source": "text bank 364"
  },
  {
+  "name": "The Odd Keystone",
+  "kind": "sidequest",
+  "where": "Mt. Icestorm → the abandoned village",
+  "short": "Follow a secret river route out of Mt. Icestorm to find Spiritomb.",
+  "steps": [
+   "Inside Mt. Icestorm, enter the secret route from the river.",
+   "It leads to a hidden area with a suspicious little girl. After a cutscene she disappears and leaves an Odd Keystone.",
+   "Follow the river down to a flooded lake, held back by a dam built by a Bibarel.",
+   "Battle the Bibarel. The dam breaks, the water drains and an abandoned village with a well is revealed.",
+   "Go into the well with the Odd Keystone. A cutscene plays where you fall and seem to die, then you wake up.",
+   "Climb out of the well. Spiritomb now roams the overworld near it, holding an Odd Keystone of its own."
+  ],
+  "warn": "Blocker in v0.2.3 and earlier: the girl's area in Mt. Icestorm has an ice puzzle, and picking up the Poké Doll there stops you from entering. Leave the Poké Doll alone.",
+  "reward": "Odd Keystone, and a wild Spiritomb (holding another Odd Keystone)",
+  "rewardItems": [
+   "Odd Keystone"
+  ],
+  "mons": [
+   "Spiritomb"
+  ],
+  "links": [
+   [
+    "Mt. Icestorm",
+    "places/mt-icestorm/"
+   ]
+  ]
+ },
+ {
   "name": "The lake trio",
   "kind": "sidequest",
   "where": "Pantem Town → Pantem Cave",
