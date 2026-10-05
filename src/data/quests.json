@@ -70,6 +70,12 @@
   "source": "text bank 328"
  },
  {
+  "name": "The lake trio",
+  "kind": "sidequest",
+  "where": "Pantem Town → Pantem Cave",
+  "desc": "Once you reach the end of this version, go back to Pantem Town: Cynthia is inside the house that used to be locked. Talking to her opens Pantem Cave, where a disk puzzle waits. Solve it to release Uxie, Mesprit and Azelf. Like the legendary dogs in HeartGold, they then roam, turning up at random on different routes; the PDA shows where each one is."
+ },
+ {
   "name": "Mt. Origin expedition",
   "kind": "thread",
   "who": "Prof. Jasmine",

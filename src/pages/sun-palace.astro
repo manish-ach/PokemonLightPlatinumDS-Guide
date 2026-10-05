@@ -2,6 +2,7 @@
 import Base from '../layouts/Base.astro';
 import PageHead from '../components/PageHead.astro';
 import Shot from '../components/Shot.astro';
+import DiskSolution from '../components/DiskSolution.astro';
 import { href } from '../lib/data.js';
 import '../styles/sunpalace.css';
 
@@ -103,6 +104,9 @@ const ORDER = ['L3', 'L2', 'L1', 'L5'];
   <PageHead title="Sun Palace" note="Copy your board, pick the line, press Solve." back={{ href: href('places/sun-palace/'), label: 'Sun Palace' }}>
     <button type="button" class="btn btn--quiet btn--sm" data-sp-help aria-haspopup="dialog">How it works</button>
   </PageHead>
+
+  <DiskSolution title="Top-floor disk puzzle solution" hint="Tap to see how the disk should end up."
+    src="sun_palace_disk.webp" caption="Disk puzzle, solved" place="Sun Palace top floor" />
 
   <div class="sporder" role="note" aria-label="Required alignment order">
     <span class="sporder__label">Solve order</span>
