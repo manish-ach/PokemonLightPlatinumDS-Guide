@@ -36,8 +36,16 @@
   "where": "Inhore University (downstairs), Inhore City",
   "short": "Beat each of the six club Trainers once.",
   "desc": "Downstairs at Inhore University. You need a Gym Badge to get in. Beat each of the six club Trainers once.",
-  "reward": "One each of Power Bracer, Power Belt, Power Lens, Power Band, Power Anklet and Power Weight",
-  "item": "Power Band"
+  "reward": "One of each Power item",
+  "item": "Power Band",
+  "rewardItems": [
+   "Power Bracer",
+   "Power Belt",
+   "Power Lens",
+   "Power Band",
+   "Power Anklet",
+   "Power Weight"
+  ]
  },
  {
   "name": "Fossil revival",
@@ -290,7 +298,20 @@
   "where": "A house on Route 406",
   "short": "10% each of ten items, e.g. Leftovers or Rare Candy.",
   "desc": "A house on Route 406. Each has a 10% chance: Leftovers, Poké Doll, TwistedSpoon, Poké Ball, BlackGlasses, Repel, Rare Candy, Ether, Silk Scarf, Wide Lens.",
-  "item": "Poké Doll"
+  "item": "Poké Doll",
+  "rewardItems": [
+   "Leftovers",
+   "Poké Doll",
+   "TwistedSpoon",
+   "Poké Ball",
+   "BlackGlasses",
+   "Repel",
+   "Rare Candy",
+   "Ether",
+   "Silk Scarf",
+   "Wide Lens"
+  ],
+  "reward": "One of these, 10% chance each"
  },
  {
   "name": "TM05 Roar",

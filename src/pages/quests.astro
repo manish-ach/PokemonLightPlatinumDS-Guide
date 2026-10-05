@@ -1,12 +1,13 @@
 ---
 import Base from '../layouts/Base.astro';
 import PageHead from '../components/PageHead.astro';
-import { QUESTS, slug, href, pic, SPRITE, SPRITE_ITEM, NAT_OF, SPECIES_BY_NAME, spPath, ITEM_BY_KEY, itemKey, MEDALS, medalIcon } from '../lib/data.js';
+import { QUESTS, slug, href, pic, SPRITE, SPRITE_ITEM, NAT_OF, SPECIES_BY_NAME, spPath, ITEM_BY_KEY, itemKey, MEDALS, medalIcon, pocketOf, itemSlug } from '../lib/data.js';
 const side = QUESTS.filter((q) => q.kind === 'sidequest');
 const gifts = QUESTS.filter((q) => q.kind === 'gift');
 const threads = QUESTS.filter((q) => q.kind === 'thread');
 /* a quest's corner art, named by what it is: an item or medal from the
    site's own data (so it matches the Items and Medals pages), else a file */
+const itemPage = (name) => { const i = ITEM_BY_KEY.get(itemKey(name)); return i ? href(`items/${pocketOf(i)}/#${itemSlug(i)}`) : null; };
 const itemArt = (name) => { const i = ITEM_BY_KEY.get(itemKey(name)); return i ? i.sprite || (i.localIcon ? pic(`items/${i.localIcon}`) : null) : null; };
 const medalArt = (name) => { const m = MEDALS.find((x) => x.name === name); const f = m && medalIcon(m); return f ? pic(`MedalIcons/${f}`) : null; };
 const art = (q) => q.item ? itemArt(q.item) : q.medal ? medalArt(q.medal) : q.icon ? pic(q.icon) : q.itemSprite ? SPRITE_ITEM(q.itemSprite) : null;
@@ -58,6 +59,11 @@ const foot = (q) => q.who ? `${q.who} · ${q.where}` : q.where;
         </>
       ) : <p>{q.desc}</p>}
       {q.reward && <><p class="dialog__label">Reward</p><p>{q.reward}</p></>}
+      {(q.rewardItems || (q.item ? [q.item] : [])).length > 0 && (
+        <div class="quest__items">{(q.rewardItems || [q.item]).map((n) => (
+          <a class="quest__item" href={itemPage(n)}>{itemArt(n) ? <img src={itemArt(n)} alt="" width="32" height="32" /> : <i aria-hidden="true"></i>}<span>{ITEM_BY_KEY.get(itemKey(n))?.name || n}</span></a>
+        ))}</div>
+      )}
       {q.mons && (
         <>
           <p class="dialog__label">Pokémon</p>
@@ -86,6 +92,12 @@ const foot = (q) => q.who ? `${q.who} · ${q.where}` : q.where;
     .quest__mons img { image-rendering: pixelated; margin-left: -6px; }
     @media (hover: hover) { .quest:hover { transform: translateY(-1px); } }
     .quest__steps { padding-left: 1.3em; display: grid; gap: var(--sp-1); font-size: var(--text-sm); }
+    .quest__items { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: var(--sp-2); }
+    .quest__item { display: flex; align-items: center; gap: var(--sp-2); font-size: var(--text-sm); font-weight: 600; border: 1px solid var(--line); border-radius: var(--radius); padding: var(--sp-1) var(--sp-2); text-decoration: none; color: inherit; min-width: 0; }
+    .quest__item[href]:hover { border-color: var(--line-strong); background: var(--surface-2); }
+    .quest__item img { image-rendering: pixelated; flex: none; }
+    .quest__item i { width: 32px; height: 32px; flex: none; }
+    .quest__item span { min-width: 0; overflow-wrap: anywhere; }
     .quest__monrow { display: flex; flex-wrap: wrap; gap: var(--sp-2); }
     .quest__mon { display: grid; justify-items: center; font-size: var(--text-sm); font-weight: 600; border: 1px solid var(--line); border-radius: var(--radius); padding: var(--sp-1) var(--sp-3) var(--sp-2); text-decoration: none; color: inherit; }
     .quest__mon:hover { border-color: var(--line-strong); background: var(--surface-2); }
