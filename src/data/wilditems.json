@@ -72,5 +72,7 @@
   {"item": "Aspear Berry", "slug": "aspear-berry", "where": "Mt. Ice Storm", "rarity": null,
    "mons": [{"name": "Cubchoo", "nat": 613}]},
   {"item": "Chesto Berry", "slug": "chesto-berry", "where": null, "rarity": null,
-   "mons": [{"name": "Minccino", "nat": 572}]}
+   "mons": [{"name": "Minccino", "nat": 572}]},
+  {"item": "Razor Claw", "slug": "razor-claw", "where": null, "rarity": null,
+   "mons": [{"name": "Excadrill", "nat": 530}]}
 ]

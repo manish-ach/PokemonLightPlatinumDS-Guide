@@ -66,6 +66,9 @@ const STARTERS = {
   'Hoenn Starters': ['Treecko', 'Torchic', 'Mudkip'],
   'Sinnoh Starters': ['Turtwig', 'Chimchar', 'Piplup'],
 };
+/* the first stage of each starter line also turns up in phenomena once the
+   Phenomenal medal is on */
+export const STARTER_BASES = new Set(Object.values(STARTERS).flat());
 export const ACQ = new Map();
 for (const e of seed.entries.filter((x) => x.section === 'acquisition')) {
   const names = STARTERS[e.name] || [e.name.replace(/\s*\(Egg\)|\s*Egg$/, '').trim()];

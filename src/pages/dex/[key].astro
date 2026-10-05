@@ -4,7 +4,7 @@ import PageHead from '../../components/PageHead.astro';
 import Plate from '../../components/Plate.astro';
 import Note from '../../components/Note.astro';
 import Stepper from '../../components/Stepper.astro';
-import { ALLSPECIES, ALOLAN, ALOLAN_BY_BASE, SPECIES, NONDEX, spKey, spPath, SPRITE, href, ACQ, PHENOM_BY_MON, WILD_BY_MON, placePath, WILD_BY_PLACE, EGG_BASES, evolveFrom, SPECIES_BY_NAME } from '../../lib/data.js';
+import { ALLSPECIES, ALOLAN, ALOLAN_BY_BASE, SPECIES, NONDEX, spKey, spPath, SPRITE, href, ACQ, PHENOM_BY_MON, WILD_BY_MON, placePath, WILD_BY_PLACE, EGG_BASES, STARTER_BASES, evolveFrom, SPECIES_BY_NAME } from '../../lib/data.js';
 
 export function getStaticPaths() {
   const regular = ALLSPECIES.map((sp) => ({ params: { key: spKey(sp) }, props: { sp } }));
@@ -29,6 +29,8 @@ const LABEL = { hp: 'HP', attack: 'Attack', defense: 'Defense', 'special-attack'
 const max = Math.max(150, ...Object.values(stats));
 const total = Object.values(stats).reduce((a, b) => a + b, 0);
 const egg = !sp.alolan && EGG_BASES.has(sp.name);
+const starter = !sp.alolan && STARTER_BASES.has(sp.name);
+const medal = href('medals/#phenomenal');
 const direct = !!(acq || ph || wild.length || egg);
 /* no recorded location: fall back to evolving something earlier in the line */
 const evos = direct || sp.alolan ? [] : evolveFrom(sp.nat);
@@ -72,7 +74,8 @@ const link = (name) => { const s = SPECIES_BY_NAME.get(name); return s ? spPath(
         ) : (
           <p class="empty">No known way to get {sp.name} yet.</p>
         )}
-        {ph && <Note kind="info" title={`${ph.kind} — needs the Phenomenal medal`}><p>{ph.note}</p></Note>}
+        {ph && <Note kind="info" title={`${ph.kind} — needs the Phenomenal medal`}><p>{ph.note} Equip the <a href={medal}>Phenomenal medal</a> first.</p></Note>}
+        {starter && <Note kind="info" title="Also appears in phenomena"><p>With the <a href={medal}>Phenomenal medal</a> on, {sp.name} can turn up in phenomena — shaking grass, whirlpools in water and dust clouds in caves.</p></Note>}
       </section>
 
       {sp.entry && (
