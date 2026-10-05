@@ -40,7 +40,6 @@ const q = (p) => [p.name, ES_NAME[p.name] || '', ...strip(p.name).map((m) => m.n
             return (
               <a class="card" href={placePath(p.name)} data-q={q(p)}>
                 <span class="card__title">{p.name}<span class="num">{p.kind}</span></span>
-                {ES_NAME[p.name] && <span class="card__es">{ES_NAME[p.name]}</span>}
                 {(gym || ph.length > 0 || ob.length > 0) && (
                   <span class="card__meta">
                     {gym && <><b>{gym.badge}</b> · {gym.leader}</>}
@@ -62,7 +61,6 @@ const q = (p) => [p.name, ES_NAME[p.name] || '', ...strip(p.name).map((m) => m.n
   })}
 
   <style>
-    .card__es { font-size: var(--text-xs); color: var(--ink-3); margin-top: -4px; font-style: italic; }
     .group { margin-top: var(--sp-6); }
     .group h2 { margin-bottom: var(--sp-3); }
     .group[hidden] { display: none; }

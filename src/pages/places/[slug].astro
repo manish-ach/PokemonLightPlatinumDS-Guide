@@ -7,7 +7,7 @@ import Note from '../../components/Note.astro';
 import ItemDialog from '../../components/ItemDialog.astro';
 import Stepper from '../../components/Stepper.astro';
 import DiskSolution from '../../components/DiskSolution.astro';
-import { REACHABLE, placeSlug, href, slug, WILD_BY_PLACE, GYM_AT, PHENOM_BY_PLACE, OUTBREAK_BY_PLACE, LOCATION_NOTES, PLACE_SHOTS, PLACE_EXTRA, ITEMS, ITEMS_AT, DEXNAV, WALK, PLACE_INSIDE, PLACE_CONTAINS, ES_NAME, placePath, itemKey, pocketOf, itemSlug, pic, dim, optSources } from '../../lib/data.js';
+import { REACHABLE, placeSlug, href, slug, WILD_BY_PLACE, GYM_AT, PHENOM_BY_PLACE, OUTBREAK_BY_PLACE, LOCATION_NOTES, PLACE_SHOTS, PLACE_EXTRA, ITEMS, ITEMS_AT, DEXNAV, WALK, PLACE_INSIDE, PLACE_CONTAINS, placePath, itemKey, pocketOf, itemSlug, pic, dim, optSources } from '../../lib/data.js';
 
 export function getStaticPaths() {
   return REACHABLE.map((p) => ({ params: { slug: placeSlug(p.name) }, props: { place: p } }));
@@ -54,7 +54,7 @@ const outer = PLACE_INSIDE[place.name];
 const inner = PLACE_CONTAINS.get(place.name) || [];
 ---
 <Base title={place.name} current="places" description={`${place.name} in Pokémon Light Platinum DS — what lives there and what to pick up.`}>
-  <PageHead title={place.name} note={ES_NAME[place.name] && `Spanish: ${ES_NAME[place.name]}`} back={{ href: href('places/'), label: 'Places' }}>
+  <PageHead title={place.name} back={{ href: href('places/'), label: 'Places' }}>
     <p class="count">{place.kind}</p>
     {outer && <a class="btn btn--quiet btn--sm" href={placePath(outer)}>In {outer}</a>}
     {inner.map((n) => <a class="btn btn--quiet btn--sm" href={placePath(n)}>Inside: {n}</a>)}
