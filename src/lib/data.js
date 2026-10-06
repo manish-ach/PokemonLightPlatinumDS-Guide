@@ -20,6 +20,7 @@ import placesRaw from '../data/places.json';
 import spine from '../data/spine.json';
 import phenomena from '../data/phenomena.json';
 import outbreaks from '../data/outbreaks.json';
+import pickups from '../data/pickups.json';
 import wildlocations from '../data/wildlocations.json';
 import mileage from '../data/mileage.json';
 import romitems from '../data/romitems.json';
@@ -182,7 +183,9 @@ export const itemKey = (s) => String(s).toLowerCase().replace(/[^a-z0-9]/g, '');
       localIcon: null, tm: r.tm, berries: null, kind: r.tm ? 'machine' : 'item', matched: false,
       slug: sl, sprite: sl ? SPRITE_ITEM(sl) : null, category: null, cost: r.price || null,
       effect: null, gameText: r.gameText || null, flavor: null, confirmed: false });
-  }  /* every evolution stone and fossil can be dug up in Groment Mines */
+  }  /* what the guide knew before the mines and pickup lists were folded in */
+  for (const i of items) i.seedLocations = i.locations.slice();
+  /* every evolution stone and fossil can be dug up in Groment Mines */
   const DUG = ['Fire Stone', 'Water Stone', 'Thunderstone', 'Leaf Stone', 'Moon Stone', 'Sun Stone', 'Shiny Stone',
     'Dusk Stone', 'Dawn Stone', 'Helix Fossil', 'Dome Fossil', 'Old Amber', 'Root Fossil', 'Claw Fossil',
     'Skull Fossil', 'Armor Fossil', 'Jaw Fossil', 'Sail Fossil'].map(itemKey);
@@ -377,6 +380,29 @@ const LOC_ALIAS = { 'Darkdusk Woods': 'Dardusk Woods', 'Darkdusk Bane': "Dardusk
   'Darkdusk Tower': 'Shadow Tower', 'Darkdusk Gym': 'Dardusk City', 'Marfeney Lake': 'Marfeny Lake', 'Sun Ruins': 'Sun Palace',
   'Esmerald Botanical Garden': 'Botanic Garden', 'Gromet Museum': 'Groment City', 'Gromet Gym': 'Groment City', 'Your House': 'Yellow Town' };
 const placePart = (part) => { const n = part.replace(/\s*(?:[(—–-]|\bvia\b|\bnear\b).*$/, '').trim(); return LOC_ALIAS[n] || canon(n); };
+/* item balls lying around, grouped per item and place: "2 hidden" reads
+   better than the same line twice. Places the guide already lists for that
+   item keep their own wording. */
+{
+  const groups = new Map();
+  for (const p of pickups) {
+    const item = ITEMS.find((i) => (/^(TM|HM)\d+$/.test(p.item) ? i.tm === p.item : itemKey(i.name) === itemKey(p.item)));
+    if (!item) continue;
+    const k = item.name + '|' + item.tm + '|' + p.place;
+    if (!groups.has(k)) groups.set(k, { item, place: p.place, shown: 0, hidden: 0, details: new Set() });
+    const g = groups.get(k);
+    p.hidden ? g.hidden++ : g.shown++;
+    if (p.detail) g.details.add(p.detail);
+  }
+  for (const g of groups.values()) {
+    if (g.item.name === 'Razor Fang') g.item.locations = g.item.locations.filter((l) => !/via Darkdusk Cave/.test(l));
+    else if (g.item.seedLocations.some((l) => l.split(/ \/ |, /).some((x) => placePart(x) === g.place))) continue;
+    const bits = [...g.details];
+    if (g.shown > 1) bits.push(`${g.shown} on the ground`);
+    if (g.hidden) bits.push(g.hidden > 1 ? `${g.hidden} hidden` : 'hidden');
+    g.item.locations.push(bits.length ? `${g.place} — ${bits.join(', ')}` : g.place);
+  }
+}
 export const ITEMS_AT = (name) => {
   const out = [];
   for (const i of ITEMS) for (const loc of i.locations) {

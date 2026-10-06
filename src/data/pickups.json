@@ -1,0 +1,2149 @@
+[
+ {
+  "item": "Razor Fang",
+  "place": "Dardusk's Bane",
+  "tile": [
+   400,
+   313
+  ],
+  "detail": "outside the cave; needs Strength"
+ },
+ {
+  "item": "Max Ether",
+  "place": "Dardusk Woods",
+  "tile": [
+   44,
+   10
+  ]
+ },
+ {
+  "item": "Super Potion",
+  "place": "Dardusk Woods",
+  "tile": [
+   47,
+   28
+  ]
+ },
+ {
+  "item": "Dusk Ball",
+  "place": "Dardusk Woods",
+  "tile": [
+   13,
+   33
+  ]
+ },
+ {
+  "item": "Antidote",
+  "place": "Dardusk Woods",
+  "tile": [
+   55,
+   41
+  ]
+ },
+ {
+  "item": "Escape Rope",
+  "place": "Dardusk Woods",
+  "tile": [
+   36,
+   73
+  ]
+ },
+ {
+  "item": "TM65",
+  "place": "Dardusk Woods",
+  "tile": [
+   21,
+   87
+  ]
+ },
+ {
+  "item": "Fire Stone",
+  "place": "Dardusk Woods",
+  "tile": [
+   6,
+   93
+  ]
+ },
+ {
+  "item": "Rare Candy",
+  "place": "Dardusk's Bane",
+  "detail": "ground floor",
+  "hidden": true,
+  "tile": [
+   5,
+   20
+  ]
+ },
+ {
+  "item": "Revive",
+  "place": "Dardusk's Bane",
+  "detail": "ground floor",
+  "tile": [
+   24,
+   12
+  ]
+ },
+ {
+  "item": "Dusk Stone",
+  "place": "Dardusk's Bane",
+  "detail": "underground",
+  "hidden": true,
+  "tile": [
+   6,
+   2
+  ]
+ },
+ {
+  "item": "Hyper Potion",
+  "place": "Dardusk's Bane",
+  "detail": "underground",
+  "hidden": true,
+  "tile": [
+   14,
+   27
+  ]
+ },
+ {
+  "item": "Miracle Seed",
+  "place": "Esmerald City",
+  "hidden": true,
+  "tile": [
+   182,
+   130
+  ]
+ },
+ {
+  "item": "Rare Candy",
+  "place": "Foongus Swamp",
+  "hidden": true,
+  "tile": [
+   93,
+   56
+  ]
+ },
+ {
+  "item": "Super Repel",
+  "place": "Foongus Swamp",
+  "hidden": true,
+  "tile": [
+   110,
+   59
+  ]
+ },
+ {
+  "item": "Black Sludge",
+  "place": "Foongus Swamp",
+  "hidden": true,
+  "tile": [
+   86,
+   109
+  ]
+ },
+ {
+  "item": "Ultra Ball",
+  "place": "Foongus Swamp",
+  "tile": [
+   68,
+   53
+  ]
+ },
+ {
+  "item": "Full Heal",
+  "place": "Foongus Swamp",
+  "tile": [
+   127,
+   59
+  ]
+ },
+ {
+  "item": "Dusk Ball",
+  "place": "Foongus Swamp",
+  "tile": [
+   80,
+   78
+  ]
+ },
+ {
+  "item": "Antidote",
+  "place": "Foongus Swamp",
+  "tile": [
+   123,
+   84
+  ]
+ },
+ {
+  "item": "Potion",
+  "place": "Foongus Swamp",
+  "tile": [
+   42,
+   88
+  ]
+ },
+ {
+  "item": "TM18",
+  "place": "Foongus Swamp",
+  "tile": [
+   118,
+   101
+  ]
+ },
+ {
+  "item": "Revive",
+  "place": "Foongus Swamp",
+  "tile": [
+   76,
+   102
+  ]
+ },
+ {
+  "item": "Full Heal",
+  "place": "Foongus Swamp",
+  "tile": [
+   68,
+   107
+  ]
+ },
+ {
+  "item": "Nugget",
+  "place": "Foongus Swamp",
+  "tile": [
+   46,
+   109
+  ]
+ },
+ {
+  "item": "X Speed",
+  "place": "Foongus Swamp",
+  "tile": [
+   108,
+   117
+  ]
+ },
+ {
+  "item": "Great Ball",
+  "place": "Foongus Swamp",
+  "tile": [
+   91,
+   120
+  ]
+ },
+ {
+  "item": "Stardust",
+  "place": "Groment City",
+  "hidden": true,
+  "tile": [
+   489,
+   452
+  ]
+ },
+ {
+  "item": "Hyper Potion",
+  "place": "Groment City",
+  "tile": [
+   507,
+   450
+  ]
+ },
+ {
+  "item": "Super Repel",
+  "place": "Groment City",
+  "tile": [
+   535,
+   463
+  ]
+ },
+ {
+  "item": "Parlyz Heal",
+  "place": "Groment City",
+  "tile": [
+   492,
+   477
+  ]
+ },
+ {
+  "item": "PP Up",
+  "place": "Groment City",
+  "tile": [
+   509,
+   478
+  ]
+ },
+ {
+  "item": "Revive",
+  "place": "Groment Mines",
+  "hidden": true,
+  "tile": [
+   27,
+   38
+  ]
+ },
+ {
+  "item": "Dawn Stone",
+  "place": "Groment Mines",
+  "hidden": true,
+  "tile": [
+   17,
+   42
+  ]
+ },
+ {
+  "item": "Max Potion",
+  "place": "Groment Mines",
+  "tile": [
+   21,
+   9
+  ]
+ },
+ {
+  "item": "Full Heal",
+  "place": "Groment Mines",
+  "tile": [
+   6,
+   34
+  ]
+ },
+ {
+  "item": "Ultra Ball",
+  "place": "Groment Mines",
+  "hidden": true,
+  "tile": [
+   51,
+   6
+  ]
+ },
+ {
+  "item": "Iron",
+  "place": "Groment Mines",
+  "hidden": true,
+  "tile": [
+   14,
+   10
+  ]
+ },
+ {
+  "item": "Revive",
+  "place": "Groment Mines",
+  "hidden": true,
+  "tile": [
+   53,
+   12
+  ]
+ },
+ {
+  "item": "Heart Scale",
+  "place": "Groment Mines",
+  "hidden": true,
+  "tile": [
+   44,
+   42
+  ]
+ },
+ {
+  "item": "X Sp. Def",
+  "place": "Groment Mines",
+  "tile": [
+   32,
+   2
+  ]
+ },
+ {
+  "item": "Max Potion",
+  "place": "Groment Mines",
+  "tile": [
+   25,
+   14
+  ]
+ },
+ {
+  "item": "Super Repel",
+  "place": "Groment Mines",
+  "tile": [
+   41,
+   27
+  ]
+ },
+ {
+  "item": "Super Potion",
+  "place": "Groment Mines",
+  "tile": [
+   18,
+   34
+  ]
+ },
+ {
+  "item": "Dusk Ball",
+  "place": "Groment Mines",
+  "tile": [
+   38,
+   37
+  ]
+ },
+ {
+  "item": "Elixir",
+  "place": "Groment Mines",
+  "tile": [
+   39,
+   54
+  ]
+ },
+ {
+  "item": "Ultra Ball",
+  "place": "Groment Mines",
+  "hidden": true,
+  "tile": [
+   51,
+   3
+  ]
+ },
+ {
+  "item": "Max Ether",
+  "place": "Groment Mines",
+  "hidden": true,
+  "tile": [
+   45,
+   11
+  ]
+ },
+ {
+  "item": "Super Potion",
+  "place": "Groment Mines",
+  "hidden": true,
+  "tile": [
+   39,
+   19
+  ]
+ },
+ {
+  "item": "Repel",
+  "place": "Groment Mines",
+  "hidden": true,
+  "tile": [
+   26,
+   36
+  ]
+ },
+ {
+  "item": "Great Ball",
+  "place": "Groment Mines",
+  "hidden": true,
+  "tile": [
+   42,
+   50
+  ]
+ },
+ {
+  "item": "Life Orb",
+  "place": "Groment Mines",
+  "hidden": true,
+  "tile": [
+   20,
+   72
+  ]
+ },
+ {
+  "item": "Smoke Ball",
+  "place": "Groment Mines",
+  "tile": [
+   28,
+   20
+  ]
+ },
+ {
+  "item": "X Attack",
+  "place": "Groment Mines",
+  "tile": [
+   13,
+   34
+  ]
+ },
+ {
+  "item": "Hyper Potion",
+  "place": "Groment Mines",
+  "tile": [
+   30,
+   46
+  ]
+ },
+ {
+  "item": "Electirizer",
+  "place": "Groment Mines",
+  "tile": [
+   46,
+   49
+  ]
+ },
+ {
+  "item": "Ether",
+  "place": "Groment Mines",
+  "tile": [
+   21,
+   57
+  ]
+ },
+ {
+  "item": "Full Restore",
+  "place": "Groment Mines",
+  "tile": [
+   34,
+   61
+  ]
+ },
+ {
+  "item": "Hyper Potion",
+  "place": "Groment Mines",
+  "tile": [
+   43,
+   61
+  ]
+ },
+ {
+  "item": "PP Max",
+  "place": "Groment Mines",
+  "tile": [
+   55,
+   72
+  ]
+ },
+ {
+  "item": "Max Revive",
+  "place": "Groment Mines",
+  "tile": [
+   24,
+   73
+  ]
+ },
+ {
+  "item": "Heal Ball",
+  "place": "Groment Mines",
+  "tile": [
+   41,
+   75
+  ]
+ },
+ {
+  "item": "Calcium",
+  "place": "Groment Mines",
+  "hidden": true,
+  "tile": [
+   61,
+   53
+  ]
+ },
+ {
+  "item": "TM74",
+  "place": "Groment Mines",
+  "tile": [
+   57,
+   16
+  ]
+ },
+ {
+  "item": "Thunderstone",
+  "place": "Groment Mines",
+  "tile": [
+   50,
+   26
+  ]
+ },
+ {
+  "item": "Max Repel",
+  "place": "Groment Mines",
+  "tile": [
+   52,
+   39
+  ]
+ },
+ {
+  "item": "Hyper Potion",
+  "place": "Groment Mines",
+  "hidden": true,
+  "tile": [
+   9,
+   48
+  ]
+ },
+ {
+  "item": "Rare Candy",
+  "place": "Groment Mines",
+  "hidden": true,
+  "tile": [
+   21,
+   83
+  ]
+ },
+ {
+  "item": "Metal Coat",
+  "place": "Groment Mines",
+  "tile": [
+   7,
+   10
+  ]
+ },
+ {
+  "item": "Max Revive",
+  "place": "Groment Mines",
+  "tile": [
+   8,
+   26
+  ]
+ },
+ {
+  "item": "Full Heal",
+  "place": "Groment Mines",
+  "tile": [
+   25,
+   34
+  ]
+ },
+ {
+  "item": "Escape Rope",
+  "place": "Groment Mines",
+  "tile": [
+   33,
+   45
+  ]
+ },
+ {
+  "item": "Nugget",
+  "place": "Groment Mines",
+  "hidden": true,
+  "tile": [
+   32,
+   5
+  ]
+ },
+ {
+  "item": "Heart Scale",
+  "place": "Groment Mines",
+  "hidden": true,
+  "tile": [
+   25,
+   37
+  ]
+ },
+ {
+  "item": "Zinc",
+  "place": "Groment Mines",
+  "tile": [
+   34,
+   2
+  ]
+ },
+ {
+  "item": "Super Potion",
+  "place": "Groment Mines",
+  "tile": [
+   27,
+   3
+  ]
+ },
+ {
+  "item": "Repel",
+  "place": "Groment Mines",
+  "tile": [
+   46,
+   18
+  ]
+ },
+ {
+  "item": "HP Up",
+  "place": "Groment Mines",
+  "tile": [
+   35,
+   41
+  ]
+ },
+ {
+  "item": "Lustroustone",
+  "place": "Groment Mines",
+  "tile": [
+   20,
+   14
+  ]
+ },
+ {
+  "item": "Big Pearl",
+  "place": "Groment Mines",
+  "tile": [
+   21,
+   14
+  ]
+ },
+ {
+  "item": "Water Stone",
+  "place": "Groment Mines",
+  "tile": [
+   20,
+   15
+  ]
+ },
+ {
+  "item": "Heart Scale",
+  "place": "Groment Mines",
+  "tile": [
+   21,
+   15
+  ]
+ },
+ {
+  "item": "Tiny Mushroom",
+  "place": "Inhore Woods",
+  "hidden": true,
+  "tile": [
+   53,
+   56
+  ]
+ },
+ {
+  "item": "Rare Candy",
+  "place": "Inhore Woods",
+  "hidden": true,
+  "tile": [
+   58,
+   81
+  ]
+ },
+ {
+  "item": "Potion",
+  "place": "Inhore Woods",
+  "tile": [
+   32,
+   55
+  ]
+ },
+ {
+  "item": "Poké Ball",
+  "place": "Inhore Woods",
+  "tile": [
+   40,
+   81
+  ]
+ },
+ {
+  "item": "Ether",
+  "place": "Inhore Woods",
+  "tile": [
+   63,
+   87
+  ]
+ },
+ {
+  "item": "Rare Candy",
+  "place": "Marfeny Lake",
+  "tile": [
+   268,
+   397
+  ]
+ },
+ {
+  "item": "Water Stone",
+  "place": "Marfeny Lake",
+  "tile": [
+   257,
+   399
+  ]
+ },
+ {
+  "item": "Potion",
+  "place": "Marfeny Lake",
+  "tile": [
+   233,
+   410
+  ]
+ },
+ {
+  "item": "Moon Stone",
+  "place": "Moss Spring",
+  "hidden": true,
+  "tile": [
+   23,
+   25
+  ]
+ },
+ {
+  "item": "Revive",
+  "place": "Moss Spring",
+  "tile": [
+   26,
+   11
+  ]
+ },
+ {
+  "item": "Dusk Ball",
+  "place": "Mt. Icestorm",
+  "hidden": true,
+  "tile": [
+   16,
+   45
+  ]
+ },
+ {
+  "item": "Max Repel",
+  "place": "Mt. Icestorm",
+  "tile": [
+   5,
+   14
+  ]
+ },
+ {
+  "item": "Poké Doll",
+  "place": "Mt. Icestorm",
+  "tile": [
+   45,
+   16
+  ]
+ },
+ {
+  "item": "Blue Shard",
+  "place": "Mt. Icestorm",
+  "hidden": true,
+  "tile": [
+   54,
+   4
+  ]
+ },
+ {
+  "item": "Pearl",
+  "place": "Mt. Icestorm",
+  "tile": [
+   27,
+   3
+  ]
+ },
+ {
+  "item": "Rare Candy",
+  "place": "Mt. Icestorm",
+  "tile": [
+   42,
+   16
+  ]
+ },
+ {
+  "item": "Stardust",
+  "place": "Mt. Icestorm",
+  "tile": [
+   39,
+   23
+  ]
+ },
+ {
+  "item": "Star Piece",
+  "place": "Mt. Icestorm",
+  "hidden": true,
+  "tile": [
+   21,
+   13
+  ]
+ },
+ {
+  "item": "Iron",
+  "place": "Mt. Icestorm",
+  "hidden": true,
+  "tile": [
+   23,
+   5
+  ]
+ },
+ {
+  "item": "Stardust",
+  "place": "Mt. Icestorm",
+  "hidden": true,
+  "tile": [
+   22,
+   21
+  ]
+ },
+ {
+  "item": "Max Elixir",
+  "place": "Mt. Icestorm",
+  "tile": [
+   3,
+   3
+  ]
+ },
+ {
+  "item": "Moon Stone",
+  "place": "Mt. Icestorm",
+  "tile": [
+   6,
+   9
+  ]
+ },
+ {
+  "item": "NeverMeltIce",
+  "place": "Mt. Icestorm",
+  "tile": [
+   14,
+   21
+  ]
+ },
+ {
+  "item": "Rare Candy",
+  "place": "Mt. Icestorm",
+  "hidden": true,
+  "tile": [
+   39,
+   6
+  ]
+ },
+ {
+  "item": "Green Shard",
+  "place": "Mt. Icestorm",
+  "hidden": true,
+  "tile": [
+   73,
+   7
+  ]
+ },
+ {
+  "item": "Nugget",
+  "place": "Mt. Icestorm",
+  "hidden": true,
+  "tile": [
+   22,
+   10
+  ]
+ },
+ {
+  "item": "Revive",
+  "place": "Mt. Icestorm",
+  "hidden": true,
+  "tile": [
+   4,
+   18
+  ]
+ },
+ {
+  "item": "PP Up",
+  "place": "Mt. Icestorm",
+  "hidden": true,
+  "tile": [
+   57,
+   43
+  ]
+ },
+ {
+  "item": "Ether",
+  "place": "Mt. Icestorm",
+  "hidden": true,
+  "tile": [
+   44,
+   56
+  ]
+ },
+ {
+  "item": "Thunderstone",
+  "place": "Mt. Icestorm",
+  "hidden": true,
+  "tile": [
+   16,
+   59
+  ]
+ },
+ {
+  "item": "Escape Rope",
+  "place": "Mt. Icestorm",
+  "hidden": true,
+  "tile": [
+   27,
+   79
+  ]
+ },
+ {
+  "item": "Revive",
+  "place": "Mt. Icestorm",
+  "hidden": true,
+  "tile": [
+   54,
+   87
+  ]
+ },
+ {
+  "item": "Max Revive",
+  "place": "Mt. Icestorm",
+  "tile": [
+   23,
+   6
+  ]
+ },
+ {
+  "item": "Hyper Potion",
+  "place": "Mt. Icestorm",
+  "tile": [
+   4,
+   8
+  ]
+ },
+ {
+  "item": "Calcium",
+  "place": "Mt. Icestorm",
+  "tile": [
+   47,
+   8
+  ]
+ },
+ {
+  "item": "Max Ether",
+  "place": "Mt. Icestorm",
+  "tile": [
+   41,
+   14
+  ]
+ },
+ {
+  "item": "Super Potion",
+  "place": "Mt. Icestorm",
+  "tile": [
+   61,
+   21
+  ]
+ },
+ {
+  "item": "Full Heal",
+  "place": "Mt. Icestorm",
+  "tile": [
+   18,
+   24
+  ]
+ },
+ {
+  "item": "Sticky Barb",
+  "place": "Mt. Icestorm",
+  "tile": [
+   31,
+   25
+  ]
+ },
+ {
+  "item": "Max Repel",
+  "place": "Mt. Icestorm",
+  "tile": [
+   34,
+   28
+  ]
+ },
+ {
+  "item": "Rare Candy",
+  "place": "Mt. Icestorm",
+  "tile": [
+   14,
+   43
+  ]
+ },
+ {
+  "item": "Max Revive",
+  "place": "Mt. Icestorm",
+  "tile": [
+   76,
+   51
+  ]
+ },
+ {
+  "item": "Dawn Stone",
+  "place": "Mt. Icestorm",
+  "tile": [
+   25,
+   55
+  ]
+ },
+ {
+  "item": "Razor Claw",
+  "place": "Mt. Icestorm",
+  "tile": [
+   54,
+   61
+  ]
+ },
+ {
+  "item": "Max Revive",
+  "place": "Mt. Icestorm",
+  "tile": [
+   93,
+   67
+  ]
+ },
+ {
+  "item": "Dire Hit",
+  "place": "Mt. Icestorm",
+  "tile": [
+   35,
+   70
+  ]
+ },
+ {
+  "item": "Full Heal",
+  "place": "Mt. Icestorm",
+  "tile": [
+   15,
+   72
+  ]
+ },
+ {
+  "item": "Full Restore",
+  "place": "Mt. Icestorm",
+  "tile": [
+   3,
+   82
+  ]
+ },
+ {
+  "item": "Protein",
+  "place": "Mt. Icestorm",
+  "tile": [
+   91,
+   83
+  ]
+ },
+ {
+  "item": "Great Ball",
+  "place": "Mt. Icestorm",
+  "tile": [
+   26,
+   84
+  ]
+ },
+ {
+  "item": "Full Restore",
+  "place": "Mt. Icestorm",
+  "tile": [
+   86,
+   86
+  ]
+ },
+ {
+  "item": "Ultra Ball",
+  "place": "Mt. Icestorm",
+  "tile": [
+   62,
+   89
+  ]
+ },
+ {
+  "item": "TM07",
+  "place": "Mt. Icestorm",
+  "tile": [
+   30,
+   90
+  ]
+ },
+ {
+  "item": "Zinc",
+  "place": "Mt. Icestorm",
+  "tile": [
+   3,
+   93
+  ]
+ },
+ {
+  "item": "Rare Candy",
+  "place": "Mt. Icestorm",
+  "hidden": true,
+  "tile": [
+   89,
+   8
+  ]
+ },
+ {
+  "item": "Heart Scale",
+  "place": "Mt. Icestorm",
+  "hidden": true,
+  "tile": [
+   59,
+   26
+  ]
+ },
+ {
+  "item": "Burn Heal",
+  "place": "Mt. Icestorm",
+  "hidden": true,
+  "tile": [
+   71,
+   35
+  ]
+ },
+ {
+  "item": "Hyper Potion",
+  "place": "Mt. Icestorm",
+  "hidden": true,
+  "tile": [
+   23,
+   46
+  ]
+ },
+ {
+  "item": "Big Pearl",
+  "place": "Mt. Icestorm",
+  "hidden": true,
+  "tile": [
+   17,
+   53
+  ]
+ },
+ {
+  "item": "Max Potion",
+  "place": "Mt. Icestorm",
+  "tile": [
+   62,
+   27
+  ]
+ },
+ {
+  "item": "Max Potion",
+  "place": "Mt. Icestorm",
+  "tile": [
+   90,
+   29
+  ]
+ },
+ {
+  "item": "Max Potion",
+  "place": "Mt. Icestorm",
+  "tile": [
+   58,
+   39
+  ]
+ },
+ {
+  "item": "Metal Coat",
+  "place": "Mt. Icestorm",
+  "tile": [
+   57,
+   48
+  ]
+ },
+ {
+  "item": "Max Potion",
+  "place": "Mt. Icestorm",
+  "tile": [
+   43,
+   57
+  ]
+ },
+ {
+  "item": "Net Ball",
+  "place": "Mt. Icestorm",
+  "hidden": true,
+  "tile": [
+   15,
+   18
+  ]
+ },
+ {
+  "item": "Heart Scale",
+  "place": "Mt. Icestorm",
+  "hidden": true,
+  "tile": [
+   17,
+   20
+  ]
+ },
+ {
+  "item": "Water Stone",
+  "place": "Mt. Icestorm",
+  "tile": [
+   7,
+   4
+  ]
+ },
+ {
+  "item": "X Special",
+  "place": "Mt. Icestorm",
+  "tile": [
+   9,
+   27
+  ]
+ },
+ {
+  "item": "Shiny Stone",
+  "place": "Mt. Icestorm",
+  "tile": [
+   3,
+   22
+  ]
+ },
+ {
+  "item": "Great Ball",
+  "place": "Mt. Icestorm",
+  "hidden": true,
+  "tile": [
+   22,
+   15
+  ]
+ },
+ {
+  "item": "Max Repel",
+  "place": "Mt. Icestorm",
+  "tile": [
+   9,
+   8
+  ]
+ },
+ {
+  "item": "Escape Rope",
+  "place": "Mt. Icestorm",
+  "hidden": true,
+  "tile": [
+   14,
+   15
+  ]
+ },
+ {
+  "item": "Fire Stone",
+  "place": "Mt. Icestorm",
+  "tile": [
+   17,
+   2
+  ]
+ },
+ {
+  "item": "Super Potion",
+  "place": "Mt. Shuem",
+  "hidden": true,
+  "tile": [
+   24,
+   5
+  ]
+ },
+ {
+  "item": "Great Ball",
+  "place": "Mt. Shuem",
+  "tile": [
+   6,
+   5
+  ]
+ },
+ {
+  "item": "Rare Candy",
+  "place": "Mt. Shuem",
+  "hidden": true,
+  "tile": [
+   84,
+   47
+  ]
+ },
+ {
+  "item": "Nugget",
+  "place": "Mt. Shuem",
+  "hidden": true,
+  "tile": [
+   84,
+   72
+  ]
+ },
+ {
+  "item": "Fire Stone",
+  "place": "Mt. Shuem",
+  "hidden": true,
+  "tile": [
+   4,
+   76
+  ]
+ },
+ {
+  "item": "Magmarizer",
+  "place": "Mt. Shuem",
+  "hidden": true,
+  "tile": [
+   82,
+   82
+  ]
+ },
+ {
+  "item": "Full Heal",
+  "place": "Mt. Shuem",
+  "hidden": true,
+  "tile": [
+   49,
+   87
+  ]
+ },
+ {
+  "item": "Burn Heal",
+  "place": "Mt. Shuem",
+  "tile": [
+   19,
+   8
+  ]
+ },
+ {
+  "item": "Calcium",
+  "place": "Mt. Shuem",
+  "tile": [
+   45,
+   14
+  ]
+ },
+ {
+  "item": "Ether",
+  "place": "Mt. Shuem",
+  "tile": [
+   19,
+   17
+  ]
+ },
+ {
+  "item": "Flame Orb",
+  "place": "Mt. Shuem",
+  "tile": [
+   77,
+   30
+  ]
+ },
+ {
+  "item": "Timer Ball",
+  "place": "Mt. Shuem",
+  "tile": [
+   59,
+   44
+  ]
+ },
+ {
+  "item": "Revive",
+  "place": "Mt. Shuem",
+  "tile": [
+   11,
+   47
+  ]
+ },
+ {
+  "item": "Max Repel",
+  "place": "Mt. Shuem",
+  "tile": [
+   33,
+   48
+  ]
+ },
+ {
+  "item": "TM35",
+  "place": "Mt. Shuem",
+  "tile": [
+   32,
+   68
+  ]
+ },
+ {
+  "item": "Hyper Potion",
+  "place": "Mt. Shuem",
+  "tile": [
+   28,
+   71
+  ]
+ },
+ {
+  "item": "X Accuracy",
+  "place": "Mt. Shuem",
+  "tile": [
+   6,
+   85
+  ]
+ },
+ {
+  "item": "Max Revive",
+  "place": "Mt. Shuem",
+  "hidden": true,
+  "tile": [
+   39,
+   10
+  ]
+ },
+ {
+  "item": "Sun Stone",
+  "place": "Mt. Shuem",
+  "tile": [
+   6,
+   9
+  ]
+ },
+ {
+  "item": "Ultra Ball",
+  "place": "Mt. Shuem",
+  "tile": [
+   52,
+   13
+  ]
+ },
+ {
+  "item": "Nugget",
+  "place": "Panotem Islands",
+  "hidden": true,
+  "tile": [
+   54,
+   76
+  ]
+ },
+ {
+  "item": "Heart Scale",
+  "place": "Panotem Islands",
+  "hidden": true,
+  "tile": [
+   60,
+   95
+  ]
+ },
+ {
+  "item": "Ultra Ball",
+  "place": "Panotem Islands",
+  "tile": [
+   53,
+   82
+  ]
+ },
+ {
+  "item": "Heart Scale",
+  "place": "Panotem Islands",
+  "hidden": true,
+  "tile": [
+   105,
+   62
+  ]
+ },
+ {
+  "item": "Ether",
+  "place": "Panotem Islands",
+  "tile": [
+   120,
+   41
+  ]
+ },
+ {
+  "item": "Deep Sea Tooth",
+  "place": "Panotem Islands",
+  "tile": [
+   84,
+   75
+  ]
+ },
+ {
+  "item": "Hard Stone",
+  "place": "Panotem Islands",
+  "tile": [
+   148,
+   44
+  ]
+ },
+ {
+  "item": "Revive",
+  "place": "Panotem Islands",
+  "detail": "forest",
+  "tile": [
+   90,
+   60
+  ]
+ },
+ {
+  "item": "Super Repel",
+  "place": "Panotem Islands",
+  "detail": "forest",
+  "tile": [
+   60,
+   91
+  ]
+ },
+ {
+  "item": "Icy Rock",
+  "place": "Panotem Islands",
+  "detail": "town",
+  "tile": [
+   58,
+   41
+  ]
+ },
+ {
+  "item": "Stardust",
+  "place": "Pantem Cave",
+  "hidden": true,
+  "tile": [
+   11,
+   10
+  ]
+ },
+ {
+  "item": "Dusk Stone",
+  "place": "Pantem Cave",
+  "tile": [
+   15,
+   14
+  ]
+ },
+ {
+  "item": "Max Revive",
+  "place": "Pantem Cave",
+  "tile": [
+   56,
+   15
+  ]
+ },
+ {
+  "item": "Ether",
+  "place": "Pantem Cave",
+  "tile": [
+   50,
+   25
+  ]
+ },
+ {
+  "item": "TM80",
+  "place": "Pantem Cave",
+  "tile": [
+   28,
+   28
+  ]
+ },
+ {
+  "item": "Big Mushroom",
+  "place": "Pantem Town",
+  "hidden": true,
+  "tile": [
+   87,
+   131
+  ]
+ },
+ {
+  "item": "Tiny Mushroom",
+  "place": "Pantem Town",
+  "hidden": true,
+  "tile": [
+   73,
+   133
+  ]
+ },
+ {
+  "item": "Tiny Mushroom",
+  "place": "Pantem Town",
+  "hidden": true,
+  "tile": [
+   94,
+   136
+  ]
+ },
+ {
+  "item": "Antidote",
+  "place": "Route 401",
+  "tile": [
+   160,
+   461
+  ]
+ },
+ {
+  "item": "Potion",
+  "place": "Route 401",
+  "tile": [
+   179,
+   501
+  ]
+ },
+ {
+  "item": "Full Heal",
+  "place": "Route 402",
+  "hidden": true,
+  "tile": [
+   124,
+   409
+  ]
+ },
+ {
+  "item": "Nest Ball",
+  "place": "Route 402",
+  "tile": [
+   112,
+   397
+  ]
+ },
+ {
+  "item": "Repel",
+  "place": "Route 402",
+  "tile": [
+   140,
+   398
+  ]
+ },
+ {
+  "item": "Rare Candy",
+  "place": "Route 403",
+  "hidden": true,
+  "tile": [
+   82,
+   386
+  ]
+ },
+ {
+  "item": "Great Ball",
+  "place": "Route 403",
+  "tile": [
+   93,
+   391
+  ]
+ },
+ {
+  "item": "Stardust",
+  "place": "Route 404",
+  "hidden": true,
+  "tile": [
+   68,
+   223
+  ]
+ },
+ {
+  "item": "TM83",
+  "place": "Route 404",
+  "tile": [
+   95,
+   224
+  ]
+ },
+ {
+  "item": "Super Potion",
+  "place": "Route 404",
+  "tile": [
+   76,
+   243
+  ]
+ },
+ {
+  "item": "Mental Herb",
+  "place": "Route 405",
+  "hidden": true,
+  "tile": [
+   73,
+   207
+  ]
+ },
+ {
+  "item": "Repel",
+  "place": "Route 405",
+  "tile": [
+   82,
+   162
+  ]
+ },
+ {
+  "item": "Revive",
+  "place": "Route 405",
+  "tile": [
+   66,
+   168
+  ]
+ },
+ {
+  "item": "Great Ball",
+  "place": "Route 405",
+  "tile": [
+   82,
+   210
+  ]
+ },
+ {
+  "item": "X Attack",
+  "place": "Route 405",
+  "tile": [
+   93,
+   214
+  ]
+ },
+ {
+  "item": "Leaf Stone",
+  "place": "Route 406",
+  "tile": [
+   145,
+   132
+  ]
+ },
+ {
+  "item": "Antidote",
+  "place": "Route 406",
+  "tile": [
+   106,
+   134
+  ]
+ },
+ {
+  "item": "Super Potion",
+  "place": "Route 406",
+  "tile": [
+   141,
+   152
+  ]
+ },
+ {
+  "item": "TM63",
+  "place": "Route 406",
+  "tile": [
+   106,
+   156
+  ]
+ },
+ {
+  "item": "Elixir",
+  "place": "Route 407",
+  "tile": [
+   199,
+   73
+  ]
+ },
+ {
+  "item": "Super Potion",
+  "place": "Route 407",
+  "tile": [
+   196,
+   83
+  ]
+ },
+ {
+  "item": "Net Ball",
+  "place": "Route 407",
+  "tile": [
+   216,
+   90
+  ]
+ },
+ {
+  "item": "Carbos",
+  "place": "Route 407",
+  "tile": [
+   223,
+   99
+  ]
+ },
+ {
+  "item": "Big Root",
+  "place": "Route 407",
+  "tile": [
+   194,
+   112
+  ]
+ },
+ {
+  "item": "Deep Sea Scale",
+  "place": "Route 408",
+  "tile": [
+   299,
+   37
+  ]
+ },
+ {
+  "item": "Timer Ball",
+  "place": "Route 408",
+  "tile": [
+   234,
+   38
+  ]
+ },
+ {
+  "item": "PP Up",
+  "place": "Route 408",
+  "tile": [
+   314,
+   40
+  ]
+ },
+ {
+  "item": "Revive",
+  "place": "Route 408",
+  "tile": [
+   262,
+   82
+  ]
+ },
+ {
+  "item": "Leaf Stone",
+  "place": "Route 409",
+  "hidden": true,
+  "tile": [
+   414,
+   75
+  ]
+ },
+ {
+  "item": "Dragon Scale",
+  "place": "Route 409",
+  "tile": [
+   400,
+   36
+  ]
+ },
+ {
+  "item": "Dive Ball",
+  "place": "Route 409",
+  "tile": [
+   412,
+   51
+  ]
+ },
+ {
+  "item": "HP Up",
+  "place": "Route 409",
+  "tile": [
+   411,
+   70
+  ]
+ },
+ {
+  "item": "Poké Ball",
+  "place": "Route 409",
+  "tile": [
+   414,
+   76
+  ]
+ },
+ {
+  "item": "Full Heal",
+  "place": "Route 409",
+  "tile": [
+   402,
+   79
+  ]
+ },
+ {
+  "item": "X Defend",
+  "place": "Route 409",
+  "tile": [
+   397,
+   100
+  ]
+ },
+ {
+  "item": "Ultra Ball",
+  "place": "Route 409",
+  "tile": [
+   402,
+   102
+  ]
+ },
+ {
+  "item": "Rare Candy",
+  "place": "Route 409",
+  "tile": [
+   404,
+   116
+  ]
+ },
+ {
+  "item": "Tiny Mushroom",
+  "place": "Route 410",
+  "hidden": true,
+  "tile": [
+   422,
+   199
+  ]
+ },
+ {
+  "item": "Max Revive",
+  "place": "Route 410",
+  "hidden": true,
+  "tile": [
+   428,
+   241
+  ]
+ },
+ {
+  "item": "Ether",
+  "place": "Route 410",
+  "tile": [
+   421,
+   209
+  ]
+ },
+ {
+  "item": "Super Potion",
+  "place": "Route 410",
+  "tile": [
+   437,
+   227
+  ]
+ },
+ {
+  "item": "Awakening",
+  "place": "Route 410",
+  "tile": [
+   438,
+   236
+  ]
+ },
+ {
+  "item": "TM86",
+  "place": "Route 410",
+  "tile": [
+   444,
+   244
+  ]
+ },
+ {
+  "item": "Awakening",
+  "place": "Route 410",
+  "tile": [
+   424,
+   246
+  ]
+ },
+ {
+  "item": "Super Repel",
+  "place": "Route 411",
+  "tile": [
+   310,
+   327
+  ]
+ },
+ {
+  "item": "Oval Stone",
+  "place": "Route 411",
+  "tile": [
+   296,
+   347
+  ]
+ },
+ {
+  "item": "Nest Ball",
+  "place": "Route 411",
+  "tile": [
+   304,
+   377
+  ]
+ },
+ {
+  "item": "Hyper Potion",
+  "place": "Route 412",
+  "hidden": true,
+  "tile": [
+   373,
+   441
+  ]
+ },
+ {
+  "item": "Revive",
+  "place": "Route 412",
+  "hidden": true,
+  "tile": [
+   429,
+   461
+  ]
+ },
+ {
+  "item": "Everstone",
+  "place": "Route 412",
+  "tile": [
+   377,
+   439
+  ]
+ },
+ {
+  "item": "Full Heal",
+  "place": "Route 412",
+  "tile": [
+   394,
+   451
+  ]
+ },
+ {
+  "item": "Guard Spec.",
+  "place": "Route 412",
+  "tile": [
+   363,
+   452
+  ]
+ },
+ {
+  "item": "Repeat Ball",
+  "place": "Route 412",
+  "tile": [
+   415,
+   453
+  ]
+ },
+ {
+  "item": "Thick Club",
+  "place": "Route 412",
+  "tile": [
+   472,
+   455
+  ]
+ },
+ {
+  "item": "TM37",
+  "place": "Route 412",
+  "tile": [
+   357,
+   461
+  ]
+ },
+ {
+  "item": "Hyper Potion",
+  "place": "Route 412",
+  "tile": [
+   433,
+   465
+  ]
+ },
+ {
+  "item": "Protector",
+  "place": "Route 412",
+  "tile": [
+   357,
+   473
+  ]
+ },
+ {
+  "item": "Zinc",
+  "place": "Route 412",
+  "tile": [
+   417,
+   473
+  ]
+ },
+ {
+  "item": "Star Piece",
+  "place": "Route 412",
+  "detail": "inside a building",
+  "hidden": true,
+  "tile": [
+   4,
+   5
+  ]
+ },
+ {
+  "item": "TM43",
+  "place": "Sun Palace",
+  "detail": "floor 1",
+  "tile": [
+   39,
+   -5
+  ]
+ },
+ {
+  "item": "Heart Scale",
+  "place": "Sun Palace",
+  "detail": "floor 2",
+  "hidden": true,
+  "tile": [
+   12,
+   35
+  ]
+ },
+ {
+  "item": "King's Rock",
+  "place": "Sun Palace",
+  "detail": "floor 3",
+  "tile": [
+   31,
+   -3
+  ]
+ },
+ {
+  "item": "Sun Stone",
+  "place": "Sun Palace",
+  "detail": "floor 3",
+  "tile": [
+   18,
+   -1
+  ]
+ },
+ {
+  "item": "Nugget",
+  "place": "Sun Palace",
+  "detail": "floor 4",
+  "hidden": true,
+  "tile": [
+   42,
+   -3
+  ]
+ }
+]
