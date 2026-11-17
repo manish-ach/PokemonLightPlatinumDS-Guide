@@ -1,11 +1,12 @@
 ---
-/* The title row. Tools (search, counts, a back link) sit beside the title on
-   the same line and content starts straight after — no hero, no lede. */
+/* The title row. Tools (search, counts, a stepper) sit beside the title on
+   the same line and content starts straight after — no hero, no lede. The
+   back link carries a square in the colour of the line the page is on. */
 interface Props { title: string; note?: string; back?: { href: string; label: string }; }
 const { title, note, back } = Astro.props;
 ---
 <header class="page-head">
-  {back && <p class="crumb" style="flex-basis:100%"><a href={back.href}>← {back.label}</a></p>}
+  {back && <p class="crumb"><a href={back.href}><span class="crumb__arrow" aria-hidden="true">←</span>{back.label}</a></p>}
   <h1>{title}</h1>
   <slot />
   {note && <p class="page-head__note"><span>{note}</span></p>}

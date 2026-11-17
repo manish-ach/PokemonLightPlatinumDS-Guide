@@ -1,0 +1,48 @@
+---
+import { langPaths, t } from '../../lib/i18n.js';
+export function getStaticPaths() { return langPaths(); }
+import Base from '../../layouts/Base.astro';
+import PageHead from '../../components/PageHead.astro';
+import Mon from '../../components/Mon.astro';
+import { CARDS, href, pic, MEDALS, medalIcon, slug } from '../../lib/data.js';
+const medalOf = (name) => MEDALS.find((m) => m.name === name);
+/* "April 2026" → "abril de 2026" on a Spanish page */
+const when = (date) => { if (!date) return t('From the start'); const [m, y] = date.split(' '); return t('{month} {year}', { month: t(m), year: y }); };
+---
+<Base title={t('Mystery Gift')} current="gifts" description={t('Every Wonder Card distributed for Pokémon Light Platinum DS, in the order they went out.')}>
+  <PageHead title={t('Mystery Gift')} note={t('Wonder Cards from the PokeHacking online service, dated when they went out.')}>
+    <p class="count"><output>{CARDS.length}</output> {t('cards')}</p>
+  </PageHead>
+
+  {/* the cards went out one after another, so they are stops on a line, oldest first */}
+  <ol class="track wcards">
+    {CARDS.map((c) => (
+      <li>
+        <article class="track__stop">
+          <span class="track__dot"></span>
+          <div class="track__body wcard">
+            <p class="wcard__when">{when(c.date)}</p>
+            <h2 class="track__name">{c.title}</h2>
+            <p class="wcard__text">{t(c.body)}</p>
+            {c.gives && Array.isArray(c.species) && <p class="small">{t(c.gives)}</p>}
+            <div class="wcard__gives">
+              {Array.isArray(c.species) ? c.species.map((s) => <Mon name={s} />) : c.species ? <Mon name={c.species} shiny={!!c.shiny} />
+                : c.medal && medalOf(c.medal) ? <a class="mon" href={href(`medals/#${slug(c.medal)}`)}><img src={pic(`MedalIcons/${medalIcon(medalOf(c.medal))}`)} alt="" width="28" height="28" loading="lazy" decoding="async" />{t('{name} medal', { name: c.medal })}</a>
+                : <p class="small">{t(c.gives)}</p>}
+            </div>
+            {c.note && <p class="wcard__note">{t(c.note)}</p>}
+          </div>
+        </article>
+      </li>
+    ))}
+  </ol>
+
+  <style>
+    .wcards { max-width: 46rem; }
+    .wcard { gap: var(--sp-2); }
+    .wcard__when { font: 700 var(--text-sm) var(--mono); color: var(--ink-2); }
+    .wcard__text { color: var(--ink-2); max-width: var(--measure); }
+    .wcard__gives { display: flex; flex-wrap: wrap; gap: var(--sp-1) var(--sp-2); }
+    .wcard__note { font-size: var(--text-sm); color: var(--ink-3); max-width: var(--measure); }
+  </style>
+</Base>

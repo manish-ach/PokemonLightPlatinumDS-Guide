@@ -1,0 +1,133 @@
+---
+import { langPaths, t, placeName } from '../../lib/i18n.js';
+export function getStaticPaths() { return langPaths(); }
+import Base from '../../layouts/Base.astro';
+import Plate from '../../components/Plate.astro';
+import { LINES } from '../../lib/nav.js';
+import { href, pic, dim, GYMS, REACHABLE, WILDAT, ALLSPECIES, ITEMS, MEDALS, QUESTS, CARDS, TRADES, slug, SPRITE } from '../../lib/data.js';
+const [ww, wh] = dim('TownMap/west.png');
+const [ew, eh] = dim('TownMap/east.png');
+const routes = REACHABLE.filter((p) => p.kind === 'Route').length;
+/* the three most recently walked places, by your visit order */
+const recent = WILDAT.filter((w) => w.order != null).sort((a, b) => b.order - a.order).slice(0, 3);
+const sprites = recent.flatMap((w) => w.methods[0].mons.slice(0, 3)).slice(0, 8);
+/* how many things each section holds; the Sun Palace is one puzzle, so it has no count */
+/* a stop is named by the city alone: "Inhore", "Melífera" */
+const stopName = (city) => placeName(city).replace(/ (City|Town)$/, '').replace(/^(Ciudad|Pueblo) /, '');
+const COUNT = { places: REACHABLE.length, gyms: GYMS.length, dex: ALLSPECIES.length, trades: TRADES.length,
+  gifts: CARDS.length, items: ITEMS.length, medals: MEDALS.length, quests: QUESTS.length };
+---
+<Base title={t('Guide')} current="home" description={t('Where everything is in Pokémon Light Platinum DS — places, Pokémon, items, medals, the Sun Palace puzzle.')}>
+  <div class="home">
+    <h1 class="vh">{t('Light Platinum DS guide')}</h1>
+
+    <section class="home__find" aria-label={t('Search the guide')} data-search>
+      <label class="field field--big">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="9" cy="9" r="6"/><path d="m14 14 4 4"/></svg>
+        <input type="search" placeholder={t('Search a place, Pokémon, item, medal…')} aria-label={t('Search the guide')} autocomplete="off" />
+      </label>
+      <ul class="results" data-results hidden></ul>
+    </section>
+
+    {/* the gyms in the order you meet them, drawn as stops on one line */}
+    <section aria-labelledby="run-h">
+      <h2 id="run-h" class="rule">{t('The badge run')}</h2>
+      <ol class="run" style={`--stops:${GYMS.length}`}>
+        {GYMS.map((g) => (
+          <li>
+            <a class="stop" href={href(`gyms/${slug(g.city)}/`)}>
+              <span class="shield shield--lg stop__no">{g.order}</span>
+              <span class="stop__city">{stopName(g.city)}</span>
+              <span class="stop__who">{g.leader} · {t('lv')} <span class="num">{g.levels}</span></span>
+              <span class="plates">{g.types.map((t) => <Plate type={t} />)}</span>
+            </a>
+          </li>
+        ))}
+      </ol>
+    </section>
+
+    {/* the network board: every section, under the line it belongs to */}
+    <section aria-labelledby="board-h">
+      <h2 id="board-h" class="rule">{t('The guide')}</h2>
+      <div class="board">
+        {LINES.map((l) => (
+          <section class="board__line" style={`--lc:var(--line-${l.key})`} aria-label={t('{line} line', { line: t(l.label) })}>
+            <h3 class="linehead">{t(l.label)}</h3>
+            <ul>
+              {l.sections.map((s) => (
+                <li>
+                  <a class="row" href={href(s.path)}>
+                    <span class="row__name">{t(s.label)}</span>
+                    {COUNT[s.key] != null && <span class="row__n num">{COUNT[s.key]}</span>}
+                    <span class="row__meta">{t(s.blurb)}</span>
+                    {s.key === 'places' && (
+                      <span class="row__extra">
+                        <span class="strip">{sprites.map((m) => <img src={SPRITE(m.nat)} alt="" width="32" height="32" loading="lazy" />)}</span>
+                        <span>{t('Walked as far as {place} · {n} routes', { place: placeName(recent[0]?.place), n: routes })}</span>
+                      </span>
+                    )}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </section>
+        ))}
+      </div>
+    </section>
+
+    <figure class="map">
+      <span class="map__pair">
+        <img src={pic('TownMap/west.png')} width={ww} height={wh} alt={t('Zhery town map, western half, from the Pokégear')} loading="lazy" decoding="async" />
+        <img src={pic('TownMap/east.png')} width={ew} height={eh} alt={t('Zhery town map, eastern half, from the Pokégear')} loading="lazy" decoding="async" />
+      </span>
+      <figcaption><b>Zhery</b><span>{t('The in-game town map, west and east')}</span></figcaption>
+    </figure>
+  </div>
+
+  <style>
+    .home { display: grid; gap: var(--sp-8); padding-top: var(--sp-2); }
+    .home > * { min-width: 0; }
+    .rule { margin-bottom: var(--sp-4); }
+
+    /* the badge run. A track in the World line's colour runs through the
+       numbered stops: across on a wide screen, down the left on a phone. */
+    .run { list-style: none; position: relative; display: grid; grid-template-columns: repeat(var(--stops), minmax(0, 1fr)); gap: var(--sp-3); }
+    .run::before { content: ""; position: absolute; left: 0; right: 0; top: 11px; height: 4px; border-radius: 2px; background: var(--line-world-hi); }
+    .stop { position: relative; display: grid; justify-items: start; gap: 2px; padding-bottom: var(--sp-2); text-decoration: none; color: var(--ink); border-radius: var(--radius-sm); }
+    /* the page shows through around each shield, so the track reads as passing behind it */
+    .stop__no { box-shadow: 0 0 0 4px var(--bg); margin-bottom: var(--sp-2); }
+    .stop__city { font-weight: 800; font-size: var(--text-lg); line-height: 1.15; letter-spacing: -0.01em; }
+    .stop__who { font-size: var(--text-sm); color: var(--ink-2); }
+    .stop .plates { margin-top: var(--sp-1); }
+    .stop:hover .stop__city { text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 0.18em; }
+    .stop:hover .stop__no { background: var(--accent); border-color: var(--accent); color: var(--on-accent); }
+    @media (max-width: 719px) {
+      .run { grid-template-columns: 1fr; gap: 0; }
+      .run::before { left: 16px; right: auto; top: 30px; bottom: 30px; width: 4px; height: auto; }
+      .stop { grid-template-columns: 36px minmax(0, 1fr) auto; column-gap: var(--sp-3); align-items: center; min-height: 60px; padding-block: var(--sp-2); }
+      .stop__no { grid-row: span 2; margin-bottom: 0; justify-self: center; }
+      .stop__city { grid-column: 2; }
+      .stop__who { grid-column: 2; }
+      .stop .plates { grid-column: 3; grid-row: 1 / span 2; margin-top: 0; justify-content: flex-end; max-width: 7.5rem; }
+    }
+
+    /* the board: one panel per line, a row per section. The row is the link. */
+    .board { display: grid; gap: var(--sp-4); grid-template-columns: repeat(auto-fit, minmax(min(100%, 16rem), 1fr)); align-items: start; }
+    .board__line ul { list-style: none; background: var(--surface); border: 1px solid var(--line); border-top: 0; border-radius: 0 0 var(--radius) var(--radius); overflow: hidden; }
+    .board__line li + li { border-top: 1px solid var(--line); }
+    .row { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 2px var(--sp-3); align-items: baseline; padding: var(--sp-3) var(--sp-3) var(--sp-3) var(--sp-4); min-height: 64px; text-decoration: none; color: var(--ink); transition: background var(--t-fast) var(--ease); }
+    .row:hover { background: var(--surface-2); }
+    .row:hover .row__name { text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 0.18em; }
+    .row:focus-visible { border-radius: 0; outline-offset: -2px; box-shadow: inset 0 0 0 5px var(--accent); }
+    .row__name { font-weight: 800; font-size: var(--text-lg); line-height: 1.2; letter-spacing: -0.01em; }
+    .row__n { font-size: var(--text-sm); font-weight: 700; color: var(--ink-2); }
+    .row__meta { grid-column: 1 / -1; font-size: var(--text-sm); color: var(--ink-2); }
+    .row__extra { grid-column: 1 / -1; display: grid; gap: var(--sp-1); margin-top: var(--sp-2); font-size: var(--text-sm); color: var(--ink-3); }
+
+    .map { max-width: 46rem; background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; }
+    .map__pair { display: grid; grid-template-columns: 1fr 1fr; gap: var(--sp-1); padding: var(--sp-2); background: var(--surface-2); }
+    .map img { width: 100%; height: auto; image-rendering: pixelated; border-radius: var(--radius-sm); }
+    .map figcaption { display: flex; flex-wrap: wrap; justify-content: space-between; gap: var(--sp-1) var(--sp-3); padding: var(--sp-2) var(--sp-3); font-size: var(--text-sm); border-top: 1px solid var(--line); }
+    .map figcaption span { color: var(--ink-3); }
+  </style>
+</Base>

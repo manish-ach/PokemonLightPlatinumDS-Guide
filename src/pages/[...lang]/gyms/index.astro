@@ -1,0 +1,44 @@
+---
+import { langPaths, t, placeName, monName } from '../../../lib/i18n.js';
+export function getStaticPaths() { return langPaths(); }
+import Base from '../../../layouts/Base.astro';
+import PageHead from '../../../components/PageHead.astro';
+import Plate from '../../../components/Plate.astro';
+import { GYMS, href, slug, SPRITE } from '../../../lib/data.js';
+---
+<Base title={t('Gyms')} current="gyms" description={t('The five Gym Leaders of Zhery, their badges and their teams.')}>
+  <PageHead title={t('Gyms')} note={t('Five Gyms, in level order.')} />
+
+  {/* the badge run in full: each gym is a stop, with its team and what the badge does */}
+  <ol class="track gyms">
+    {GYMS.map((g) => (
+      <li>
+        <a class="track__stop" href={href(`gyms/${slug(g.city)}/`)}>
+          <span class="shield shield--lg track__no">{g.order}</span>
+          <span class="track__body gym">
+            <span class="gym__head">
+              <span class="track__name">{placeName(g.city)}</span>
+              <span class="plates">{g.types.map((ty) => <Plate type={ty} />)}</span>
+            </span>
+            <span class="track__meta"><b>{t(g.badge)}</b> · {t('Leader')} {g.leader} · {t('lv')} <span class="num">{g.levels}</span></span>
+            <span class="gym__team">
+              {g.team.map((m) => <span class="gym__mon"><img src={SPRITE(m.nat)} alt="" width="40" height="40" loading="lazy" decoding="async" /><span>{monName(m.name)}</span><span class="num">{m.level}</span></span>)}
+            </span>
+            <span class="track__meta gym__effect">{t(g.effect)}</span>
+          </span>
+        </a>
+      </li>
+    ))}
+  </ol>
+
+  <style>
+    .gyms { max-width: 52rem; }
+    .gym { gap: var(--sp-2); }
+    .gym__head { display: flex; flex-wrap: wrap; align-items: center; gap: var(--sp-2) var(--sp-3); }
+    .gym__team { display: flex; flex-wrap: wrap; gap: var(--sp-1) var(--sp-3); }
+    .gym__mon { display: grid; justify-items: center; font-size: var(--text-xs); color: var(--ink-2); line-height: 1.2; }
+    .gym__mon img { width: 40px; height: 40px; image-rendering: pixelated; }
+    .gym__mon .num { color: var(--ink-3); }
+    .gym__effect { color: var(--ink); }
+  </style>
+</Base>

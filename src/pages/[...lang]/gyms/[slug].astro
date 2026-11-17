@@ -1,0 +1,39 @@
+---
+import { withLangs, t, placeName } from '../../../lib/i18n.js';
+import Base from '../../../layouts/Base.astro';
+import PageHead from '../../../components/PageHead.astro';
+import Plate from '../../../components/Plate.astro';
+import Team from '../../../components/Team.astro';
+import { GYMS, href, slug, placePath, PLACES } from '../../../lib/data.js';
+
+export function getStaticPaths() {
+  return withLangs(GYMS.map((g) => ({ params: { slug: slug(g.city) }, props: { gym: g } })));
+}
+const { gym } = Astro.props;
+const cityBuilt = PLACES.some((p) => p.name === gym.city && p.built);
+---
+<Base title={t('{city} Gym', { city: placeName(gym.city) })} current="gyms" description={t('Leader {leader} of {city}: badge, team and rematches.', { leader: gym.leader, city: placeName(gym.city) })}>
+  <PageHead title={t('{city} Gym', { city: placeName(gym.city) })} back={{ href: href('gyms/'), label: t('Gyms') }}>
+    <span class="plates">{gym.types.map((ty) => <Plate type={ty} />)}</span>
+  </PageHead>
+
+  <dl class="kv facts">
+    <div><dt>{t('Leader')}</dt><dd>{gym.leader} · {t('badge')} <span class="shield">{gym.order}</span> {t('of')} {GYMS.length}</dd></div>
+    <div><dt>{t('Badge')}</dt><dd><b>{t(gym.badge)}</b> — {t(gym.effect)}</dd></div>
+    <div><dt>{t('Levels')}</dt><dd class="num">{gym.levels}</dd></div>
+    {cityBuilt && <div><dt>{t('City')}</dt><dd><a href={placePath(gym.city)}>{placeName(gym.city)}</a></dd></div>}
+  </dl>
+
+  <section class="block">
+    <h2>{t('The team')}</h2>
+    <Team team={gym.team} />
+  </section>
+
+  {gym.rematch.map((r, i) => (
+    <section class="block">
+      <h2>{t('Rematch {n}', { n: i + 1 })} <span class="small muted num">{t('lv')} {r.levels}</span></h2>
+      <Team team={r.team} />
+    </section>
+  ))}
+
+</Base>

@@ -3,6 +3,7 @@
    puzzle screenshot only loads (and takes room) for people who want it. */
 import Shot from './Shot.astro';
 interface Props { title: string; hint: string; src: string; caption: string; place: string; }
+import { t } from '../lib/i18n.js';
 const { title, hint, src, caption, place } = Astro.props;
 ---
 <details class="disk">
@@ -14,23 +15,23 @@ const { title, hint, src, caption, place } = Astro.props;
   <div class="disk__body">
     <slot />
     <Shot src={src} title={caption} place={place} />
-    <p class="disk__warn">This screenshot is a guide, not a guarantee — it may not match your game exactly, so you might still need to turn the disc pieces yourself until they line up.</p>
+    <p class="disk__warn">{t('This screenshot is a guide, not a guarantee — it may not match your game exactly, so you might still need to turn the disc pieces yourself until they line up.')}</p>
   </div>
 </details>
 
 <style>
-  .disk { border: 1px solid var(--accent-ink); border-radius: var(--radius); background: var(--accent-soft); margin-bottom: var(--sp-4); }
-  .disk summary { display: flex; gap: var(--sp-3); align-items: flex-start; padding: var(--sp-3) var(--sp-4); cursor: pointer; list-style: none; color: var(--accent-ink); }
+  .disk { border: 1px solid var(--line-strong); border-radius: var(--radius); background: var(--accent-soft); margin-bottom: var(--sp-4); }
+  .disk summary { display: flex; gap: var(--sp-3); align-items: flex-start; padding: var(--sp-3) var(--sp-4); cursor: pointer; list-style: none; color: var(--ink); min-height: 44px; }
   .disk summary::-webkit-details-marker { display: none; }
   .disk summary > svg:first-child { flex: none; margin-top: 0.2em; }
   .disk summary > span { flex: 1; display: grid; gap: 2px; }
-  .disk summary b { font-weight: 600; }
+  .disk summary b { font-weight: 700; }
   .disk__hint { font-size: var(--text-sm); color: var(--ink); }
   .disk[open] .disk__hint { display: none; }
-  .disk__chev { flex: none; margin-top: 0.2em; transition: transform 160ms ease; }
+  .disk__chev { flex: none; margin-top: 0.2em; transition: transform var(--t) var(--ease); }
   .disk[open] .disk__chev { transform: rotate(180deg); }
   .disk__body { display: grid; gap: var(--sp-3); padding: 0 var(--sp-4) var(--sp-4); max-width: 600px; }
   .disk__body :global(p) { font-size: var(--text-sm); }
   .disk__body :global(img) { image-rendering: pixelated; }
-  .disk__warn { color: var(--ink-2); font-style: italic; }
+  .disk__warn { color: var(--ink-2); }
 </style>

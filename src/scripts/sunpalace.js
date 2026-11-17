@@ -5,6 +5,8 @@
    gear at once; Outside/Inside shift one line by one track. Solved means four
    gears on one line, one on each track. The ladder blocks a lever unless the
    secret passage protects it (L1 Rotate, L2 Outside). */
+import { ct } from './t.js';
+
 (() => {
   const root = document.querySelector('[data-sp]');
   if (!root) return;
@@ -105,7 +107,7 @@
       s.classList.toggle('is-filled', filled);
       s.classList.toggle('is-target', line === target);
       s.setAttribute('aria-label',
-        `Line ${line}, track ${track}, ${filled ? 'gear' : 'empty'}`);
+        ct('Line {line}, track {track}, {state}', { line, track, state: ct(filled ? 'gear' : 'empty') }));
     });
     el.levers.forEach(l => {
       const line = +l.dataset.line, type = l.dataset.type;
@@ -117,8 +119,8 @@
     el.count.textContent = gears.length;
     root.classList.toggle('is-solved', isAligned(gears, target));
     if (msg) el.status.textContent = msg;
-    else if (isAligned(gears, target)) el.status.textContent = `Solved — four gears stacked on L${target}.`;
-    else if (gears.length < 4) el.status.textContent = 'Place at least four gears, then pick a target line.';
+    else if (isAligned(gears, target)) el.status.textContent = ct('Solved — four gears stacked on L{n}.', { n: target });
+    else if (gears.length < 4) el.status.textContent = ct('Place at least four gears, then pick a target line.');
   }
 
   function push() { history.push(gears.map(g => ({ ...g }))); if (history.length > 60) history.shift(); }
@@ -129,7 +131,7 @@
       const line = +s.dataset.line, track = +s.dataset.track;
       push();
       if (at(line, track)) gears = gears.filter(g => !(g.line === line && g.track === track));
-      else if (gears.length >= MAX_GEARS) return render(`Six gears is the maximum.`);
+      else if (gears.length >= MAX_GEARS) return render(ct('Six gears is the maximum.'));
       else gears.push({ line, track });
       path = null; el.solution.hidden = true;
       render(' ');
@@ -145,12 +147,12 @@
     const act = () => {
       const line = +l.dataset.line, type = l.dataset.type;
       if (blocked === line && !isProtected(line, type))
-        return render(`L${line} ${NAME[type]} is blocked by the ladder.`);
+        return render(ct('L{n} {lever} is blocked by the ladder.', { n: line, lever: ct(NAME[type]) }));
       if (busy) return;
       push();
       if (path && done < path.length && path[done].line === line) return runStep(done);
       path = null; el.solution.hidden = true; setNext(null);
-      animateAction({ line, type }, `Pulled L${line} ${NAME[type]}.`);
+      animateAction({ line, type }, ct('Pulled L{n} {lever}.', { n: line, lever: ct(NAME[type]) }));
     };
     l.addEventListener('click', act);
     l.addEventListener('keydown', e => {
@@ -162,18 +164,18 @@
   el.block.addEventListener('change', () => { blocked = el.block.value ? +el.block.value : null; path = null; el.solution.hidden = true; render(' '); render(); });
   root.querySelector('[data-sp-undo]').addEventListener('click', () => {
     if (busy) return;
-    if (!history.length) return render('Nothing to undo.');
-    gears = history.pop(); path = null; el.solution.hidden = true; setNext(null); render('Stepped back.');
+    if (!history.length) return render(ct('Nothing to undo.'));
+    gears = history.pop(); path = null; el.solution.hidden = true; setNext(null); render(ct('Stepped back.'));
   });
   root.querySelector('[data-sp-reset]').addEventListener('click', () => {
-    push(); gears = []; path = null; el.solution.hidden = true; render('Board cleared.');
+    push(); gears = []; path = null; el.solution.hidden = true; render(ct('Board cleared.'));
   });
   root.querySelector('[data-sp-preset]').addEventListener('click', () => {
     push();
     gears = [{ line: 1, track: 1 }, { line: 2, track: 2 }, { line: 3, track: 3 },
              { line: 4, track: 4 }, { line: 5, track: 1 }];
     path = null; el.solution.hidden = true;
-    render('Example loaded — try Solve.');
+    render(ct('Example loaded — try Solve.'));
   });
 
   const MSG = {
@@ -233,7 +235,7 @@
   function runStep(i, cb) {
     if (busy || !path || i !== done) return;
     const a = path[i];
-    animateAction(a, `Pulled L${a.line} ${NAME[a.type]}.`, () => { done = i + 1; markSteps(); cb && cb(); });
+    animateAction(a, ct('Pulled L{n} {lever}.', { n: a.line, lever: ct(NAME[a.type]) }), () => { done = i + 1; markSteps(); cb && cb(); });
   }
   function applyProgress(msg) {
     orderChips.forEach((c, k) => { c.classList.toggle('is-done', k < progress); c.classList.toggle('is-here', k === progress); });
@@ -247,26 +249,26 @@
     if (busy || !path || done < path.length) return;
     busy = true;
     root.classList.add('is-turning');
-    render('Pillar turning…');
+    render(ct('Pillar turning…'));
     setTimeout(() => {
       root.classList.remove('is-turning'); busy = false;
       progress = Math.min(4, progress + 1);
       path = null; done = 0; items = []; finalBtn = null; el.solution.hidden = true; setNext(null);
-      if (progress >= 4) applyProgress('All four lines aligned. The pillar has risen and the way below is open.');
-      else applyProgress(`L${ORDER[progress - 1]} is done. Copy the board as it is now, then solve for L${ORDER[progress]}.`);
+      if (progress >= 4) applyProgress(ct('All four lines aligned. The pillar has risen and the way below is open.'));
+      else applyProgress(ct('L{done} is done. Copy the board as it is now, then solve for L{next}.', { done: ORDER[progress - 1], next: ORDER[progress] }));
     }, reduced() ? 80 : 1500);
   }
 
   root.querySelector('[data-sp-solve]').addEventListener('click', () => {
     if (busy) return;
     const res = solve(gears, target, blocked);
-    if (res.status !== 'ok') { el.solution.hidden = true; return render(MSG[res.status]); }
+    if (res.status !== 'ok') { el.solution.hidden = true; return render(ct(MSG[res.status])); }
     path = res.path; done = 0;
     el.len.textContent = path.length;
     el.steps.innerHTML = '';
     items = path.map((a, i) => {
       const li = document.createElement('li');
-      li.innerHTML = `<button type="button" class="spsol__step" data-step="${i}"><b>L${a.line}</b> ${NAME[a.type]}</button>`;
+      li.innerHTML = `<button type="button" class="spsol__step" data-step="${i}"><b>L${a.line}</b> ${ct(NAME[a.type])}</button>`;
       li.querySelector('button').addEventListener('click', () => runStep(i));
       el.steps.append(li);
       return li;
@@ -275,13 +277,13 @@
        once the pillar is turned from the floor above */
     const fin = document.createElement('li');
     fin.className = 'spsol__final';
-    fin.innerHTML = '<button type="button" data-final>Then go up a floor and press the <b>main switch</b> at the back.</button>';
+    fin.innerHTML = `<button type="button" data-final>${ct('Then go up a floor and press the <b>main switch</b> at the back.')}</button>`;
     finalBtn = fin.querySelector('button');
     finalBtn.addEventListener('click', turnPillar);
     el.steps.append(fin);
     el.solution.hidden = false;
     markSteps();
-    render(`Found a route in ${path.length} move${path.length === 1 ? '' : 's'}. Click each step to watch it, or Play.`);
+    render(ct(path.length === 1 ? 'Found a route in 1 move. Click the step to watch it, or Play.' : 'Found a route in {n} moves. Click each step to watch it, or Play.', { n: path.length }));
   });
 
   root.querySelector('[data-sp-play]').addEventListener('click', () => {
@@ -292,7 +294,7 @@
   });
   root.querySelector('[data-sp-restart]')?.addEventListener('click', () => {
     progress = 0; path = null; done = 0; el.solution.hidden = true; setNext(null);
-    applyProgress('Progress reset — start again from L3.');
+    applyProgress(ct('Progress reset — start again from L3.'));
   });
 
   applyProgress();

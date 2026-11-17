@@ -1,0 +1,135 @@
+---
+import { withLangs, t, rich, isEs, monName, placeName, genusOf, entryOf, itemName } from '../../../lib/i18n.js';
+import Base from '../../../layouts/Base.astro';
+import PageHead from '../../../components/PageHead.astro';
+import Plate from '../../../components/Plate.astro';
+import Note from '../../../components/Note.astro';
+import Shot from '../../../components/Shot.astro';
+import Stepper from '../../../components/Stepper.astro';
+import { ALLSPECIES, ALOLAN, ALOLAN_BY_BASE, SPECIES, NONDEX, spKey, spPath, SPRITE, href, ACQ, PHENOM_BY_MON, OUTBREAK_BY_MON, WILD_BY_MON, placePath, WILD_BY_PLACE, EGG_BASES, breedFrom, REACHABLE, STARTER_BASES, evolveFrom, SPECIES_BY_NAME } from '../../../lib/data.js';
+
+export function getStaticPaths() {
+  const regular = ALLSPECIES.map((sp) => ({ params: { key: spKey(sp) }, props: { sp } }));
+  const forms = ALOLAN.map((a) => ({ params: { key: spKey({ ...a, alolan: true }) }, props: { sp: { ...a, alolan: true, shiny: false } } }));
+  return withLangs([...regular, ...forms]);
+}
+const { sp } = Astro.props;
+/* neighbours by dex number: the regional dex in order, then the off-dex
+   entries by national number; Alolan forms step among themselves */
+const ring = sp.alolan ? ALOLAN.map((a) => ({ ...a, alolan: true })).sort((a, b) => a.reg - b.reg)
+  : sp.reg ? [...SPECIES].sort((a, b) => a.reg - b.reg) : [...NONDEX].sort((a, b) => a.nat - b.nat);
+const me = spKey(sp);
+const idx = ring.findIndex((x) => spKey(x) === me);
+const prev = ring[(idx - 1 + ring.length) % ring.length], next = ring[(idx + 1) % ring.length];
+const numOf = (x) => x.alolan || x.reg ? String(x.reg).padStart(3, '0') : `#${x.nat}`;
+const acq = ACQ.get(sp.name);
+const ph = PHENOM_BY_MON.get(sp.name);
+const ob = OUTBREAK_BY_MON.get(sp.name);
+const wild = (WILD_BY_MON.get(sp.name) || []).filter((w) => WILD_BY_PLACE.has(w.place));
+const al = !sp.alolan && ALOLAN_BY_BASE.get(sp.name);
+const stats = sp.stats || {};
+const LABEL = { hp: 'HP', attack: 'Attack', defense: 'Defense', 'special-attack': 'Sp. Atk', 'special-defense': 'Sp. Def', speed: 'Speed' };
+const max = Math.max(150, ...Object.values(stats));
+const total = Object.values(stats).reduce((a, b) => a + b, 0);
+const egg = !sp.alolan && EGG_BASES.has(sp.name);
+const starter = !sp.alolan && STARTER_BASES.has(sp.name);
+const medal = href('medals/#phenomenal');
+const direct = !!(acq || ph || ob || wild.length || egg);
+/* mid and final stages always list how to evolve up to them, alongside any
+   place they can be caught */
+const evos = sp.alolan ? [] : evolveFrom(sp.nat);
+const breed = sp.alolan ? null : breedFrom(sp.name);
+/* the lines that evolve under the aurora, or are levelled up there */
+const aurora = ['Nosepass', 'Probopass', 'Charjabug', 'Vikavolt'].includes(sp.name);
+const known = direct || evos.length > 0 || !!breed;
+/* "East island — Grass (Old Rod)": each part goes through the dictionary on its own */
+const howText = (how) => { const m = how.match(/^(.*?)(?: \((.*)\))?$/); const [area, kind] = m[1].includes(' — ') ? m[1].split(' — ') : [null, m[1]];
+  return (area ? `${t(area)} — ` : '') + t(kind) + (m[2] ? ` (${m[2].split(' · ').map((f) => t(f)).join(' · ')})` : ''); };
+const placeHref = (p) => WILD_BY_PLACE.has(p) || REACHABLE.some((x) => x.name === p) ? placePath(p) : null;
+const link = (name) => { const s = SPECIES_BY_NAME.get(name); return s ? spPath(s) : null; };
+---
+<Base title={monName(sp.name)} current="dex" description={t('{name} in Pokémon Light Platinum DS — how to get it, base stats, dex entry.', { name: monName(sp.name) })}>
+  <PageHead title={monName(sp.name)} back={{ href: href('dex/'), label: 'Dex' }}>
+    <span class="plates">{sp.types.map((t) => <Plate type={t} />)}</span>
+    {ring.length > 1 && <Stepper label={t('Neighbouring entries')} prev={{ href: spPath(prev), name: monName(prev.name), num: numOf(prev), img: SPRITE(prev.nat, prev.shiny) }} next={{ href: spPath(next), name: monName(next.name), num: numOf(next), img: SPRITE(next.nat, next.shiny) }} />}
+  </PageHead>
+
+  <div class="entry">
+    <div class="entry__art">
+      <img src={SPRITE(sp.nat, sp.shiny)} alt={`${monName(sp.name)}${sp.shiny ? ` (${t('shiny')})` : ''}`} width="112" height="112" />
+      <dl class="kv kv--tight">
+        <div><dt>Zhery</dt><dd>{sp.reg ? <span class="shield">{String(sp.reg).padStart(3, '0')}</span> : '—'}</dd></div>
+        <div><dt>{t('National')}</dt><dd class="num">{sp.nat}</dd></div>
+        {sp.genus && <div><dt>{t('Class')}</dt><dd>{genusOf(sp)}</dd></div>}
+        {sp.height && <div><dt>{t('Size')}</dt><dd class="num">{(sp.height / 10).toFixed(1)} m · {(sp.weight / 10).toFixed(1)} kg</dd></div>}
+      </dl>
+      {sp.alolan && <p class="small muted" set:html={rich('Alolan form — shares Zhery #{no} with <1>{base}</1>.', { 1: `<a href="${spPath({ name: sp.base, reg: sp.reg, nat: sp.baseNat })}">` }, { no: String(sp.reg).padStart(3, '0'), base: sp.base })} />}
+      {al && <p class="small muted" set:html={rich('Has an <1>Alolan form</1>, found on Panotem Islands.', { 1: `<a href="${spPath({ ...al, alolan: true })}">` })} />}
+      {!sp.reg && !sp.alolan && <p class="small"><b class="offdex">{t('Not in the regional dex.')}</b></p>}
+    </div>
+
+    <div class="entry__body">
+      <section>
+        <h2>{t('How to get it')}</h2>
+        {known ? (
+          <div class="table-wrap"><table class="table">
+            <thead><tr><th scope="col">{t('Method')}</th><th scope="col">{t('Where')}</th></tr></thead>
+            <tbody>
+              {acq && <tr><td>{t(acq.method)}</td><td>{t(acq.location)}</td></tr>}
+              {ph && <tr><td>{t(ph.kind)} <span class="small muted">{t('· Phenomenal medal')}</span></td><td>{placeHref(ph.place) ? <a href={placeHref(ph.place)}>{placeName(ph.place)}</a> : placeName(ph.place)}</td></tr>}
+              {ob && <tr><td>{t('Mass outbreak')}</td><td>{placeHref(ob.place) ? <a href={placeHref(ob.place)}>{placeName(ob.place)}</a> : placeName(ob.place)}</td></tr>}
+              {wild.map((w) => <tr><td>{howText(w.how)}</td><td><a href={placePath(w.place)}>{placeName(w.place)}</a></td></tr>)}
+              {egg && <tr><td>{t('Mystery Gift')}</td><td><a href={href('gifts/')}>{t('“A dragon egg…” Wonder Card')}</a> {t('— hatches one of six lines, at random')}</td></tr>}
+              {breed && <tr><td>{t('Breed')} {breed.parents.map((n, i) => <>{i > 0 && (i === breed.parents.length - 1 ? ` ${t('or')} ` : ', ')}{link(n) ? <a href={link(n)}>{n}</a> : n}</>)}{breed.incense && <> {t('holding')} {!isEs() && (/^[AEIOU]/.test(breed.incense) ? 'an ' : 'a ')}<a href={href('quests/#daily-incense')}>{itemName(breed.incense)}</a></>}</td><td>{t('Day Care — hatch the Egg')}</td></tr>}
+              {evos.map((e) => <tr><td>{t('Evolve')} {link(e.from) ? <a href={link(e.from)}>{e.from}</a> : e.from}</td><td>{t(e.how)}</td></tr>)}
+            </tbody>
+          </table></div>
+        ) : (
+          <p class="empty">{t('No known way to get {name} yet.', { name: monName(sp.name) })}</p>
+        )}
+        {ph && <Note kind="info" title={t('{kind} — needs the Phenomenal medal', { kind: t(ph.kind) })}><p set:html={`${t(ph.note)} ${rich('Equip the <1>Phenomenal medal</1> first.', { 1: `<a href="${medal}">` })}`} /></Note>}
+        {ob && <Note kind="info" title={t('Mass outbreak')}><p>{t("Outbreaks start once you've beaten the Groment City gym and played to the end of this version. Each day a message in the PDA announces one random Pokémon out in the overworld — {name} is one of them, at {place}.", { name: sp.name, place: placeName(ob.place) })}</p></Note>}
+        {aurora && <div class="aurora"><Shot src="SpecialLocations/AuroraBorealisPanotem.webp" title={t('The aurora borealis')} place={t('Island east of the Panotem Islands')} /></div>}
+        {starter && !ph && <Note kind="info" title={t('Also appears in phenomena')}><p set:html={rich('With the <1>Phenomenal medal</1> on, {name} can turn up in phenomena — shaking grass, whirlpools in water and dust clouds in caves.', { 1: `<a href="${medal}">` }, { name: sp.name })} /></Note>}
+      </section>
+
+      {sp.entry && (
+        <section>
+          <h2>{t('Dex entry')}</h2>
+          <blockquote class="quote">
+            <p>{entryOf(sp)}</p>
+          </blockquote>
+        </section>
+      )}
+
+      <section>
+        <h2>{t('Base stats')} <span class="small muted num">{total}</span></h2>
+        <div class="table-wrap"><table class="table stats">
+          <tbody>
+            {Object.entries(LABEL).map(([k, label]) => (
+              <tr><th scope="row">{t(label)}</th><td class="num">{stats[k] ?? '—'}</td><td><span class="bar"><i style={`width:${((stats[k] || 0) / max) * 100}%`}></i></span></td></tr>
+            ))}
+          </tbody>
+        </table></div>
+      </section>
+    </div>
+  </div>
+
+  <style>
+    .entry { display: grid; gap: var(--sp-6); align-items: start; }
+    @media (min-width: 760px) { .entry { grid-template-columns: 240px minmax(0, 1fr); } }
+    .entry__art { display: grid; gap: var(--sp-3); }
+    .entry__art img { image-rendering: pixelated; width: 128px; height: 128px; border: 1px solid var(--line); border-radius: var(--radius); background: var(--surface); padding: 8px; }
+    .kv--tight > div { grid-template-columns: 5rem 1fr; align-items: baseline; }
+    .kv--tight dt { padding-top: 0; }
+    .offdex { color: var(--warn); }
+    .entry__body { display: grid; gap: var(--sp-8); min-width: 0; }
+    .entry__body h2 { margin-bottom: var(--sp-3); display: flex; gap: var(--sp-2); align-items: baseline; border-top: 2px solid var(--ink); padding-top: var(--sp-3); }
+    .quote { border: 1px solid var(--line); border-radius: var(--radius); padding: var(--sp-3) var(--sp-4); background: var(--surface); max-width: var(--measure); }
+    .stats th { font-weight: 600; color: var(--ink-2); width: 6rem; }
+    .stats td:last-child { width: 220px; }
+    .aurora { margin-top: var(--sp-3); max-width: 480px; }
+    .aurora :global(img) { image-rendering: pixelated; }
+    .entry__body :global(.note) { margin-top: var(--sp-3); }
+  </style>
+</Base>

@@ -1,0 +1,81 @@
+---
+import { langPaths, t, itemName, tmLabel } from '../../../lib/i18n.js';
+export function getStaticPaths() { return langPaths(); }
+import Base from '../../../layouts/Base.astro';
+import PageHead from '../../../components/PageHead.astro';
+import { POCKETS, inPocket, href, ITEMS, WILD, itemSlug } from '../../../lib/data.js';
+const icon = (i) => i.sprite || (i.localIcon ? href(`pictures/items/${i.localIcon}`) : null);
+/* every item once, tagged with its pocket, for the search across pockets */
+const all = POCKETS.flatMap((p) => inPocket(p.id).map((i) => ({ i, p })));
+/* the box matches an item by its name in either language, or by where it is found */
+const q = (i) => `${i.tm || ''} ${tmLabel(i.tm) || ''} ${i.name} ${itemName(i.name, i.tm)} ${(i.locations || []).join(' ')}`.toLowerCase();
+---
+<Base title={t('Items')} current="items" description={t('Every item in Pokémon Light Platinum DS, by pocket, with where to find it.')}>
+  <PageHead title={t('Items')}>
+    <label class="field">
+      <svg width="16" height="16" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="9" cy="9" r="6"/><path d="m14 14 4 4"/></svg>
+      <input type="search" id="itemsearch" placeholder={t('Search every item…')} aria-label={t('Search every item')} />
+    </label>
+    <p class="count"><output id="itemcount">{ITEMS.length}</output> {t('items')} · {t('{n} held by wild Pokémon', { n: WILD.length })}</p>
+  </PageHead>
+
+  <div class="cells" id="itemresults" hidden>
+    {all.map(({ i, p }) => (
+      <a class="cell item" href={href(`items/${p.id}/#${itemSlug(i)}`)} data-q={q(i)} hidden>
+        <span class="item__slot">{icon(i) ? <img src={icon(i)} alt="" width="40" height="40" loading="lazy" decoding="async" /> : <i aria-hidden="true"></i>}</span>
+        <span class="item__name">{i.tm && i.name !== i.tm && <span class="num muted">{tmLabel(i.tm)} </span>}{itemName(i.name, i.tm)}</span>
+        <span class="item__pocket">{t(p.label)}</span>
+      </a>
+    ))}
+  </div>
+  <p class="empty" id="itemempty" hidden>{t('Nothing matches.')}</p>
+
+  {/* the bag's seven pockets, in bag order: a ledger, because you read across it */}
+  <ul class="ledger pockets" id="pockets">
+    {POCKETS.map((p) => {
+      const list = inPocket(p.id);
+      const known = list.filter((i) => i.locations.length).length;
+      return (
+        <li>
+          <a class="ledger__row" href={href(`items/${p.id}/`)} style={`--hue:${p.hue}`}>
+            <span class="ledger__name">
+              <span class="pocket__glyph"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d={p.glyph}/></svg></span>
+              {t(p.label)} <span class="ledger__sub num">{list.length}</span>
+            </span>
+            <span class="strip">{list.filter(icon).slice(0, 12).map((i) => <img src={icon(i)} alt="" width="32" height="32" loading="lazy" decoding="async" />)}</span>
+            <span class="ledger__end">{t('{n} with a known source', { n: known })}</span>
+          </a>
+        </li>
+      );
+    })}
+  </ul>
+
+  <style>
+    .pockets .ledger__row { min-height: 64px; }
+    .pocket__glyph { width: 32px; height: 32px; display: grid; place-items: center; flex: none; border-radius: var(--radius-sm); color: oklch(var(--plate-edge-l) 0.1 var(--hue)); background: oklch(var(--plate-l) 0.06 var(--hue)); }
+    .pocket__glyph svg { width: 20px; height: 20px; }
+    .pockets .strip { min-height: 32px; }
+  </style>
+
+  <script>
+    /* an empty box shows the pockets; any query swaps them for matching items */
+    const init = () => {
+      const res = document.getElementById('itemresults');
+      if (!res || res.dataset.wired) return;
+      res.dataset.wired = '1';
+      const box = document.getElementById('itemsearch'), out = document.getElementById('itemcount');
+      const empty = document.getElementById('itemempty'), pockets = document.getElementById('pockets');
+      const items = [...res.querySelectorAll('[data-q]')], total = out.textContent;
+      const apply = () => {
+        const q = box.value.trim().toLowerCase(); let n = 0;
+        for (const i of items) { const ok = !!q && i.dataset.q.includes(q); i.hidden = !ok; if (ok) n++; }
+        res.hidden = !q || n === 0; pockets.hidden = !!q; empty.hidden = !q || n > 0;
+        out.textContent = q ? String(n) : total;
+      };
+      box?.addEventListener('input', apply);
+      if (box?.value) apply();
+    };
+    init();
+    document.addEventListener('astro:page-load', init);
+  </script>
+</Base>

@@ -1,40 +1,73 @@
 /* Light Platinum DS guide — tokens.
-   A lookup tool used mid-game, often on a phone beside a lit DS. Surfaces are
-   pure (chroma 0) in both themes; the only colour that carries mood is the
-   amber the game itself is named for, and it is spent on actions, selection
-   and focus — never on decoration. The eighteen type plates keep their hues
-   because those hues mean something. */
+   Wayfinding: the guide is the signage of a transit network for Zhery. A navy
+   sign panel carries the chrome, signal yellow says "you are here", and four
+   line colours say which part of the guide you are in. Content surfaces stay
+   quiet so sprites, type plates and screenshots are the loudest things on a
+   page. See DESIGN.md for how each token is meant to be used. */
 
 :root {
-  /* surfaces */
-  --bg:            oklch(1 0 0);
-  --surface:       oklch(0.975 0 0);
-  --surface-2:     oklch(0.95 0 0);
-  --line:          oklch(0.9 0 0);
-  --line-strong:   oklch(0.72 0 0);
+  /* surfaces: a faintly cool page with pure white panels standing on it */
+  --bg:            oklch(0.972 0.005 250);
+  --surface:       oklch(1 0 0);
+  --surface-2:     oklch(0.945 0.007 250);
+  --line:          oklch(0.885 0.008 250);
+  --line-strong:   oklch(0.62 0.015 250);
 
-  /* ink — every step clears 4.5:1 on --bg and on --surface */
-  --ink:           oklch(0.2 0 0);
-  --ink-2:         oklch(0.42 0 0);
-  --ink-3:         oklch(0.5 0 0);
+  /* ink — every step clears 4.5:1 on --bg, --surface and --surface-2 */
+  --ink:           oklch(0.22 0.03 258);
+  --ink-2:         oklch(0.40 0.025 258);
+  --ink-3:         oklch(0.50 0.02 258);
 
-  /* the game's own amber */
-  --accent:        oklch(0.80 0.15 90);    /* fills: buttons, selection, focus ring */
-  --accent-ink:    oklch(0.50 0.12 85);    /* text and links on white — 5.1:1 */
-  --accent-soft:   oklch(0.96 0.04 90);    /* tint behind selected rows */
-  --on-accent:     oklch(0.2 0 0);
+  /* the sign panel: top bar, footer, number shields. Same in both themes. */
+  --sign:          oklch(0.24 0.035 258);
+  --sign-2:        oklch(0.31 0.04 258);
+  --sign-line:     oklch(0.40 0.04 258);
+  --on-sign:       oklch(0.98 0 0);
+  --on-sign-2:     oklch(0.82 0.02 255);
+  /* number shields: navy by day, and lit like a reflective sign at night */
+  --shield:        var(--sign);
+  --on-shield:     var(--on-sign);
+  --shield-line:   var(--sign-line);
+
+  /* signal yellow: "you are here". A fill behind ink, never a text colour. */
+  --accent:        oklch(0.87 0.17 95);
+  --accent-hover:  oklch(0.82 0.17 92);
+  --accent-soft:   oklch(0.955 0.06 98);
+  --on-accent:     oklch(0.22 0.03 258);
+  /* the text-safe partner: links, pressed outlines — 7.4:1 on --bg */
+  --accent-ink:    oklch(0.45 0.15 258);
+
+  /* the four lines. Fills take white text at 4.8:1 or better; the -hi step is
+     the same line for marks drawn straight on the page (bars, tracks). */
+  --line-world:    oklch(0.52 0.16 255);
+  --line-mon:      oklch(0.54 0.19 12);
+  --line-bag:      oklch(0.52 0.11 175);
+  --line-story:    oklch(0.50 0.17 300);
+  --line-world-hi: var(--line-world);
+  --line-mon-hi:   var(--line-mon);
+  --line-bag-hi:   var(--line-bag);
+  --line-story-hi: var(--line-story);
+  --line-c:        var(--accent);      /* the current page's line; home is yellow */
+  --line-c-hi:     var(--ink);
 
   /* meaning */
-  --ok:            oklch(0.50 0.12 155);   /* recorded / obtainable */
-  --ok-soft:       oklch(0.96 0.03 155);
-  --warn:          oklch(0.53 0.17 30);    /* missable / timed */
-  --warn-soft:     oklch(0.96 0.03 30);
+  --ok:            oklch(0.48 0.12 155);   /* recorded / obtainable */
+  --ok-soft:       oklch(0.955 0.035 155);
+  --warn:          oklch(0.52 0.17 30);    /* missable / timed */
+  --warn-soft:     oklch(0.955 0.03 30);
   --odd:           oklch(0.48 0.12 300);   /* hack instability */
-  --odd-soft:      oklch(0.96 0.03 300);
+  --odd-soft:      oklch(0.955 0.03 300);
+  --info-soft:     oklch(0.955 0.025 255);  /* behind --accent-ink notes */
+
+  /* Sun Palace gear directions */
+  --sp-cw:         oklch(0.6 0.17 30);
+  --sp-ccw:        oklch(0.55 0.15 252);
+  --sp-sun:        oklch(0.50 0.12 85);    /* the pillar, its rays, the tunnel */
 
   /* type plates: one lightness, hue and chroma vary */
   --plate-l: 0.87;
   --plate-edge-l: 0.62;
+  --plate-ink:    var(--ink);      /* plates stay bright in both themes, so their text stays dark */
   --plate-normal:   oklch(var(--plate-l) 0.015 90);
   --plate-fire:     oklch(var(--plate-l) 0.130 42);
   --plate-water:    oklch(var(--plate-l) 0.110 250);
@@ -54,23 +87,27 @@
   --plate-steel:    oklch(var(--plate-l) 0.025 240);
   --plate-fairy:    oklch(var(--plate-l) 0.090 350);
 
-  /* type: one family, fixed rem scale at 1.2 */
-  --font: "IBM Plex Sans Variable", "IBM Plex Sans", system-ui, sans-serif;
-  --mono: "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, monospace;
+  /* type: one signage family and its mono, fixed rem scale at 1.2 */
+  --font: "Guide Middot", "Overpass Variable", "Overpass", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --mono: "Overpass Mono Variable", "Overpass Mono", ui-monospace, "SF Mono", Menlo, monospace;
   --text-xs: 0.75rem;
   --text-sm: 0.875rem;
   --text-md: 1rem;
   --text-lg: 1.2rem;
   --text-xl: 1.44rem;
   --text-2xl: 1.728rem;
+  --text-3xl: 2.074rem;
   --measure: 66ch;
 
   /* space, 4px base */
   --sp-1: 0.25rem; --sp-2: 0.5rem; --sp-3: 0.75rem; --sp-4: 1rem;
   --sp-6: 1.5rem;  --sp-8: 2rem;   --sp-12: 3rem;   --sp-16: 4rem;
 
-  --radius: 6px;
-  --radius-sm: 4px;
+  --radius: 8px;       /* panels, dialogs, figures */
+  --radius-md: 6px;    /* controls */
+  --radius-sm: 4px;    /* shields, plates, badges */
+
+  --bar-h: 60px;       /* the sticky top bar, stripe included */
 
   --z-sticky: 20; --z-dropdown: 30; --z-backdrop: 40; --z-dialog: 50; --z-toast: 60;
 
@@ -78,59 +115,101 @@
   --t-fast: 120ms;
   --t: 200ms;
 
-  --shadow-dialog: 0 12px 40px oklch(0 0 0 / 0.22);
+  --shadow-pop: 0 10px 30px oklch(0.2 0.03 258 / 0.18), 0 2px 6px oklch(0.2 0.03 258 / 0.1);
+  --shadow-dialog: 0 16px 48px oklch(0.2 0.03 258 / 0.28);
+  --scrim: oklch(0.2 0.03 258 / 0.5);
 
   color-scheme: light;
 }
 
+/* dark: night signage. The page is navy, clearly blue and not black; panels
+   lift off it; the bar is the deepest tone so it still frames the page. Two
+   things do not dim, because they are how you find your way: number shields
+   turn white with navy figures, and type plates keep their daylight colours.
+   The same block is written twice because one selector follows the system and
+   the other the switch in the top bar. */
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
-    --bg:          oklch(0.24 0.004 260);
-    --surface:     oklch(0.28 0.004 260);
-    --surface-2:   oklch(0.33 0.004 260);
-    --line:        oklch(0.37 0.004 260);
-    --line-strong: oklch(0.52 0.004 260);
-    --ink:         oklch(0.96 0 0);
-    --ink-2:       oklch(0.82 0 0);
-    --ink-3:       oklch(0.74 0 0);
-    --accent:      oklch(0.80 0.15 90);
-    --accent-ink:  oklch(0.82 0.14 90);
-    --accent-soft: oklch(0.33 0.05 90);
-    --on-accent:   oklch(0.2 0 0);
-    --ok:          oklch(0.75 0.13 155);
-    --ok-soft:     oklch(0.31 0.04 155);
-    --warn:        oklch(0.74 0.15 35);
-    --warn-soft:   oklch(0.31 0.04 30);
-    --odd:         oklch(0.75 0.11 300);
-    --odd-soft:    oklch(0.31 0.035 300);
-    --plate-l: 0.33;
-    --plate-edge-l: 0.56;
-    --shadow-dialog: 0 12px 40px oklch(0 0 0 / 0.6);
+    --bg:          oklch(0.215 0.035 258);
+    --surface:     oklch(0.27 0.04 258);
+    --surface-2:   oklch(0.315 0.042 258);
+    --line:        oklch(0.375 0.04 258);
+    --line-strong: oklch(0.56 0.035 258);
+    --ink:         oklch(0.97 0.005 250);
+    --ink-2:       oklch(0.86 0.015 250);
+    --ink-3:       oklch(0.76 0.02 250);
+    --sign:        oklch(0.155 0.03 258);
+    --sign-2:      oklch(0.25 0.04 258);
+    --sign-line:   oklch(0.36 0.04 258);
+    --shield:      oklch(0.94 0.012 250);
+    --on-shield:   oklch(0.2 0.035 258);
+    --shield-line: oklch(0.94 0.012 250);
+    --accent-soft: oklch(0.38 0.07 95);
+    --accent-ink:  oklch(0.84 0.09 255);
+    --line-world-hi: oklch(0.74 0.12 255);
+    --line-mon-hi:   oklch(0.76 0.13 12);
+    --line-bag-hi:   oklch(0.78 0.10 175);
+    --line-story-hi: oklch(0.76 0.12 300);
+    --line-c-hi:   var(--accent);
+    --ok:          oklch(0.80 0.14 155);
+    --ok-soft:     oklch(0.33 0.05 155);
+    --warn:        oklch(0.80 0.13 40);
+    --warn-soft:   oklch(0.34 0.06 30);
+    --odd:         oklch(0.81 0.11 300);
+    --odd-soft:    oklch(0.34 0.055 300);
+    --info-soft:   oklch(0.34 0.06 255);
+    --sp-sun:      oklch(0.84 0.14 90);
+    --plate-l: 0.86;
+    --plate-edge-l: 0.52;
+    --plate-ink:   oklch(0.2 0.035 258);
+    --shadow-pop: 0 10px 30px oklch(0.1 0.03 258 / 0.55), 0 2px 6px oklch(0.1 0.03 258 / 0.45);
+    --shadow-dialog: 0 16px 48px oklch(0.08 0.03 258 / 0.7);
+    --scrim: oklch(0.1 0.03 258 / 0.7);
     color-scheme: dark;
   }
 }
 
 :root[data-theme="dark"] {
-  --bg:          oklch(0.24 0.004 260);
-  --surface:     oklch(0.28 0.004 260);
-  --surface-2:   oklch(0.33 0.004 260);
-  --line:        oklch(0.37 0.004 260);
-  --line-strong: oklch(0.52 0.004 260);
-  --ink:         oklch(0.96 0 0);
-  --ink-2:       oklch(0.82 0 0);
-  --ink-3:       oklch(0.74 0 0);
-  --accent:      oklch(0.80 0.15 90);
-  --accent-ink:  oklch(0.82 0.14 90);
-  --accent-soft: oklch(0.33 0.05 90);
-  --on-accent:   oklch(0.2 0 0);
-  --ok:          oklch(0.75 0.13 155);
-  --ok-soft:     oklch(0.31 0.04 155);
-  --warn:        oklch(0.74 0.15 35);
-  --warn-soft:   oklch(0.31 0.04 30);
-  --odd:         oklch(0.75 0.11 300);
-  --odd-soft:    oklch(0.31 0.035 300);
-  --plate-l: 0.33;
-  --plate-edge-l: 0.56;
-  --shadow-dialog: 0 12px 40px oklch(0 0 0 / 0.6);
+  --bg:          oklch(0.215 0.035 258);
+  --surface:     oklch(0.27 0.04 258);
+  --surface-2:   oklch(0.315 0.042 258);
+  --line:        oklch(0.375 0.04 258);
+  --line-strong: oklch(0.56 0.035 258);
+  --ink:         oklch(0.97 0.005 250);
+  --ink-2:       oklch(0.86 0.015 250);
+  --ink-3:       oklch(0.76 0.02 250);
+  --sign:        oklch(0.155 0.03 258);
+  --sign-2:      oklch(0.25 0.04 258);
+  --sign-line:   oklch(0.36 0.04 258);
+  --shield:      oklch(0.94 0.012 250);
+  --on-shield:   oklch(0.2 0.035 258);
+  --shield-line: oklch(0.94 0.012 250);
+  --accent-soft: oklch(0.38 0.07 95);
+  --accent-ink:  oklch(0.84 0.09 255);
+  --line-world-hi: oklch(0.74 0.12 255);
+  --line-mon-hi:   oklch(0.76 0.13 12);
+  --line-bag-hi:   oklch(0.78 0.10 175);
+  --line-story-hi: oklch(0.76 0.12 300);
+  --line-c-hi:   var(--accent);
+  --ok:          oklch(0.80 0.14 155);
+  --ok-soft:     oklch(0.33 0.05 155);
+  --warn:        oklch(0.80 0.13 40);
+  --warn-soft:   oklch(0.34 0.06 30);
+  --odd:         oklch(0.81 0.11 300);
+  --odd-soft:    oklch(0.34 0.055 300);
+  --info-soft:   oklch(0.34 0.06 255);
+  --sp-sun:      oklch(0.84 0.14 90);
+  --plate-l: 0.86;
+  --plate-edge-l: 0.52;
+  --plate-ink:   oklch(0.2 0.035 258);
+  --shadow-pop: 0 10px 30px oklch(0.1 0.03 258 / 0.55), 0 2px 6px oklch(0.1 0.03 258 / 0.45);
+  --shadow-dialog: 0 16px 48px oklch(0.08 0.03 258 / 0.7);
+  --scrim: oklch(0.1 0.03 258 / 0.7);
   color-scheme: dark;
 }
+
+/* which line a page is on; set by the layout from the section it belongs to */
+[data-line="world"] { --line-c: var(--line-world); --line-c-hi: var(--line-world-hi); }
+[data-line="mon"]   { --line-c: var(--line-mon);   --line-c-hi: var(--line-mon-hi); }
+[data-line="bag"]   { --line-c: var(--line-bag);   --line-c-hi: var(--line-bag-hi); }
+[data-line="story"] { --line-c: var(--line-story); --line-c-hi: var(--line-story-hi); }

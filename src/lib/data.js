@@ -27,13 +27,20 @@ import romitems from '../data/romitems.json';
 import itemsprites from '../data/itemsprites.json';
 import dexnav from '../data/dexnavshots.json';
 import evolutions from '../data/evolutions.json';
+import { isEs, t, markPlain, ES_NAME as ES } from './i18n.js';
 
 const ROOT = process.cwd(); /* the project root: import.meta.url points at the bundled chunk during a build */
 
 /* ---------- urls -------------------------------------------------- */
 export const BASE = import.meta.env.BASE_URL.replace(/\/$/, '');
-export const href = (p) => `${BASE}/${String(p).replace(/^\//, '')}`;
-export const pic = (file) => href(`pictures/${file}`);
+/* a file that is the same in both languages: pictures, the icon */
+export const asset = (p) => `${BASE}/${String(p).replace(/^\//, '')}`;
+/* a link to a page, in the language of the page being rendered */
+export const href = (p) => {
+  p = String(p).replace(/^\//, '');
+  return /^(pictures\/|favicon)/.test(p) || !isEs() ? asset(p) : asset(`es/${p}`);
+};
+export const pic = (file) => asset(`pictures/${file}`);
 export const DIMS = dims;
 export const dim = (file) => DIMS[file] || [4, 3];
 /* the optimised webp set the old build shipped; only reference what exists */
@@ -79,6 +86,7 @@ for (const e of seed.entries.filter((x) => x.section === 'acquisition')) {
 }
 for (const a of ALOLAN) ACQ.set(a.name, { method: a.method, location: a.location });
 for (const g of NONDEX) if (g.method) ACQ.set(g.name, { method: g.method, location: g.location });
+ACQ.set('Pumpkaboo', { method: 'Mystery Gift — “Trick or treat (I)”', location: 'A shiny one, from the October 2026 Halloween card' });
 ACQ.set('Dragonite', { method: 'Mystery Gift — “The Champions’ Dragonite”',
   location: 'Commemorates Spain’s 2026 FIFA World Cup win' });
 for (const n of ['Uxie', 'Mesprit', 'Azelf']) ACQ.set(n, { method: 'Roaming — freed by the Pantem Cave disk puzzle, after the end of this version',
@@ -302,11 +310,8 @@ const ICON_ALIAS = { 'Second Chance': 'seconchance', 'Treasure Hunter': 'treaasu
 export const medalIcon = (m) => ICON_BY_KEY.get(ICON_ALIAS[m.name] || itemKey(m.name)) || null;
 
 /* ---------- places ----------------------------------------------- */
-/* the original Spanish names, for players on the untranslated ROM */
-export const ES_NAME = { 'Yellow Town': 'Pueblo Amarillo', 'Central City': 'Ciudad Central', 'Inhore City': 'Ciudad Melífera',
-  'Pantem Town': 'Pueblo Lodazal', 'Esmerald City': 'Ciudad Algaida', 'Bramboach Town': 'Pueblo Céfiro',
-  'Seanport City': 'Ciudad Náutica', 'Dardusk City': 'Ciudad Crepúsculo', 'Enermy Town': 'Villaeterna',
-  'Groment City': 'Ciudad Antica', 'Panotem Islands': 'Islas Panotem' };
+/* the original Spanish names live with the rest of the language code */
+export const ES_NAME = ES;
 export const PLACES = placesRaw;
 export const WILDAT = wildlocations;
 export const WILD_BY_PLACE = new Map(WILDAT.map((w) => [w.place, w]));
@@ -410,8 +415,9 @@ export const ITEMS_AT = (name) => {
     const hit = parts.findIndex((x) => placePart(x) === name);
     if (hit < 0) continue;
     const rest = parts.filter((_, k) => k !== hit);
-    const tail = (parts[hit].match(/\s*[(—–-]\s*(.*)$/) || [])[1];
-    if (tail) rest.push(tail.replace(/\)$/, ''));
+    /* what follows the place: "(Surf)" loses its brackets, "— Berry Tree (×2)" keeps its own */
+    const tail = parts[hit].match(/\s*([(—–-])\s*(.*)$/);
+    if (tail) rest.push(tail[1] === '(' ? tail[2].replace(/\)$/, '') : tail[2]);
     out.push({ item: i, detail: rest.join(' · ') });
   }
   return out;
@@ -451,11 +457,32 @@ export const breedFrom = (name) => {
   while (stack.length) { const n = stack.pop(); if (obtainable(n)) parents.push(NAT_NAME.get(n)); stack.push(...(EVO_FROM.get(n) || [])); }
   return parents.length ? { parents: parents.filter(Boolean), incense: INCENSE[name] || null } : null;
 };
+/* ---------- text that names a place -------------------------------- */
+/* A caption or a location is often nothing but a place name, and the page's
+   last pass already puts those into Spanish. Only the words around a name go
+   through the dictionary: "Route 409 — 2 hidden" is a place and a phrase. */
+const isPlaceName = (s) => /^(Route \d+|Mt\. [A-Z]\w+)$/.test(s) || PLACE_NAMES.has(s);
+export const placeText = (s) => (!s || !isEs() || isPlaceName(s) ? s : t(s));
+const tailText = (s) => s.split(', ').map((bit) => {
+  const m = bit.match(/^(\d+) (on the ground|hidden)$/);
+  return m ? t(`{n} ${m[2]}`, { n: m[1] }) : t(bit);
+}).join(', ');
+export const locText = (l) => {
+  if (!isEs()) return l;
+  const m = l.match(/^(.*?) — (.*)$/);
+  if (m) return `${placeText(m[1])} — ${isPlaceName(m[2]) ? m[2] : tailText(m[2])}`;
+  const tree = l.match(/^(.*?) \((×\d+)\)$/);
+  return tree ? `${placeText(tree[1])} (${tree[2]})` : placeText(l);
+};
+
 export const placeSlug = (name) => slug(name);
 export const placePath = (name) => href(`places/${placeSlug(name)}/`);
 const NAMED = new Set(PLACES.map((p) => p.name));
 export const EXTRA_P = WILDAT.filter((w) => !NAMED.has(w.place)).map((w) => ({ name: w.place, kind: 'Area', built: true, extra: true }));
 export const ALL_PLACES = [...PLACES, ...EXTRA_P];
+const PLACE_NAMES = new Set([...ALL_PLACES.map((p) => p.name), ...Object.keys(HOME_ALIAS), ...Object.keys(LOC_ALIAS),
+  'Gromet City', 'Darkdusk City', 'Enemy Town', 'Central Town', 'Panotem Island']);
+markPlain([...PLACE_NAMES, ...ALLSPECIES.map((s) => s.name), 'Mt. Ice Storm', 'Mt. Icestorm', 'Mt. Shuem', 'pokehacking.com', 'Zhery']);
 export const REACHABLE = ALL_PLACES.filter((p) => p.built);
 export const TOWNS = REACHABLE.filter((p) => p.kind === 'City' || p.kind === 'Town');
 export const ROUTES_P = REACHABLE.filter((p) => p.kind === 'Route');
@@ -467,7 +494,7 @@ export const LISTED = REACHABLE.filter(hasContent);
 
 /* ---------- gifts and trades ------------------------------------- */
 export const CARDS = [
-  { title: 'Your contribution is very important', date: null, species: 'Beldum',
+  { title: 'Your contribution is very important', date: null, species: 'Beldum', shiny: true,
     body: 'Your contribution in the development or promotion of Pokémon Light Platinum DS is essential for this game. As token of appreciation, please accept this Mystery Gift.',
     note: 'A shiny Beldum — and it stays shiny through Metang and Metagross.' },
   { title: 'PokeHacking Online Club', date: null, species: 'Porygon',
@@ -489,6 +516,13 @@ export const CARDS = [
     body: 'This rare dragon egg has appeared in the depths of Mt. Shuem! What Pokémon will hatch from it?',
     gives: 'An Egg from one of six Dragon lines:',
     note: 'Which line you get is not fixed, so hatch it before you plan a team around it.' },
+  { title: 'Trick or treat (I)', date: 'October 2026', species: 'Pumpkaboo', shiny: true,
+    body: 'Halloween is on its way! Time to get ready for the spookiest night of the year! Accept this special PUMPKABOO as a commemoration of this scary event.',
+    note: 'A shiny Pumpkaboo. Pumpkaboo is in the regional dex and in the wild — this card is a shiny one on top.' },
+  { title: 'Trick or treat (III)', date: 'October 2026', species: null,
+    body: 'Halloween is on its way! Time to get ready for the spookiest night of the year! Use this PDA Background as a memento of this special occasion.',
+    gives: 'A PDA background.',
+    note: 'The card’s art shows two Litwick and a Pikachu. The numbering implies a card (II); the guide has not seen it.' },
 ];
 export const TRADES = trades;
 export const TRADE_ITEMS = TRADES.filter((t) => t.item).length;

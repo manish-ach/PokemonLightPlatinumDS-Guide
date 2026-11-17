@@ -1,0 +1,86 @@
+---
+import { langPaths, t } from '../../lib/i18n.js';
+export function getStaticPaths() { return langPaths(); }
+import Base from '../../layouts/Base.astro';
+import PageHead from '../../components/PageHead.astro';
+import { MEDALS, MEDAL_SHOTS, MEDAL_BUY_SHOTS, medalIcon, href, slug, pic, dim, optSources, placeText } from '../../lib/data.js';
+const icon = (m) => { const f = medalIcon(m); return f ? href(`pictures/MedalIcons/${f}`) : null; };
+const total = MEDALS.reduce((a, m) => a + (m.cost || 0), 0);
+const shotOf = (pair) => pair ? { src: pic(pair[0]), w: dim(pair[0])[0], h: dim(pair[0])[1], place: placeText(pair[1]), srcset: optSources(pair[0]).join(', ') } : null;
+const detail = Object.fromEntries(MEDALS.map((m) => [slug(m.name), {
+  name: m.name, desc: t(m.desc), source: t(m.source), icon: icon(m),
+  cost: m.cost == null ? t('Cost unknown') : m.cost ? t('{n} medal energy', { n: m.cost }) : t('Free to equip'),
+  found: shotOf(MEDAL_SHOTS[m.name]), sold: shotOf(MEDAL_BUY_SHOTS[m.name]),
+}]));
+---
+<Base title={t('Medals')} current="medals" description={t('All the medals in Pokémon Light Platinum DS: what each does, what it costs, and where it comes from.')}>
+  <PageHead title={t('Medals')} note={t('Toggled in the Trainer Card. Each gym badge grants 3 medal energy; the {n} with a known cost add up to {total}.', { n: MEDALS.filter((m) => m.cost != null).length, total })}>
+    <p class="count"><output>{MEDALS.length}</output> {t('medals')}</p>
+  </PageHead>
+
+  {/* roomy cells: the icon, the name, what it does and what it costs, so most
+     questions are answered without opening anything */}
+  <div class="cells medals" id="medalgrid">
+    {MEDALS.map((m) => (
+      <button type="button" class="cell medal" id={slug(m.name)} data-medal={slug(m.name)}>
+        <span class="medal__slot">{icon(m) ? <img src={icon(m)} alt="" width="72" height="72" loading="lazy" decoding="async" /> : <i aria-hidden="true"></i>}</span>
+        <span class="medal__name">{m.name}</span>
+        <span class="medal__does">{t(m.desc)}</span>
+        <span class="medal__cost num">{m.cost == null ? t('cost unknown') : m.cost ? t('{n} energy', { n: m.cost }) : t('Free')}</span>
+      </button>
+    ))}
+  </div>
+
+  <dialog class="dialog" id="medaldialog" aria-labelledby="mdl-title" data-labels={JSON.stringify({ sold: t('Sold here'), source: t('Source') })}>
+    <div class="dialog__bar"><p>{t('Medal')}</p><button type="button" class="iconbtn" data-close aria-label={t('Close')}><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M3 3l10 10M13 3L3 13"/></svg></button></div>
+    <div class="dialog__body" id="mdl-body"></div>
+  </dialog>
+  <script type="application/json" id="medaldata" set:html={JSON.stringify(detail)} />
+
+  <style>
+    .medals { --cell: 208px; }
+    .medal { padding: var(--sp-6) var(--sp-4) var(--sp-4); gap: var(--sp-2); }
+    .medal__slot { width: 72px; height: 72px; }
+    .medal__slot img { width: 72px; height: 72px; object-fit: contain; image-rendering: auto; }
+    .medal__name { font-size: var(--text-md); }
+    .medal__does { font-size: var(--text-sm); line-height: 1.35; color: var(--ink-2); text-wrap: balance; }
+    /* the cost sits on the bottom edge of every cell, however long the text above it */
+    .medal__cost { font-family: var(--mono); margin-top: auto; padding-top: var(--sp-1); }
+    @media (max-width: 479px) {
+      .medal { padding: var(--sp-4) var(--sp-2) var(--sp-3); }
+      .medal__slot, .medal__slot img { width: 56px; height: 56px; }
+    }
+  </style>
+
+  <script>
+    const init = () => {
+      const grid = document.getElementById('medalgrid');
+      if (!grid || grid.dataset.wired) return;
+      grid.dataset.wired = '1';
+      const data = JSON.parse(document.getElementById('medaldata').textContent);
+      const dlg = document.getElementById('medaldialog'), body = document.getElementById('mdl-body');
+      const L = JSON.parse(dlg.dataset.labels);
+      const esc = (s) => String(s ?? '').replace(/&/g, '&amp;').replace(/</g, '&lt;');
+      const fig = (s, title) => `<figure class="shot"><picture>${s.srcset ? `<source type="image/webp" srcset="${s.srcset}">` : ''}<img src="${s.src}" width="${s.w}" height="${s.h}" alt="${esc(title)} — ${esc(s.place)}" loading="lazy"></picture><figcaption><b>${esc(title)}</b><span>${esc(s.place)}</span></figcaption></figure>`;
+      const show = (key, push = true) => {
+        const d = data[key]; if (!d) return;
+        const media = (d.found ? fig(d.found, d.name) : '') + (d.sold ? fig(d.sold, L.sold) : '');
+        body.innerHTML = `<div class="dialog__split"><div class="dialog__text">
+          <div class="dialog__head">${d.icon ? `<img src="${d.icon}" alt="">` : ''}<div><h2 id="mdl-title">${esc(d.name)}</h2><p class="small muted num">${esc(d.cost)}</p></div></div>
+          <p>${esc(d.desc)}</p>
+          <p class="dialog__label">${L.source}</p><p>${esc(d.source)}</p>
+        </div>${media ? `<div class="dialog__media">${media}</div>` : ''}</div>`;
+        dlg.classList.toggle('dialog--wide', !!media);
+        if (!dlg.open) dlg.showModal();
+        if (push) history.replaceState(null, '', '#' + key);
+      };
+      grid.addEventListener('click', (e) => { const b = e.target.closest('[data-medal]'); if (b) show(b.dataset.medal); });
+      dlg.querySelector('[data-close]').addEventListener('click', () => dlg.close());
+      dlg.addEventListener('click', (e) => { if (e.target === dlg) dlg.close(); });
+      dlg.addEventListener('close', () => history.replaceState(null, '', location.pathname));
+      if (location.hash && data[location.hash.slice(1)]) show(location.hash.slice(1), false);
+    };
+    init();
+    document.addEventListener('astro:page-load', init);
+  </script>
+</Base>

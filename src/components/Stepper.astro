@@ -2,13 +2,14 @@
 /* Previous / next buttons for anything with an order, plus arrow keys. */
 interface Side { href: string; name: string; num?: string; img?: string; }
 interface Props { prev: Side; next: Side; label: string; }
+import { t } from '../lib/i18n.js';
 const { prev, next, label } = Astro.props;
 ---
 <nav class="stepper" aria-label={label}>
-  <a class="stepper__btn" href={prev.href} data-step-prev rel="prev" aria-label={`Previous, ${prev.name}`}>
+  <a class="stepper__btn" href={prev.href} data-step-prev rel="prev" aria-label={`${t('Previous')}, ${prev.name}`}>
     <span aria-hidden="true">‹</span>{prev.img && <img src={prev.img} alt="" width="28" height="28" loading="lazy" decoding="async" />}{prev.num && <b class="num">{prev.num}</b>}<i>{prev.name}</i>
   </a>
-  <a class="stepper__btn" href={next.href} data-step-next rel="next" aria-label={`Next, ${next.name}`}>
+  <a class="stepper__btn" href={next.href} data-step-next rel="next" aria-label={`${t('Next')}, ${next.name}`}>
     <i>{next.name}</i>{next.num && <b class="num">{next.num}</b>}{next.img && <img src={next.img} alt="" width="28" height="28" loading="lazy" decoding="async" />}<span aria-hidden="true">›</span>
   </a>
 </nav>

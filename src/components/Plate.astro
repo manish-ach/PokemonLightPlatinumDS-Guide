@@ -1,7 +1,7 @@
 ---
-import { cap } from '../lib/data.js';
+import { typeName } from '../lib/i18n.js';
 interface Props { type: string; }
 const { type } = Astro.props;
-const t = String(type).toLowerCase();
+const key = String(type).toLowerCase();
 ---
-<span class={`plate p-${t}`}>{cap(t)}</span>
+<span class={`plate p-${key}`}>{typeName(key)}</span>

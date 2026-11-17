@@ -1,0 +1,148 @@
+---
+import { langPaths, t, placeName } from '../../../lib/i18n.js';
+export function getStaticPaths() { return langPaths(); }
+import Base from '../../../layouts/Base.astro';
+import PageHead from '../../../components/PageHead.astro';
+import { TOWNS, ROUTES_P, OTHER_P, WILD_BY_PLACE, GYM_AT, PHENOM_BY_PLACE, OUTBREAK_BY_PLACE, hasContent, placePath, SPRITE, LISTED, ES_NAME } from '../../../lib/data.js';
+
+/* the species a place's DexNav lists, once each, in table order */
+const strip = (name) => {
+  const w = WILD_BY_PLACE.get(name);
+  if (!w) return [];
+  const seen = new Set(); const out = [];
+  for (const g of w.methods) for (const m of g.mons) if (m.nat && !seen.has(m.name)) { seen.add(m.name); out.push(m); }
+  return out;
+};
+/* what the filter box matches: the name in both languages, and everything that lives there */
+const q = (p) => [p.name, ES_NAME[p.name] || '', placeName(p.name), ...strip(p.name).map((m) => m.name), GYM_AT.get(p.name)?.leader || '',
+  ...(PHENOM_BY_PLACE.get(p.name) || []).map((x) => x.name), ...(OUTBREAK_BY_PLACE.get(p.name) || []).map((x) => x.name)].join(' ').toLowerCase();
+const routeNo = (name) => name.match(/^Route (\d+)(.*)$/);
+/* the kind is only said when the name doesn't already say it */
+const saysKind = (p) => p.name.toLowerCase().includes(String(p.kind).toLowerCase());
+const facts = (p) => {
+  const gym = GYM_AT.get(p.name), ph = PHENOM_BY_PLACE.get(p.name) || [], ob = OUTBREAK_BY_PLACE.get(p.name) || [];
+  return { gym, ph, ob, any: !!gym || ph.length > 0 || ob.length > 0 };
+};
+const towns = TOWNS.filter(hasContent), routes = ROUTES_P.filter(hasContent), rest = OTHER_P.filter(hasContent);
+const MAX = 10;
+---
+<Base title={t('Places')} current="places" description={t('Every place in Zhery you can reach in v0.2.2, with the wild Pokémon the DexNav lists there.')}>
+  <PageHead title={t('Places')}>
+    <label class="field">
+      <svg width="16" height="16" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="9" cy="9" r="6"/><path d="m14 14 4 4"/></svg>
+      <input type="search" id="placesearch" placeholder={t('Place or Pokémon…')} aria-label={t('Filter places')} />
+    </label>
+    <p class="count"><output id="placecount">{LISTED.length}</output> {t('places')}</p>
+  </PageHead>
+
+  {/* cities and towns: a ledger. The gym, or what turns up there, sits in the middle column. */}
+  <section class="group" id="towns" data-group>
+    <h2>{t('Cities & towns')}</h2>
+    <ul class="ledger">
+      {towns.map((p) => { const f = facts(p); const mons = strip(p.name); return (
+        <li data-q={q(p)}>
+          <a class="ledger__row" href={placePath(p.name)}>
+            <span class="ledger__name">{placeName(p.name)}</span>
+            <span class="ledger__meta">
+              {f.gym && <><span class="shield">{f.gym.order}</span> <b>{t(f.gym.badge)}</b> · {f.gym.leader}</>}
+              {f.gym && (f.ph.length > 0 || f.ob.length > 0) && ' · '}
+              {f.ph.length > 0 && <>{f.ph.map((x) => x.name).join(', ')} — {t('phenomena')}</>}
+              {f.ph.length > 0 && f.ob.length > 0 && ' · '}
+              {f.ob.length > 0 && <>{f.ob.map((x) => x.name).join(', ')} — {t('outbreak')}</>}
+            </span>
+            <span class="ledger__end">
+              {mons.length > 0
+                ? <span class="strip">{mons.slice(0, MAX).map((m) => <img src={SPRITE(m.nat)} alt="" width="32" height="32" loading="lazy" decoding="async" />)}{mons.length > MAX && <span class="strip__more">+{mons.length - MAX}</span>}</span>
+                : <span>{t('No wild list yet')}</span>}
+            </span>
+          </a>
+        </li>
+      ); })}
+    </ul>
+  </section>
+
+  {/* routes come in an order, so they are stops on the line; the number is the shield */}
+  <section class="group" id="routes" data-group>
+    <h2>{t('Routes')}</h2>
+    <ol class="track routes">
+      {routes.map((p) => { const f = facts(p); const mons = strip(p.name); const r = routeNo(p.name); return (
+        <li data-q={q(p)}>
+          <a class="track__stop" href={placePath(p.name)} aria-label={placeName(p.name)}>
+            {r ? <span class="shield shield--lg track__no">{r[1]}</span> : <span class="track__dot"></span>}
+            <span class="track__body route">
+              <span class="route__what">
+                {!r && <b>{placeName(p.name)}</b>}
+                {r && r[2] && <b>{r[2].trim()}</b>}
+                {f.ph.length > 0 && <span>{f.ph.map((x) => x.name).join(', ')} — {t('phenomena')}</span>}
+                {f.ob.length > 0 && <span>{f.ob.map((x) => x.name).join(', ')} — {t('outbreak')}</span>}
+                {!f.any && mons.length === 0 && <span>{t('No wild list yet')}</span>}
+              </span>
+              {mons.length > 0 && <span class="strip">{mons.slice(0, 14).map((m) => <img src={SPRITE(m.nat)} alt="" width="32" height="32" loading="lazy" decoding="async" />)}{mons.length > 14 && <span class="strip__more">+{mons.length - 14}</span>}</span>}
+            </span>
+          </a>
+        </li>
+      ); })}
+    </ol>
+  </section>
+
+  {/* everything else, two to a row: a name, what kind of place, who lives there */}
+  <section class="group" id="wilds" data-group>
+    <h2>{t('Caves, water & the rest')}</h2>
+    <ul class="ledger ledger--pair">
+      {rest.map((p) => { const f = facts(p); const mons = strip(p.name); return (
+        <li data-q={q(p)}>
+          <a class="ledger__row" href={placePath(p.name)}>
+            <span class="ledger__name">{placeName(p.name)}{!saysKind(p) && <span class="ledger__sub">{t(p.kind)}</span>}</span>
+            <span class="ledger__meta">
+              {f.ph.length > 0 && <>{f.ph.map((x) => x.name).join(', ')} — {t('phenomena')}</>}
+              {f.ph.length > 0 && f.ob.length > 0 && ' · '}
+              {f.ob.length > 0 && <>{f.ob.map((x) => x.name).join(', ')} — {t('outbreak')}</>}
+              {mons.length > 0
+                ? <span class="strip">{mons.slice(0, 8).map((m) => <img src={SPRITE(m.nat)} alt="" width="32" height="32" loading="lazy" decoding="async" />)}{mons.length > 8 && <span class="strip__more">+{mons.length - 8}</span>}</span>
+                : !f.any && <span>{t('No wild list yet')}</span>}
+            </span>
+          </a>
+        </li>
+      ); })}
+    </ul>
+  </section>
+  <p class="empty" id="placeempty" hidden>{t('No place matches.')}</p>
+
+  <style>
+    .group:first-of-type { margin-top: var(--sp-2); }
+    .ledger__meta .shield { margin-right: 2px; vertical-align: 1px; }
+    /* a route row: what is special about it on the left, who lives there on the right */
+    .route { grid-template-columns: minmax(0, 15rem) minmax(0, 1fr); align-items: center; column-gap: var(--sp-4); min-height: 26px; }
+    .route__what { display: grid; gap: 2px; font-size: var(--text-sm); color: var(--ink-2); }
+    .route__what b { color: var(--ink); font-size: var(--text-md); }
+    @media (max-width: 719px) { .route { grid-template-columns: minmax(0, 1fr); } }
+    /* the last group pairs up on a wide screen: name and sprites stack inside each half */
+    .ledger--pair .ledger__row { grid-template-columns: minmax(0, 1fr); align-content: center; }
+    .ledger--pair .ledger__meta { display: grid; gap: var(--sp-1); }
+    @media (min-width: 720px) {
+      .ledger--pair { display: grid; grid-template-columns: 1fr 1fr; }
+      .ledger--pair > li { box-shadow: 1px 0 0 var(--line); }
+    }
+  </style>
+
+  <script>
+    const init = () => {
+      const box = document.getElementById('placesearch');
+      if (!box || box.dataset.wired) return;
+      box.dataset.wired = '1';
+      const rows = [...document.querySelectorAll('[data-q]')];
+      const groups = [...document.querySelectorAll('[data-group]')];
+      const out = document.getElementById('placecount'), empty = document.getElementById('placeempty');
+      box.addEventListener('input', () => {
+        const q = box.value.trim().toLowerCase();
+        let n = 0;
+        for (const r of rows) { const hit = !q || r.dataset.q.includes(q); r.hidden = !hit; if (hit) n++; }
+        for (const g of groups) g.hidden = !!q && !g.querySelector('[data-q]:not([hidden])');
+        if (out) out.textContent = String(n);
+        if (empty) empty.hidden = n > 0;
+      });
+    };
+    init();
+    document.addEventListener('astro:page-load', init);
+  </script>
+</Base>
