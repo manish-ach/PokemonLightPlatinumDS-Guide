@@ -484,7 +484,14 @@ const PLACE_NAMES = new Set([...ALL_PLACES.map((p) => p.name), ...Object.keys(HO
   'Gromet City', 'Darkdusk City', 'Enemy Town', 'Central Town', 'Panotem Island']);
 markPlain([...PLACE_NAMES, ...ALLSPECIES.map((s) => s.name), 'Mt. Ice Storm', 'Mt. Icestorm', 'Mt. Shuem', 'pokehacking.com', 'Zhery']);
 export const REACHABLE = ALL_PLACES.filter((p) => p.built);
-export const TOWNS = REACHABLE.filter((p) => p.kind === 'City' || p.kind === 'Town');
+/* Cities and towns are listed in the order the journey reaches them. This
+   order is fixed here, by hand: do not sort it or derive it from places.json.
+   A town not named here (one added later) follows the ten, in file order. */
+export const TOWN_ORDER = ['Yellow Town', 'Central City', 'Inhore City', 'Pantem Town', 'Esmerald City',
+  'Bramboach Town', 'Seanport City', 'Dardusk City', 'Enermy Town', 'Groment City'];
+const townRank = (p) => { const i = TOWN_ORDER.indexOf(p.name); return i < 0 ? TOWN_ORDER.length : i; };
+export const TOWNS = REACHABLE.filter((p) => p.kind === 'City' || p.kind === 'Town')
+  .map((p, i) => [p, i]).sort((a, b) => townRank(a[0]) - townRank(b[0]) || a[1] - b[1]).map(([p]) => p);
 export const ROUTES_P = REACHABLE.filter((p) => p.kind === 'Route');
 export const OTHER_P = REACHABLE.filter((p) => !['City', 'Town', 'Route'].includes(p.kind));
 export const UNBUILT_P = PLACES.filter((p) => !p.built);
