@@ -108,8 +108,53 @@ const MAX = 10;
   </section>
   <p class="empty" id="placeempty" hidden>{t('No place matches.')}</p>
 
+  {/* on a phone the three groups are a long scroll, so a bar floats over the
+     bottom of the screen to jump between them; it marks the one you are in */}
+  <nav class="jump" aria-label={t('Jump to a group')} data-jump>
+    <span class="jump__thumb" aria-hidden="true"></span>
+    <a href="#towns" data-jump-to="towns" aria-current="true">{t('Cities')}</a>
+    <a href="#routes" data-jump-to="routes">{t('Routes')}</a>
+    <a href="#wilds" data-jump-to="wilds">{t('Others')}</a>
+  </nav>
+  <div class="jump-space" aria-hidden="true"></div>
+
   <style>
     .group:first-of-type { margin-top: var(--sp-2); }
+
+    /* the floating bar: phones only. A pill of the sign's navy that the page
+       scrolls beneath, with a yellow thumb that slides to the current group. */
+    .jump, .jump-space { display: none; }
+    @media (max-width: 719px) {
+      .jump {
+        position: fixed; z-index: var(--z-sticky); left: 50%; bottom: calc(var(--sp-4) + env(safe-area-inset-bottom, 0px));
+        transform: translateX(-50%);
+        display: flex; padding: 4px; border-radius: 999px;
+        background: color-mix(in oklch, var(--sign) 80%, transparent);
+        -webkit-backdrop-filter: blur(16px) saturate(1.5); backdrop-filter: blur(16px) saturate(1.5);
+        border: 1px solid color-mix(in oklch, var(--on-sign) 24%, transparent);
+        box-shadow: var(--shadow-pop);
+      }
+      .jump[hidden] { display: none; }
+      .jump { transition: opacity var(--t) var(--ease), translate var(--t) var(--ease); }
+      .jump.is-away { opacity: 0; translate: 0 12px; pointer-events: none; }
+      .jump a {
+        position: relative; display: inline-flex; align-items: center; justify-content: center;
+        min-height: 44px; padding: 2px var(--sp-4) 0; border-radius: 999px;
+        color: var(--on-sign-2); font-size: var(--text-sm); font-weight: 700; text-decoration: none; white-space: nowrap;
+        transition: color var(--t) var(--ease);
+      }
+      .jump a[hidden] { display: none; }
+      .jump a[aria-current="true"] { color: var(--on-accent); }
+      .jump a:focus-visible { outline-offset: -3px; box-shadow: none; }
+      /* the thumb sits under the labels; the script sets where and how wide */
+      .jump__thumb {
+        position: absolute; top: 4px; bottom: 4px; left: 0; width: var(--w, 0); border-radius: 999px; background: var(--accent);
+        transform: translateX(var(--x, 4px));
+        transition: transform var(--t) var(--ease), width var(--t) var(--ease);
+      }
+      /* room at the end of the page so the bar never covers the last row */
+      .jump-space { display: block; height: 64px; }
+    }
     .ledger__meta .shield { margin-right: 2px; vertical-align: 1px; }
     /* a route row: what is special about it on the left, who lives there on the right */
     .route { grid-template-columns: minmax(0, 15rem) minmax(0, 1fr); align-items: center; column-gap: var(--sp-4); min-height: 26px; }
@@ -140,7 +185,60 @@ const MAX = 10;
         for (const g of groups) g.hidden = !!q && !g.querySelector('[data-q]:not([hidden])');
         if (out) out.textContent = String(n);
         if (empty) empty.hidden = n > 0;
+        syncJump();
       });
+
+      /* the floating bar: tap to go to a group, and follow the scroll */
+      const jump = document.querySelector('[data-jump]');
+      const links = jump ? [...jump.querySelectorAll('[data-jump-to]')] : [];
+      const groupOf = (a) => document.getElementById(a.dataset.jumpTo);
+      const mark = (cur) => {
+        if (!cur) return;
+        links.forEach((a) => a.setAttribute('aria-current', String(a === cur)));
+        jump.style.setProperty('--x', cur.offsetLeft + 'px');
+        jump.style.setProperty('--w', cur.offsetWidth + 'px');
+      };
+      /* a tap moves the thumb at once; the scroll that follows must not drag it back */
+      let hold = 0;
+      const spy = () => {
+        const shown = links.filter((a) => !a.hidden);
+        if (!jump || !shown.length) return;
+        /* the bar steps aside once the foot of the page is on screen */
+        const foot = document.querySelector('.foot');
+        jump.classList.toggle('is-away', !!foot && foot.getBoundingClientRect().top < innerHeight - 8);
+        if (performance.now() < hold) return;
+        /* the current group is the last one whose heading has passed the upper third of the screen */
+        let cur = shown[0];
+        for (const a of shown) if (groupOf(a).getBoundingClientRect().top <= innerHeight * 0.35) cur = a;
+        if (innerHeight + scrollY >= document.documentElement.scrollHeight - 4) cur = shown[shown.length - 1];
+        mark(cur);
+      };
+      /* a filter can empty a group; its tab goes with it, and the bar with the last one */
+      function syncJump() {
+        if (!jump) return;
+        links.forEach((a) => { a.hidden = groupOf(a).hidden; });
+        jump.hidden = links.filter((a) => !a.hidden).length < 2;
+        spy();
+      }
+      links.forEach((a) => a.addEventListener('click', (e) => {
+        e.preventDefault();
+        const calm = matchMedia('(prefers-reduced-motion: reduce)').matches;
+        hold = performance.now() + (calm ? 0 : 900);
+        groupOf(a).scrollIntoView({ behavior: calm ? 'auto' : 'smooth', block: 'start' });
+        mark(a);
+      }));
+      addEventListener('scrollend', () => { hold = 0; spy(); });
+      if (!window.__jumpSpy) {
+        window.__jumpSpy = true;
+        let tick = false;
+        const onScroll = () => { if (tick) return; tick = true; requestAnimationFrame(() => { tick = false; window.__jumpSpyNow?.(); }); };
+        addEventListener('scroll', onScroll, { passive: true });
+        addEventListener('resize', onScroll);
+      }
+      /* one scroll listener for the life of the tab; it calls whichever page's bar is current */
+      window.__jumpSpyNow = spy;
+      spy();
+      document.fonts?.ready.then(spy);
     };
     init();
     document.addEventListener('astro:page-load', init);
