@@ -293,11 +293,12 @@ group led by a square in its colour; the current one is a yellow block. Below
 that, a menu button opens a sheet (`popover`) with the four lines as banded
 groups of 48px rows. A back link above a title carries the line's square.
 
-On a phone, a page made of a few long groups may carry a floating jump bar
-(`.jump`, on Places): a navy pill fixed over the bottom of the screen with one
-label per group and a yellow thumb that slides to the group in view. It is the
-one place a full pill and a backdrop blur are used, because the page scrolls
-beneath it; it steps aside when the footer arrives and is absent from 720px up.
+On a phone, a page made of a few long groups may turn them into tabs on a
+floating bar (`.jump`, on Places): a navy pill fixed over the bottom of the
+screen with one label per group. Only the picked group is on the page; a yellow
+thumb marks it. It is the one place a full pill and a backdrop blur are used,
+because the page scrolls beneath it; it steps aside when the footer arrives. From
+720px up the bar is absent and the groups show one after another.
 
 The language switch (`.lang`) sits in the bar at every width: EN and ES in mono,
 the current one a yellow block. Under 480px the theme switch moves into the menu

@@ -35,6 +35,8 @@ const MAX = 10;
     <p class="count"><output id="placecount">{LISTED.length}</output> {t('places')}</p>
   </PageHead>
 
+  {/* on a phone the three groups are tabs: one shows at a time, picked on the floating bar */}
+  <div class="tabbed" data-tabbed>
   {/* cities and towns: a ledger. The gym, or what turns up there, sits in the middle column. */}
   <section class="group" id="towns" data-group>
     <h2>{t('Cities & towns')}</h2>
@@ -106,11 +108,11 @@ const MAX = 10;
       ); })}
     </ul>
   </section>
+  </div>
   <p class="empty" id="placeempty" hidden>{t('No place matches.')}</p>
 
-  {/* on a phone the three groups are a long scroll, so a bar floats over the
-     bottom of the screen to jump between them; it marks the one you are in */}
-  <nav class="jump" aria-label={t('Jump to a group')} data-jump>
+  {/* the floating bar: phones only. Each label shows its own group and nothing else. */}
+  <nav class="jump" aria-label={t('Groups of places')} data-jump>
     <span class="jump__thumb" aria-hidden="true"></span>
     <a href="#towns" data-jump-to="towns" aria-current="true">{t('Cities')}</a>
     <a href="#routes" data-jump-to="routes">{t('Routes')}</a>
@@ -120,9 +122,15 @@ const MAX = 10;
 
   <style>
     .group:first-of-type { margin-top: var(--sp-2); }
+    /* tabs on a phone: only the picked group is on the page. Without the
+       script nothing is picked and all three show, one after another. */
+    @media (max-width: 719px) {
+      .tabbed[data-tab] .group { display: none; margin-top: var(--sp-2); }
+      .tabbed[data-tab="towns"] #towns, .tabbed[data-tab="routes"] #routes, .tabbed[data-tab="wilds"] #wilds { display: block; }
+    }
 
     /* the floating bar: phones only. A pill of the sign's navy that the page
-       scrolls beneath, with a yellow thumb that slides to the current group. */
+       scrolls beneath, with a yellow thumb that slides to the group on show. */
     .jump, .jump-space { display: none; }
     @media (max-width: 719px) {
       .jump {
@@ -188,46 +196,43 @@ const MAX = 10;
         syncJump();
       });
 
-      /* the floating bar: tap to go to a group, and follow the scroll */
+      /* the floating bar: each label shows its own group and hides the others */
+      const tabbed = document.querySelector('[data-tabbed]');
       const jump = document.querySelector('[data-jump]');
       const links = jump ? [...jump.querySelectorAll('[data-jump-to]')] : [];
       const groupOf = (a) => document.getElementById(a.dataset.jumpTo);
-      const mark = (cur) => {
-        if (!cur) return;
-        links.forEach((a) => a.setAttribute('aria-current', String(a === cur)));
+      const current = () => links.find((a) => a.getAttribute('aria-current') === 'true');
+      const thumb = () => {
+        const cur = current(); if (!cur) return;
         jump.style.setProperty('--x', cur.offsetLeft + 'px');
         jump.style.setProperty('--w', cur.offsetWidth + 'px');
       };
-      /* a tap moves the thumb at once; the scroll that follows must not drag it back */
-      let hold = 0;
-      const spy = () => {
-        const shown = links.filter((a) => !a.hidden);
-        if (!jump || !shown.length) return;
-        /* the bar steps aside once the foot of the page is on screen */
-        const foot = document.querySelector('.foot');
-        jump.classList.toggle('is-away', !!foot && foot.getBoundingClientRect().top < innerHeight - 8);
-        if (performance.now() < hold) return;
-        /* the current group is the last one whose heading has passed the upper third of the screen */
-        let cur = shown[0];
-        for (const a of shown) if (groupOf(a).getBoundingClientRect().top <= innerHeight * 0.35) cur = a;
-        if (innerHeight + scrollY >= document.documentElement.scrollHeight - 4) cur = shown[shown.length - 1];
-        mark(cur);
+      const select = (a, { top = false, remember = true } = {}) => {
+        if (!a || !tabbed) return;
+        tabbed.dataset.tab = a.dataset.jumpTo;
+        links.forEach((o) => o.setAttribute('aria-current', String(o === a)));
+        thumb();
+        /* the tab is remembered for this visit, so coming back from a place returns to the same one */
+        if (remember) { try { sessionStorage.setItem('places-tab', a.dataset.jumpTo); } catch (e) {} }
+        if (top) scrollTo({ top: 0, behavior: 'auto' });
       };
       /* a filter can empty a group; its tab goes with it, and the bar with the last one */
       function syncJump() {
-        if (!jump) return;
+        if (!jump || !tabbed) return;
         links.forEach((a) => { a.hidden = groupOf(a).hidden; });
-        jump.hidden = links.filter((a) => !a.hidden).length < 2;
-        spy();
+        const shown = links.filter((a) => !a.hidden);
+        jump.hidden = shown.length < 2;
+        if (!shown.length) { tabbed.dataset.tab = 'none'; return; }
+        const cur = current();
+        select(cur && !cur.hidden ? cur : shown[0], { remember: false });
       }
-      links.forEach((a) => a.addEventListener('click', (e) => {
-        e.preventDefault();
-        const calm = matchMedia('(prefers-reduced-motion: reduce)').matches;
-        hold = performance.now() + (calm ? 0 : 900);
-        groupOf(a).scrollIntoView({ behavior: calm ? 'auto' : 'smooth', block: 'start' });
-        mark(a);
-      }));
-      addEventListener('scrollend', () => { hold = 0; spy(); });
+      links.forEach((a) => a.addEventListener('click', (e) => { e.preventDefault(); select(a, { top: true }); }));
+      /* the bar steps aside once the foot of the page is on screen */
+      const away = () => {
+        const foot = document.querySelector('.foot');
+        jump?.classList.toggle('is-away', !!foot && foot.getBoundingClientRect().top < innerHeight - 8);
+        thumb();
+      };
       if (!window.__jumpSpy) {
         window.__jumpSpy = true;
         let tick = false;
@@ -236,9 +241,13 @@ const MAX = 10;
         addEventListener('resize', onScroll);
       }
       /* one scroll listener for the life of the tab; it calls whichever page's bar is current */
-      window.__jumpSpyNow = spy;
-      spy();
-      document.fonts?.ready.then(spy);
+      window.__jumpSpyNow = away;
+      /* a link to #routes picks that tab; otherwise the one last used in this visit */
+      let last = ''; try { last = sessionStorage.getItem('places-tab') || ''; } catch (e) {}
+      const want = location.hash ? location.hash.slice(1) : last;
+      select(links.find((a) => a.dataset.jumpTo === want) || links[0], { remember: false });
+      away();
+      document.fonts?.ready.then(thumb);
     };
     init();
     document.addEventListener('astro:page-load', init);
